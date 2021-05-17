@@ -1,0 +1,20 @@
+{
+  "name": "filmvisarna-lewandowski",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NervousNerve/filmvisarna-lewandowski.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NervousNerve/filmvisarna-lewandowski/issues"
+  },
+  "homepage": "https://github.com/NervousNerve/filmvisarna-lewandowski#readme"
+}
