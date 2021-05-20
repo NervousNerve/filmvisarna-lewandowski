@@ -7,10 +7,12 @@ const uri =
   "mongodb+srv://dbAdmin:password1234@cluster0.bzbxx.mongodb.net/filmvisarna?retryWrites=true&w=majority";
 
 const movieRoutes = require("./routes/movieRoutes");
+const theaterRoutes = require("./routes/theaterRoutes");
 
 app.use(express.json());
 
 app.use("/api/v1/movies", movieRoutes);
+app.use("/api/v1/theaters", theaterRoutes);
 
 (async () => {
   try {
