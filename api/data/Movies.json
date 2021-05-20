@@ -1,0 +1,961 @@
+[
+  {
+    "title": "Star Wars: Episode IV - A New Hope",
+    "Year": "1977",
+    "rated": "PG",
+    "Released": "25 May 1977",
+    "runtime": 121,
+    "genre": "Action, Adventure, Fantasy, Sci-Fi",
+    "director": "George Lucas",
+    "writer": "George Lucas",
+    "actors": "Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing",
+    "plot": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee and two droids to save the galaxy from the Empire's world-destroying battle station, while also attempting to rescue Princess Leia from the mysterious Darth Vader.",
+    "language": "English",
+    "Country": "USA, UK",
+    "Awards": "Won 6 Oscars. Another 58 wins & 29 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "Ratings": [
+      { "Source": "Internet Movie Database", "Value": "8.6/10" },
+      { "Source": "Rotten Tomatoes", "Value": "92%" },
+      { "Source": "Metacritic", "Value": "90/100" }
+    ],
+    "Metascore": "90",
+    "imdbRating": "8.6",
+    "imdbVotes": "1,250,277",
+    "imdbID": "tt0076759",
+    "Type": "movie",
+    "DVD": "10 Oct 2016",
+    "BoxOffice": "$460,998,507",
+    "Production": "Lucasfilm Ltd.",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "vZ734NWnAHA"
+  },
+  {
+    "title": "The Dark Knight",
+    "Year": "2008",
+    "rated": "PG-13",
+    "Released": "18 Jul 2008",
+    "runtime": 152,
+    "genre": "Action, Crime, Drama, Thriller",
+    "director": "Christopher Nolan",
+    "writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Nolan (story), David S. Goyer (story), Bob Kane (characters)",
+    "actors": "Christian Bale, Heath Ledger, Aaron Eckhart, Michael Caine",
+    "plot": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "language": "English, Mandarin",
+    "Country": "USA, UK",
+    "Awards": "Won 2 Oscars. Another 157 wins & 163 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "9.0/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "94%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "84/100"
+      }
+    ],
+    "Metascore": "84",
+    "imdbRating": "9.0",
+    "imdbVotes": "2,353,974",
+    "imdbID": "tt0468569",
+    "Type": "movie",
+    "DVD": "14 Jun 2010",
+    "BoxOffice": "$534,858,444",
+    "Production": "Syncopy",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "EXeTwQWrcwY"
+  },
+  {
+    "title": "The Lord of the Rings: The Fellowship of the Ring",
+    "Year": "2001",
+    "rated": "PG-13",
+    "Released": "19 Dec 2001",
+    "runtime": 178,
+    "genre": "Action, Adventure, Drama, Fantasy",
+    "director": "Peter Jackson",
+    "writer": "J.R.R. Tolkien (novel), Fran Walsh (screenplay), Philippa Boyens (screenplay), Peter Jackson (screenplay)",
+    "actors": "Alan Howard, Noel Appleby, Sean Astin, Sala Baker",
+    "plot": "A meek Hobbit from the Shire and eight companions set out on a journey to destroy the powerful One Ring and save Middle-earth from the Dark Lord Sauron.",
+    "language": "English, Sindarin",
+    "Country": "New Zealand, USA",
+    "Awards": "Won 4 Oscars. Another 117 wins & 126 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.8/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "91%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "92/100"
+      }
+    ],
+    "Metascore": "92",
+    "imdbRating": "8.8",
+    "imdbVotes": "1,692,175",
+    "imdbID": "tt0120737",
+    "Type": "movie",
+    "DVD": "28 Jun 2011",
+    "BoxOffice": "$315,710,750",
+    "Production": "New Line Cinema, WingNut Films, Saul Zaentz Company",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "V75dMMIW2B4"
+  },
+  {
+    "title": "Inception",
+    "Year": "2010",
+    "rated": "PG-13",
+    "Released": "16 Jul 2010",
+    "runtime": 148,
+    "genre": "Action, Adventure, Sci-Fi, Thriller",
+    "director": "Christopher Nolan",
+    "writer": "Christopher Nolan",
+    "actors": "Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot Page, Tom Hardy",
+    "plot": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "language": "English, Japanese, French",
+    "Country": "USA, UK",
+    "Awards": "Won 4 Oscars. Another 153 wins & 220 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.8/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "87%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "74/100"
+      }
+    ],
+    "Metascore": "74",
+    "imdbRating": "8.8",
+    "imdbVotes": "2,112,329",
+    "imdbID": "tt1375666",
+    "Type": "movie",
+    "DVD": "20 Jun 2013",
+    "BoxOffice": "$292,576,195",
+    "Production": "Syncopy, Warner Bros.",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "YoHD9XEInc0"
+  },
+  {
+    "title": "Spirited Away",
+    "Year": "2001",
+    "rated": "PG",
+    "Released": "28 Mar 2003",
+    "runtime": 125,
+    "genre": "Animation, Adventure, Family, Fantasy, Mystery",
+    "director": "Hayao Miyazaki",
+    "writer": "Hayao Miyazaki",
+    "actors": "Rumi Hiiragi, Miyu Irino, Mari Natsuki, Takashi Naitô",
+    "plot": "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches, and spirits, and where humans are changed into beasts.",
+    "language": "Japanese, English",
+    "Country": "Japan, USA",
+    "Awards": "Won 1 Oscar. Another 57 wins & 31 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjlmZmI5MDctNDE2YS00YWE0LWE5ZWItZDBhYWQ0NTcxNWRhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "97%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "96/100"
+      }
+    ],
+    "Metascore": "96",
+    "imdbRating": "8.6",
+    "imdbVotes": "670,001",
+    "imdbID": "tt0245429",
+    "Type": "movie",
+    "DVD": "19 Dec 2019",
+    "BoxOffice": "$13,750,644",
+    "Production": "Walt Disney Pictures, Tokuma Shoten, Studio Ghibli",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "ByXuk9QqQkk"
+  },
+  {
+    "title": "The Lion King",
+    "Year": "1994",
+    "rated": "G",
+    "Released": "24 Jun 1994",
+    "runtime": 88,
+    "genre": "Animation, Adventure, Drama, Family, Musical",
+    "director": "Roger Allers, Rob Minkoff",
+    "writer": "Irene Mecchi (screenplay by), Jonathan Roberts (screenplay by), Linda Woolverton (screenplay by), Burny Mattinson (story), Barry Johnson (story), Lorna Cook (story), Thom Enriquez (story), Andy Gaskill (story), Gary Trousdale (story), Jim Capobianco (story), Kevin Harkey (story), Jorgen Klubien (story), Chris Sanders (story), Tom Sito (story), Larry Leker (story), Joe Ranft (story), Rick Maki (story), Ed Gombert (story), Francis Glebas (story), Mark Kausler (story), J.T. Allen (additional story material), George Scribner (additional story material), Miguel Tejada-Flores (additional story material), Jenny Tripp (additional story material), Bob Tzudiker (additional story material), Christopher Vogler (additional story material), Kirk Wise (additional story material), Noni White (additional story material), Brenda Chapman (story supervisor)",
+    "actors": "Rowan Atkinson, Matthew Broderick, Niketa Calame-Harris, Jim Cummings",
+    "plot": "Lion prince Simba and his father are targeted by his bitter uncle, who wants to ascend the throne himself.",
+    "language": "English, Swahili, Xhosa, Zulu",
+    "Country": "USA",
+    "Awards": "Won 2 Oscars. Another 37 wins & 35 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BYTYxNGMyZTYtMjE3MS00MzNjLWFjNmYtMDk3N2FmM2JiM2M1XkEyXkFqcGdeQXVyNjY5NDU4NzI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "93%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "88/100"
+      }
+    ],
+    "Metascore": "88",
+    "imdbRating": "8.5",
+    "imdbVotes": "957,348",
+    "imdbID": "tt0110357",
+    "Type": "movie",
+    "DVD": "15 Aug 2017",
+    "BoxOffice": "$422,783,777",
+    "Production": "Walt Disney Pictures",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "lFzVJEksoDY"
+  },
+  {
+    "title": "Parasite",
+    "Year": "2019",
+    "rated": "R",
+    "Released": "08 Nov 2019",
+    "runtime": 132,
+    "genre": "Comedy, Drama, Thriller",
+    "director": "Bong Joon Ho",
+    "writer": "Bong Joon Ho (story by), Bong Joon Ho (screenplay by), Jin-won Han (screenplay by)",
+    "actors": "Kang-ho Song, Sun-kyun Lee, Yeo-jeong Cho, Woo-sik Choi",
+    "plot": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    "language": "Korean, English",
+    "Country": "South Korea",
+    "Awards": "Won 4 Oscars. Another 299 wins & 266 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "98%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "96/100"
+      }
+    ],
+    "Metascore": "96",
+    "imdbRating": "8.6",
+    "imdbVotes": "594,978",
+    "imdbID": "tt6751668",
+    "Type": "movie",
+    "DVD": "11 Oct 2019",
+    "BoxOffice": "$53,369,749",
+    "Production": "CJ Entertainment, TMS Entertainment",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "5xH0HfJHsaY"
+  },
+  {
+    "title": "Hababam Sinifi",
+    "Year": "1975",
+    "rated": "N/A",
+    "Released": "01 Apr 1975",
+    "runtime": 87,
+    "genre": "Comedy, Drama",
+    "director": "Ertem Egilmez",
+    "writer": "Umur Bugay, Rifat Ilgaz (novel)",
+    "actors": "Kemal Sunal, Münir Özkul, Halit Akçatepe, Tarik Akan",
+    "plot": "Lazy, uneducated students share a very close bond. They live together in the dormitory, where they plan their latest pranks. When a new headmaster arrives, the students naturally try to overthrow him. A comic war of nitwits follows.",
+    "language": "Turkish",
+    "Country": "Turkey",
+    "Awards": "N/A",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BOWI4NGQ1M2YtNDM2Yi00YzAzLWJmZmYtMjkxZWMwNmM5Y2NhXkEyXkFqcGdeQXVyMjQ2OTI2MzU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "9.3/10"
+      }
+    ],
+    "Metascore": "N/A",
+    "imdbRating": "9.3",
+    "imdbVotes": "38,128",
+    "imdbID": "tt0252487",
+    "Type": "movie",
+    "DVD": "N/A",
+    "BoxOffice": "N/A",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "4rAnNKCxlnc"
+  },
+  {
+    "title": "Life Is Beautiful",
+    "Year": "1997",
+    "rated": "PG-13",
+    "Released": "20 Dec 1997",
+    "runtime": 116,
+    "genre": "Comedy, Drama, Romance, War",
+    "director": "Roberto Benigni",
+    "writer": "Vincenzo Cerami (story by), Roberto Benigni (story by), Vincenzo Cerami (screenplay by), Roberto Benigni (screenplay by)",
+    "actors": "Roberto Benigni, Nicoletta Braschi, Giorgio Cantarini, Giustino Durano",
+    "plot": "When an open-minded Jewish librarian and his son become victims of the Holocaust, he uses a perfect mixture of will, humor, and imagination to protect his son from the dangers around their camp.",
+    "language": "Italian, German, English",
+    "Country": "Italy",
+    "Awards": "Won 3 Oscars. Another 69 wins & 52 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BYmJmM2Q4NmMtYThmNC00ZjRlLWEyZmItZTIwOTBlZDQ3NTQ1XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "80%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "59/100"
+      }
+    ],
+    "Metascore": "59",
+    "imdbRating": "8.6",
+    "imdbVotes": "634,121",
+    "imdbID": "tt0118799",
+    "Type": "movie",
+    "DVD": "25 Oct 2016",
+    "BoxOffice": "$57,563,264",
+    "Production": "Miramax, Cecchi Gori Group Tiger Cinema",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "pAYEQP8gx3w"
+  },
+  {
+    "title": "The Shawshank Redemption",
+    "Year": "1994",
+    "rated": "R",
+    "Released": "14 Oct 1994",
+    "runtime": 142,
+    "genre": "Drama",
+    "director": "Frank Darabont",
+    "writer": "Stephen King (short story \"Rita Hayworth and Shawshank Redemption\"), Frank Darabont (screenplay)",
+    "actors": "Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler",
+    "plot": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Nominated for 7 Oscars. Another 21 wins & 36 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "9.3/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "91%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "80/100"
+      }
+    ],
+    "Metascore": "80",
+    "imdbRating": "9.3",
+    "imdbVotes": "2,381,013",
+    "imdbID": "tt0111161",
+    "Type": "movie",
+    "DVD": "15 Aug 2008",
+    "BoxOffice": "$28,699,976",
+    "Production": "Columbia Pictures, Castle Rock Entertainment",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "6hB3S9bIaco"
+  },
+  {
+    "title": "Godfather",
+    "Year": "1991",
+    "rated": "Not Rated",
+    "Released": "15 Nov 1991",
+    "runtime": 150,
+    "genre": "Comedy, Drama, Romance",
+    "director": "Lal, Siddique",
+    "writer": "Lal (screenplay,  story & dialogue), Siddique",
+    "actors": "N.N. Pillai, Mukesh, Kanaka, Philomina",
+    "plot": "Two young scions from rival families each pretend to fall in love with the other in order to humiliate their rivals, but end up falling in love for real.",
+    "language": "Malayalam",
+    "Country": "India",
+    "Awards": "2 wins.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BZTkyYzc5MGEtYTBiYS00ZmYyLThlZWUtOWY3ZWE4ZDhlN2MzXkEyXkFqcGdeQXVyMjM0ODk5MDU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      }
+    ],
+    "Metascore": "N/A",
+    "imdbRating": "8.6",
+    "imdbVotes": "3,066",
+    "imdbID": "tt0353496",
+    "Type": "movie",
+    "DVD": "N/A",
+    "BoxOffice": "N/A",
+    "Production": "N/A",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "sY1S34973zA"
+  },
+  {
+    "title": "Psycho",
+    "Year": "1960",
+    "rated": "R",
+    "Released": "08 Sep 1960",
+    "runtime": 109,
+    "genre": "Horror, Mystery, Thriller",
+    "director": "Alfred Hitchcock",
+    "writer": "Joseph Stefano (screenplay by), Robert Bloch (based on the novel by)",
+    "actors": "Anthony Perkins, Vera Miles, John Gavin, Janet Leigh",
+    "plot": "A Phoenix secretary embezzles $40,000 from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Nominated for 4 Oscars. Another 8 wins & 10 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BNTQwNDM1YzItNDAxZC00NWY2LTk0M2UtNDIwNWI5OGUyNWUxXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "96%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "97/100"
+      }
+    ],
+    "Metascore": "97",
+    "imdbRating": "8.5",
+    "imdbVotes": "614,911",
+    "imdbID": "tt0054215",
+    "Type": "movie",
+    "DVD": "12 Feb 2014",
+    "BoxOffice": "$32,000,000",
+    "Production": "Paramount",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "Wz719b9QUqY"
+  },
+  {
+    "title": "The Shining",
+    "Year": "1980",
+    "rated": "R",
+    "Released": "13 Jun 1980",
+    "runtime": 146,
+    "genre": "Drama, Horror",
+    "director": "Stanley Kubrick",
+    "writer": "Stephen King (based upon the novel by), Stanley Kubrick (screenplay by), Diane Johnson (screenplay by)",
+    "actors": "Jack Nicholson, Shelley Duvall, Danny Lloyd, Scatman Crothers",
+    "plot": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence, while his psychic son sees horrific forebodings from both past and future.",
+    "language": "English",
+    "Country": "UK, USA",
+    "Awards": "4 wins & 8 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BZWFlYmY2MGEtZjVkYS00YzU4LTg0YjQtYzY1ZGE3NTA5NGQxXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.4/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "84%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "66/100"
+      }
+    ],
+    "Metascore": "66",
+    "imdbRating": "8.4",
+    "imdbVotes": "914,386",
+    "imdbID": "tt0081505",
+    "Type": "movie",
+    "DVD": "15 Aug 2008",
+    "BoxOffice": "$45,332,952",
+    "Production": "Producers Circle, Warner Brothers, Peregrine, Hawk Films",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "5Cb3ik6zP2I"
+  },
+  {
+    "title": "Alien",
+    "Year": "1979",
+    "rated": "R",
+    "Released": "22 Jun 1979",
+    "runtime": 117,
+    "genre": "Horror, Sci-Fi",
+    "director": "Ridley Scott",
+    "writer": "Dan O'Bannon (screenplay by), Dan O'Bannon (story by), Ronald Shusett (story by)",
+    "actors": "Tom Skerritt, Sigourney Weaver, Veronica Cartwright, Harry Dean Stanton",
+    "plot": "After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.",
+    "language": "English",
+    "Country": "UK, USA",
+    "Awards": "Won 1 Oscar. Another 17 wins & 22 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMmQ2MmU3NzktZjAxOC00ZDZhLTk4YzEtMDMyMzcxY2IwMDAyXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.4/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "98%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "89/100"
+      }
+    ],
+    "Metascore": "89",
+    "imdbRating": "8.4",
+    "imdbVotes": "799,115",
+    "imdbID": "tt0078748",
+    "Type": "movie",
+    "DVD": "25 Nov 2015",
+    "BoxOffice": "$81,900,459",
+    "Production": "Twentieth Century Fox, Brandywine Productions",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "LjLamj-b0I8"
+  },
+  {
+    "title": "Forrest Gump",
+    "Year": "1994",
+    "rated": "PG-13",
+    "Released": "06 Jul 1994",
+    "runtime": 142,
+    "genre": "Drama, Romance",
+    "director": "Robert Zemeckis",
+    "writer": "Winston Groom (novel), Eric Roth (screenplay)",
+    "actors": "Tom Hanks, Rebecca Williams, Sally Field, Michael Conner Humphreys",
+    "plot": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold from the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Won 6 Oscars. Another 44 wins & 75 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BNWIwODRlZTUtY2U3ZS00Yzg1LWJhNzYtMmZiYmEyNmU1NjMzXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.8/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "71%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "82/100"
+      }
+    ],
+    "Metascore": "82",
+    "imdbRating": "8.8",
+    "imdbVotes": "1,838,918",
+    "imdbID": "tt0109830",
+    "Type": "movie",
+    "DVD": "01 Aug 2013",
+    "BoxOffice": "$330,455,270",
+    "Production": "Paramount Pictures",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "bLvqoHBptjg"
+  },
+  {
+    "title": "Cinema Paradiso",
+    "Year": "1988",
+    "rated": "R",
+    "Released": "23 Feb 1990",
+    "runtime": 155,
+    "genre": "Drama, Romance",
+    "director": "Giuseppe Tornatore",
+    "writer": "Giuseppe Tornatore (story), Giuseppe Tornatore (screenplay), Vanna Paoli (collaborating writer), Richard Epcar",
+    "actors": "Antonella Attili, Enzo Cannavale, Isa Danieli, Leo Gullotta",
+    "plot": "A filmmaker recalls his childhood when falling in love with the pictures at the cinema of his home village and forms a deep friendship with the cinema's projectionist.",
+    "language": "Italian",
+    "Country": "Italy, France",
+    "Awards": "Won 1 Oscar. Another 24 wins & 32 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BM2FhYjEyYmYtMDI1Yy00YTdlLWI2NWQtYmEzNzAxOGY1NjY2XkEyXkFqcGdeQXVyNTA3NTIyNDg@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "90%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "80/100"
+      }
+    ],
+    "Metascore": "80",
+    "imdbRating": "8.5",
+    "imdbVotes": "235,166",
+    "imdbID": "tt0095765",
+    "Type": "movie",
+    "DVD": "01 Oct 2016",
+    "BoxOffice": "$12,397,210",
+    "Production": "Cristaldi Film",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "C2-GX0Tltgw"
+  },
+  {
+    "title": "Casablanca",
+    "Year": "1942",
+    "rated": "PG",
+    "Released": "23 Jan 1943",
+    "runtime": 102,
+    "genre": "Drama, Romance, War",
+    "director": "Michael Curtiz",
+    "writer": "Julius J. Epstein (screenplay), Philip G. Epstein (screenplay), Howard Koch (screenplay), Murray Burnett (play), Joan Alison (play)",
+    "actors": "Humphrey Bogart, Ingrid Bergman, Paul Henreid, Claude Rains",
+    "plot": "A cynical expatriate American cafe owner struggles to decide whether or not to help his former lover and her fugitive husband escape the Nazis in French Morocco.",
+    "language": "English, French, German, Italian",
+    "Country": "USA",
+    "Awards": "Won 3 Oscars. Another 7 wins & 9 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BY2IzZGY2YmEtYzljNS00NTM5LTgwMzUtMzM1NjQ4NGI0OTk0XkEyXkFqcGdeQXVyNDYyMDk5MTU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "99%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "100/100"
+      }
+    ],
+    "Metascore": "100",
+    "imdbRating": "8.5",
+    "imdbVotes": "528,836",
+    "imdbID": "tt0034583",
+    "Type": "movie",
+    "DVD": "15 Aug 2008",
+    "BoxOffice": "$4,108,411",
+    "Production": "Warner Brothers",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "BkL9l7qovsE"
+  },
+  {
+    "title": "The Matrix",
+    "Year": "1999",
+    "rated": "R",
+    "Released": "31 Mar 1999",
+    "runtime": 136,
+    "genre": "Action, Sci-Fi",
+    "director": "Lana Wachowski, Lilly Wachowski",
+    "writer": "Lilly Wachowski, Lana Wachowski",
+    "actors": "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving",
+    "plot": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Won 4 Oscars. Another 38 wins & 51 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.7/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "88%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "73/100"
+      }
+    ],
+    "Metascore": "73",
+    "imdbRating": "8.7",
+    "imdbVotes": "1,702,966",
+    "imdbID": "tt0133093",
+    "Type": "movie",
+    "DVD": "01 Jan 2009",
+    "BoxOffice": "$171,479,930",
+    "Production": "Village Roadshow Prod., Silver Pictures",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "m8e-FF8MsqU"
+  },
+  {
+    "title": "Interstellar",
+    "Year": "2014",
+    "rated": "PG-13",
+    "Released": "07 Nov 2014",
+    "runtime": 169,
+    "genre": "Adventure, Drama, Sci-Fi",
+    "director": "Christopher Nolan",
+    "writer": "Jonathan Nolan, Christopher Nolan",
+    "actors": "Ellen Burstyn, Matthew McConaughey, Mackenzie Foy, John Lithgow",
+    "plot": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    "language": "English",
+    "Country": "USA, UK, Canada",
+    "Awards": "Won 1 Oscar. Another 43 wins & 148 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.6/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "72%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "74/100"
+      }
+    ],
+    "Metascore": "74",
+    "imdbRating": "8.6",
+    "imdbVotes": "1,544,189",
+    "imdbID": "tt0816692",
+    "Type": "movie",
+    "DVD": "24 May 2016",
+    "BoxOffice": "$188,020,017",
+    "Production": "Syncopy, Lynda Obst Productions",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "zSWdZVtXT7E"
+  },
+  {
+    "title": "The Prestige",
+    "Year": "2006",
+    "rated": "PG-13",
+    "Released": "20 Oct 2006",
+    "runtime": 130,
+    "genre": "Drama, Mystery, Sci-Fi, Thriller",
+    "director": "Christopher Nolan",
+    "writer": "Jonathan Nolan (screenplay), Christopher Nolan (screenplay), Christopher Priest (novel)",
+    "actors": "Hugh Jackman, Christian Bale, Michael Caine, Piper Perabo",
+    "plot": "After a tragic accident, two stage magicians engage in a battle to create the ultimate illusion while sacrificing everything they have to outwit each other.",
+    "language": "English",
+    "Country": "UK, USA",
+    "Awards": "Nominated for 2 Oscars. Another 6 wins & 43 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjA4NDI0MTIxNF5BMl5BanBnXkFtZTYwNTM0MzY2._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "76%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "66/100"
+      }
+    ],
+    "Metascore": "66",
+    "imdbRating": "8.5",
+    "imdbVotes": "1,210,056",
+    "imdbID": "tt0482571",
+    "Type": "movie",
+    "DVD": "23 Nov 2015",
+    "BoxOffice": "$53,089,891",
+    "Production": "Newmarket Productions",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "RLtaA9fFNXU"
+  },
+  {
+    "title": "Back to the Future",
+    "Year": "1985",
+    "rated": "PG",
+    "Released": "03 Jul 1985",
+    "runtime": 116,
+    "genre": "Adventure, Comedy, Sci-Fi",
+    "director": "Robert Zemeckis",
+    "writer": "Robert Zemeckis, Bob Gale",
+    "actors": "Michael J. Fox, Christopher Lloyd, Lea Thompson, Crispin Glover",
+    "plot": "Marty McFly, a 17-year-old high school student, is accidentally sent thirty years into the past in a time-traveling DeLorean invented by his close friend, the eccentric scientist Doc Brown.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Won 1 Oscar. Another 22 wins & 25 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.5/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "96%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "87/100"
+      }
+    ],
+    "Metascore": "87",
+    "imdbRating": "8.5",
+    "imdbVotes": "1,080,991",
+    "imdbID": "tt0088763",
+    "Type": "movie",
+    "DVD": "08 Aug 2013",
+    "BoxOffice": "$211,406,762",
+    "Production": "Universal Pictures, Amblin Entertainment",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "qvsgGtivCgs"
+  },
+  {
+    "title": "Coco",
+    "Year": "2017",
+    "rated": "PG",
+    "Released": "22 Nov 2017",
+    "runtime": 105,
+    "genre": "Animation, Adventure, Drama, Family, Fantasy, Music, Mystery",
+    "director": "Lee Unkrich, Adrian Molina(co-director)",
+    "writer": "Lee Unkrich (original story by), Jason Katz (original story by), Matthew Aldrich (original story by), Adrian Molina (original story by), Adrian Molina (screenplay by), Matthew Aldrich (screenplay by)",
+    "actors": "Anthony Gonzalez, Gael García Bernal, Benjamin Bratt, Alanna Ubach",
+    "plot": "Aspiring musician Miguel, confronted with his family's ancestral ban on music, enters the Land of the Dead to find his great-great-grandfather, a legendary singer.",
+    "language": "English, Spanish",
+    "Country": "USA, Mexico",
+    "Awards": "Won 2 Oscars. Another 109 wins & 40 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.4/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "97%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "81/100"
+      }
+    ],
+    "Metascore": "81",
+    "imdbRating": "8.4",
+    "imdbVotes": "405,005",
+    "imdbID": "tt2380307",
+    "Type": "movie",
+    "DVD": "13 Feb 2018",
+    "BoxOffice": "$210,460,015",
+    "Production": "Pixar Animation Studios",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "Ga6RYejo6Hk"
+  },
+  {
+    "title": "WALL·E",
+    "Year": "2008",
+    "rated": "G",
+    "Released": "27 Jun 2008",
+    "runtime": 98,
+    "genre": "Animation, Adventure, Family, Romance, Sci-Fi",
+    "director": "Andrew Stanton",
+    "writer": "Andrew Stanton (original story by), Pete Docter (original story by), Andrew Stanton (screenplay by), Jim Reardon (screenplay by)",
+    "actors": "Ben Burtt, Elissa Knight, Jeff Garlin, Fred Willard",
+    "plot": "In the distant future, a small waste-collecting robot inadvertently embarks on a space journey that will ultimately decide the fate of mankind.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Won 1 Oscar. Another 92 wins & 95 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMjExMTg5OTU0NF5BMl5BanBnXkFtZTcwMjMxMzMzMw@@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.4/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "95%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "95/100"
+      }
+    ],
+    "Metascore": "95",
+    "imdbRating": "8.4",
+    "imdbVotes": "1,013,801",
+    "imdbID": "tt0910970",
+    "Type": "movie",
+    "DVD": "22 Nov 2015",
+    "BoxOffice": "$223,808,164",
+    "Production": "Pixar Animation Studios",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "8-_9n5DtKOc"
+  },
+  {
+    "title": "Toy Story",
+    "Year": "1995",
+    "rated": "G",
+    "Released": "22 Nov 1995",
+    "runtime": 81,
+    "genre": "Animation, Adventure, Comedy, Family, Fantasy",
+    "director": "John Lasseter",
+    "writer": "John Lasseter (original story by), Pete Docter (original story by), Andrew Stanton (original story by), Joe Ranft (original story by), Joss Whedon (screenplay by), Andrew Stanton (screenplay by), Joel Cohen (screenplay by), Alec Sokolow (screenplay by)",
+    "actors": "Tom Hanks, Tim Allen, Don Rickles, Jim Varney",
+    "plot": "A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.",
+    "language": "English",
+    "Country": "USA",
+    "Awards": "Nominated for 3 Oscars. Another 27 wins & 20 nominations.",
+    "imageUrl": "https://m.media-amazon.com/images/M/MV5BMDU2ZWJlMjktMTRhMy00ZTA5LWEzNDgtYmNmZTEwZTViZWJkXkEyXkFqcGdeQXVyNDQ2OTk4MzI@._V1_SX300.jpg",
+    "Ratings": [
+      {
+        "Source": "Internet Movie Database",
+        "Value": "8.3/10"
+      },
+      {
+        "Source": "Rotten Tomatoes",
+        "Value": "100%"
+      },
+      {
+        "Source": "Metacritic",
+        "Value": "95/100"
+      }
+    ],
+    "Metascore": "95",
+    "imdbRating": "8.3",
+    "imdbVotes": "904,049",
+    "imdbID": "tt0114709",
+    "Type": "movie",
+    "DVD": "N/A",
+    "BoxOffice": "$223,225,679",
+    "Production": "Pixar Animation Studios, Walt Disney Pictures",
+    "Website": "N/A",
+    "Response": "True",
+    "trailerUrl": "4KPTXpQehio"
+  }
+]
