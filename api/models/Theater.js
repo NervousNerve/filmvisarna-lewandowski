@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const theaterSchema = mongoose.Schema({
+const theaterSchema = new mongoose.Schema({
   name: { type: String },
   seats: { type: Number },
   seatsPerRow: [{ type: Number }],

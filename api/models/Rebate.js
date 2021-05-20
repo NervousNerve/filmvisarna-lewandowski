@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const rebateSchema = mongoose.Schema({
+const rebateSchema = new mongoose.Schema({
   childMultiplier: { type: Number, required: true },
   adultMultiplier: { type: Number, required: true },
   seniorMultiplier: { type: Number, required: true },

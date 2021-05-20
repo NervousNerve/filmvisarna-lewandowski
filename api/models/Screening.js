@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const screeningSchema = mongoose.Schema({
+const screeningSchema = new mongoose.Schema({
   date: { type: Date },
   occupiedSeats: [{ type: Number }],
   movieId: { type: mongoose.Types.ObjectId, ref: "Movie" },
