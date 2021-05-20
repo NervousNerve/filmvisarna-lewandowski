@@ -1,8 +1,8 @@
 [
   {
     "name": "Royal",
-    "seats": 126,
-    "seatsPerRow": [10, 11, 12, 13, 14, 15, 16, 17, 18]
+    "seats": 92,
+    "seatsPerRow": [8, 9, 10, 11, 12, 13, 14, 15]
   },
   {
     "name": "Intiman",
