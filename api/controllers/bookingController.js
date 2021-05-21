@@ -8,10 +8,9 @@ const Screening = require("../models/Screening");
  * If successful, returns the newly created Booking object
  */
 const createBooking = async (req, res) => {
-  // TODO: Uncomment this check when login is working
-  // if (!req.session?.user) {
-  //   return res.status(401).json({ error: "Not logged in" });
-  // }
+  if (!req.session?.user) {
+    return res.status(401).json({ error: "Not logged in" });
+  }
 
   try {
     const screening = await Screening.findOne({
