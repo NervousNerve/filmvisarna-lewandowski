@@ -12,6 +12,10 @@ const createBooking = async (req, res) => {
     return res.status(401).json({ error: "Not logged in" });
   }
 
+  if (typeof req.body.seats !== "number" || req.body.seats < 1) {
+    return res.status(400).json({ error: "Invalid number of 'seats'" });
+  }
+
   try {
     const screening = await Screening.findOne({
       _id: req.body.screeningId,
