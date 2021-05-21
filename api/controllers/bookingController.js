@@ -26,6 +26,11 @@ const createBooking = async (req, res) => {
       return res.status(403).json({ error: "Not enough free seats available" });
     }
 
+    // TODO: When the seat selection front-end is finished,
+    // make this function accept an array of requested seats
+    // in body.seats and try to book those
+    // For now, we automatically select the first available seats
+
     // If there are any occupied seats, find the last one
     const lastOccupiedSeat = screening.occupiedSeats.length
       ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
