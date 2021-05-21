@@ -1,6 +1,12 @@
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 
+/* Parameters in req.body:
+ * screeningId: ObjectId of the screening
+ * seats: Number of seats
+ *
+ * If successful, returns the newly created Booking object
+ */
 const createBooking = async (req, res) => {
   // TODO: Uncomment this check when login is working
   // if (!req.session?.user) {
