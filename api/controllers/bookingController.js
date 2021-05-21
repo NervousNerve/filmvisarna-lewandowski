@@ -20,6 +20,8 @@ const createBooking = async (req, res) => {
       .populate("movieId")
       .exec();
 
+    if (!screening) throw new Error("Invalid 'screeningId'");
+
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
     if (freeSeats < req.body.seats) {
