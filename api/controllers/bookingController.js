@@ -41,8 +41,7 @@ const createBooking = async (req, res) => {
     const booking = await Booking.create({
       seats,
       price: screening.movieId.price * seats.length,
-      // TODO: Uncomment this when login is working
-      // userId: req.session.user._id,
+      userId: req.session.user._id,
       screeningId: screening._id,
     });
 
