@@ -33,6 +33,8 @@ const login = async (req, res) => {
 
     req.body.password = Encrypt.encrypt(req.body.password);
     if (user.password === req.body.password) {
+      req.session.user = user;
+      req.session.user.password = undefined;
       user.password = undefined;
       return res.json({
         message: "Login successfull",
