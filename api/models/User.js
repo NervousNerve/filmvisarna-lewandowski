@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const Encrypt = require("../Encrypt");
 
 const userSchema = new mongoose.Schema({
@@ -8,7 +7,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
-// Encrypt password before saving it to database.
+// Encrypt password before saving it to database. Next passes the request along to the next middleware or routehandler.
 userSchema.pre("save", async function (next) {
   this.password = Encrypt.encrypt(this.password);
   return next();
