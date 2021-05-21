@@ -36,7 +36,7 @@ const createBooking = async (req, res) => {
       seats,
       price: screening.movieId.price * seats.length,
       // TODO: Uncomment this when login is working
-      // userId: req.session.user.id,
+      // userId: req.session.user._id,
       screeningId: screening._id,
     });
 
