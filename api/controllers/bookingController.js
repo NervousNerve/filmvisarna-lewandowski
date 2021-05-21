@@ -27,11 +27,11 @@ const createBooking = async (req, res) => {
       return res.status(403).json({ error: "Not enough free seats available" });
     }
 
-    let lastOccupiedSeat = 0;
-    if (screening.occupiedSeats.length > 0) {
-      lastOccupiedSeat =
-        screening.occupiedSeats[screening.occupiedSeats.length - 1];
-    }
+    // If there are any occupied seats, find the last one
+    const lastOccupiedSeat = screening.occupiedSeats.length
+      ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
+      : 0;
+
     // Create an array of seats for this this booking
     const seats = Array.from(
       new Array(req.body.seats),
