@@ -5,7 +5,7 @@ const Screening = require("../models/Screening");
 const getBookingById = async (req, res) => {
   try {
     const booking = await Booking.findOne({ _id: req.params.id })
-      .populate("screeningId")
+      .populate("screeningId userId")
       .exec();
 
     if (!booking) {
