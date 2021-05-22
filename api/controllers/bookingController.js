@@ -29,8 +29,9 @@ const createBooking = async (req, res) => {
       .populate("movieId")
       .exec();
 
-    if (!screening)
-      throw new Error("No such screening found. Invalid 'screeningId'");
+    if (!screening) {
+      return res.status(404).json({ error: "No such screening found" });
+    }
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
