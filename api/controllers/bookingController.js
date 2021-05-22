@@ -1,3 +1,4 @@
+const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 
@@ -10,6 +11,10 @@ const Screening = require("../models/Screening");
 const createBooking = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({ error: "Not logged in" });
+  }
+
+  if (!ObjectId.isValid(req.body.screeningId)) {
+    return res.status(400).json({ error: "Invalid 'screeningId' parameter" });
   }
 
   if (typeof req.body.seats !== "number" || req.body.seats < 1) {
