@@ -5,7 +5,12 @@ const Screening = require("../models/Screening");
 const getBookingById = async (req, res) => {
   try {
     const booking = await Booking.findOne({ _id: req.params.id })
-      .populate("screeningId userId")
+      .populate({
+        path: "screeningId userId",
+        populate: {
+          path: "movieId theaterId",
+        },
+      })
       .exec();
 
     if (!booking) {
