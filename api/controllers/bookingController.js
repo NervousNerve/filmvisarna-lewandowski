@@ -1,9 +1,9 @@
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 
-/* Parameters in req.body:
- * screeningId: ObjectId of the screening
- * seats: Number of seats
+/* Parameters:
+ * req.body.screeningId:  ObjectId of the screening
+ * req.body.seats:        Number of seats requested
  *
  * If successful, returns the newly created Booking object
  */
