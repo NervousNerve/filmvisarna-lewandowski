@@ -10,6 +10,7 @@ const uri =
 const movieRoutes = require("./routes/movieRoutes");
 const theaterRoutes = require("./routes/theaterRoutes");
 const userRoutes = require("./routes/userRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 
 app.use(express.json());
 
@@ -25,6 +26,7 @@ app.use(
 app.use("/api/v1/movies", movieRoutes);
 app.use("/api/v1/theaters", theaterRoutes);
 app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/bookings", bookingRoutes);
 
 (async () => {
   try {
