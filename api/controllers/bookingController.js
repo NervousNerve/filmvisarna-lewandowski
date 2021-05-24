@@ -79,7 +79,7 @@ const createBooking = async (req, res) => {
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
-    if (freeSeats < req.body.seats) {
+    if (freeSeats < req.body.seats.length) {
       return res.status(403).json({
         error: "Not enough free seats available",
       });
