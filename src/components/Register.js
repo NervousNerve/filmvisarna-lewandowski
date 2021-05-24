@@ -8,12 +8,9 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
 
-  const {
-    setUserToRegister,
-    register,
-    feedbackMessage,
-    setFeedbackMessage,
-  } = useContext(UserContext);
+  const { setUserToRegister, register, feedbackMessage } = useContext(
+    UserContext
+  );
 
   const handleRegister = (e) => {
     e.preventDefault();

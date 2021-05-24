@@ -6,7 +6,6 @@ const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [userToLogin, setUserToLogin] = useState([]);
   const [userToRegister, setUserToRegister] = useState([]);
-
   const [feedbackMessage, setFeedbackMessage] = useState(null);
 
   useEffect(() => {

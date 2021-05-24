@@ -21,7 +21,8 @@ const Entry = () => {
       <p onClick={() => toggleMenu()} className={styles.toggleMenuText}>
         {message ? (
           <span>
-            Already a member? <span className={styles.highlighted}>Log in</span>
+            Already a member?{" "}
+            <span className={styles.highlighted}>Sign in</span>
           </span>
         ) : (
           <span>

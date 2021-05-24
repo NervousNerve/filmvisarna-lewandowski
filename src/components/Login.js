@@ -24,7 +24,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Log in</h1>
+      <h1>Sign in</h1>
       <p>You have to log in to book tickets.</p>
       <form className={styles.placeholder} onSubmit={handleLogin}>
         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
@@ -43,7 +43,7 @@ const Login = () => {
           required
         />
 
-        <button>Log in</button>
+        <button>Sign in</button>
 
         <div className={styles.feedbackMessage}>{feedbackMessage}</div>
       </form>
