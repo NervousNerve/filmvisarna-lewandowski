@@ -25,8 +25,8 @@ app.use(
 
 app.use("/api/v1/movies", movieRoutes);
 app.use("/api/v1/theaters", theaterRoutes);
-app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/bookings", bookingRoutes);
+app.use("/api/v1/users", userRoutes);
 
 (async () => {
   try {
