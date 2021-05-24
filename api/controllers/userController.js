@@ -59,7 +59,6 @@ const logout = (req, res) => {
 
 module.exports = {
   whoami,
-  getBookingsByUser,
   createUser,
   login,
   logout,
