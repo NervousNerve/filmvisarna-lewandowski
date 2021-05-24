@@ -4,6 +4,7 @@ export const UserContext = createContext();
 
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [userToLogin, setUserToLogin] = useState([]);
 
   useEffect(() => {
     // TODO: remove this function when we have a functioning login interface
@@ -43,7 +44,23 @@ const UserProvider = (props) => {
     return user;
   };
 
-  const values = { currentUser };
+  const login = async (userToLogin) => {
+    console.log(userToLogin);
+    let user = await fetch("/api/v1/users/login", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(userToLogin),
+    });
+    user = await user.json();
+
+    if (user.success) {
+      setCurrentUser(user);
+    } else if (user.error) {
+      console.log(user.error);
+    }
+  };
+
+  const values = { currentUser, login, setUserToLogin };
 
   return (
     <UserContext.Provider value={values}>{props.children}</UserContext.Provider>

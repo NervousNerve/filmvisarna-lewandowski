@@ -7,14 +7,30 @@ import { UserContext } from "../contexts/UserContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
 
-  /* const { login } = useContext(UserContext); */
+  const { login, setUserToLogin, currentUser } = useContext(UserContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const user = {
+      email: email,
+      password: password,
+    };
+    setUserToLogin(user);
+    login(user);
+
+    if (!currentUser) {
+      setFeedbackMessage("Ditt användarnamn eller lösenord stämmer inte!");
+    }
+  };
 
   return (
     <div>
       <h1>Log in</h1>
       <p>You have to log in to book tickets.</p>
-      <form className={styles.placeholder}>
+      <form className={styles.placeholder} onSubmit={() => handleLogin()}>
         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
         <input
           placeholder="Email"
@@ -31,7 +47,7 @@ const Login = () => {
           required
         />
 
-        <button onClick={() => Login()}>Log in</button>
+        <button>Log in</button>
       </form>
     </div>
   );

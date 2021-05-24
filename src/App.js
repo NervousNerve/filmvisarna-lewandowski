@@ -5,8 +5,8 @@ import Entry from "./components/Entry";
 function App() {
   return (
     <div className="App">
-      <Entry />
       <UserProvider>
+        <Entry />
         <BrowserRouter></BrowserRouter>
       </UserProvider>
     </div>
