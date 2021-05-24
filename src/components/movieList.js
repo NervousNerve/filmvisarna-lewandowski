@@ -1,10 +1,12 @@
 import MovieCard from "./movieCard";
+import styles from "../modules/movie-list.module.css";
 
 const MovieList = () => {
   return (
-    <div className="movieList">
-      <h1>List of movies goes here</h1>
+    <div className={styles.movieList}>
+      {/* <div className={styles.listWrapper}> */}
       <MovieCard />
+      {/* </div> */}
     </div>
   );
 };
