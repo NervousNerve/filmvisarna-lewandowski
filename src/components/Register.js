@@ -7,7 +7,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [feedbackMessage, setFeedbackMessage] = useState(null);
 
-  const { setUserToRegister } = useContext(UserContext);
+  const { setUserToRegister, register } = useContext(UserContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,7 +23,10 @@ const Register = () => {
       };
       setUserToRegister(user);
       register(user);
-      setFeedbackMessage("Du har nu registrerat dig!");
+      setFeedbackMessage("Du har nu registrerat dig! Vänligen logga in.");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
     } else {
       setFeedbackMessage(
         "Ditt lösenord måste vara minst 6 tecken långt, innehålla både stora och små bokstäver samt ett specialtecken."
@@ -35,12 +38,28 @@ const Register = () => {
     <div>
       <h1>Sign up</h1>
       <p>Sign up to book tickets.</p>
-      <form>
-        <input placeholder="Name" type="email" />
-        <input placeholder="Email" type="text" />
-        <input placeholder="Password" type="text" />
+      <form onSubmit={handleRegister}>
+        <input
+          placeholder="Name"
+          type="text"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          placeholder="Email"
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          placeholder="Password"
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button>Create account</button>
       </form>
+      {feedbackMessage}
     </div>
   );
 };

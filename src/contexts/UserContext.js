@@ -42,12 +42,29 @@ const UserProvider = (props) => {
     }
   };
 
+  const register = async (userToRegister) => {
+    let userToAdd = await fetch("/api/v1/users", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(userToRegister),
+    });
+
+    userToAdd = await userToAdd.json();
+
+    if (userToAdd.success) {
+      console.log(userToAdd.success);
+    } else if (userToAdd.error) {
+      console.log(userToAdd.error);
+    }
+  };
+
   const values = {
     currentUser,
     login,
     setUserToLogin,
     feedbackMessage,
     setUserToRegister,
+    register,
   };
 
   return (
