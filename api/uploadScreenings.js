@@ -8,10 +8,10 @@ const Screening = require("./models/Screening");
 const Movie = require("./models/Movie");
 const Theater = require("./models/Theater");
 
-const uri =
-  "mongodb+srv://dbAdmin:password1234@cluster0.bzbxx.mongodb.net/filmvisarna?retryWrites=true&w=majority";
+const uploadData = async (startDate, days) => {
+  const uri =
+    "mongodb+srv://dbAdmin:password1234@cluster0.bzbxx.mongodb.net/filmvisarna?retryWrites=true&w=majority";
 
-(async () => {
   try {
     await mongoose.connect(uri, {
       useNewUrlParser: true,
