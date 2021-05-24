@@ -2,13 +2,18 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Oxygen', sans-serif;
-  color: #18191F;
-  background-color: #FEFCF5;
+  font-family: "Oxygen", sans-serif;
+  color: #18191f;
+  background-color: #fefcf5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Montserrat', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
 }
 h1 {
   font-size: 36px;
@@ -19,31 +24,69 @@ h2 {
 h3 {
   font-size: 22px;
 }
-h4, h5, h6 {
-  color: #474A57;
+h4,
+h5,
+h6 {
+  color: #474a57;
 }
 p {
-  font-family: 'Oxygen', sans-serif;
+  font-family: "Oxygen", sans-serif;
   font-size: 16px;
-  color: #474A57;
+  color: #474a57;
 }
 button {
-  border: 2px solid #18191F;
+  border: 2px solid #18191f;
   border-radius: 14px;
-  padding: .8rem 2rem;
-  box-shadow: 0px 3px 0px 0px #18191F;
-  background-color: #FFD465;
-  font-family: 'Montserrat', sans-serif;
+  padding: 0.8rem 2rem;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  background-color: #ffd465;
+  font-family: "Montserrat", sans-serif;
   cursor: pointer;
 }
 input {
-  border: 2px solid #18191F;
+  border: 2px solid #18191f;
   border-radius: 14px;
-  padding: .8rem 1.5rem;
+  padding: 0.8rem 1rem;
   font-size: 1rem;
 }
 input.search {
-  box-shadow: 0px 3px 0px 0px #18191F;
-  padding: .3rem 1rem;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  padding: 0.3rem 1rem;
   border-radius: 10px;
+}
+select {
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1rem 0 1rem;
+  margin: 0;
+  height: 45px;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  outline: none;
+}
+.custom-select {
+  border-radius: 14px;
+  cursor: pointer;
+  background-color: #fff;
+  border: solid #18191f 2px;
+  display: grid;
+  grid-template-areas: "select";
+  align-items: center;
+  position: relative;
+  box-shadow: inset -500px 0px 0px -460px #ffd465;
+}
+.custom-select::after {
+  content: "";
+  width: 0.8em;
+  height: 0.6em;
+  background-color: #18191f;
+  clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  justify-self: end;
+  margin-right: 0.9rem;
+}
+select,
+.custom-select:after {
+  grid-area: select;
 }
