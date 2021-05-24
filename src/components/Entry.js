@@ -14,7 +14,9 @@ const Entry = () => {
 
   return (
     <div className={styles.entryContainer}>
-      {menu ? <Register /> : <Login />}
+      <div className={styles.inputContainer}>
+        {menu ? <Register /> : <Login />}
+      </div>
 
       <p onClick={() => toggleMenu()}>
         {message

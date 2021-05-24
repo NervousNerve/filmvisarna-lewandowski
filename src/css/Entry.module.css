@@ -1,11 +1,21 @@
 .entryContainer {
-  padding: 1em;
   background-color: #fdf7e3;
+  padding: 1em;
+  margin: 1em;
+  width: 20em;
+  border: 2px solid #18191f;
+  border-radius: 14px;
 }
 
-input {
-  padding: 0.5em;
-  border-radius: 14px;
-  border: 2px solid #18191f;
+.entryContainer input {
+  margin: 0.5em;
   position: relative;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Oxygen", sans-serif;
+}
+
+button {
+  width: 100%;
 }
