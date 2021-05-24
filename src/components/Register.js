@@ -29,15 +29,10 @@ const Register = () => {
       };
       setUserToRegister(user);
       register(user);
-      /* setFeedbackMessage("Du har nu registrerat dig! Vänligen logga in.");
-      setTimeout(() => {
-        setFeedbackMessage(null);
-      }, 3000); */
     } else {
       setRegexMessage(
         "Your password must be at least 6 characters long, contain both upper- and lowercase and one special character."
       );
-      console.log("Något gick snett");
     }
     setTimeout(() => {
       setRegexMessage(null);
