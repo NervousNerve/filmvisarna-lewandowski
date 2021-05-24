@@ -43,7 +43,6 @@ const getBookingById = async (req, res) => {
  *
  * If successful, returns the newly created Booking object
  */
-
 const createBooking = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({
