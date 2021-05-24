@@ -1,6 +1,5 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
-// Screening is needed for populate
 const Screening = require("../models/Screening");
 
 const getBookingById = async (req, res) => {
