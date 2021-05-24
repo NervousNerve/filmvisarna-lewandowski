@@ -9,16 +9,13 @@ form input {
   position: relative;
 }
 
-.placeholder ::-webkit-input-placeholder {
-  padding-left: 1.2em;
-}
-
 .userIcon,
 .lockIcon {
   position: absolute;
   font-size: 19px;
-  left: 2.3em;
+  left: 15em;
   z-index: 1;
+  color: #474a57;
 }
 
 .userIcon {
