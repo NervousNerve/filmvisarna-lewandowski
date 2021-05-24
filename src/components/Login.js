@@ -16,10 +16,6 @@ const Login = () => {
     feedbackMessage,
   } = useContext(UserContext);
 
-  /* useEffect(() => {
-    console.log(email, password);
-  }, [email, password]); */
-
   const handleLogin = (e) => {
     e.preventDefault();
 
