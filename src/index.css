@@ -34,7 +34,9 @@ p {
   font-size: 16px;
   color: #474a57;
 }
-button {
+
+/* Button */
+button:not(.counter) {
   border: 2px solid #18191f;
   border-radius: 14px;
   padding: 0.8rem 2rem;
@@ -43,7 +45,9 @@ button {
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
 }
-input {
+
+/* Inputs */
+input:not(.quantity) {
   border: 2px solid #18191f;
   border-radius: 14px;
   padding: 0.8rem 1rem;
@@ -54,6 +58,8 @@ input.search {
   padding: 0.3rem 1rem;
   border-radius: 10px;
 }
+
+/* Custom select */
 select {
   appearance: none;
   background-color: transparent;
