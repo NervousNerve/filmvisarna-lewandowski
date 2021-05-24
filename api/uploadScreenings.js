@@ -37,7 +37,7 @@ const uploadData = async (startDate, days) => {
     }
 
     await Screening.create(data);
-    console.log("Screening uploaded");
+    console.log("Screenings uploaded");
   } catch (err) {
     console.log(err);
   } finally {
