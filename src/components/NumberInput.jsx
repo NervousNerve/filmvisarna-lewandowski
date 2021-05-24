@@ -4,12 +4,8 @@ const NumberInput = () => {
   return (
     <div className={style.numberInput}>
       <button></button>
-      <input
-        className={style.quantity}
-        min="0"
-        name="quantity"
-        type="number"
-      />
+      {/* Onclick behövs senare för att få knapparna att fungera */}
+      <input className={style.quantity} min="0" name="quantity" type="number" />
       <button className={style.plus}></button>
     </div>
   );

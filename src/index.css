@@ -57,7 +57,7 @@ input.search {
   border-radius: 10px;
 }
 /* Custom Select */
-select {
+.custom-select select {
   appearance: none;
   background-color: transparent;
   border: none;

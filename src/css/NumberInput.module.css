@@ -1,11 +1,11 @@
 /* Custom number input */
-input[type="number"] {
+.numberInput input[type="number"] {
   -webkit-appearance: textfield;
   -moz-appearance: textfield;
   appearance: textfield;
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+.numberInput input[type="number"]::-webkit-inner-spin-button,
+.numberInput input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
 }
 .numberInput {
@@ -38,7 +38,7 @@ input[type="number"]::-webkit-outer-spin-button {
   display: inline-block;
   position: absolute;
   content: "";
-  width: .8rem;
+  width: 0.8rem;
   height: 3px;
   border-radius: 4px;
   background-color: #212121;
