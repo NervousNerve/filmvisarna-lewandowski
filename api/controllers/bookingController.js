@@ -2,12 +2,32 @@ const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 
-/* Parameters:
- * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Number of seats requested
- *
- * If successful, returns the newly created Booking object
- */
+const getBookingById = async (req, res) => {
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ error: "Invalid id parameter" });
+  }
+
+  try {
+    const booking = await Booking.findOne({ _id: req.params.id })
+      .populate({
+        path: "screeningId userId",
+        populate: {
+          path: "movieId theaterId",
+        },
+      })
+      .exec();
+
+    if (!booking) {
+      return res.status(404).json({ error: "No such booking found" });
+    }
+
+    res.json(booking);
+  } catch (err) {
+    console.error(err);
+    return res.status(400).json({ error: err.message });
+  }
+};
+
 const createBooking = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({ error: "Not logged in" });
@@ -74,4 +94,14 @@ const createBooking = async (req, res) => {
   }
 };
 
+module.exports = {
+  getBookingById,
 module.exports = { createBooking };
+};
+/* Parameters:
+ * req.body.screeningId:  ObjectId of the screening
+ * req.body.seats:        Number of seats requested
+ *
+ * If successful, returns the newly created Booking object
+ */
+// Screening is needed for populate
