@@ -3,19 +3,19 @@ import { UserContext } from "../contexts/UserContext";
 
 const ProfilePage = () => {
   const { currentUser } = useContext(UserContext);
-  const [displayPreviousBookings, setDisplayPreviousBookings] = useState(false);
+  const [displayUpcoming, setDisplayUpcoming] = useState(true);
 
   const toggleBookings = () => {
-    if (displayPreviousBookings) {
-      setDisplayPreviousBookings(true);
+    if (displayUpcoming) {
+      setDisplayUpcoming(false);
     } else {
-      setDisplayPreviousBookings(false);
+      setDisplayUpcoming(true);
     }
   };
 
   return (
     <div className="profilepage">
-      <h1>Hi {currentUser.name} </h1>
+      <h1>Hi user </h1>
       <h2>My bookings:</h2>
       <h3></h3>
     </div>
