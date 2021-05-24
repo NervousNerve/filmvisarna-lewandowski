@@ -48,18 +48,18 @@ const uploadData = async (startDate, days) => {
 (async () => {
   console.log("Add new screenings to schedule");
 
-  const startDate = await new Promise((resolve, reject) => {
+  const startDate = await new Promise((resolve) => {
     readline.question("Start date: ", (input) => {
-      input = new Date(input);
-      if (input == "Invalid Date") {
+      input = Date.parse(input);
+      if (isNaN(input)) {
         console.error("Invalid date");
         process.exit(1);
       }
-      resolve(input);
+      resolve(new Date(input));
     });
   });
 
-  const countDays = await new Promise((resolve, reject) => {
+  const countDays = await new Promise((resolve) => {
     readline.question("Number of days: ", (input) => {
       if (typeof input !== "number" || input < 1) {
         console.error("Not a number");
