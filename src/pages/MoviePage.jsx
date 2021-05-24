@@ -11,7 +11,7 @@ const MoviePage = (props) => {
       {movie && (
         <div>
           <div className={style.heroImg}>
-            <img src={movie.img} alt="" />
+            <img src={movie.img} alt={movie.title} />
             <i></i>
           </div>
           <div className="content">
