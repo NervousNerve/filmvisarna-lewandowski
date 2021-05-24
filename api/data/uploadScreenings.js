@@ -4,9 +4,9 @@ const readline = require("readline").createInterface({
   output: process.stdout,
 });
 
-const Screening = require("./models/Screening");
-const Movie = require("./models/Movie");
-const Theater = require("./models/Theater");
+const Screening = require("../models/Screening");
+const Movie = require("../models/Movie");
+const Theater = require("../models/Theater");
 
 const uploadData = async (startDate, days) => {
   const uri =
