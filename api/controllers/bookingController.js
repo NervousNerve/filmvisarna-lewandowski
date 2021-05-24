@@ -57,9 +57,9 @@ const createBooking = async (req, res) => {
     });
   }
 
-  if (typeof req.body.seats !== "number" || req.body.seats < 1) {
+  if (!Array.isArray(req.body.seats) || !req.body.seats.length) {
     return res.status(400).json({
-      error: "Invalid number of 'seats'",
+      error: "Invalid 'seats' parameter",
     });
   }
 
