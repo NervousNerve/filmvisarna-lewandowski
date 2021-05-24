@@ -7,7 +7,6 @@ import { UserContext } from "../contexts/UserContext";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const { login, setUserToLogin, feedbackMessage } = useContext(UserContext);
 
   const handleLogin = (e) => {
