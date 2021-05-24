@@ -1,4 +1,8 @@
 const mongoose = require("mongoose");
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
 
 const Screening = require("./models/Screening");
 const Movie = require("./models/Movie");
