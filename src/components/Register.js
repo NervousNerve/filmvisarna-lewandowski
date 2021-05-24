@@ -1,13 +1,19 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import styles from "../css/Register.module.css";
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const [regexMessage, setRegexMessage] = useState(null);
 
-  const { setUserToRegister, register } = useContext(UserContext);
+  const {
+    setUserToRegister,
+    register,
+    feedbackMessage,
+    setFeedbackMessage,
+  } = useContext(UserContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,15 +29,19 @@ const Register = () => {
       };
       setUserToRegister(user);
       register(user);
-      setFeedbackMessage("Du har nu registrerat dig! Vänligen logga in.");
+      /* setFeedbackMessage("Du har nu registrerat dig! Vänligen logga in.");
       setTimeout(() => {
         setFeedbackMessage(null);
-      }, 3000);
+      }, 3000); */
     } else {
-      setFeedbackMessage(
-        "Ditt lösenord måste vara minst 6 tecken långt, innehålla både stora och små bokstäver samt ett specialtecken."
+      setRegexMessage(
+        "Your password must be at least 6 characters long, contain both upper- and lowercase and one special character."
       );
+      console.log("Något gick snett");
     }
+    setTimeout(() => {
+      setRegexMessage(null);
+    }, 3000);
   };
 
   return (
@@ -59,7 +69,10 @@ const Register = () => {
         />
         <button>Create account</button>
       </form>
-      {feedbackMessage}
+      <div className={styles.feedbackMessage}>
+        {feedbackMessage}
+        {regexMessage}
+      </div>
     </div>
   );
 };

@@ -53,9 +53,16 @@ const UserProvider = (props) => {
 
     if (userToAdd.success) {
       console.log(userToAdd.success);
-    } else if (userToAdd.error) {
+      setFeedbackMessage("Registration completed, please log in!");
+    } else {
       console.log(userToAdd.error);
+      setFeedbackMessage("A user with this email already exists.");
+      return;
     }
+
+    setTimeout(() => {
+      setFeedbackMessage(null);
+    }, 3000);
   };
 
   const values = {
