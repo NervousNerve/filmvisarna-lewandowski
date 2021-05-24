@@ -123,7 +123,7 @@ const createBooking = async (req, res) => {
 };
 
 const getBookingsByUser = async (req, res) => {
-  let idToFind = req.query.userId;
+  let idToFind = req.query.userid;
 
   Booking.find({
     userId: idToFind
