@@ -8,15 +8,11 @@ const Login = () => {
       <h1>Log in</h1>
       <p>You have to log in to book tickets.</p>
       <form>
-        <div>
-          <FontAwesomeIcon icon={faUser} />
-          <input placeholder="email" type="email" />
-        </div>
+        <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+        <input placeholder="email" type="email" />
 
-        <div>
-          <FontAwesomeIcon icon={faLock} />
-          <input placeholder="password" type="password" />
-        </div>
+        <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
+        <input placeholder="password" type="password" />
 
         <button>Log in</button>
       </form>
