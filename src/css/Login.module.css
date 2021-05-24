@@ -2,9 +2,8 @@ form input {
   position: relative;
 }
 
-::-webkit-input-placeholder {
+.placeholder ::-webkit-input-placeholder {
   padding-left: 1.2em;
-  font-family: "Oxygen", sans-serif;
 }
 
 .userIcon,
