@@ -85,22 +85,20 @@ const createBooking = async (req, res) => {
       });
     }
 
-    // TODO: When the seat selection front-end is finished,
-    // make this function accept an array of requested seats
-    // in body.seats and try to book those
-    // For now, we automatically select the first available seats
-
-    // If there are any occupied seats, find the last one
-    const lastOccupiedSeat = screening.occupiedSeats.length
-      ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
-      : 0;
-
-    // Create an array with the requested number of seats,
-    // following the last already occupied seat
-    const seats = Array.from(
-      new Array(req.body.seats),
-      (undefined, i) => i + lastOccupiedSeat + 1
-    );
+    // Make sure every requested seat is a valid seat number
+    // and not already occupied
+    for (const s of req.body.seats) {
+      if (
+        !s instanceof Number ||
+        s <= 0 ||
+        s > screening.theaterId.seats ||
+        screening.occupiedSeats.includes(s)
+      ) {
+        return res.status(403).json({
+          error: `Requested seat '${s}' is occupied or invalid`,
+        });
+      }
+    }
 
     const booking = await Booking.create({
       seats,
