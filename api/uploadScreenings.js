@@ -23,10 +23,10 @@ const uploadData = async (startDate, days) => {
     const theaters = await Theater.find().exec();
     const data = [];
 
-    for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < days; i++) {
       for (let j = 0; j < 3; j++) {
-        let date = new Date("2021-05-17");
-        date.setDate(17 + i);
+        let date = startDate;
+        date.setDate(date.getDate() + i);
         date.setHours(14 + j * 3);
         data.push({
           date: date,
