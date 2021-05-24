@@ -6,20 +6,19 @@ const Login = () => {
     <div>
       <h1>Log in</h1>
       <p>You have to log in to book tickets.</p>
+      <form>
+        <div>
+          <FontAwesomeIcon icon={faUser} />
+          <input placeholder="email" type="email" />
+        </div>
 
-      <div>
-        <FontAwesomeIcon icon={faUser} />
-        <input placeholder="email" type="email" />
-      </div>
+        <div>
+          <FontAwesomeIcon icon={faLock} />
+          <input placeholder="password" type="password" />
+        </div>
 
-      <div>
-        <FontAwesomeIcon icon={faLock} />
-        <input placeholder="password" type="password" />
-      </div>
-
-      <button>Log in</button>
-
-      <p>Forgot your password?</p>
+        <button>Log in</button>
+      </form>
     </div>
   );
 };
