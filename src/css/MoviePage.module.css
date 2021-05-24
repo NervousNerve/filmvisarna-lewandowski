@@ -9,4 +9,24 @@
   width: 105%;
   margin: -40% 0 0 -5px;
 }
-
+.moviePage .content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.moviePage .heading {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-gap: 1rem;
+  margin: 1rem;
+}
+.moviePage .imgWrapper {
+  margin-top: -50px;
+  max-width: 250px;
+  z-index: 1;
+}
+.moviePage .imgWrapper img {
+  border-radius: 14px;
+  border: 2px solid #18191f;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  width: 100%;
+}

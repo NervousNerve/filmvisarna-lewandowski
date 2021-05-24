@@ -14,11 +14,12 @@ const MoviePage = (props) => {
             <img src={movie.img} alt={movie.title} />
             <i></i>
           </div>
-          <div className="content">
-            <div>
+          <div className={style.content}>
+            <div className={style.heading}>
               <div className={style.imgWrapper}>
-                <img src="" alt="" />
+                <img src={movie.img} alt={movie.title} />
               </div>
+              <div className={style.title}>
               <button
                 onClick={() => {
                   bookTickets ? setBookTickets(false) : setBookTickets(true);
@@ -26,7 +27,7 @@ const MoviePage = (props) => {
               >
                 Book ticket
               </button>
-              <div className={style.title}>
+              
                 <h2>Title of the movie</h2>
                 <h4>126 min</h4>
               </div>
