@@ -1,25 +1,86 @@
-const Booking = require("../models/Booking.js");
+const User = require("../models/User");
+const Encrypt = require("../Encrypt");
 
+const whoami = (req, res) => {
+  return res.json(req.session.user || null);
+};
+
+const createUser = async (req, res) => {
+  let userExists = await User.exists({
+    email: req.body.email,
+  });
+
+  if (userExists) {
+    return res.status(400).json({
+      error: "A user with that email already exists",
+    });
+  }
+
+  let user = await User.create(req.body);
+  user.password = undefined;
+  return res.json(user);
+};
+
+const login = async (req, res) => {
+  let userExists = await User.exists({
+    email: req.body.email,
+  });
+
+  if (userExists) {
+    let user = await User.findOne({
+      email: req.body.email,
+    }).exec();
+
+    req.body.password = Encrypt.encrypt(req.body.password);
+    if (user.password === req.body.password) {
+      delete user.password;
+      req.session.user = user;
+      return res.json({
+        message: "Login successfull",
+        loggedInUser: user,
+      });
+    }
+  }
+
+  return res.status(401).json({
+    error: "Bad credentials",
+  });
+};
+
+const logout = (req, res) => {
+  if (req.session.user) {
+    delete req.session.user;
+    return res.json({ message: "Logout successfull" });
+  }
+
+  return res.json({ error: "Already logged out" });
+};
+
+module.exports = {
+  whoami,
+  createUser,
+  login,
+  logout,
+};
+
+const Booking = require("../models/Booking.js");
 const getBookingsByUser = async (req, res) => {
   //might have to be changed depending on how things go
   let idToFind = req.body._id;
 
-  Booking.find({ userId: idToFind }).exec((err, bookings) => {
     if (err) {
+  Booking.find({ userId: idToFind }).exec((err, bookings) => {
       res.status(400).json({ error: "Something went wrong" });
       return;
     }
-
     if (!bookings) {
+
       res.json({ message: `No bookings to show` });
-
       return;
+
     }
-
     res.json(bookings);
-  });
-};
 
-module.exports = {
-  getBookingsByUser,
+
+  });
 };

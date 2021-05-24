@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const session = require("express-session");
 
 const app = express();
 const port = 3001;
@@ -11,6 +12,15 @@ const theaterRoutes = require("./routes/theaterRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 app.use(express.json());
+
+app.use(
+  session({
+    secret: "The Phantom Menace",
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: "auto" },
+  })
+);
 
 app.use("/api/v1/movies", movieRoutes);
 app.use("/api/v1/theaters", theaterRoutes);
