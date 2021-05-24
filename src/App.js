@@ -1,9 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
+import UserProvider from "./contexts/UserContext";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter></BrowserRouter>
+      <UserProvider>
+        <BrowserRouter></BrowserRouter>
+      </UserProvider>
     </div>
   );
 }
