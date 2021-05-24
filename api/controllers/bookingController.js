@@ -101,14 +101,14 @@ const createBooking = async (req, res) => {
     }
 
     const booking = await Booking.create({
-      seats,
-      price: screening.movieId.price * seats.length,
+      seats: req.body.seats,
+      price: screening.movieId.price * req.body.seats.length,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
 
     // Set our seats as occupied for this screening
-    screening.occupiedSeats.push(...seats);
+    screening.occupiedSeats.push(...req.body.seats);
     await screening.save();
 
     return res.json(booking);
