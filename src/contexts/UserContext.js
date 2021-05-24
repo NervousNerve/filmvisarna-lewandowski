@@ -5,6 +5,8 @@ export const UserContext = createContext();
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [userToLogin, setUserToLogin] = useState([]);
+  const [userToRegister, setUserToRegister] = useState([]);
+
   const [feedbackMessage, setFeedbackMessage] = useState(null);
 
   useEffect(() => {
@@ -40,7 +42,13 @@ const UserProvider = (props) => {
     }
   };
 
-  const values = { currentUser, login, setUserToLogin, feedbackMessage };
+  const values = {
+    currentUser,
+    login,
+    setUserToLogin,
+    feedbackMessage,
+    setUserToRegister,
+  };
 
   return (
     <UserContext.Provider value={values}>{props.children}</UserContext.Provider>
