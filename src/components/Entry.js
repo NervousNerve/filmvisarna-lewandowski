@@ -13,7 +13,7 @@ const Entry = () => {
 
   return (
     <div>
-      {menu ? <Login /> : <Register />}
+      {menu ? <Register /> : <Login />}
 
       <p onClick={() => toggleMenu()}>
         {message
