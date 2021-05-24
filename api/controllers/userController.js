@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Encrypt = require("../Encrypt");
+const Booking = require("../models/Booking.js");
 
 const whoami = (req, res) => {
   return res.json(req.session.user || null);
