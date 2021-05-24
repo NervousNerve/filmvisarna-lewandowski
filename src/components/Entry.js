@@ -18,10 +18,18 @@ const Entry = () => {
         {menu ? <Register /> : <Login />}
       </div>
 
-      <p onClick={() => toggleMenu()}>
-        {message
-          ? "Not a user? Register here!"
-          : "Already user? Please log in!"}
+      <p onClick={() => toggleMenu()} className={styles.toggleMenuText}>
+        {message ? (
+          <div>
+            Already a member? <span className={styles.highlighted}>Log in</span>
+          </div>
+        ) : (
+          <div>
+            {/* Prettier adding the {" "} */}
+            Not a member?{" "}
+            <span className={styles.highlighted}>Create account</span>
+          </div>
+        )}
       </p>
     </div>
   );
