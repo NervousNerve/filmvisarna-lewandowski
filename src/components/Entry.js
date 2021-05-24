@@ -1,7 +1,6 @@
 import Login from "./Login";
 import Register from "./Register";
 import { useState } from "react";
-import styles from "./css/Entry.module.css";
 
 const Entry = () => {
   const [message, setMessage] = useState(false);

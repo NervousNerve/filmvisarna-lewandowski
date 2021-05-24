@@ -1,4 +1,3 @@
-import styles from "./css/Register.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 
