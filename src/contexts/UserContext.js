@@ -60,11 +60,11 @@ const UserProvider = (props) => {
 
   const values = {
     currentUser,
+    feedbackMessage,
     login,
     setUserToLogin,
-    feedbackMessage,
-    setUserToRegister,
     register,
+    setUserToRegister,
   };
 
   return (

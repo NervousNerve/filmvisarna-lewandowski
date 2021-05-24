@@ -8,13 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {
-    login,
-    userToLogin,
-    setUserToLogin,
-    currentUser,
-    feedbackMessage,
-  } = useContext(UserContext);
+  const { login, setUserToLogin, feedbackMessage } = useContext(UserContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
