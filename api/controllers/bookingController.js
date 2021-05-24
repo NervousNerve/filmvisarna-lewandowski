@@ -6,14 +6,14 @@ const Screening = require("../models/Screening");
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
-      error: "Invalid id parameter"
+      error: "Invalid id parameter",
     });
   }
 
   try {
     const booking = await Booking.findOne({
-        _id: req.params.id
-      })
+      _id: req.params.id,
+    })
       .populate({
         path: "screeningId userId",
         populate: {
@@ -24,7 +24,7 @@ const getBookingById = async (req, res) => {
 
     if (!booking) {
       return res.status(404).json({
-        error: "No such booking found"
+        error: "No such booking found",
       });
     }
 
@@ -32,7 +32,7 @@ const getBookingById = async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(400).json({
-      error: err.message
+      error: err.message,
     });
   }
 };
@@ -45,35 +45,35 @@ const getBookingById = async (req, res) => {
  */
 
 const createBooking = async (req, res) => {
-  if (!req.session ? .user) {
+  if (!req.session?.user) {
     return res.status(401).json({
-      error: "Not logged in"
+      error: "Not logged in",
     });
   }
 
   if (!ObjectId.isValid(req.body.screeningId)) {
     return res.status(400).json({
-      error: "Invalid 'screeningId' parameter"
+      error: "Invalid 'screeningId' parameter",
     });
   }
 
   if (typeof req.body.seats !== "number" || req.body.seats < 1) {
     return res.status(400).json({
-      error: "Invalid number of 'seats'"
+      error: "Invalid number of 'seats'",
     });
   }
 
   try {
     const screening = await Screening.findOne({
-        _id: req.body.screeningId,
-      })
+      _id: req.body.screeningId,
+    })
       .populate("theaterId")
       .populate("movieId")
       .exec();
 
     if (!screening) {
       return res.status(404).json({
-        error: "No such screening found"
+        error: "No such screening found",
       });
     }
 
@@ -81,7 +81,7 @@ const createBooking = async (req, res) => {
       screening.theaterId.seats - screening.occupiedSeats.length;
     if (freeSeats < req.body.seats) {
       return res.status(403).json({
-        error: "Not enough free seats available"
+        error: "Not enough free seats available",
       });
     }
 
@@ -91,9 +91,9 @@ const createBooking = async (req, res) => {
     // For now, we automatically select the first available seats
 
     // If there are any occupied seats, find the last one
-    const lastOccupiedSeat = screening.occupiedSeats.length ?
-      screening.occupiedSeats[screening.occupiedSeats.length - 1] :
-      0;
+    const lastOccupiedSeat = screening.occupiedSeats.length
+      ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
+      : 0;
 
     // Create an array with the requested number of seats,
     // following the last already occupied seat
@@ -117,7 +117,7 @@ const createBooking = async (req, res) => {
   } catch (err) {
     console.error(err);
     return res.status(400).json({
-      error: err.message
+      error: err.message,
     });
   }
 };
