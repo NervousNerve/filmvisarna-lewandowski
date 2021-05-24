@@ -43,4 +43,31 @@ const uploadData = async (startDate, days) => {
   } finally {
     await mongoose.disconnect();
   }
+};
+
+(async () => {
+  console.log("Add new screenings to schedule");
+
+  const startDate = await new Promise((resolve, reject) => {
+    readline.question("Start date: ", (input) => {
+      input = new Date(input);
+      if (input == "Invalid Date") {
+        console.error("Invalid date");
+        process.exit(1);
+      }
+      resolve(input);
+    });
+  });
+
+  const countDays = await new Promise((resolve, reject) => {
+    readline.question("Number of days: ", (input) => {
+      if (typeof input !== "number" || input < 1) {
+        console.error("Not a number");
+        process.exit(1);
+      }
+      resolve(input);
+    });
+  });
+
+  uploadData(startDate, countDays);
 })();
