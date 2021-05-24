@@ -7,12 +7,12 @@ const Login = () => {
     <div>
       <h1>Log in</h1>
       <p>You have to log in to book tickets.</p>
-      <form>
+      <form className={styles.placeholder}>
         <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-        <input placeholder="email" type="email" />
+        <input placeholder="Email" type="email" />
 
         <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
-        <input placeholder="password" type="password" />
+        <input placeholder="Password" type="password" />
 
         <button>Log in</button>
       </form>

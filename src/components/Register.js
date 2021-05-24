@@ -1,25 +1,12 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import styles from "../css/Register.module.css";
-
 const Register = () => {
   return (
     <div>
       <h1>Sign up</h1>
       <p>You have to log in to book tickets.</p>
       <form>
-        <div>
-          <FontAwesomeIcon icon={faUser} />
-          <input placeholder="name" type="email" />
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faUser} />
-          <input placeholder="email" type="text" />
-        </div>
-        <div>
-          <FontAwesomeIcon icon={faLock} />
-          <input placeholder="password" type="text" />
-        </div>
+        <input placeholder="Name" type="email" />
+        <input placeholder="Email" type="text" />
+        <input placeholder="Password" type="text" />
         <button>Create account</button>
       </form>
     </div>
