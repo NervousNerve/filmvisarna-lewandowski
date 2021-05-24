@@ -16,12 +16,6 @@ const UserProvider = (props) => {
     user = await user.json();
     setCurrentUser(user);
 
-    if (user) {
-      console.log("Got a user");
-    } else {
-      console.log(user);
-    }
-
     return user;
   };
 
