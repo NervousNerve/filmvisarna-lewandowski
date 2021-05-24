@@ -17,14 +17,14 @@ form input {
 .lockIcon {
   position: absolute;
   font-size: 19px;
-  left: 3.2em;
+  left: 2.3em;
   z-index: 1;
 }
 
 .userIcon {
-  top: 10.1em;
+  top: 8.6em;
 }
 
 .lockIcon {
-  top: 13.4em;
+  top: 11.6em;
 }
