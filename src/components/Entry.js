@@ -20,15 +20,15 @@ const Entry = () => {
 
       <p onClick={() => toggleMenu()} className={styles.toggleMenuText}>
         {message ? (
-          <div>
+          <span>
             Already a member? <span className={styles.highlighted}>Log in</span>
-          </div>
+          </span>
         ) : (
-          <div>
+          <span>
             {/* Prettier adding the {" "} */}
             Not a member?{" "}
             <span className={styles.highlighted}>Create account</span>
-          </div>
+          </span>
         )}
       </p>
     </div>
