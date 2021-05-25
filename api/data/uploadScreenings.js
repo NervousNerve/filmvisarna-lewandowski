@@ -61,7 +61,8 @@ const uploadData = async (startDate, days) => {
 
   const countDays = await new Promise((resolve) => {
     readline.question("Number of days: ", (input) => {
-      if (typeof input !== "number" || input < 1) {
+      input = parseInt(input);
+      if (isNaN(input) || input < 1) {
         console.error("Not a number");
         process.exit(1);
       }
