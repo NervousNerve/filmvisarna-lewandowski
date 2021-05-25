@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-const Movie = require("./models/Movie");
-const data = require("./data/Movies.json");
+const Movie = require("../models/Movie");
+const data = require("./Movies.json");
 const uri =
   "mongodb+srv://dbAdmin:password1234@cluster0.bzbxx.mongodb.net/filmvisarna?retryWrites=true&w=majority";
 
