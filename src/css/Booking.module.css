@@ -11,21 +11,6 @@
   justify-content: space-around;
 }
 
-.addRemoveWrapper {
-  border: 2px solid #18191f;
-  border-radius: 14px;
-  background-color: #ffd465;
-}
-
-.addRemove button {
-  border: none;
-  border-radius: none;
-  box-shadow: none;
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
-  padding: 0.4em 1em;
-}
-
 .pricetypeWrapper p {
   margin: 0.6em;
 }
