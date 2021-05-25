@@ -14,8 +14,6 @@ const UserProvider = (props) => {
     let user = await fetch("/api/v1/users/whoami");
     user = await user.json();
     setCurrentUser(user);
-
-    return user;
   };
 
   const login = async (userToLogin) => {
