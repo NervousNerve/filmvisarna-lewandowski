@@ -118,6 +118,12 @@ const createBooking = async (req, res) => {
   }
 };
 
+/* Finds bookings for the currently logged in user
+ *
+ * Parameters:
+ * req.body.previous: If 'true' this function returns only past bookings,
+ *                    otherwise only returns future bookings
+ */
 const getBookingsByUser = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({
