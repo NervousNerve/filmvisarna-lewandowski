@@ -8,6 +8,7 @@ const MovieCard = () => {
     let movies = await fetch("/api/v1/movies/movies");
     movies = await movies.json();
     setMovieList(movies);
+    return;
   };
 
   useEffect(() => {
@@ -15,19 +16,29 @@ const MovieCard = () => {
     console.log("use effect ran");
   }, []);
 
-  console.log(movieList);
+  const handleMovieClick = (movie) => {
+    // TODO activate history push to correct path
+    // history.push(/moviePage/movie)
+    console.log("this is clicked movie: ", movie);
+  };
 
   return (
     <div className={styles.cardsWrapper}>
       {movieList ? (
         movieList.map((movie, index) => {
           return (
-            <div key={index} className={styles.movieCard}>
+            <div
+              onClick={() => {
+                handleMovieClick(movie.title);
+              }}
+              key={index}
+              className={styles.movieCard}
+            >
               <div className={styles.imageWrapper}>
                 <img src={movie.imageUrl} alt="movie thumbnail" />
               </div>
               <div className={styles.titleWrapper}>
-                <p>{movie.title}</p>
+                <h4>{movie.title}</h4>
               </div>
             </div>
           );

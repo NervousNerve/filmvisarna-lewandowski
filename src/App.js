@@ -6,9 +6,11 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-      <BrowserRouter>
-        <Home />
-      </BrowserRouter>
+        <BrowserRouter>
+          <route exact path="/">
+            <Home />
+          </route>
+        </BrowserRouter>
       </UserProvider>
     </div>
   );

@@ -1,9 +1,4 @@
-* {
-  padding: none;
-  margin: none;
-}
-
-/* .listWrapper {
+.movieList {
   display: flex;
-  align-items: center;
-} */
+  justify-content: center;
+}
