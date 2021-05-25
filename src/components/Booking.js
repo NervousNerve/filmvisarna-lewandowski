@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlusSquare, faMinusSquare } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Booking.module.css";
 
 const Booking = () => {
@@ -7,7 +9,19 @@ const Booking = () => {
         <p>Adult</p>
         <div className={styles.addRemoveWrapper}>
           <div className={styles.addRemove}>
-            <button>-</button>1<button>+</button>
+            <button>
+              <FontAwesomeIcon
+                icon={faMinusSquare}
+                className={styles.removebutton}
+              />
+            </button>
+            <span>1</span>
+            <button>
+              <FontAwesomeIcon
+                icon={faPlusSquare}
+                className={styles.hearticon}
+              />
+            </button>
           </div>
         </div>
       </div>
