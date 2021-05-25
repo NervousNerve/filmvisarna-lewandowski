@@ -47,6 +47,13 @@ const Booking = () => {
           </div>
         </div>
       </div>
+
+      <div className={styles.selectWrapper}>
+        <select className="custom-select">
+          <option>test</option>
+          <option>test</option>
+        </select>
+      </div>
     </div>
   );
 };

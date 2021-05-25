@@ -23,5 +23,15 @@
   box-shadow: none;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  padding: 0.5em 1em;
+  padding: 0.4em 1em;
+}
+
+.pricetypeWrapper p {
+  margin: 0.6em;
+}
+
+.selectWrapper {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
 }
