@@ -87,7 +87,7 @@ const createBooking = async (req, res) => {
     // and not already occupied
     for (const s of req.body.seats) {
       if (
-        !s instanceof Number ||
+        isNaN(s) ||
         s <= 0 ||
         s > screening.theaterId.seats ||
         screening.occupiedSeats.includes(s)
@@ -122,17 +122,17 @@ const getBookingsByUser = async (req, res) => {
   let idToFind = req.query.userid;
 
   Booking.find({
-    userId: idToFind
+    userId: idToFind,
   }).exec((err, bookings) => {
     if (err) {
       res.status(400).json({
-        error: "Something went wrong"
+        error: "Something went wrong",
       });
       return;
     }
     if (!bookings) {
       res.json({
-        message: `No bookings to show`
+        message: `No bookings to show`,
       });
       return;
     }
