@@ -23,8 +23,12 @@ const MovieCard = () => {
         movieList.map((movie, index) => {
           return (
             <div key={index} className={styles.movieCard}>
-              <img src={movie.imageUrl} alt="movie thumbnail" />
-              <p>{movie.title}</p>
+              <div className={styles.imageWrapper}>
+                <img src={movie.imageUrl} alt="movie thumbnail" />
+              </div>
+              <div className={styles.titleWrapper}>
+                <p>{movie.title}</p>
+              </div>
             </div>
           );
         })
