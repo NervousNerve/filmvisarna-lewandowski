@@ -123,25 +123,43 @@ const createBooking = async (req, res) => {
 };
 
 const getBookingsByUser = async (req, res) => {
-  let idToFind = req.query.userid;
+  if (!req.session?.user) {
+    return res.status(401).json({
+      error: "Not logged in",
+    });
+  }
+
+  let idToFind = req.session.user._id;
+  let currentDate = new Date();
 
   Booking.find({
-    userId: idToFind
-  }).exec((err, bookings) => {
-    if (err) {
-      res.status(400).json({
-        error: "Something went wrong"
+    userId: idToFind,
+  })
+    .populate("screeningId")
+    .exec(function (err, bookings) {
+      if (err) {
+        res.status(400).json({
+          error: "Something went wrong",
+        });
+        return;
+      }
+
+      if (bookings.length === 0) {
+        res.json({ message: "No bookings have been made." });
+        return;
+      }
+
+      upcomingBookings = [];
+      previousBookings = [];
+      bookings.filter((booking) => {
+        if (booking.screeningId.date > currentDate) {
+          upcomingBookings.push(booking);
+        } else {
+          previousBookings.push(booking);
+        }
       });
-      return;
-    }
-    if (!bookings) {
-      res.json({
-        message: `No bookings to show`
-      });
-      return;
-    }
-    res.json(bookings);
-  });
+      res.json({ previousBookings, upcomingBookings });
+    });
 };
 
 module.exports = {
