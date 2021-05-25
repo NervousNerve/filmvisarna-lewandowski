@@ -5,8 +5,10 @@ const Booking = () => {
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
         <p>Adult</p>
-        <div className={styles.addRemove}>
-          <span>-</span>1<span>+</span>
+        <div className={styles.addRemoveWrapper}>
+          <div className={styles.addRemove}>
+            <button>-</button>1<button>+</button>
+          </div>
         </div>
       </div>
     </div>

@@ -9,9 +9,19 @@
   display: flex;
   align-items: center;
   padding: 1em;
-  justify-content: center;
+  justify-content: space-around;
 }
 
-.addRemove {
-  padding-left: 15em;
+.addRemoveWrapper {
+  border: 2px solid #18191f;
+  border-radius: 14px;
+}
+
+.addRemove button {
+  border: none;
+  padding: 1em;
+  box-shadow: none;
+  background-color: white;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
 }
