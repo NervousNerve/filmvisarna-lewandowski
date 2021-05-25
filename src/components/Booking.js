@@ -10,11 +10,39 @@ const Booking = () => {
         <div className={styles.addRemoveWrapper}>
           <div className={styles.addRemove}>
             <button>
-              <FontAwesomeIcon icon={faMinus} className={styles.removebutton} />
+              <FontAwesomeIcon icon={faMinus} />
             </button>
             <span>1</span>
             <button>
-              <FontAwesomeIcon icon={faPlus} className={styles.addbtn} />
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={styles.pricetypeWrapper}>
+        <p>Child</p>
+        <div className={styles.addRemoveWrapper}>
+          <div className={styles.addRemove}>
+            <button>
+              <FontAwesomeIcon icon={faMinus} />
+            </button>
+            <span>1</span>
+            <button>
+              <FontAwesomeIcon icon={faPlus} />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className={styles.pricetypeWrapper}>
+        <p>Oldie</p>
+        <div className={styles.addRemoveWrapper}>
+          <div className={styles.addRemove}>
+            <button>
+              <FontAwesomeIcon icon={faMinus} />
+            </button>
+            <span>1</span>
+            <button>
+              <FontAwesomeIcon icon={faPlus} />
             </button>
           </div>
         </div>
