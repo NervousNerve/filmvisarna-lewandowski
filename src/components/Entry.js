@@ -18,6 +18,7 @@ const Entry = () => {
         {menu ? <Register /> : <Login />}
       </div>
 
+      {/* Borde vara en 'button', för accessibility och semantisk korrekthet */}
       <p onClick={() => toggleMenu()} className={styles.toggleMenuText}>
         {message ? (
           <span>
