@@ -25,3 +25,22 @@ form input {
 .lockIcon {
   top: 11.6em;
 }
+
+.toggleMenuBtn button {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.highlighted {
+  color: #d83830;
+}
+
+.feedbackMessage {
+  text-align: center;
+  padding-top: 1em;
+}
