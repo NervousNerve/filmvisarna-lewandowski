@@ -35,6 +35,7 @@ const Navbar = () => {
         <div className={styles.topnav} id="myMenu">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/my-profile">My profile</NavLink>
+          <NavLink to="/confirmation">Confirmation</NavLink>
           <NavLink to="/login-register">Login/Register</NavLink>
         </div>
         <input
