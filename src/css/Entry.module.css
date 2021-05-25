@@ -1,0 +1,25 @@
+.entryContainer {
+  background-color: #fdf7e3;
+  padding: 1em;
+  width: 20em;
+  border: 2px solid #18191f;
+  border-radius: 14px;
+}
+
+.entryContainer input {
+  margin: 0.3em;
+  position: relative;
+}
+
+.entryContainer h1 {
+  margin-top: 0.4em;
+}
+
+::-webkit-input-placeholder {
+  font-family: "Oxygen", sans-serif;
+}
+
+.entryContainer button {
+  margin-top: 1em;
+  width: 100%;
+}

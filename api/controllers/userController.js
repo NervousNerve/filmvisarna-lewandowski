@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
 
     let user = await User.create(req.body);
     user.password = undefined;
-    return res.json(user);
+    return res.json({ success: "Registration successful" });
   } catch {
     return res.status(500).json({ error: "Something went wrong" });
   }
