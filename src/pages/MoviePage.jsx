@@ -11,34 +11,34 @@ const MoviePage = (props) => {
       {movie && (
         <div>
           <div className={style.heroImg}>
-            <img src={movie.img} alt={movie.title} />
+            <img src={movie.imageUrl} alt={movie.title} />
             <i></i>
           </div>
           <div className={style.content}>
             <div className={style.heading}>
               <div className={style.imgWrapper}>
-                <img src={movie.img} alt={movie.title} />
+                <img src={movie.imageUrl} alt={movie.title} />
               </div>
               <div className={style.title}>
-              <button
-                onClick={() => {
-                  bookTickets ? setBookTickets(false) : setBookTickets(true);
-                }}
-              >
-                Book ticket
-              </button>
-              
-                <h2>Title of the movie</h2>
-                <h4>126 min</h4>
+                <button
+                  onClick={() => {
+                    bookTickets ? setBookTickets(false) : setBookTickets(true);
+                  }}
+                >
+                  Book ticket
+                </button>
+                <h2>{movie.title}</h2>
+                <h4>{movie.runtime} min</h4>
               </div>
             </div>
             <div className={style.text}>
-              <div>
+              <div className={style.infoContainer}>
                 <div className={style.info}>
                   <h4>Genres</h4>
                   <ul>
-                    <li></li>
-                    <li></li>
+                    {movie.genre.map((genre) => {
+                      return <li>{genre}</li>;
+                    })}
                   </ul>
                 </div>
                 <div className={style.info}>
@@ -59,13 +59,13 @@ const MoviePage = (props) => {
                 </div>
               </div>
             </div>
+            {bookTickets && (
+              <div>
+                <h3>Book tickets</h3>
+                <hr />
+              </div>
+            )}
           </div>
-          {bookTickets && (
-            <div>
-              <h3>Book tickets</h3>
-              <hr />
-            </div>
-          )}
         </div>
       )}
     </div>
