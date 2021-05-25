@@ -42,15 +42,26 @@ const MoviePage = (props) => {
                   </ul>
                 </div>
                 <div className={style.info}>
-                  <h4>Age</h4>
-                  <p></p>
+                  <h4>Actors</h4>
+                  <p>
+                    {movie.actors.map((actor, i) => {
+                      if (
+                        movie.actors.indexOf(actor) ===
+                        movie.actors.length - 1
+                      ) {
+                        return actor;
+                      } else {
+                        return actor + ", ";
+                      }
+                    })}
+                  </p>
                 </div>
               </div>
               <h4>Plot</h4>
               <p></p>
               <div>
                 <div className={style.info}>
-                  <h4>Actors</h4>
+                  <h4>Rating</h4>
                   <p></p>
                 </div>
                 <div className={style.info}>

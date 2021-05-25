@@ -39,7 +39,11 @@
   margin: 0.8rem 0;
 }
 .moviePage .text {
-  margin: 0 .7rem;
+  margin: 0 0.7rem;
+}
+.moviePage .infoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .moviePage .info ul {
   padding: 0;
@@ -50,5 +54,8 @@
 }
 
 .moviePage h4 {
-  margin: 1.4rem 0 .2rem;
+  margin: 1.4rem 0 0.2rem;
+}
+.moviePage p {
+  margin: 0;
 }
