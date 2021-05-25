@@ -143,7 +143,8 @@ const getBookingsByUser = async (req, res) => {
       // First we find all bookings for the current user
       { $match: { userId: idToFind } },
       {
-        // Kind of like .populate. Find all screenings that match our 'screeningId',
+        // Kind of like .populate.
+        // Find all screenings that match our 'screeningId',
         // and store them in 'screeningId'
         $lookup: {
           from: "screenings",
@@ -152,8 +153,8 @@ const getBookingsByUser = async (req, res) => {
           as: "screeningId",
         },
       },
-      // $lookup creates an array, but since we will only ever have one screening per booking,
-      // $unwind gives us that single object instead
+      // $lookup creates an array, but since we will only ever have one
+      // screening per booking $unwind gives us that single object instead
       { $unwind: "$screeningId" },
       // Finally filters bookings that have a screening with a matching date
       { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
