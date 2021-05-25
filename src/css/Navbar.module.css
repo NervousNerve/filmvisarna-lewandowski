@@ -6,7 +6,7 @@
 }
 
 /* Hide the links inside the navigation menu (except for logo/home) */
-.topnav #myMenu {
+.topnav {
   display: none;
 }
 
@@ -63,17 +63,17 @@
 }
 
 @media (min-width: 768px) {
+  .topnav {
+    display: inline-block;
+    background-color: none;
+  }
+
   .burger {
     display: none;
   }
 
   .img {
     padding-left: 0px;
-  }
-
-  .topnav {
-    background-color: none;
-    display: inline;
   }
 
   .topnav a {
