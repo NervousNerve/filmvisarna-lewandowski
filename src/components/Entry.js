@@ -7,7 +7,7 @@ const Entry = () => {
   const [message, setMessage] = useState(false);
   const [menu, setMenu] = useState(false);
 
-  const toggleMenu = (e) => {
+  const toggleMenu = () => {
     setMessage(!message);
     setMenu(!menu);
   };
