@@ -1,0 +1,17 @@
+.bookingWrapper {
+  background-color: #fdf7e3;
+  width: 25em;
+  border-radius: 14px;
+  border: 2px solid #18191f;
+}
+
+.pricetypeWrapper {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  justify-content: center;
+}
+
+.addRemove {
+  padding-left: 15em;
+}

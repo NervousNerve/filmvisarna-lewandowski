@@ -2,12 +2,12 @@ import styles from "../css/Booking.module.css";
 
 const Booking = () => {
   return (
-    <div>
+    <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
         <p>Adult</p>
-        <span>-</span>
-        <div>1</div>
-        <span>+</span>
+        <div className={styles.addRemove}>
+          <span>-</span>1<span>+</span>
+        </div>
       </div>
     </div>
   );
