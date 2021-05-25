@@ -1,10 +1,42 @@
 import style from "../css/MoviePage.module.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const MoviePage = (props) => {
   // const movie = props.movie
 
   const [bookTickets, setBookTickets] = useState(false);
+
+  // const [movie, setMovie] = useState();
+
+  // const getMovieById = async () => {
+  //   let movie = await fetch(`/api/v1/movies/movies/60a632b98421e91fe4243b96`);
+  //   movie = await movie.json();
+  //   setMovie(movie);
+  // };
+
+  // useEffect(() => {
+  //   getMovieById();
+  // }, []);
+
+  const movie = {
+    imageUrl:
+      "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    title: "The dark knight",
+    runtime: "152",
+    genre: ["Action", "Crime", "Drama", "Thriller"],
+    actors: [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart",
+      "Michael Caine",
+    ],
+    language: ["English", "Mandarin"],
+    rated: "PG-13",
+    plot: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    director: "Cristopher Nolan",
+    trailerUrl: "EXeTwQWrcwY",
+    price: 152,
+  };
 
   return (
     <div className={style.moviePage}>
@@ -27,7 +59,7 @@ const MoviePage = (props) => {
                 >
                   Book ticket
                 </button>
-                <h2>{movie.title}</h2>
+                <h3>{movie.title}</h3>
                 <h4>{movie.runtime} min</h4>
               </div>
             </div>
