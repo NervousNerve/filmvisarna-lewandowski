@@ -11,11 +11,11 @@ const Confirmation = () => {
     <div>
       <div className={styles.confirmation}>
         {/* <img className={styles.logo} src="/assets/images/logo.svg" alt="Logo" /> */}
-        <img
+        {/* <img
           className={styles.confirm}
           src="/assets/icons/confirm.svg"
           alt="confirm icon"
-        />
+        /> */}
         <div className={styles.thanks}>
           <h1>Thank you for booking with FunkyFilm!</h1>
           <p>Below you will find information about your ticket</p>
@@ -63,16 +63,16 @@ const Confirmation = () => {
         </div> */}
 
         <div className={styles.printButton}>
-          <button className={styles.print} onClick={() => window.print()}>
+          {/* <button className={styles.print} onClick={() => window.print()}>
             Print
-          </button>
+          </button> */}
           <button className={styles.backhome}>Back to Home</button>
 
-          <img
+          {/* <img
             className={styles.printIcon}
             src="assets/icons/print.svg"
             alt="print-icon"
-          />
+          /> */}
         </div>
         <div></div>
       </div>

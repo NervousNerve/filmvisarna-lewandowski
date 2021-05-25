@@ -109,3 +109,10 @@
   top: 22px;
   left: 120px;
 }
+
+.backhome {
+  background-color: #ffd465;
+  border: 1px solid #18191f;
+  border-radius: 14px;
+  box-shadow: 0px 3px 0px 0px #18191f;
+}
