@@ -38,15 +38,15 @@ const Navbar = () => {
           <NavLink to="/confirmation">Confirmation</NavLink>
           <NavLink to="/login-register">Login/Register</NavLink>
         </div>
-        
+
         <div className={styles.field}>
-        <input
-          className={styles.input}
-          type="text"
-          placeholder="Search.."
-          name="search"
-        />
-        <FontAwesomeIcon className={styles.searchicon2} icon={faSearch} />
+          <input
+            className={styles.input}
+            type="text"
+            placeholder="Search.."
+            name="search"
+          />
+          <FontAwesomeIcon className={styles.searchicon2} icon={faSearch} />
         </div>
       </div>
     </div>
