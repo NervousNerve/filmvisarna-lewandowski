@@ -125,37 +125,42 @@ const getBookingsByUser = async (req, res) => {
     });
   }
 
-  let idToFind = req.session.user._id;
-  let currentDate = new Date();
+  const idToFind = ObjectId(req.session.user._id);
 
-  Booking.find({
-    userId: idToFind,
-  })
-    .populate("screeningId")
-    .exec(function (err, bookings) {
-      if (err) {
-        res.status(400).json({
-          error: "Something went wrong",
-        });
-        return;
-      }
+  const fromDate =
+    req.query.previous === "true" ? new Date(1900, 01, 01) : new Date();
+  const toDate =
+    req.query.previous === "true" ? new Date() : new Date(3000, 01, 01);
 
-      if (bookings.length === 0) {
-        res.json({ message: "No bookings have been made." });
-        return;
-      }
+  try {
+    let bookings = await Booking.aggregate([
+      // First we find all bookings for the current user
+      { $match: { userId: idToFind } },
+      {
+        // Kind of like .populate. Find all screenings that match our 'screeningId',
+        // and store them in 'screeningId'
+        $lookup: {
+          from: "screenings",
+          localField: "screeningId",
+          foreignField: "_id",
+          as: "screeningId",
+        },
+      },
+      // $lookup creates an array, but since we will only ever have one screening per booking,
+      // $unwind gives us that single object instead
+      { $unwind: "$screeningId" },
+      // Finally filters bookings that have a screening with a matching date
+      { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
+    ]).exec();
 
-      upcomingBookings = [];
-      previousBookings = [];
-      bookings.filter((booking) => {
-        if (booking.screeningId.date > currentDate) {
-          upcomingBookings.push(booking);
-        } else {
-          previousBookings.push(booking);
-        }
-      });
-      res.json({ previousBookings, upcomingBookings });
-    });
+    if (!bookings.length) {
+      return res.status(404).json({ error: "No bookings found" });
+    }
+    return res.json(bookings);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
 };
 
 module.exports = {
