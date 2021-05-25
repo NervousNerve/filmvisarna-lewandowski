@@ -25,6 +25,14 @@ const Booking = () => {
           </select>
         </div>
       </div>
+
+      <div className={styles.seatBtn}>
+        <button>Pick seats</button>
+      </div>
+
+      <div className={styles.totalPrice}>
+        <p>Total: money</p>
+      </div>
     </div>
   );
 };
