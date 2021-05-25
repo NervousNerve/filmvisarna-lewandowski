@@ -25,10 +25,11 @@ const Confirmation = () => {
           {/* <h4>Order details:</h4> */}
           <div className={styles.orderDetails}>
             <div className={styles.detailsLeft}>
-              <p>Order Number:</p>
-              <p>Order Date:</p>
-              <p>Full Name:</p>
-              <p>Delivery Address:</p>
+              <p>Booking Number:</p>
+              <p>Price:</p>
+              <p>Date/Time:</p>
+              <p>Film description:</p>
+              <p>Seat/Row:</p>
             </div>
             <div className={styles.detailsRight}>
               {/* <p> {orderDetails.orderNumber}</p>

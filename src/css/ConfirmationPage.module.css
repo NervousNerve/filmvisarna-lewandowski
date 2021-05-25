@@ -48,7 +48,8 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 0px;
-  font-size: 0.8rem;
+  /* font-size: 0.8rem; */
+  font-size: 0.9rem;
   line-height: 0.2rem;
 }
 
@@ -113,6 +114,7 @@
 .backhome {
   background-color: #ffd465;
   border: 1px solid #18191f;
-  border-radius: 14px;
+  border-radius: 6px;
   box-shadow: 0px 3px 0px 0px #18191f;
+  padding: 5px 5px;
 }
