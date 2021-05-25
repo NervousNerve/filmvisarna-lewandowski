@@ -9,7 +9,6 @@ function App() {
         <BrowserRouter>
           <Route exact path="/:movieId" component={MoviePage} />
         </BrowserRouter>
-        <MoviePage />
       </UserProvider>
     </div>
   );
