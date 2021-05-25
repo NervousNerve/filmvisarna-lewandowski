@@ -33,10 +33,16 @@ const Navbar = () => {
         <img className={styles.img} src={filmLogo} alt="Logo" />
         <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
         <div className={styles.topnav} id="myMenu">
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/my-profile">My profile</NavLink>
-        <NavLink to="/login-register">Login/Register</NavLink>
-      </div>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/my-profile">My profile</NavLink>
+          <NavLink to="/login-register">Login/Register</NavLink>
+        </div>
+        <input
+          className={styles.input}
+          type="text"
+          placeholder="Search.."
+          name="search"
+        />
         <FontAwesomeIcon className={styles.searchicon2} icon={faSearch} />
       </div>
     </div>
