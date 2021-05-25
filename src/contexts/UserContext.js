@@ -23,18 +23,18 @@ const UserProvider = (props) => {
       body: JSON.stringify(userToLogin),
     });
     user = await user.json();
-    console.log(user);
 
-    if (user.success) {
-      setCurrentUser(user);
-      // push to profile page
-    } else if (user.error) {
+    if (user.error) {
       setFeedbackMessage("Email or password is invalid");
       setTimeout(() => {
         setFeedbackMessage(null);
       }, 3000);
       console.log(user.error);
+      return;
     }
+
+    setCurrentUser(user);
+    // push to profile page
   };
 
   const register = async (userToRegister) => {

@@ -15,21 +15,22 @@ const Register = () => {
       "^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])"
     );
 
-    if (regex.test(password)) {
-      const user = {
-        name: name,
-        email: email,
-        password: password,
-      };
-      register(user);
-    } else {
+    if (!regex.test(password)) {
       setRegexMessage(
         "Your password must be at least 6 characters long, contain both upper- and lowercase and one special character."
       );
+      setTimeout(() => {
+        setRegexMessage(null);
+      }, 3000);
+      return;
     }
-    setTimeout(() => {
-      setRegexMessage(null);
-    }, 3000);
+
+    const user = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    register(user);
   };
 
   return (
