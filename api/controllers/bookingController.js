@@ -1,6 +1,5 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
-// Screening is needed for populate
 const Screening = require("../models/Screening");
 
 const getBookingById = async (req, res) => {
@@ -39,11 +38,10 @@ const getBookingById = async (req, res) => {
 
 /* Parameters:
  * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Number of seats requested
+ * req.body.seats:        Array of requested seat numbers
  *
  * If successful, returns the newly created Booking object
  */
-
 const createBooking = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({
@@ -57,9 +55,9 @@ const createBooking = async (req, res) => {
     });
   }
 
-  if (typeof req.body.seats !== "number" || req.body.seats < 1) {
+  if (!Array.isArray(req.body.seats) || !req.body.seats.length) {
     return res.status(400).json({
-      error: "Invalid number of 'seats'",
+      error: "Invalid 'seats' parameter",
     });
   }
 
@@ -79,38 +77,36 @@ const createBooking = async (req, res) => {
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
-    if (freeSeats < req.body.seats) {
+    if (freeSeats < req.body.seats.length) {
       return res.status(403).json({
         error: "Not enough free seats available",
       });
     }
 
-    // TODO: When the seat selection front-end is finished,
-    // make this function accept an array of requested seats
-    // in body.seats and try to book those
-    // For now, we automatically select the first available seats
-
-    // If there are any occupied seats, find the last one
-    const lastOccupiedSeat = screening.occupiedSeats.length
-      ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
-      : 0;
-
-    // Create an array with the requested number of seats,
-    // following the last already occupied seat
-    const seats = Array.from(
-      new Array(req.body.seats),
-      (undefined, i) => i + lastOccupiedSeat + 1
-    );
+    // Make sure every requested seat is a valid seat number
+    // and not already occupied
+    for (const s of req.body.seats) {
+      if (
+        isNaN(s) ||
+        s <= 0 ||
+        s > screening.theaterId.seats ||
+        screening.occupiedSeats.includes(s)
+      ) {
+        return res.status(403).json({
+          error: `Requested seat '${s}' is occupied or invalid`,
+        });
+      }
+    }
 
     const booking = await Booking.create({
-      seats,
-      price: screening.movieId.price * seats.length,
+      seats: req.body.seats,
+      price: screening.movieId.price * req.body.seats.length,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
 
     // Set our seats as occupied for this screening
-    screening.occupiedSeats.push(...seats);
+    screening.occupiedSeats.push(...req.body.seats);
     await screening.save();
 
     return res.json(booking);
@@ -126,17 +122,17 @@ const getBookingsByUser = async (req, res) => {
   let idToFind = req.query.userid;
 
   Booking.find({
-    userId: idToFind
+    userId: idToFind,
   }).exec((err, bookings) => {
     if (err) {
       res.status(400).json({
-        error: "Something went wrong"
+        error: "Something went wrong",
       });
       return;
     }
     if (!bookings) {
       res.json({
-        message: `No bookings to show`
+        message: `No bookings to show`,
       });
       return;
     }
