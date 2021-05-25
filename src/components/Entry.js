@@ -26,7 +26,6 @@ const Entry = () => {
           </span>
         ) : (
           <span>
-            {/* Prettier adding the {" "} */}
             Not a member?{" "}
             <span className={styles.highlighted}>Create account</span>
           </span>
