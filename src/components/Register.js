@@ -7,9 +7,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
-  const { setUserToRegister, register, feedbackMessage } = useContext(
-    UserContext
-  );
+  const { register, feedbackMessage } = useContext(UserContext);
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -23,7 +21,6 @@ const Register = () => {
         email: email,
         password: password,
       };
-      setUserToRegister(user);
       register(user);
     } else {
       setRegexMessage(

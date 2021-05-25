@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Login.module.css";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, setUserToLogin, feedbackMessage } = useContext(UserContext);
+  const { login, feedbackMessage } = useContext(UserContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,7 +17,6 @@ const Login = () => {
       password: password,
     };
 
-    setUserToLogin(user);
     login(user);
   };
 
