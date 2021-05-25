@@ -15,23 +15,12 @@ const Entry = () => {
   return (
     <div className={styles.entryContainer}>
       <div className={styles.inputContainer}>
-        {menu ? <Register /> : <Login />}
-      </div>
-
-      {/* Borde vara en 'button', för accessibility och semantisk korrekthet */}
-      <p onClick={() => toggleMenu()} className={styles.toggleMenuText}>
-        {message ? (
-          <span>
-            Already a member?{" "}
-            <span className={styles.highlighted}>Sign in</span>
-          </span>
+        {menu ? (
+          <Register toggleMenu={toggleMenu} />
         ) : (
-          <span>
-            Not a member?{" "}
-            <span className={styles.highlighted}>Create account</span>
-          </span>
+          <Login toggleMenu={toggleMenu} />
         )}
-      </p>
+      </div>
     </div>
   );
 };

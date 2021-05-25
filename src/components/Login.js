@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import styles from "../css/Login.module.css";
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import styles from "../css/Login.module.css";
 
-const Login = () => {
+const Login = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { login, feedbackMessage } = useContext(UserContext);
@@ -16,12 +16,11 @@ const Login = () => {
       email: email,
       password: password,
     };
-
     login(user);
   };
 
   return (
-    <div>
+    <div className={styles.loginWrapper}>
       <h1>Sign in</h1>
       <p>You have to log in to book tickets.</p>
       <form className={styles.placeholder} onSubmit={handleLogin}>
@@ -41,10 +40,19 @@ const Login = () => {
           required
         />
 
-        <button>Sign in</button>
+        <button type="submit">Sign in</button>
 
         <div className={styles.feedbackMessage}>{feedbackMessage}</div>
       </form>
+
+      <div className={styles.toggleMenuBtn}>
+        <button type="button" onClick={() => toggleMenu()}>
+          <p>
+            Not a member?{" "}
+            <span className={styles.highlighted}>Create account</span>
+          </p>
+        </button>
+      </div>
     </div>
   );
 };

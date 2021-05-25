@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../css/Register.module.css";
 
-const Register = () => {
+const Register = ({ toggleMenu }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -58,9 +58,19 @@ const Register = () => {
         />
         <button>Create account</button>
       </form>
+
       <div className={styles.feedbackMessage}>
         {feedbackMessage}
         {regexMessage}
+      </div>
+
+      <div className={styles.toggleMenuBtn}>
+        <button onClick={() => toggleMenu()}>
+          <p>
+            Already a member?{" "}
+            <span className={styles.highlighted}>Sign in</span>
+          </p>
+        </button>
       </div>
     </div>
   );
