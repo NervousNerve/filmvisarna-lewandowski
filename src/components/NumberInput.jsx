@@ -1,13 +1,14 @@
 import { useState } from "react";
 import style from "../css/NumberInput.module.css";
 
-const NumberInput = () => {
+const NumberInput = ({ updateValue }) => {
   const [value, setValue] = useState(0);
 
   const decrease = () => {
     if (value !== 0) {
       let newValue = value - 1;
       setValue(newValue);
+      updateValue(newValue);
     }
   };
 
@@ -15,11 +16,8 @@ const NumberInput = () => {
     if (value !== 80) {
       let newValue = value + 1;
       setValue(newValue);
+      updateValue(newValue);
     }
-  };
-
-  const readfield = (e) => {
-    console.log(e.target.value);
   };
 
   return (
@@ -31,7 +29,6 @@ const NumberInput = () => {
         name="quantity"
         type="number"
         value={value}
-        onChange={(e) => readfield(e.target.value)}
       />
       <button className={style.plus} onClick={increase} />
     </div>
