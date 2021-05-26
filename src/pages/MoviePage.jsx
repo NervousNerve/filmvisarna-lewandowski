@@ -1,4 +1,5 @@
 import style from "../css/MoviePage.module.css";
+import Entry from "../components/Entry";
 import { useState, useEffect } from "react";
 
 const MoviePage = (props) => {
@@ -85,6 +86,7 @@ const MoviePage = (props) => {
               <div>
                 <h3>Book tickets</h3>
                 <hr />
+                <Entry />
               </div>
             )}
           </div>

@@ -7,7 +7,6 @@
 .moviePage .heroImg img {
   filter: blur(3px);
   width: 120%;
-  /* margin: -20% 0 0 -105px; */
   margin: -20% -10%;
 }
 .moviePage .content {
