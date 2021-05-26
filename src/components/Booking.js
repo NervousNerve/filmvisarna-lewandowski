@@ -11,6 +11,8 @@ const Booking = () => {
     console.log("Adult: ", adult, "Child: ", child, "Oldie: ", oldie);
   }, [adult, child, oldie]);
 
+  const confirmBooking = () => {};
+
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
@@ -40,7 +42,7 @@ const Booking = () => {
         <p>Total: $$$</p>
       </div>
       <div className={styles.seatBtn}>
-        <button>Confirm</button>
+        <button onClick={confirmBooking}>Confirm</button>
       </div>
     </div>
   );
