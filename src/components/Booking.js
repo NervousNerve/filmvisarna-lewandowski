@@ -37,7 +37,7 @@ const Booking = () => {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(request),
     });
-    booking = await booking.json();
+    await booking.json();
   };
 
   const handleChange = () => {
