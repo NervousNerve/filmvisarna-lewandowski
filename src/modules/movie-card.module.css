@@ -17,16 +17,21 @@ h4 {
   font-size: 9px;
 }
 
-.cardsWrapper {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  flex-flow: row wrap;
-}
-
 .imageWrapper {
   width: 100%;
   height: 90%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movieList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* justify-items: center; */
 }
 
 .movieCard {
@@ -38,17 +43,27 @@ h4 {
   margin: 1rem 0.5rem;
   box-shadow: 0px 3px 0px 0px #18191f;
   border: 2px solid #18191f;
-  border-style: dotted;
   border-radius: 14px;
   filter: brightness(95%) contrast(100%);
   transition: 400ms ease;
 }
 
-@media screen and (min-width: 1024px) {
-  .cardsWrapper {
-    width: 50%;
+@media screen and (min-width: 575px) {
+  .movieList {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
   }
-
+}
+@media screen and (min-width: 768px) {
+  .movieList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 768px;
+    justify-items: center;
+  }
+}
+@media screen and (min-width: 1024px) {
   .movieCard:hover {
     filter: saturate(142%) contrast(87%) brightness(115%);
     transform: scale(1.12);
