@@ -24,21 +24,24 @@ const Login = ({ toggleMenu }) => {
       <h1>Sign in</h1>
       <p>You have to log in to book tickets.</p>
       <form className={styles.placeholder} onSubmit={handleLogin}>
-        <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
-        <input
-          placeholder="Email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-
-        <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
-        <input
-          placeholder="Password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div className={styles.inputContainer}>
+          <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
+          <input
+            placeholder="Email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+        <div className={styles.inputContainer}>
+          <input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
+        </div>
 
         <button type="submit">Sign in</button>
 

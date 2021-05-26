@@ -5,8 +5,15 @@ form {
   padding: 0.5em;
 }
 
-form input {
+.inputContainer input {
+  /* position: relative; */
+  width: 100%;
+}
+.inputContainer {
   position: relative;
+  display: flex;
+  align-items: center;
+  /* width: 100%; */
 }
 
 .userIcon,
@@ -16,15 +23,16 @@ form input {
   left: 15em;
   z-index: 1;
   color: #474a57;
+  left: calc(100% - 40px);
 }
 
-.userIcon {
+/* .userIcon {
   top: 8.6em;
 }
 
 .lockIcon {
   top: 11.6em;
-}
+} */
 
 .toggleMenuBtn button {
   border: none;
