@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Entry />
+        {/* <Entry /> */}
         <BrowserRouter>
           <Route exact path="/profile" component={ProfilePage} />
         </BrowserRouter>
