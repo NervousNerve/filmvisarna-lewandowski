@@ -8,10 +8,22 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
 
   useEffect(() => {
-    console.log("Adult: ", adult, "Child: ", child, "Oldie: ", oldie);
+    //console.log("Adult: ", adult, "Child: ", child, "Oldie: ", oldie);
   }, [adult, child, oldie]);
 
-  const confirmBooking = () => {};
+  const confirmBooking = async () => {
+    const request = {
+      screeningId: "60a655dead5bec403ce90cb3",
+      seats: [2, 3],
+    };
+
+    let booking = await fetch("/api/v1/bookings", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(request),
+    });
+    booking = await booking.json();
+  };
 
   return (
     <div className={styles.bookingWrapper}>
