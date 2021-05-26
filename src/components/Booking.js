@@ -33,8 +33,9 @@ const Booking = () => {
     booking = await booking.json();
   };
 
-  const getScreenings = async () => {
-    let screening = await fetch("/api/v1/screenings/60a632b98421e91fe4243bab");
+  const getScreenings = async (id) => {
+    //let screening = await fetch(`/api/v1/screenings/${id}`);
+    let screening = await fetch(`/api/v1/screenings/60a632b98421e91fe4243bab`);
     screening = await screening.json();
     console.log(screening);
   };
