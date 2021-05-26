@@ -5,7 +5,13 @@ const NumberInput = () => {
   const [value, setValue] = useState(0);
 
   const decrease = () => {
-    console.log("click");
+    let newValue = value - 1;
+    setValue(newValue);
+  };
+
+  const increase = () => {
+    let newValue = value - 1;
+    setValue(newValue);
   };
 
   return (
@@ -16,10 +22,10 @@ const NumberInput = () => {
         min="0"
         name="quantity"
         type="number"
-        defaultValue={value}
+        value={value}
         /* onChange="`onChangeMethod + ${i}`" */
       />
-      <button className={style.plus} />
+      <button className={style.plus} onClick={increase} />
     </div>
   );
 };
