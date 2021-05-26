@@ -1,6 +1,5 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
-// Screening is needed for populate
 const Screening = require("../models/Screening");
 
 const getBookingById = async (req, res) => {
@@ -39,11 +38,10 @@ const getBookingById = async (req, res) => {
 
 /* Parameters:
  * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Number of seats requested
+ * req.body.seats:        Array of requested seat numbers
  *
  * If successful, returns the newly created Booking object
  */
-
 const createBooking = async (req, res) => {
   if (!req.session?.user) {
     return res.status(401).json({
@@ -57,9 +55,9 @@ const createBooking = async (req, res) => {
     });
   }
 
-  if (typeof req.body.seats !== "number" || req.body.seats < 1) {
+  if (!Array.isArray(req.body.seats) || !req.body.seats.length) {
     return res.status(400).json({
-      error: "Invalid number of 'seats'",
+      error: "Invalid 'seats' parameter",
     });
   }
 
@@ -79,38 +77,36 @@ const createBooking = async (req, res) => {
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
-    if (freeSeats < req.body.seats) {
+    if (freeSeats < req.body.seats.length) {
       return res.status(403).json({
         error: "Not enough free seats available",
       });
     }
 
-    // TODO: When the seat selection front-end is finished,
-    // make this function accept an array of requested seats
-    // in body.seats and try to book those
-    // For now, we automatically select the first available seats
-
-    // If there are any occupied seats, find the last one
-    const lastOccupiedSeat = screening.occupiedSeats.length
-      ? screening.occupiedSeats[screening.occupiedSeats.length - 1]
-      : 0;
-
-    // Create an array with the requested number of seats,
-    // following the last already occupied seat
-    const seats = Array.from(
-      new Array(req.body.seats),
-      (undefined, i) => i + lastOccupiedSeat + 1
-    );
+    // Make sure every requested seat is a valid seat number
+    // and not already occupied
+    for (const s of req.body.seats) {
+      if (
+        isNaN(s) ||
+        s <= 0 ||
+        s > screening.theaterId.seats ||
+        screening.occupiedSeats.includes(s)
+      ) {
+        return res.status(403).json({
+          error: `Requested seat '${s}' is occupied or invalid`,
+        });
+      }
+    }
 
     const booking = await Booking.create({
-      seats,
-      price: screening.movieId.price * seats.length,
+      seats: req.body.seats,
+      price: screening.movieId.price * req.body.seats.length,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
 
     // Set our seats as occupied for this screening
-    screening.occupiedSeats.push(...seats);
+    screening.occupiedSeats.push(...req.body.seats);
     await screening.save();
 
     return res.json(booking);
@@ -122,26 +118,56 @@ const createBooking = async (req, res) => {
   }
 };
 
+/* Finds bookings for the currently logged in user
+ *
+ * Parameters:
+ * req.body.previous: If 'true' this function returns only past bookings,
+ *                    otherwise only returns future bookings
+ */
 const getBookingsByUser = async (req, res) => {
-  let idToFind = req.query.userid;
+  if (!req.session?.user) {
+    return res.status(401).json({
+      error: "Not logged in",
+    });
+  }
 
-  Booking.find({
-    userId: idToFind
-  }).exec((err, bookings) => {
-    if (err) {
-      res.status(400).json({
-        error: "Something went wrong"
-      });
-      return;
+  const idToFind = ObjectId(req.session.user._id);
+
+  const fromDate =
+    req.query.previous === "true" ? new Date(1900, 01, 01) : new Date();
+  const toDate =
+    req.query.previous === "true" ? new Date() : new Date(3000, 01, 01);
+
+  try {
+    let bookings = await Booking.aggregate([
+      // First we find all bookings for the current user
+      { $match: { userId: idToFind } },
+      {
+        // Kind of like .populate.
+        // Find all screenings that match our 'screeningId',
+        // and store them in 'screeningId'
+        $lookup: {
+          from: "screenings",
+          localField: "screeningId",
+          foreignField: "_id",
+          as: "screeningId",
+        },
+      },
+      // $lookup creates an array, but since we will only ever have one
+      // screening per booking $unwind gives us that single object instead
+      { $unwind: "$screeningId" },
+      // Finally filters bookings that have a screening with a matching date
+      { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
+    ]).exec();
+
+    if (!bookings.length) {
+      return res.status(404).json({ error: "No bookings found" });
     }
-    if (!bookings) {
-      res.json({
-        message: `No bookings to show`
-      });
-      return;
-    }
-    res.json(bookings);
-  });
+    return res.json(bookings);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
 };
 
 module.exports = {
