@@ -20,8 +20,8 @@ const Navbar = () => {
   // eslint-disable-next-line
   const filmLogo =
     "https://trello-attachments.s3.amazonaws.com/60a21d927cb7b38110c05826/60ab5f1eb07e002ab9bbcfb5/3429140ee35b63a2ad4a06612bacce6f/logo-1.png";
-  
-    const [menu, setMenu] = useState(false);
+
+  const [menu, setMenu] = useState(false);
 
   const handleClick = () => {
     if (menu === false) {
@@ -41,16 +41,24 @@ const Navbar = () => {
   // };
 
   return (
-    <div>
-      <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
-        <FontAwesomeIcon
-          // className={`${styles.burger} ${menu && styles.clickedMenu}`}
-          className={styles.burger}
-          icon={faBars}
-          onClick={handleClick}
-        />
-        <img className={styles.img} src={filmLogo} alt="Logo" />
-        <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
+    <div className={styles.top}>
+      <div
+        // className={styles.topfield}
+
+        className={`${styles.topfield} ${styles.topfield2} ${menu && styles.clickedMenu}`}
+      >
+        {/* <div className={styles.navs}> */}
+          <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
+          <FontAwesomeIcon
+            // className={`${styles.burger} ${menu && styles.clickedMenu}`}
+            className={styles.burger}
+            icon={faBars}
+            onClick={handleClick}
+          />
+
+          <img className={styles.img} src={filmLogo} alt="Logo" />
+          <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
+        </div>
         <div className={styles.topnav} id="myMenu">
           <NavLink onClick={handleClick} to="/">
             Home
