@@ -29,18 +29,18 @@ const Booking = () => {
       <div className={styles.selectWrapper}>
         <div className="custom-select">
           <select>
+            <option>Date and time</option>
             <option>test</option>
             <option>test</option>
           </select>
         </div>
       </div>
 
-      <div className={styles.seatBtn}>
-        <button>Pick seats</button>
-      </div>
-
       <div className={styles.totalPrice}>
         <p>Total: $$$</p>
+      </div>
+      <div className={styles.seatBtn}>
+        <button>Confirm</button>
       </div>
     </div>
   );
