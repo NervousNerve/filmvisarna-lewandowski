@@ -83,7 +83,7 @@ const MoviePage = (props) => {
               </div>
             </div>
             {bookTickets && (
-              <div>
+              <div className={style.book}>
                 <h3>Book tickets</h3>
                 <hr />
                 <Entry />
