@@ -28,3 +28,7 @@
   justify-content: center;
   margin-top: 1em;
 }
+
+.selectWrapper select {
+  font-family: "Oxygen", sans-serif;
+}
