@@ -8,11 +8,12 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [totalSeats, setTotalSeats] = useState(0);
+  let screeningId = "60a632b98421e91fe4243bab";
 
   useEffect(() => {
     let total = adult + child + oldie;
     setTotalSeats(total);
-    console.log(totalSeats);
+    //console.log(totalSeats);
   }, [adult, child, oldie]);
 
   useEffect(() => {
@@ -34,8 +35,7 @@ const Booking = () => {
   };
 
   const getScreenings = async (id) => {
-    //let screening = await fetch(`/api/v1/screenings/${id}`);
-    let screening = await fetch(`/api/v1/screenings/60a632b98421e91fe4243bab`);
+    let screening = await fetch(`/api/v1/screenings/${screeningId}`);
     screening = await screening.json();
     console.log(screening);
   };
