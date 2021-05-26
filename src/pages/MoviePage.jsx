@@ -39,7 +39,7 @@ const MoviePage = (props) => {
         <div>
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Trailer />
+              <Trailer trailer={String(movie.trailerUrl)} />
             </div>
           )}
           <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
