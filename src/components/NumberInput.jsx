@@ -5,13 +5,21 @@ const NumberInput = () => {
   const [value, setValue] = useState(0);
 
   const decrease = () => {
-    let newValue = value - 1;
-    setValue(newValue);
+    if (value !== 0) {
+      let newValue = value - 1;
+      setValue(newValue);
+    }
   };
 
   const increase = () => {
-    let newValue = value - 1;
-    setValue(newValue);
+    if (value !== 80) {
+      let newValue = value + 1;
+      setValue(newValue);
+    }
+  };
+
+  const readfield = (e) => {
+    console.log(e.target.value);
   };
 
   return (
@@ -23,7 +31,7 @@ const NumberInput = () => {
         name="quantity"
         type="number"
         value={value}
-        /* onChange="`onChangeMethod + ${i}`" */
+        onChange={(e) => readfield(e.target.value)}
       />
       <button className={style.plus} onClick={increase} />
     </div>
