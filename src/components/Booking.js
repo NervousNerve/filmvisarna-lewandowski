@@ -1,7 +1,12 @@
+import { useState } from "react";
 import styles from "../css/Booking.module.css";
 import NumberInput from "./NumberInput";
 
 const Booking = () => {
+  const [adult, setAdult] = useState(0);
+  const [child, setChild] = useState(0);
+  const [oldie, setOldie] = useState(0);
+
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
@@ -31,7 +36,7 @@ const Booking = () => {
       </div>
 
       <div className={styles.totalPrice}>
-        <p>Total: money</p>
+        <p>Total: $$$</p>
       </div>
     </div>
   );
