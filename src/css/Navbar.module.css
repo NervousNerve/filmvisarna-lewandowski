@@ -132,7 +132,8 @@
     background-color: rgb(216, 56, 48);
     display: flex;
     justify-content: space-between;
-    padding: 14px 14px;
+    padding: 0px 14px;
+    padding-top: 8px;
   }
 
   .field {
