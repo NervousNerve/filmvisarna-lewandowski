@@ -3,9 +3,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 
 import Entry from "../components/Entry";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const MoviePage = (props) => {
+  const myRef = useRef();
   const { movieId } = props.match.params;
   const [bookTickets, setBookTickets] = useState(true);
 
@@ -21,6 +22,11 @@ const MoviePage = (props) => {
     getMovieById(movieId);
   }, []);
 
+  const scroll = () => {
+    let scrollStop = myRef.current.offsetTop - 70;
+    window.scrollTo({ behavior: "smooth", top: scrollStop });
+  };
+
   return (
     <div className={style.moviePage}>
       {movie && (
@@ -35,8 +41,13 @@ const MoviePage = (props) => {
                 <img src={movie.imageUrl} alt={movie.title} />
               </div>
               <div className={style.title}>
-                <button onClick={() => setBookTickets(true)}>
+                <button
                   onClick={() => {
+                    setBookTickets(true);
+                    scroll();
+                  }}
+                >
+                  Book tickets
                 </button>
                 <h2>{movie.title}</h2>
                 <h4>{movie.runtime} min</h4>
@@ -82,7 +93,7 @@ const MoviePage = (props) => {
               </div>
             </div>
             {bookTickets && (
-              <div className={style.book}>
+              <div className={style.book} ref={myRef}>
                 <h3>Book tickets</h3>
                 <hr />
                 <Entry />
