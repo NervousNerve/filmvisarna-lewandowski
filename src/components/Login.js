@@ -34,13 +34,13 @@ const Login = ({ toggleMenu }) => {
           />
         </div>
         <div className={styles.inputContainer}>
+          <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
           <input
             placeholder="Password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
-          <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
         </div>
 
         <button type="submit">Sign in</button>

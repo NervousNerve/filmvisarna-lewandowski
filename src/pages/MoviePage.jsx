@@ -1,10 +1,13 @@
 import style from "../css/MoviePage.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
+
 import Entry from "../components/Entry";
 import { useState, useEffect } from "react";
 
 const MoviePage = (props) => {
   const { movieId } = props.match.params;
-  const [bookTickets, setBookTickets] = useState(false);
+  const [bookTickets, setBookTickets] = useState(true);
 
   const [movie, setMovie] = useState(null);
 
@@ -23,8 +26,8 @@ const MoviePage = (props) => {
       {movie && (
         <div>
           <div className={style.heroImg}>
+            <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
             <img src={movie.imageUrl} alt={movie.title} />
-            <i></i>
           </div>
           <div className={style.content}>
             <div className={style.heading}>
@@ -39,7 +42,7 @@ const MoviePage = (props) => {
                 >
                   Book ticket
                 </button>
-                <h3>{movie.title}</h3>
+                <h2>{movie.title}</h2>
                 <h4>{movie.runtime} min</h4>
               </div>
             </div>

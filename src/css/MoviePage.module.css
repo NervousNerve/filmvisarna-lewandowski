@@ -8,6 +8,15 @@
   filter: blur(3px);
   width: 120%;
   margin: -20% -10%;
+  position: relative;
+}
+.moviePage .playIcon {
+  color: #fff;
+  font-size: 40px;
+  position: absolute;
+  top: calc(35vh / 2 - 20px);
+  z-index: 1;
+  left: calc(100vw - 50vw - 20px);
 }
 .moviePage .content {
   max-width: 900px;
@@ -19,8 +28,13 @@
   grid-template-columns: 40% 50%;
   grid-gap: 1.5rem;
 }
+.moviePage .title button {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.8rem;
+}
 .moviePage .imgWrapper {
-  margin-top: -40px;
+  margin-top: -30px;
   max-width: 250px;
   z-index: 1;
 }
@@ -37,6 +51,9 @@
 .moviePage .title h2,
 .moviePage .title h4 {
   margin: 0.8rem 0;
+}
+.moviePage .title h2 {
+  font-size: 1.2em;
 }
 .moviePage .text {
   margin: 0 0.7rem;
@@ -63,6 +80,15 @@
 .moviePage .book hr {
   border: none;
   border-bottom: 2px solid #18191f;
+  margin-bottom: 1rem;
 }
+
 .moviePage .book {
+  margin-top: 3rem;
+}
+.moviePage .book h3 {
+  margin: 0.7rem 0;
+}
+
+@media screen and (min-width: 500px) {
 }
