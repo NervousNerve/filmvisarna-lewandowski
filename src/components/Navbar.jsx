@@ -7,15 +7,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../css/Navbar.module.css";
 
-// const handleClick = () => {
-//   var menu = document.getElementById("myMenu");
-//   if (menu.style.display === "block") {
-//     menu.style.display = "none";
-//   } else {
-//     menu.style.display = "block";
-//   }
-// };
-
 const Navbar = () => {
   // eslint-disable-next-line
   const filmLogo =
@@ -31,26 +22,15 @@ const Navbar = () => {
     }
   };
 
-  // const handleClick = () => {
-  //   var menu = document.getElementById("myMenu");
-  //   if (menu.style.display === "block") {
-  //     menu.style.display = "none";
-  //   } else {
-  //     menu.style.display = "block";
-  //   }
-  // };
-
   return (
     <div className={styles.top}>
       <div
-        // className={styles.topfield}
-
-        className={`${styles.topfield} ${styles.topfield2} ${menu && styles.clickedMenu}`}
+        className={`${styles.topfield} ${styles.topfield2} ${
+          menu && styles.clickedMenu
+        }`}
       >
-        {/* <div className={styles.navs}> */}
-          <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
+        <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
           <FontAwesomeIcon
-            // className={`${styles.burger} ${menu && styles.clickedMenu}`}
             className={styles.burger}
             icon={faBars}
             onClick={handleClick}
