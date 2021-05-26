@@ -12,7 +12,7 @@
 }
 
 .entryContainer input {
-  margin: 0.3em;
+  margin: 0.3em 0;
   position: relative;
 }
 
@@ -22,7 +22,7 @@
 
 .entryContainer h1,
 .entryContainer p {
-  margin: 0 0.5rem;
+  margin: 0.5rem;
 }
 
 ::-webkit-input-placeholder {
