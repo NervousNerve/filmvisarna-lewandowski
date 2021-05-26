@@ -46,7 +46,7 @@ h4 {
 
 @media screen and (min-width: 1024px) {
   .cardsWrapper {
-    width: 65%;
+    width: 50%;
   }
 
   .movieCard:hover {
