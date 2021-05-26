@@ -6,6 +6,7 @@ const Booking = () => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [oldie, setOldie] = useState(0);
+  const [feedback, setFeedback] = useState();
 
   useEffect(() => {
     //console.log("Adult: ", adult, "Child: ", child, "Oldie: ", oldie);
@@ -25,6 +26,12 @@ const Booking = () => {
     booking = await booking.json();
   };
 
+  const handleChange = () => {
+    setFeedback(
+      "Great choice of everything. We will pick out the best seats for you on this show and you'll find the details about it in your confirmation!"
+    );
+  };
+
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
@@ -42,7 +49,7 @@ const Booking = () => {
 
       <div className={styles.selectWrapper}>
         <div className="custom-select">
-          <select>
+          <select onChange={handleChange}>
             <option>Date and time</option>
             <option>test</option>
             <option>test</option>
@@ -50,9 +57,12 @@ const Booking = () => {
         </div>
       </div>
 
+      <div className={styles.feedback}>{feedback}</div>
+
       <div className={styles.totalPrice}>
         <p>Total: $$$</p>
       </div>
+
       <div className={styles.seatBtn}>
         <button onClick={confirmBooking}>Confirm</button>
       </div>

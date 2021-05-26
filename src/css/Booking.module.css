@@ -32,3 +32,8 @@
 .selectWrapper select {
   font-family: "Oxygen", sans-serif;
 }
+
+.feedback {
+  text-align: center;
+  margin-top: 1em;
+}
