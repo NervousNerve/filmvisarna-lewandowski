@@ -15,6 +15,10 @@ const Booking = () => {
     console.log(totalSeats);
   }, [adult, child, oldie]);
 
+  useEffect(() => {
+    getScreenings();
+  }, []);
+
   const confirmBooking = async () => {
     const request = {
       screeningId: "60a655dead5bec403ce90cb3",
@@ -27,6 +31,12 @@ const Booking = () => {
       body: JSON.stringify(request),
     });
     booking = await booking.json();
+  };
+
+  const getScreenings = async () => {
+    let screening = await fetch("/api/v1/screenings/60a632b98421e91fe4243bab");
+    screening = await screening.json();
+    console.log(screening);
   };
 
   const handleChange = () => {
