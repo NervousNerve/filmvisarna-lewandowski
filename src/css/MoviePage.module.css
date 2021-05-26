@@ -35,7 +35,7 @@
 }
 .moviePage .imgWrapper {
   margin-top: -30px;
-  max-width: 250px;
+  max-width: 300px;
   z-index: 1;
 }
 .moviePage .imgWrapper img {
@@ -61,6 +61,7 @@
 .moviePage .infoContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-gap: 1.2rem;
 }
 .moviePage .info ul {
   padding: 0;
@@ -91,4 +92,15 @@
 }
 
 @media screen and (min-width: 500px) {
+  .moviePage .title h2 {
+    font-size: 26px;
+    margin-top: 1.5rem;
+  }
+  .moviePage .title h2,
+  .moviePage .title h4 {
+    margin-left: 0.5rem;
+  }
+  .moviePage .heading {
+    grid-gap: 2.5rem;
+  }
 }
