@@ -8,7 +8,7 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [totalSeats, setTotalSeats] = useState(0);
-  const [screeningSchedule, setscreeningSchedule] = useState();
+  const [screeningSchedule, setScreeningSchedule] = useState();
   let movieId = "60a632b98421e91fe4243bab";
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Booking = () => {
   const getScreenings = async (id) => {
     let screening = await fetch(`/api/v1/screenings/${movieId}`);
     screening = await screening.json();
-    setscreeningSchedule(screening);
+    setScreeningSchedule(screening);
   };
 
   const handleChange = () => {
@@ -66,9 +66,14 @@ const Booking = () => {
         <div className="custom-select">
           <select onChange={handleChange}>
             <option>Date and time</option>
-
-            <option>test</option>
-            <option>test</option>
+            {screeningSchedule &&
+              screeningSchedule.map((date, i) => {
+                return (
+                  <option value={date.date} key={i}>
+                    {date.date}
+                  </option>
+                );
+              })}
           </select>
         </div>
       </div>
