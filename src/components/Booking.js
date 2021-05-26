@@ -7,9 +7,11 @@ const Booking = () => {
   const [child, setChild] = useState(0);
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
+  const [totalSeats, setTotalSeats] = useState();
 
   const numberOfTickets = () => {
     let total = adult + child + oldie;
+    setTotalSeats(total);
   };
 
   useEffect(() => {
@@ -20,7 +22,7 @@ const Booking = () => {
   const confirmBooking = async () => {
     const request = {
       screeningId: "60a655dead5bec403ce90cb3",
-      seats: [2, 3],
+      seats: totalSeats,
     };
 
     let booking = await fetch("/api/v1/bookings", {
