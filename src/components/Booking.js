@@ -18,8 +18,13 @@ const Booking = () => {
   }, [adult, child, oldie]);
 
   useEffect(() => {
-    getScreenings();
-  }, []);
+    (async () => {
+      let screening = await fetch(`/api/v1/screenings/${movieId}`);
+      screening = await screening.json();
+      //console.log(screening[0].date.toLocaleTimeString());
+      setScreeningSchedule(screening);
+    })();
+  }, [movieId]);
 
   const confirmBooking = async () => {
     const request = {
@@ -33,12 +38,6 @@ const Booking = () => {
       body: JSON.stringify(request),
     });
     booking = await booking.json();
-  };
-
-  const getScreenings = async (id) => {
-    let screening = await fetch(`/api/v1/screenings/${movieId}`);
-    screening = await screening.json();
-    setScreeningSchedule(screening);
   };
 
   const handleChange = () => {
