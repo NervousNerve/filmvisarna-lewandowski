@@ -158,6 +158,24 @@ const getBookingsByUser = async (req, res) => {
       { $unwind: "$screeningId" },
       // Finally filters bookings that have a screening with a matching date
       { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
+      {
+        $lookup: {
+        from: "movies",
+        localField: "screeningId.movieId",
+        foreignField: "_id",
+        as: "screeningId.movieId",
+        },
+      },
+      { $unwind: "$screeningId.movieId" },
+      {
+        $lookup: {
+        from: "theaters",
+        localField: "screeningId.theaterId",
+        foreignField: "_id",
+        as: "screeningId.theaterId",
+        },
+      },
+      { $unwind: "$screeningId.theaterId" },
     ]).exec();
 
     if (!bookings.length) {
