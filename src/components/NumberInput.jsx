@@ -29,6 +29,7 @@ const NumberInput = ({ updateValue }) => {
         name="quantity"
         type="number"
         value={value}
+        readOnly
       />
       <button className={style.plus} onClick={increase} />
     </div>
