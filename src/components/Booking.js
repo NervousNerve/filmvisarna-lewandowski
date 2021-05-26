@@ -7,16 +7,12 @@ const Booking = () => {
   const [child, setChild] = useState(0);
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
-  const [totalSeats, setTotalSeats] = useState();
-
-  const numberOfTickets = () => {
-    let total = adult + child + oldie;
-    setTotalSeats(total);
-  };
+  const [totalSeats, setTotalSeats] = useState(0);
 
   useEffect(() => {
-    //console.log("Adult: ", adult, "Child: ", child, "Oldie: ", oldie);
-    numberOfTickets();
+    let total = adult + child + oldie;
+    setTotalSeats(total);
+    console.log(totalSeats);
   }, [adult, child, oldie]);
 
   const confirmBooking = async () => {
