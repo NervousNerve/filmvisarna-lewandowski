@@ -1,7 +1,7 @@
 import style from "../css/MoviePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-
+import Trailer from "../components/Trailer";
 import Entry from "../components/Entry";
 import { useState, useEffect, useRef } from "react";
 
@@ -9,7 +9,7 @@ const MoviePage = (props) => {
   const myRef = useRef();
   const { movieId } = props.match.params;
   const [bookTickets, setBookTickets] = useState(true);
-
+  const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
 
   const getMovieById = async (movieId) => {
@@ -27,11 +27,22 @@ const MoviePage = (props) => {
     window.scrollTo({ behavior: "smooth", top: scrollStop });
   };
 
+  const closeTrailer = (e) => {
+    if (e.target !== "iframe") {
+      setWatchTrailer(false);
+    }
+  };
+
   return (
     <div className={style.moviePage}>
       {movie && (
         <div>
-          <div className={style.heroImg}>
+          {watchTrailer && (
+            <div className={style.trailerContainer} onClick={closeTrailer}>
+              <Trailer />
+            </div>
+          )}
+          <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
             <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
             <img src={movie.imageUrl} alt={movie.title} />
           </div>

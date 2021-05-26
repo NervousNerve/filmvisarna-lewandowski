@@ -104,3 +104,13 @@
     grid-gap: 2.5rem;
   }
 }
+.trailerContainer {
+  background: rgba(43, 41, 41, 0.856);
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
