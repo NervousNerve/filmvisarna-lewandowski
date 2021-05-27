@@ -40,19 +40,31 @@ const ConfirmationPage = (props) => {
         <div className={styles.details}>
           {/* <h4>Order details:</h4> */}
           <div className={styles.orderDetails}>
+            {/* <div className={styles.detailsLeft}>
+              <p>Booking Number: {booking._id}</p>
+              <p>Price: {booking.price}</p>
+              <p>Date/Time: {booking.screeningId.date}</p>
+              <p>Seat/Row: {booking.seats.join(", ")}</p>
+              <p>
+                Film description: {booking.screeningId.movieId.title},{" "}
+                {booking.screeningId.movieId.plot}
+              </p>
+            </div> */}
             <div className={styles.detailsLeft}>
               <p>Booking Number:</p>
               <p>Price:</p>
               <p>Date/Time:</p>
-              <p>Film description:</p>
               <p>Seat/Row:</p>
+              <p>Film description:</p>
             </div>
             <div className={styles.detailsRight}>
               <p> {booking._id}</p>
-              <p> {booking.price}</p>
-              {/* <p> {orderDetails.shippingDetails.ShippingName}</p>
-              <p> {orderDetails.shippingDetails.ShippingAddress}</p> */}
+              <p> {booking.price} kr</p>
+              <p> {booking.screeningId.date}</p>
               <p> {booking.seats.join(", ")}</p>
+              <p> {booking.screeningId.movieId.title}</p>
+              <p className={styles.plot}> {booking.screeningId.movieId.plot}</p>
+              {/* <p> {booking.seats}</p> */}
             </div>
           </div>
 
