@@ -55,9 +55,13 @@ const createBooking = async (req, res) => {
     });
   }
 
-  if (!Array.isArray(req.body.seats) || !req.body.seats.length) {
+  if (
+    isNaN(req.body.seats) &&
+    !Array.isArray(req.body.seats) &&
+    !req.body.seats.length
+  ) {
     return res.status(400).json({
-      error: "Invalid 'seats' parameter",
+      error: "Invalid 'seats' parameter. Expected Number or non-empty Array",
     });
   }
 
