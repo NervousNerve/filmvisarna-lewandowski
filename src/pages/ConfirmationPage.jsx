@@ -27,11 +27,11 @@ const ConfirmationPage = (props) => {
     <div>
       <div className={styles.confirmation}>
         {/* <img className={styles.logo} src="/assets/images/logo.svg" alt="Logo" /> */}
-        {/* <img
+        <img
           className={styles.confirm}
           src="/assets/icons/confirm.svg"
           alt="confirm icon"
-        /> */}
+        />
         <div className={styles.thanks}>
           <h1>Thank's for booking with FunkyFilm!</h1>
           <p>Booking confirmation</p>
