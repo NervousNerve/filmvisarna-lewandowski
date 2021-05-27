@@ -4,7 +4,7 @@
 import styles from "../css/ConfirmationPage.module.css";
 // import footerstyle from '../css/Footer.module.css'
 
-const Confirmation = () => {
+const ConfirmationPage = () => {
   // const { orderDetails } = useContext(CartContext)
 
   return (
@@ -17,8 +17,8 @@ const Confirmation = () => {
           alt="confirm icon"
         /> */}
         <div className={styles.thanks}>
-          <h1>Thank you for booking with FunkyFilm!</h1>
-          <p>Below you will find information about your ticket</p>
+          <h1>Thank's for booking with FunkyFilm!</h1>
+          <p>Booking confirmation</p>
         </div>
 
         <div className={styles.details}>
@@ -84,4 +84,4 @@ const Confirmation = () => {
   );
 };
 
-export default Confirmation;
+export default ConfirmationPage;

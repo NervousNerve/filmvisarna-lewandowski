@@ -15,7 +15,7 @@
 }
 
 .thanks > h1 {
-  font-family: "Lato";
+  /* font-family: "Lato"; */
   font-weight: 700;
   font-size: 1.6rem;
   text-align: center;
@@ -24,7 +24,7 @@
 
 .thanks > p {
   text-align: center;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
 .confirmation h4 {
@@ -33,12 +33,12 @@
 
 .details {
   font-weight: 300;
-  font-family: "Roboto Condensed";
+  /* font-family: "Roboto Condensed"; */
   text-align: center;
   margin-top: 30px;
   border: 2px solid #18191f;
   border-radius: 6px;
-  padding: 2px 10px;
+  padding: 5px 100px;
   background-color: #ffe8e8;
 }
 
@@ -84,7 +84,7 @@
 
 .information > p {
   font-weight: 300;
-  font-family: "Roboto Condensed";
+  /* font-family: "Roboto Condensed"; */
   text-align: center;
   font-size: 0.8rem;
   line-height: 0.2rem;
@@ -116,6 +116,11 @@
 }
 
 .backhome {
+  margin-top: 20px;
+  float: right;
+}
+
+/* .backhome {
   background-color: #ffd465;
   border: 1px solid #18191f;
   border-radius: 6px;
@@ -123,4 +128,4 @@
   padding: 5px 5px;
   margin-top: 20px;
   float: right;
-}
+} */
