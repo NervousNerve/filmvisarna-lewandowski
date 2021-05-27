@@ -1,4 +1,4 @@
-import MovieCard from "./MovieCard";
+import MovieCard from "./movieCard";
 import styles from "../css/Movie-card.module.css";
 import { useEffect, useState } from "react";
 

@@ -1,6 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import UserProvider from "./contexts/UserContext";
-import Home from "./pages/Home";
+import Home from "./pages/home";
 import Entry from "./components/Entry";
 
 function App() {
