@@ -8,7 +8,7 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  const [chosenScreeningId, setchosenScreeningId] = useState();
+  const [chosenScreeningId, setchosenScreeningId] = useState(null);
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
 
@@ -29,6 +29,15 @@ const Booking = () => {
       seats: adult + child + oldie,
     };
 
+    if (request.seats < 1 || request.screeningId === null) {
+      setFeedback("Please select both ticket and date!");
+      setTimeout(() => {
+        setFeedback("");
+      }, 3000);
+    } else {
+      setFeedback("");
+    }
+
     let booking = await fetch("/api/v1/bookings", {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -39,9 +48,6 @@ const Booking = () => {
 
   const handleChange = (e) => {
     setchosenScreeningId(e.target.value);
-    setFeedback(
-      "Great choice of everything. We will pick out the best seats for you on this show and you'll find the details about it in your confirmation!"
-    );
   };
 
   return (
@@ -62,7 +68,7 @@ const Booking = () => {
       <div className={styles.selectWrapper}>
         <div className="custom-select">
           <select onChange={handleChange}>
-            <option>Date and time</option>
+            <option value={"reset"}>Date and time</option>
             {screeningSchedule &&
               screeningSchedule.map((screening, i) => {
                 return (
@@ -77,7 +83,7 @@ const Booking = () => {
         </div>
       </div>
 
-      <div className={styles.feedback}>{feedback}</div>
+      <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
         {/* A dynamic value will be added here */}
