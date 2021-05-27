@@ -1,3 +1,4 @@
+/* Hero img and trailer */
 .moviePage .heroImg {
   width: 100vw;
   overflow: hidden;
@@ -28,22 +29,21 @@
   align-items: center;
   justify-content: center;
 }
+
+/* All other content */
 .moviePage .content {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 1rem;
 }
+
 .moviePage .heading {
   display: grid;
   max-width: 900px;
   column-gap: 1.5rem;
 }
 
-.moviePage .title button {
-  width: 100%;
-  max-width: 200px;
-  padding: 0.8rem;
-}
+/* Movie poster */
 .moviePage .imgWrapper {
   margin-top: -30px;
   max-width: 250px;
@@ -58,17 +58,23 @@
   box-shadow: 0px 3px 0px 0px #18191f;
   width: 100%;
 }
+
+/* Title and booking button */
 .moviePage .title {
   margin-top: -20px;
   z-index: 1;
   grid-column: 4 / 10;
   grid-row: 1 / 1;
 }
-.moviePage .infoGrid {
-  margin: 0 1rem;
-  grid-row: 3 / 3;
-  grid-column: 1 / 10;
+
+/* Button */
+.moviePage .title button {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.8rem;
 }
+
+/* Title elements */
 .moviePage .title h2,
 .moviePage .title h4 {
   margin: 0.8rem 0;
@@ -76,6 +82,15 @@
 .moviePage .title h2 {
   font-size: 1.2em;
 }
+
+/* Genre and Actors elements */
+.moviePage .infoGrid {
+  margin: 0 1rem;
+  grid-row: 3 / 3;
+  grid-column: 1 / 10;
+}
+
+/* Plot, director and rating */
 .moviePage .text {
   margin: 1rem;
 }
@@ -85,7 +100,6 @@
   grid-gap: 1.2rem;
   max-width: 400px;
 }
-
 .moviePage .info ul {
   padding: 0;
   margin: 0;
@@ -93,7 +107,6 @@
 .moviePage .info li {
   list-style-type: none;
 }
-
 .moviePage h4 {
   margin: 1.4rem 0 0.2rem;
 }
@@ -101,12 +114,12 @@
   margin: 0;
 }
 
+/* Booking component */
 .moviePage .book hr {
   border: none;
   border-bottom: 2px solid #18191f;
   margin-bottom: 1rem;
 }
-
 .moviePage .book {
   margin-top: 3rem;
 }
@@ -114,6 +127,7 @@
   margin: 0.7rem 0;
 }
 
+/* Media queries */
 @media screen and (min-width: 500px) {
   .moviePage .content {
     padding: 0 2rem;
@@ -129,7 +143,7 @@
 }
 
 @media screen and (min-width: 600px) {
-  .moviePage .infoContainer {
+  .moviePage .infoGrid {
     margin: 0 0.5rem;
   }
   .moviePage .imgWrapper {

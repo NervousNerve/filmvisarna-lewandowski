@@ -13,6 +13,7 @@ const MoviePage = (props) => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
+    /* Get movie data from backend */
     (async (movieId) => {
       let movie = await fetch(`/api/v1/movies/${movieId}`);
       movie = await movie.json();
@@ -20,11 +21,13 @@ const MoviePage = (props) => {
     })(movieId);
   }, [movieId]);
 
+  /* Scroll to booking function */
   const scroll = () => {
     let scrollStop = myRef.current.offsetTop - 70;
     window.scrollTo({ behavior: "smooth", top: scrollStop });
   };
 
+  /* Close trailer modal */
   const closeTrailer = (e) => {
     if (e.target !== "iframe") {
       setWatchTrailer(false);
@@ -35,6 +38,7 @@ const MoviePage = (props) => {
     <div className={style.moviePage}>
       {movie && (
         <div>
+          {/* Trailer */}
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
               <Trailer
@@ -43,16 +47,20 @@ const MoviePage = (props) => {
               />
             </div>
           )}
+          {/* Hero image */}
           <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
             <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
             <img src={movie.imageUrl} alt={movie.title} />
           </div>
+          {/* Content */}
           <div className={style.content}>
             <div className={style.heading}>
+              {/* Movie poster */}
               <div className={style.imgWrapper}>
                 <img src={movie.imageUrl} alt={movie.title} />
               </div>
               <div className={style.title}>
+                {/* Booking button */}
                 <button
                   onClick={() => {
                     setBookTickets(true);
@@ -75,6 +83,7 @@ const MoviePage = (props) => {
                 </div>
                 <div className={style.info}>
                   <h4>Actors</h4>
+                  {/* Separating actors with a comma */}
                   <p>
                     {movie.actors.map((actor) => {
                       if (
@@ -104,6 +113,7 @@ const MoviePage = (props) => {
                 </div>
               </div>
             </div>
+            {/* Booking component */}
             {bookTickets && (
               <div className={style.book} ref={myRef}>
                 <h3>Book tickets</h3>
