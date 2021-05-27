@@ -12,15 +12,13 @@ const MoviePage = (props) => {
   const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
 
-  const getMovieById = async (movieId) => {
-    let movie = await fetch(`/api/v1/movies/${movieId}`);
-    movie = await movie.json();
-    setMovie(movie);
-  };
-
   useEffect(() => {
-    getMovieById(movieId);
-  }, []);
+    (async (movieId) => {
+      let movie = await fetch(`/api/v1/movies/${movieId}`);
+      movie = await movie.json();
+      setMovie(movie);
+    })(movieId);
+  }, [movieId]);
 
   const scroll = () => {
     let scrollStop = myRef.current.offsetTop - 70;
@@ -39,7 +37,10 @@ const MoviePage = (props) => {
         <div>
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Trailer trailer={String(movie.trailerUrl)} />
+              <Trailer
+                trailer={String(movie.trailerUrl)}
+                movieTitle={movie.title}
+              />
             </div>
           )}
           <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
@@ -69,15 +70,15 @@ const MoviePage = (props) => {
                 <div className={style.info}>
                   <h4>Genres</h4>
                   <ul>
-                    {movie.genre.map((genre) => {
-                      return <li>{genre}</li>;
+                    {movie.genre.map((genre, i) => {
+                      return <li key={i}>{genre}</li>;
                     })}
                   </ul>
                 </div>
                 <div className={style.info}>
                   <h4>Actors</h4>
                   <p>
-                    {movie.actors.map((actor, i) => {
+                    {movie.actors.map((actor) => {
                       if (
                         movie.actors.indexOf(actor) ===
                         movie.actors.length - 1
