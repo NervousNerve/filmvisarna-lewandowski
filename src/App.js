@@ -10,12 +10,11 @@ function App() {
     <div className="App">
       <UserProvider>
         <BrowserRouter>
+          <Navbar />
           <Entry />
           <Route exact path="/">
             <Home />
           </Route>
-        </BrowserRouter>
-          <Navbar />
           <Route exact path="/confirmation/:id" component={ConfirmationPage} />
         </BrowserRouter>
       </UserProvider>
