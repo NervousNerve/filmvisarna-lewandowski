@@ -164,19 +164,19 @@ const getBookingsByUser = async (req, res) => {
       { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
       {
         $lookup: {
-        from: "movies",
-        localField: "screeningId.movieId",
-        foreignField: "_id",
-        as: "screeningId.movieId",
+          from: "movies",
+          localField: "screeningId.movieId",
+          foreignField: "_id",
+          as: "screeningId.movieId",
         },
       },
       { $unwind: "$screeningId.movieId" },
       {
         $lookup: {
-        from: "theaters",
-        localField: "screeningId.theaterId",
-        foreignField: "_id",
-        as: "screeningId.theaterId",
+          from: "theaters",
+          localField: "screeningId.theaterId",
+          foreignField: "_id",
+          as: "screeningId.theaterId",
         },
       },
       { $unwind: "$screeningId.theaterId" },
