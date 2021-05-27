@@ -9,30 +9,31 @@ const UserBookings = () => {
 
   useEffect(() => {
     if (localStorage.getItem("showUpcomingBookings")) {
-      setShowUpcomingBookings(JSON.parse(localStorage.getItem("showUpcomingBookings")));
+      setShowUpcomingBookings(
+        JSON.parse(localStorage.getItem("showUpcomingBookings"))
+      );
     }
   }, []);
 
   useEffect(() => {
-    console.log(upcomingBookings, previousBookings)
-  }, [upcomingBookings, previousBookings])
+    console.log(upcomingBookings, previousBookings);
+  }, [upcomingBookings, previousBookings]);
 
   useEffect(() => {
     localStorage.setItem("showUpcomingBookings", showUpcomingBookings);
     async function fetchData() {
-    if (showUpcomingBookings) {
-      let getUpcomingBookings = await fetch(`/api/v1/bookings/`);
-      getUpcomingBookings = await getUpcomingBookings.json();
-      setUpcomingBookings(getUpcomingBookings);
-    } else {
-      let getPreviousBookings = await fetch(`/api/v1/bookings?previous=true`);
-      getPreviousBookings = await getPreviousBookings.json();
+      if (showUpcomingBookings) {
+        let getUpcomingBookings = await fetch(`/api/v1/bookings/`);
+        getUpcomingBookings = await getUpcomingBookings.json();
+        setUpcomingBookings(getUpcomingBookings);
+      } else {
+        let getPreviousBookings = await fetch(`/api/v1/bookings?previous=true`);
+        getPreviousBookings = await getPreviousBookings.json();
 
-      setPreviousBookings(getPreviousBookings);
+        setPreviousBookings(getPreviousBookings);
+      }
     }
-  }
     fetchData();
-   
   }, [showUpcomingBookings]);
 
   const toggleBookings = (e) => {
