@@ -1,6 +1,6 @@
 .bookingWrapper {
   background-color: #fdf7e3;
-  width: 25em;
+  max-width: 25em;
   border-radius: 14px;
   border: 2px solid #18191f;
   padding: 2em 0em;
@@ -36,4 +36,5 @@
 .feedback {
   text-align: center;
   margin-top: 1em;
+  padding: 0em 1em;
 }
