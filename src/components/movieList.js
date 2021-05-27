@@ -6,7 +6,6 @@ const MovieList = () => {
   const [movieList, setMovieList] = useState(null);
 
   const getAllMovies = async () => {
-    //TODO change fetch-route to ("/api/v1/movies") when merging with dev. This route is obsolete
     let movies = await fetch("/api/v1/movies");
     movies = await movies.json();
     setMovieList(movies);
