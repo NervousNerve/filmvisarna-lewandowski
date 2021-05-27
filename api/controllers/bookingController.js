@@ -118,26 +118,74 @@ const createBooking = async (req, res) => {
   }
 };
 
+/* Finds bookings for the currently logged in user
+ *
+ * Parameters:
+ * req.body.previous: If 'true' this function returns only past bookings,
+ *                    otherwise only returns future bookings
+ */
 const getBookingsByUser = async (req, res) => {
-  let idToFind = req.query.userid;
+  if (!req.session?.user) {
+    return res.status(401).json({
+      error: "Not logged in",
+    });
+  }
 
-  Booking.find({
-    userId: idToFind,
-  }).exec((err, bookings) => {
-    if (err) {
-      res.status(400).json({
-        error: "Something went wrong",
-      });
-      return;
+  const idToFind = ObjectId(req.session.user._id);
+
+  const fromDate =
+    req.query.previous === "true" ? new Date(1900, 01, 01) : new Date();
+  const toDate =
+    req.query.previous === "true" ? new Date() : new Date(3000, 01, 01);
+
+  try {
+    let bookings = await Booking.aggregate([
+      // First we find all bookings for the current user
+      { $match: { userId: idToFind } },
+      {
+        // Kind of like .populate.
+        // Find all screenings that match our 'screeningId',
+        // and store them in 'screeningId'
+        $lookup: {
+          from: "screenings",
+          localField: "screeningId",
+          foreignField: "_id",
+          as: "screeningId",
+        },
+      },
+      // $lookup creates an array, but since we will only ever have one
+      // screening per booking $unwind gives us that single object instead
+      { $unwind: "$screeningId" },
+      // Finally filters bookings that have a screening with a matching date
+      { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
+      {
+        $lookup: {
+        from: "movies",
+        localField: "screeningId.movieId",
+        foreignField: "_id",
+        as: "screeningId.movieId",
+        },
+      },
+      { $unwind: "$screeningId.movieId" },
+      {
+        $lookup: {
+        from: "theaters",
+        localField: "screeningId.theaterId",
+        foreignField: "_id",
+        as: "screeningId.theaterId",
+        },
+      },
+      { $unwind: "$screeningId.theaterId" },
+    ]).exec();
+
+    if (!bookings.length) {
+      return res.status(404).json({ error: "No bookings found" });
     }
-    if (!bookings) {
-      res.json({
-        message: `No bookings to show`,
-      });
-      return;
-    }
-    res.json(bookings);
-  });
+    return res.json(bookings);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
 };
 
 module.exports = {
