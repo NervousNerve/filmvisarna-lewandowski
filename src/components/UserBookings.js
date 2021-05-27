@@ -80,12 +80,12 @@ const UserBookings = () => {
         <span
           className={`${styles.activeState} ${styles.activeStatePrevious} ${styles.bold}`}
         >
-          Previous
+          Upcoming
         </span>
         <span
           className={`${styles.activeState} ${styles.activeStateUpcoming} ${styles.bold}`}
         >
-          Upcoming
+          Previous
         </span>
       </label>
       {renderTickets()}
