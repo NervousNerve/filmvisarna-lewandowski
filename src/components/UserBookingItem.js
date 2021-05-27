@@ -17,7 +17,7 @@ const UserBookingItem = (props) => {
       <div className={styles.seatContainer}>
         <p className={styles.bold}>
           {" "}
-          {booking.seats.length === 1 ? "seat:" : "seats:"}
+          {booking.seats.length === 1 ? "Seat:" : "Seats:"}
         </p>
         {booking.seats.map((seat, i) => (
           <p key={i} className={styles.seat}>

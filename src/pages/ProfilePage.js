@@ -12,7 +12,7 @@ const ProfilePage = () => {
   }, [currentUser]);
   return (
     <div className="profilepage">
-      {/* <h1>Hi {currentUser.name} </h1> */}
+      <h1>Hi {currentUser && currentUser.name}!</h1>
       <UserBookings />
     </div>
   );
