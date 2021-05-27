@@ -1,0 +1,46 @@
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.5em;
+}
+
+form input {
+  position: relative;
+}
+
+.userIcon,
+.lockIcon {
+  position: absolute;
+  font-size: 19px;
+  left: 15em;
+  z-index: 1;
+  color: #474a57;
+}
+
+.userIcon {
+  top: 8.6em;
+}
+
+.lockIcon {
+  top: 11.6em;
+}
+
+.toggleMenuBtn button {
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  background-color: inherit;
+  font-family: "Montserrat", sans-serif;
+  cursor: pointer;
+  margin-top: 0;
+}
+
+.highlighted {
+  color: #d83830;
+}
+
+.feedbackMessage {
+  text-align: center;
+  padding-top: 1em;
+}
