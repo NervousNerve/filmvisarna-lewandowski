@@ -8,12 +8,16 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  let chosenScreeningId = null;
+  const [chosenScreeningId, setchosenScreeningId] = useState();
   // will be updated with dynamic prop value from Movie Page
-  let movieId = "60a632b98421e91fe4243bab";
+  let movieId = "60a632b98421e91fe4243b9e ";
 
   // will be updated with the calculation of total price
   useEffect(() => {}, [adult, child, oldie]);
+
+  /*   useEffect(() => {
+    console.log(chosenScreeningId);
+  }, [chosenScreeningId]); */
 
   useEffect(() => {
     (async () => {
@@ -25,8 +29,8 @@ const Booking = () => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: chosenScreeningId,
-      seats: adult + child + oldie,
+      screeningId: "60a655dead5bec403ce90cc0",
+      seats: 2,
     };
 
     let booking = await fetch("/api/v1/bookings", {
@@ -38,7 +42,7 @@ const Booking = () => {
   };
 
   const handleChange = (e) => {
-    chosenScreeningId = e.target.value;
+    setchosenScreeningId(e.target.value);
     setFeedback(
       "Great choice of everything. We will pick out the best seats for you on this show and you'll find the details about it in your confirmation!"
     );
