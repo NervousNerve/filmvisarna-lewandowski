@@ -1,10 +1,12 @@
 // import { useContext } from 'react'
+import { useState } from 'react'
 // import Footer from '../components/Footer'
 // import { CartContext } from "../contexts/CartContext"
 import styles from "../css/ConfirmationPage.module.css";
 // import footerstyle from '../css/Footer.module.css'
 
 const ConfirmationPage = () => {
+  const [movie, setMovie] = useState
   // const { orderDetails } = useContext(CartContext)
 
   return (
