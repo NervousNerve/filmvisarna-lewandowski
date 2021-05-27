@@ -5,7 +5,7 @@ import styles from "../css/ConfirmationPage.module.css";
 // import footerstyle from '../css/Footer.module.css'
 
 const ConfirmationPage = (props) => {
-  const [booking, setBooking] = useState(null);
+  const [booking, setBooking] = useState();
   const { bookingId } = props.match.params;
 
   const getBookingById = async (bookingId) => {
@@ -44,11 +44,11 @@ const ConfirmationPage = (props) => {
               <p>Seat/Row:</p>
             </div>
             <div className={styles.detailsRight}>
-              <p> {booking.bookingid}</p>
-              {/* <p> {orderDetails.orderDate}</p>
-              <p> {orderDetails.shippingDetails.ShippingName}</p>
-              <p> {orderDetails.shippingDetails.ShippingAddress}</p>
-              <p> {`${orderDetails.shippingDetails.ShippingCity}, ${orderDetails.shippingDetails.ShippingCountry}`}</p> */}
+              {/* <p> {booking._id}</p> */}
+              <p> {booking.price}</p>
+              {/* <p> {orderDetails.shippingDetails.ShippingName}</p>
+              <p> {orderDetails.shippingDetails.ShippingAddress}</p> */}
+              <p> {booking.seats}</p>
             </div>
           </div>
 
