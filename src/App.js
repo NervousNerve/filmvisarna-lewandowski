@@ -8,10 +8,10 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Route exact path="/confirmation" component={ConfirmationPage} />
-      </BrowserRouter>
+        <BrowserRouter>
+          <Navbar />
+          <Route exact path="/confirmation/:id" component={ConfirmationPage} />
+        </BrowserRouter>
       </UserProvider>
     </div>
   );

@@ -6,18 +6,22 @@ import styles from "../css/ConfirmationPage.module.css";
 
 const ConfirmationPage = (props) => {
   const [booking, setBooking] = useState();
-  const { bookingId } = props.match.params;
+  const { id } = props.match.params;
 
-  const getBookingById = async (bookingId) => {
-    let booking = await fetch(`/api/v1/bookings/${bookingId}`);
+  const getBookingById = async (id) => {
+    let booking = await fetch(`/api/v1/bookings/${id}`);
     booking = await booking.json();
     setBooking(booking);
   };
 
   useEffect(() => {
-    getBookingById(bookingId);
-  }, []);
+    getBookingById(id);
+  }, [id]);
   // const { orderDetails } = useContext(CartContext)
+
+  if (!booking) {
+    return null;
+  }
 
   return (
     <div>
@@ -44,11 +48,11 @@ const ConfirmationPage = (props) => {
               <p>Seat/Row:</p>
             </div>
             <div className={styles.detailsRight}>
-              {/* <p> {booking._id}</p> */}
+              <p> {booking._id}</p>
               <p> {booking.price}</p>
               {/* <p> {orderDetails.shippingDetails.ShippingName}</p>
               <p> {orderDetails.shippingDetails.ShippingAddress}</p> */}
-              <p> {booking.seats}</p>
+              <p> {booking.seats.join(", ")}</p>
             </div>
           </div>
 
