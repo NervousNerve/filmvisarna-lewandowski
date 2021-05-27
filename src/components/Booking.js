@@ -34,6 +34,7 @@ const Booking = () => {
       setTimeout(() => {
         setFeedback("");
       }, 2500);
+      return;
     }
 
     try {
@@ -41,19 +42,25 @@ const Booking = () => {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error(
+            "Something went wrong. API returned some kind of error."
+          );
+        }
+        return response.json();
       });
       await booking.json();
 
       // the statuscode prints. How to reach the relevant error msg from backend?
-      console.log(booking.statusText);
+      // console.log(booking.statusText);
     } catch (err) {
-      console.log("Error");
+      console.log(err);
     }
   };
 
   const handleChange = (e) => {
     setchosenScreeningId(e.target.value);
-    console.log(e.target.value);
   };
 
   return (
