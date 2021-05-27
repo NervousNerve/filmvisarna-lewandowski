@@ -7,15 +7,10 @@ const Booking = () => {
   const [child, setChild] = useState(0);
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
-  const [totalSeats, setTotalSeats] = useState(0);
   const [screeningSchedule, setScreeningSchedule] = useState();
   let movieId = "60a632b98421e91fe4243bab";
 
-  useEffect(() => {
-    let total = adult + child + oldie;
-    setTotalSeats(total);
-    //console.log(totalSeats);
-  }, [adult, child, oldie]);
+  useEffect(() => {}, [adult, child, oldie]);
 
   useEffect(() => {
     (async () => {
@@ -29,7 +24,7 @@ const Booking = () => {
   const confirmBooking = async () => {
     const request = {
       screeningId: "60a655dead5bec403ce90cb3",
-      seats: totalSeats,
+      seats: adult + child + oldie,
     };
 
     let booking = await fetch("/api/v1/bookings", {
@@ -69,7 +64,9 @@ const Booking = () => {
               screeningSchedule.map((date, i) => {
                 return (
                   <option value={date.date} key={i}>
-                    {date.date}
+                    {new Date(date.date).toLocaleString("sv-SE", {
+                      timeZone: "Europe/Stockholm",
+                    })}
                   </option>
                 );
               })}
