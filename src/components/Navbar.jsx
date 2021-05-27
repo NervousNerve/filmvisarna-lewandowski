@@ -36,7 +36,7 @@ const Navbar = () => {
             onClick={handleClick}
           />
 
-          <img className={styles.img} src="/assets/icons/logo.png" alt="Logo" />
+          <img className={styles.imglogo} src="/assets/icons/logo.png" alt="Logo" />
           <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
         </div>
         <div className={styles.topnav} id="myMenu">
