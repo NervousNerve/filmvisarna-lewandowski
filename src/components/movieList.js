@@ -14,7 +14,6 @@ const MovieList = () => {
 
   useEffect(() => {
     getAllMovies();
-    console.log("use effect ran");
   }, []);
 
   const handleMovieClick = (x) => {
