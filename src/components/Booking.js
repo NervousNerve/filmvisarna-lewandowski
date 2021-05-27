@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import styles from "../css/Booking.module.css";
 import NumberInput from "./NumberInput";
+import styles from "../css/Booking.module.css";
 
 const Booking = () => {
   const [adult, setAdult] = useState(0);
@@ -8,9 +8,11 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
+  let chosenScreeningId = null;
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243bab";
 
+  // will be updated with the calculation of total price
   useEffect(() => {}, [adult, child, oldie]);
 
   useEffect(() => {
@@ -23,7 +25,7 @@ const Booking = () => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: "60a655dead5bec403ce90cb3",
+      screeningId: chosenScreeningId,
       seats: adult + child + oldie,
     };
 
@@ -35,7 +37,8 @@ const Booking = () => {
     await booking.json();
   };
 
-  const handleChange = () => {
+  const handleChange = (e) => {
+    chosenScreeningId = e.target.value;
     setFeedback(
       "Great choice of everything. We will pick out the best seats for you on this show and you'll find the details about it in your confirmation!"
     );
@@ -61,10 +64,10 @@ const Booking = () => {
           <select onChange={handleChange}>
             <option>Date and time</option>
             {screeningSchedule &&
-              screeningSchedule.map((date, i) => {
+              screeningSchedule.map((screening, i) => {
                 return (
-                  <option value={date.date} key={i}>
-                    {new Date(date.date).toLocaleString("sv-SE", {
+                  <option value={screening._id} key={i}>
+                    {new Date(screening.date).toLocaleString("sv-SE", {
                       timeZone: "Europe/Stockholm",
                     })}
                   </option>
