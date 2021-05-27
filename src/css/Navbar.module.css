@@ -1,0 +1,190 @@
+.top {
+  box-shadow: 0px 3px 0px 0px #18191f;
+  z-index: 9999;
+  position: fixed;
+  width: 100vw;
+}
+
+/* Style the navigation menu */
+.topnav {
+  background-color: rgb(216, 56, 48);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  width: 100%;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav {
+  display: none;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: black;
+  padding-right: 16px;
+  padding-left: 16px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  background: black;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  color: #fdf7e3;
+}
+
+.searchicon2 {
+  display: none;
+}
+
+.searchicon {
+  float: right;
+  padding-right: 10px;
+  padding-top: 15px;
+}
+
+.navs {
+  background-color: #d83830;
+}
+
+.navs.clickedMenu {
+  border-bottom: 1px solid #fdf7e3;
+}
+
+.burger {
+  padding-left: 10px;
+  padding-bottom: 10px;
+}
+
+.topfield.clickedMenu {
+  display: block;
+}
+
+.topfield.clickedMenu .topnav {
+  display: block;
+}
+
+.img {
+  height: 40px;
+  padding-left: 100px;
+}
+
+.input {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .topnav {
+    display: inline;
+    background-color: none;
+    box-shadow: none;
+    padding-top: 10px;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .img {
+    padding-left: 0px;
+  }
+
+  .topnav a {
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    display: inline;
+  }
+
+  .navs {
+    padding-bottom: 10px;
+  }
+
+  .navs.clickedMenu {
+    border-bottom: none;
+  }
+
+  .searchicon {
+    display: none;
+  }
+
+  .searchicon2 {
+    display: inline-block;
+    padding-right: 20px;
+    padding-bottom: 5px;
+  }
+
+  .input {
+    display: none;
+  }
+
+  .top {
+    background-color: rgb(216, 56, 48);
+    box-shadow: 0px 3px 0px 0px #18191f;
+  }
+
+  .topfield.clickedMenu {
+    background-color: rgb(216, 56, 48);
+    display: inline-flex;
+    display: flex;
+  }
+
+  .topfield2 {
+    background-color: rgb(216, 56, 48);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 14px;
+    padding-top: 8px;
+  }
+
+  .field {
+    padding-top: 15px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .input {
+    display: inline;
+    margin-right: 5px;
+    border: 1px solid #18191f;
+    border-radius: 14px;
+    box-shadow: 0px 3px 0px 0px #18191f;
+    height: 30px;
+    padding: 5px 5px;
+  }
+
+  .searchicon {
+    display: none;
+  }
+
+  .searchicon2 {
+    display: inline-block;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 5px;
+  }
+
+  .topnav {
+    padding-top: 10px;
+  }
+
+  .field {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 0px;
+  }
+}
