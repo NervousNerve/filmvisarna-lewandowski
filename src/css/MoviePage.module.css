@@ -18,6 +18,16 @@
   z-index: 1;
   left: calc(100vw - 50vw - 20px);
 }
+.trailerContainer {
+  background: rgba(43, 41, 41, 0.856);
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .moviePage .content {
   max-width: 900px;
   margin: 0 auto;
@@ -25,9 +35,10 @@
 }
 .moviePage .heading {
   display: grid;
-  grid-template-columns: 40% 50%;
-  grid-gap: 1.5rem;
+  max-width: 900px;
+  column-gap: 1.5rem;
 }
+
 .moviePage .title button {
   width: 100%;
   max-width: 200px;
@@ -35,8 +46,11 @@
 }
 .moviePage .imgWrapper {
   margin-top: -30px;
-  max-width: 300px;
+  max-width: 250px;
+  min-width: 130px;
   z-index: 1;
+  grid-row: 1 / 1;
+  grid-column: 1 / 4;
 }
 .moviePage .imgWrapper img {
   border-radius: 14px;
@@ -47,6 +61,13 @@
 .moviePage .title {
   margin-top: -20px;
   z-index: 1;
+  grid-column: 4 / 10;
+  grid-row: 1 / 1;
+}
+.moviePage .infoGrid {
+  margin: 0 1rem;
+  grid-row: 3 / 3;
+  grid-column: 1 / 10;
 }
 .moviePage .title h2,
 .moviePage .title h4 {
@@ -56,13 +77,15 @@
   font-size: 1.2em;
 }
 .moviePage .text {
-  margin: 0 0.7rem;
+  margin: 1rem;
 }
 .moviePage .infoContainer {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr;
   grid-gap: 1.2rem;
+  max-width: 400px;
 }
+
 .moviePage .info ul {
   padding: 0;
   margin: 0;
@@ -92,6 +115,9 @@
 }
 
 @media screen and (min-width: 500px) {
+  .moviePage .content {
+    padding: 0 2rem;
+  }
   .moviePage .title h2 {
     font-size: 26px;
     margin-top: 1.5rem;
@@ -100,17 +126,22 @@
   .moviePage .title h4 {
     margin-left: 0.5rem;
   }
-  .moviePage .heading {
-    grid-gap: 2.5rem;
-  }
 }
-.trailerContainer {
-  background: rgba(43, 41, 41, 0.856);
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-  position: fixed;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+@media screen and (min-width: 600px) {
+  .moviePage .infoContainer {
+    margin: 0 0.5rem;
+  }
+  .moviePage .imgWrapper {
+    grid-row: 1 / span 2;
+    grid-column: 1 / 5;
+  }
+  .moviePage .title {
+    grid-row: 1 / 1;
+    grid-column: 5 / 10;
+  }
+  .moviePage .infoGrid {
+    grid-column: 5 / 10;
+    grid-row: 2/2;
+  }
 }

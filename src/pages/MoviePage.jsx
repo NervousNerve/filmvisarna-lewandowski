@@ -64,9 +64,7 @@ const MoviePage = (props) => {
                 <h2>{movie.title}</h2>
                 <h4>{movie.runtime} min</h4>
               </div>
-            </div>
-            <div className={style.text}>
-              <div className={style.infoContainer}>
+              <div className={`${style.infoContainer} ${style.infoGrid}`}>
                 <div className={style.info}>
                   <h4>Genres</h4>
                   <ul>
@@ -91,6 +89,8 @@ const MoviePage = (props) => {
                   </p>
                 </div>
               </div>
+            </div>
+            <div className={style.text}>
               <h4>Plot</h4>
               <p>{movie.plot}</p>
               <div className={style.infoContainer}>
