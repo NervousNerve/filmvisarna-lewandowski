@@ -1,12 +1,22 @@
-// import { useContext } from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from "react";
 // import Footer from '../components/Footer'
 // import { CartContext } from "../contexts/CartContext"
 import styles from "../css/ConfirmationPage.module.css";
 // import footerstyle from '../css/Footer.module.css'
 
-const ConfirmationPage = () => {
-  const [movie, setMovie] = useState
+const ConfirmationPage = (props) => {
+  const [booking, setBooking] = useState(null);
+  const { bookingId } = props.match.params;
+
+  const getBookingById = async (bookingId) => {
+    let booking = await fetch(`/api/v1/bookings/${bookingId}`);
+    booking = await booking.json();
+    setBooking(booking);
+  };
+
+  useEffect(() => {
+    getBookingById(bookingId);
+  }, []);
   // const { orderDetails } = useContext(CartContext)
 
   return (
@@ -34,8 +44,8 @@ const ConfirmationPage = () => {
               <p>Seat/Row:</p>
             </div>
             <div className={styles.detailsRight}>
-              {/* <p> {orderDetails.orderNumber}</p>
-              <p> {orderDetails.orderDate}</p>
+              <p> {booking.bookingid}</p>
+              {/* <p> {orderDetails.orderDate}</p>
               <p> {orderDetails.shippingDetails.ShippingName}</p>
               <p> {orderDetails.shippingDetails.ShippingAddress}</p>
               <p> {`${orderDetails.shippingDetails.ShippingCity}, ${orderDetails.shippingDetails.ShippingCountry}`}</p> */}
