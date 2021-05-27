@@ -16,10 +16,6 @@ const UserBookings = () => {
   }, []);
 
   useEffect(() => {
-    console.log(upcomingBookings, previousBookings);
-  }, [upcomingBookings, previousBookings]);
-
-  useEffect(() => {
     localStorage.setItem("showUpcomingBookings", showUpcomingBookings);
     async function fetchData() {
       if (showUpcomingBookings) {
@@ -38,7 +34,6 @@ const UserBookings = () => {
 
   const toggleBookings = () => {
     setShowUpcomingBookings(!showUpcomingBookings);
-    // document.querySelector(".slider").style.content = "Upcoming bookings";
   };
 
   const renderTickets = () => {
@@ -72,16 +67,14 @@ const UserBookings = () => {
   return (
     <div>
       <h2 className={styles.textAlign}>Your bookings:</h2>
-      <label
-        className={`${styles.switch}`}
-        onChange={() => {
-          toggleBookings();
-        }}
-      >
+      <label className={`${styles.switch}`}>
         <input
+          onChange={() => {
+            toggleBookings();
+          }}
           className={styles.input}
           type="checkbox"
-          defaultChecked={showUpcomingBookings ? true : false}
+          checked={showUpcomingBookings ? true : false}
         />
         <span className={`${styles.slider} ${styles.round} slider`}></span>
         <span
