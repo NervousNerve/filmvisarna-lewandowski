@@ -39,7 +39,8 @@ const login = async (req, res) => {
       return res.status(401).json({ error: "Bad credentials" });
     }
 
-    delete user.password;
+    // Don't include password in response
+    user.password = undefined;
     req.session.user = user;
     return res.json({ message: "Login successful", loggedInUser: user });
   } catch {
