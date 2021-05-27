@@ -9,8 +9,8 @@ import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
   // eslint-disable-next-line
-  const filmLogo =
-    "https://trello-attachments.s3.amazonaws.com/60a21d927cb7b38110c05826/60ab5f1eb07e002ab9bbcfb5/3429140ee35b63a2ad4a06612bacce6f/logo-1.png";
+  // const filmLogo =
+  //   "https://trello-attachments.s3.amazonaws.com/60a21d927cb7b38110c05826/60ab5f1eb07e002ab9bbcfb5/3429140ee35b63a2ad4a06612bacce6f/logo-1.png";
 
   const [menu, setMenu] = useState(false);
 
@@ -36,7 +36,7 @@ const Navbar = () => {
             onClick={handleClick}
           />
 
-          <img className={styles.img} src={filmLogo} alt="Logo" />
+          <img className={styles.img} src="/assets/icons/logo.png" alt="Logo" />
           <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
         </div>
         <div className={styles.topnav} id="myMenu">
