@@ -16,26 +16,12 @@ const MovieList = () => {
     getAllMovies();
   }, []);
 
-  const handleMovieClick = (x) => {
-    // TODO activate history push to correct path
-    // history.push(/moviePage/movie._id)
-    console.log("this is clicked movieId: ", x);
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.movieList}>
         {movieList ? (
           movieList.map((movie, index) => {
-            return (
-              <MovieCard
-                key={index}
-                movie={movie}
-                onClick={() => {
-                  handleMovieClick(movie._id);
-                }}
-              />
-            );
+            return <MovieCard key={index} movie={movie} />;
           })
         ) : (
           <h2>Loading movies...</h2>
