@@ -8,6 +8,7 @@ const Booking = () => {
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
+  // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243bab";
 
   useEffect(() => {}, [adult, child, oldie]);
@@ -16,7 +17,6 @@ const Booking = () => {
     (async () => {
       let screening = await fetch(`/api/v1/screenings/${movieId}`);
       screening = await screening.json();
-      //console.log(screening[0].date.toLocaleTimeString());
       setScreeningSchedule(screening);
     })();
   }, [movieId]);
