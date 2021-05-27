@@ -38,6 +38,7 @@ const UserBookings = () => {
 
   const toggleBookings = () => {
     setShowUpcomingBookings(!showUpcomingBookings);
+    // document.querySelector(".slider").style.content = "Upcoming bookings";
   };
 
   const renderTickets = () => {
@@ -70,15 +71,29 @@ const UserBookings = () => {
 
   return (
     <div>
-      <h2>My bookings:</h2>
+      <h2 className={styles.textAlign}>Your bookings:</h2>
       <label
-        className={styles.switch}
+        className={`${styles.switch}`}
         onChange={() => {
           toggleBookings();
         }}
       >
-        <input type="checkbox" />
-        <span className={`${styles.slider} ${styles.round}`}></span>
+        <input
+          className={styles.input}
+          type="checkbox"
+          defaultChecked={showUpcomingBookings ? true : false}
+        />
+        <span className={`${styles.slider} ${styles.round} slider`}></span>
+        <span
+          className={`${styles.activeState} ${styles.activeStatePrevious} ${styles.bold}`}
+        >
+          Previous
+        </span>
+        <span
+          className={`${styles.activeState} ${styles.activeStateUpcoming} ${styles.bold}`}
+        >
+          Upcoming
+        </span>
       </label>
       {renderTickets()}
     </div>

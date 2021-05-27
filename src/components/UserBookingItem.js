@@ -5,7 +5,7 @@ const UserBookingItem = (props) => {
   const [booking] = useState(props.booking);
 
   return (
-    <div className={styles.marginLeft}>
+    <div className={styles.ticketContainer}>
       <h3>{booking.screeningId.movieId.title}</h3>
       <h4>{booking.screeningId.theaterId.name}</h4>
       <p>
