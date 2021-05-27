@@ -29,25 +29,31 @@ const Booking = () => {
       seats: adult + child + oldie,
     };
 
-    if (request.seats < 1 || request.screeningId === null) {
+    if (request.seats < 1 || request.screeningId === "resetScreeningValue") {
       setFeedback("Please select both ticket and date!");
       setTimeout(() => {
         setFeedback("");
-      }, 3000);
-    } else {
-      setFeedback("");
+      }, 2500);
     }
 
-    let booking = await fetch("/api/v1/bookings", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(request),
-    });
-    await booking.json();
+    try {
+      let booking = await fetch("/api/v1/bookings", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(request),
+      });
+      await booking.json();
+
+      // the statuscode prints. How to reach the relevant error msg from backend?
+      console.log(booking.statusText);
+    } catch (err) {
+      console.log("Error");
+    }
   };
 
   const handleChange = (e) => {
     setchosenScreeningId(e.target.value);
+    console.log(e.target.value);
   };
 
   return (
@@ -68,7 +74,7 @@ const Booking = () => {
       <div className={styles.selectWrapper}>
         <div className="custom-select">
           <select onChange={handleChange}>
-            <option value={"reset"}>Date and time</option>
+            <option value={"resetScreeningValue"}>Date and time</option>
             {screeningSchedule &&
               screeningSchedule.map((screening, i) => {
                 return (
