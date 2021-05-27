@@ -1,5 +1,4 @@
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useEffect, useState } from "react";
 import UserBookingItem from "../components/UserBookingItem";
 import styles from "../css/UserBookings.module.css";
 
@@ -8,14 +7,19 @@ const UserBookings = () => {
   const [upcomingBookings, setUpcomingBookings] = useState(null);
   const [previousBookings, setPreviousBookings] = useState(null);
 
-  // useEffect(() => {
-  //   if (localStorage.getItem("showUpcomingBookings")) {
-  //     setShowUpcomingBookings(localStorage.getItem("showUpcomingBookings"));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (localStorage.getItem("showUpcomingBookings")) {
+      setShowUpcomingBookings(JSON.parse(localStorage.getItem("showUpcomingBookings")));
+    }
+  }, []);
 
-  useEffect(async () => {
-    // localStorage.setItem("showUpcomingBookings", showUpcomingBookings);
+  useEffect(() => {
+    console.log(upcomingBookings, previousBookings)
+  }, [upcomingBookings, previousBookings])
+
+  useEffect(() => {
+    localStorage.setItem("showUpcomingBookings", showUpcomingBookings);
+    async function fetchData() {
     if (showUpcomingBookings) {
       let getUpcomingBookings = await fetch(`/api/v1/bookings/`);
       getUpcomingBookings = await getUpcomingBookings.json();
@@ -26,13 +30,17 @@ const UserBookings = () => {
 
       setPreviousBookings(getPreviousBookings);
     }
+  }
+    fetchData();
+   
   }, [showUpcomingBookings]);
 
-  useEffect(() => {
-    console.log(upcomingBookings, previousBookings);
-  }, [upcomingBookings, previousBookings]);
+  const toggleBookings = (e) => {
+    e.preventDefault();
+    setShowUpcomingBookings(!showUpcomingBookings);
+  };
 
-  const renderUpcoming = () => {
+  const renderTickets = () => {
     if (showUpcomingBookings && upcomingBookings) {
       return (
         <div>
@@ -60,35 +68,6 @@ const UserBookings = () => {
     }
   };
 
-  // const renderPrevious = () => {
-  //   if (previousBookings) {
-  //     return (
-  //       <div>
-  //         <div>
-  //           {previousBookings.map((booking, i) => (
-  //             <UserBookingItem key={i} booking={booking} />
-  //           ))}
-  //         </div>
-  //       </div>
-  //     );
-  //   } else {
-  //     return (
-  //       <div>
-  //         <p>No previous bookings to show</p>
-  //       </div>
-  //     );
-  //   }
-  // };
-
-  useEffect(() => {
-    console.log("showupcomingbookings:", showUpcomingBookings);
-  }, [showUpcomingBookings]);
-
-  const toggleBookings = (e) => {
-    e.preventDefault();
-    setShowUpcomingBookings(!showUpcomingBookings);
-  };
-
   return (
     <div>
       <h2>My bookings:</h2>
@@ -101,7 +80,7 @@ const UserBookings = () => {
         <input type="checkbox" />
         <span className={`${styles.slider} ${styles.round}`}></span>
       </label>
-      {renderUpcoming()}
+      {renderTickets()}
     </div>
   );
 };

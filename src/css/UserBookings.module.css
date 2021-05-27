@@ -1,3 +1,19 @@
+.marginLeft {
+  margin-left: 2rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.seatContainer {
+  display: flex;
+}
+
+.seat {
+  margin-left: 0.5rem;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
