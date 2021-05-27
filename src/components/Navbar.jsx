@@ -46,6 +46,9 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/my-profile">
             My profile
           </NavLink>
+          <NavLink onClick={handleClick} to="/confirmation">
+            Confirmation
+          </NavLink>
           <NavLink onClick={handleClick} to="/login-register">
             Login/Register
           </NavLink>
