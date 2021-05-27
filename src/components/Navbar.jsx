@@ -46,22 +46,9 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/my-profile">
             My profile
           </NavLink>
-          <NavLink onClick={handleClick} to="/confirmation">
-            Confirmation
-          </NavLink>
           <NavLink onClick={handleClick} to="/login-register">
             Login/Register
           </NavLink>
-        </div>
-
-        <div className={styles.field}>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Search.."
-            name="search"
-          />
-          <FontAwesomeIcon className={styles.searchicon2} icon={faSearch} />
         </div>
       </div>
     </div>
