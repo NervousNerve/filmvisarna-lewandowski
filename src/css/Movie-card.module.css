@@ -12,14 +12,14 @@ h4 {
 }
 
 .titleWrapper {
-  width: 100%;
+  min-width: 100%;
   text-align: center;
   font-size: 9px;
 }
 
 .imageWrapper {
-  width: 100%;
-  height: 90%;
+  min-width: 100%;
+  max-height: 90%;
 }
 
 .container {
@@ -48,19 +48,22 @@ h4 {
   transition: 400ms ease;
 }
 
+@media screen and (max-width: 355px) {
+  .movieList {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+}
+
 @media screen and (min-width: 575px) {
   .movieList {
-    display: grid;
     grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
   }
 }
 @media screen and (min-width: 768px) {
   .movieList {
-    display: grid;
     grid-template-columns: repeat(4, 1fr);
     max-width: 768px;
-    justify-items: center;
   }
 }
 @media screen and (min-width: 1024px) {

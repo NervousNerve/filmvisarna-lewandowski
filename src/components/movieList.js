@@ -1,5 +1,5 @@
-import MovieCard from "./movieCard";
-import styles from "../modules/movie-card.module.css";
+import MovieCard from "./MovieCard";
+import styles from "../css/Movie-card.module.css";
 import { useEffect, useState } from "react";
 
 const MovieList = () => {
