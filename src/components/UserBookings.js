@@ -36,8 +36,7 @@ const UserBookings = () => {
     fetchData();
   }, [showUpcomingBookings]);
 
-  const toggleBookings = (e) => {
-    e.preventDefault();
+  const toggleBookings = () => {
     setShowUpcomingBookings(!showUpcomingBookings);
   };
 
@@ -74,8 +73,8 @@ const UserBookings = () => {
       <h2>My bookings:</h2>
       <label
         className={styles.switch}
-        onClick={(e) => {
-          toggleBookings(e);
+        onChange={() => {
+          toggleBookings();
         }}
       >
         <input type="checkbox" />
