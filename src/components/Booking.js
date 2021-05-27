@@ -15,10 +15,6 @@ const Booking = () => {
   // will be updated with the calculation of total price
   useEffect(() => {}, [adult, child, oldie]);
 
-  /*   useEffect(() => {
-    console.log(chosenScreeningId);
-  }, [chosenScreeningId]); */
-
   useEffect(() => {
     (async () => {
       let screening = await fetch(`/api/v1/screenings/${movieId}`);
@@ -29,8 +25,8 @@ const Booking = () => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: "60a655dead5bec403ce90cc0",
-      seats: 2,
+      screeningId: chosenScreeningId,
+      seats: adult + child + oldie,
     };
 
     let booking = await fetch("/api/v1/bookings", {
@@ -84,6 +80,7 @@ const Booking = () => {
       <div className={styles.feedback}>{feedback}</div>
 
       <div className={styles.totalPrice}>
+        {/* A dynamic value will be added here */}
         <p>Total: $$$</p>
       </div>
 
