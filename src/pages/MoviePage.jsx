@@ -35,7 +35,7 @@ const MoviePage = (props) => {
   };
 
   return (
-    <div className={style.moviePage}>
+    <div className={`${style.moviePage} ${watchTrailer && style.noScroll}`}>
       {movie && (
         <div>
           {/* Trailer */}
