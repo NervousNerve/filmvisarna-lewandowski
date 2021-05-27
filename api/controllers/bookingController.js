@@ -38,7 +38,8 @@ const getBookingById = async (req, res) => {
 
 /* Parameters:
  * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Array of requested seat numbers
+ * req.body.seats:        Either a Number of total requested seats,
+ *                        or Array of specific, requested seat numbers
  *
  * If successful, returns the newly created Booking object
  */
@@ -55,9 +56,13 @@ const createBooking = async (req, res) => {
     });
   }
 
-  if (!Array.isArray(req.body.seats) || !req.body.seats.length) {
+  if (
+    (!Number.isInteger(req.body.seats) || req.body.seats <= 0) &&
+    (!Array.isArray(req.body.seats) || !req.body.seats.length)
+  ) {
     return res.status(400).json({
-      error: "Invalid 'seats' parameter",
+      error:
+        "Invalid 'seats' parameter. Expected positive Integer or non-empty Array",
     });
   }
 
@@ -77,36 +82,50 @@ const createBooking = async (req, res) => {
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
-    if (freeSeats < req.body.seats.length) {
+    if (freeSeats < (req.body.seats.length ?? req.body.seats)) {
       return res.status(403).json({
         error: "Not enough free seats available",
       });
     }
 
-    // Make sure every requested seat is a valid seat number
-    // and not already occupied
-    for (const s of req.body.seats) {
-      if (
-        isNaN(s) ||
-        s <= 0 ||
-        s > screening.theaterId.seats ||
-        screening.occupiedSeats.includes(s)
-      ) {
-        return res.status(403).json({
-          error: `Requested seat '${s}' is occupied or invalid`,
-        });
+    let selectedSeats;
+    if (Number.isInteger(req.body.seats)) {
+      // Pick the first available seats
+      selectedSeats = [];
+      let seatsLeft = req.body.seats;
+      for (let i = 1; i <= screening.theaterId.seats && seatsLeft; i++) {
+        if (!screening.occupiedSeats.includes(i)) {
+          selectedSeats.push(i);
+          seatsLeft--;
+        }
+      }
+    } else {
+      // Make sure every requested seat is a valid seat number
+      // and not already occupied
+      selectedSeats = [...req.body.seats];
+      for (const s of selectedSeats) {
+        if (
+          !Number.isInteger(s) ||
+          s <= 0 ||
+          s > screening.theaterId.seats ||
+          screening.occupiedSeats.includes(s)
+        ) {
+          return res.status(403).json({
+            error: `Requested seat '${s}' is occupied or invalid`,
+          });
+        }
       }
     }
 
     const booking = await Booking.create({
-      seats: req.body.seats,
-      price: screening.movieId.price * req.body.seats.length,
+      seats: selectedSeats,
+      price: screening.movieId.price * selectedSeats.length,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
 
     // Set our seats as occupied for this screening
-    screening.occupiedSeats.push(...req.body.seats);
+    screening.occupiedSeats.push(...selectedSeats);
     await screening.save();
 
     return res.json(booking);
@@ -158,6 +177,24 @@ const getBookingsByUser = async (req, res) => {
       { $unwind: "$screeningId" },
       // Finally filters bookings that have a screening with a matching date
       { $match: { "screeningId.date": { $gte: fromDate, $lte: toDate } } },
+      {
+        $lookup: {
+          from: "movies",
+          localField: "screeningId.movieId",
+          foreignField: "_id",
+          as: "screeningId.movieId",
+        },
+      },
+      { $unwind: "$screeningId.movieId" },
+      {
+        $lookup: {
+          from: "theaters",
+          localField: "screeningId.theaterId",
+          foreignField: "_id",
+          as: "screeningId.theaterId",
+        },
+      },
+      { $unwind: "$screeningId.theaterId" },
     ]).exec();
 
     if (!bookings.length) {
