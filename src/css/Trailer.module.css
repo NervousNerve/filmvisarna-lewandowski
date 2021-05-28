@@ -1,0 +1,34 @@
+.trailer .video {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: column;
+}
+.trailer iframe {
+  border: 2px solid #18191f;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  border-radius: 14px;
+  width: 90vw;
+  height: calc(90vw * 0.56);
+  max-width: 890px;
+  max-height: 500px;
+}
+
+.trailer .close {
+  background-color: #fff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  border: 2px solid #18191f;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  margin: 0.5rem;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.trailer .closeIcon {
+  color: #18191f;
+  font-size: 2rem;
+}
