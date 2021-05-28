@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/:movieId" component={MoviePage} />
+          <Route exact path="/movies/:movieId" component={MoviePage} />
         </BrowserRouter>
       </UserProvider>
     </div>
