@@ -5,26 +5,33 @@ form {
   padding: 0.5em;
 }
 
-form input {
+.inputContainer input {
+  /* position: relative; */
+  width: 100%;
+}
+.inputContainer {
   position: relative;
+  display: flex;
+  align-items: center;
 }
 
 .userIcon,
 .lockIcon {
   position: absolute;
   font-size: 19px;
-  left: 15em;
+  /* left: 15em; */
   z-index: 1;
   color: #474a57;
+  left: calc(100% - 40px);
 }
 
-.userIcon {
+/* .userIcon {
   top: 8.6em;
 }
 
 .lockIcon {
   top: 11.6em;
-}
+} */
 
 .toggleMenuBtn button {
   border: none;
