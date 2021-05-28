@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
+import Booking from "./components/Booking";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <UserProvider>
         <BrowserRouter>
           <Navbar />
+          <Booking />
           <Route exact path="/">
             <Home />
           </Route>

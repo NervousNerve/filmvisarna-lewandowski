@@ -77,7 +77,7 @@ input.search {
   cursor: inherit;
   line-height: inherit;
   outline: none;
-  min-width: 200px;
+  max-width: 220px;
 }
 
 .custom-select {
@@ -90,7 +90,7 @@ input.search {
   align-items: center;
   position: relative;
   box-shadow: inset -500px 0px 0px -460px #ffd465;
-  min-width: 200px;
+  min-width: 220px;
 }
 
 .custom-select::after {
