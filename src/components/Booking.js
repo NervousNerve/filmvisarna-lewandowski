@@ -10,10 +10,11 @@ const Booking = () => {
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
+
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
 
-  // will be updated with the calculation of total price
   useEffect(() => {}, [adult, child, oldie]);
 
   useEffect(() => {
@@ -97,8 +98,7 @@ const Booking = () => {
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
-        {/* A dynamic value will be added here */}
-        <p>Total: $$$</p>
+        <p>Total: {totalPrice} SEK</p>
       </div>
 
       <div className={styles.seatBtn}>
