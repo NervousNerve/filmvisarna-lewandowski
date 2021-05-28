@@ -36,7 +36,11 @@ const Navbar = () => {
             onClick={handleClick}
           />
 
-          <img className={styles.imglogo} src="/assets/icons/logo.png" alt="Logo" />
+          <img
+            className={styles.imglogo}
+            src="/assets/icons/logo.png"
+            alt="Logo"
+          />
           <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
         </div>
         <div className={styles.topnav} id="myMenu">
@@ -45,9 +49,6 @@ const Navbar = () => {
           </NavLink>
           <NavLink onClick={handleClick} to="/my-profile">
             My profile
-          </NavLink>
-          <NavLink onClick={handleClick} to="/confirmation">
-            Confirmation
           </NavLink>
           <NavLink onClick={handleClick} to="/login-register">
             Login/Register

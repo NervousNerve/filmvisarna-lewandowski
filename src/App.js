@@ -1,9 +1,8 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
-import ConfirmationPage from "./pages/ConfirmationPage";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
-// import Entry from "./components/Entry";
+import Entry from "./components/Entry";
 
 function App() {
   return (
@@ -11,11 +10,10 @@ function App() {
       <UserProvider>
         <BrowserRouter>
           <Navbar />
-          {/* <Entry /> */}
+          <Entry />
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/confirmation/:id" component={ConfirmationPage} />
         </BrowserRouter>
       </UserProvider>
     </div>
