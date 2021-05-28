@@ -5,10 +5,10 @@ const Modal = (props) => {
     <div className={style.trailer}>
       <div className={style.video}>
         <div className={style.close}></div>
-        {props.propTitle ? null : (
-          <p>
-            <input onChange={this.handleChange} value={this.state.inputText} />
-          </p>
+        {props.propTitle === "trailer" ? (
+          <div>{props.trailer}</div>
+        ) : (
+          <div>hej</div>
         )}
       </div>
     </div>
