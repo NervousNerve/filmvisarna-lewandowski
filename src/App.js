@@ -4,7 +4,6 @@ import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
 import Booking from "./components/Booking";
-import Entry from "./components/Entry";
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <UserProvider>
         <BrowserRouter>
           <Navbar />
-          <Entry />
           <Booking />
           <Route exact path="/">
             <Home />
