@@ -24,7 +24,9 @@ const MovieList = () => {
             return <MovieCard key={index} movie={movie} />;
           })
         ) : (
-          <h2>Loading movies...</h2>
+          <div>
+            <h2>Loading movies...</h2>
+          </div>
         )}
       </div>
     </div>
