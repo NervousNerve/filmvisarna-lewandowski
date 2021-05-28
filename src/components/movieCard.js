@@ -1,10 +1,12 @@
 import styles from "../css/Movie-card.module.css";
+import { useHistory } from "react-router-dom";
 
 const MovieCard = (props) => {
-  const handleMovieClick = (x) => {
-    // TODO activate history push to correct path
-    // history.push(/moviePage/movie._id)
-    console.log("this is clicked movieId: ", x);
+  const history = useHistory();
+
+  const handleMovieClick = (movidId) => {
+    history.push(`/movies/${movidId}`);
+    console.log("this is clicked movieId: ", movidId);
   };
 
   return (
