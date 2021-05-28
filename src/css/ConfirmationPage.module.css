@@ -17,10 +17,12 @@
   font-size: 1.6rem;
   text-align: center;
   margin-top: 30px;
+  font-family: "Oxygen", sans-serif;
 }
 
 .thanks > p {
   text-align: center;
+  font-family: "Oxygen", sans-serif;
 }
 
 .confirmation h4 {
@@ -32,6 +34,7 @@
   display: block;
   /* width: 70%; */
   font-weight: 300;
+  font-family: "Oxygen", sans-serif;
   text-align: center;
   margin-top: 4rem;
   border: 2px solid #18191f;
