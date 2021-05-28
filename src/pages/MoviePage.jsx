@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Trailer from "../components/Trailer";
 import Entry from "../components/Entry";
+import Modal from "../components/Modal";
 import { useState, useEffect, useRef } from "react";
 
 const MoviePage = (props) => {
@@ -34,6 +35,16 @@ const MoviePage = (props) => {
     }
   };
 
+  const trailer = movie && (
+    <iframe
+      title={`${movie.title} Trailer`}
+      src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
+      allowFullScreen
+    ></iframe>
+  );
+
+  const propTitle = "trailer";
+
   return (
     <div className={`${style.moviePage} ${watchTrailer && style.noScroll}`}>
       {movie && (
@@ -41,10 +52,7 @@ const MoviePage = (props) => {
           {/* Trailer */}
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Trailer
-                trailer={String(movie.trailerUrl)}
-                movieTitle={movie.title}
-              />
+              <Modal trailer={trailer} propTitle={propTitle} />
             </div>
           )}
           {/* Hero image */}
