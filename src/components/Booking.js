@@ -54,7 +54,7 @@ const Booking = () => {
       console.log(e);
       setErrorFeedback("Sorry, something went wrong. Please try again.");
       setTimeout(() => {
-        setFeedback("");
+        setErrorFeedback("");
       }, 4000);
     }
   };

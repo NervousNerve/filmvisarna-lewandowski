@@ -33,8 +33,13 @@
   font-family: "Oxygen", sans-serif;
 }
 
-.feedback {
+.feedback,
+.errorFeedback {
   text-align: center;
   margin-top: 1em;
   padding: 0em 1em;
+}
+
+.errorFeedback {
+  color: red;
 }
