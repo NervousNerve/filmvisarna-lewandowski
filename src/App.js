@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        {/* <Entry /> */}
+        <Entry />
         <BrowserRouter>
           <Navbar />
           <Route exact path="/">

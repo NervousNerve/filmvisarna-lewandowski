@@ -92,7 +92,7 @@
 .ticketContainer {
   background-color: #fdf7e3;
   padding: 1em;
-  width: 20em;
+  /* width: 100%; */
   border: 2px solid #18191f;
   border-radius: 14px;
   margin-bottom: 1rem;
@@ -108,4 +108,20 @@
 
 .noBottomMargin {
   margin-bottom: 0rem;
+}
+
+.bookingContainer {
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .bookingContainer {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .bookingContainer {
+    width: 50%;
+  }
 }

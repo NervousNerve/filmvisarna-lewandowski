@@ -65,7 +65,7 @@ const UserBookings = () => {
   };
 
   return (
-    <div>
+    <div className={styles.bookingContainer}>
       <h2 className={styles.textAlign}>Your bookings:</h2>
       <label className={`${styles.switch}`}>
         <input

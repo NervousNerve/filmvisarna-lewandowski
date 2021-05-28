@@ -13,7 +13,11 @@ const ProfilePage = () => {
     <div>
       {currentUser ? (
         <div className={styles.profileContainer}>
-          <h1>Hi, {currentUser && currentUser.name}!</h1>
+          <h1>
+            Hi,{" "}
+            {currentUser && (currentUser.name || currentUser.loggedInUser.name)}
+            !
+          </h1>
           <UserBookings />{" "}
         </div>
       ) : (
