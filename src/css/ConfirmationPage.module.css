@@ -10,7 +10,7 @@
   width: 70%;
   display: block;
   margin: 0 auto;
-  margin-top: 10rem;
+  margin-top: 5rem;
 }
 
 .latest {
@@ -41,7 +41,7 @@
   font-weight: 300;
   /* font-family: "Roboto Condensed"; */
   text-align: center;
-  margin-top: 30px;
+  margin-top: 4rem;
   border: 2px solid #18191f;
   border-radius: 6px;
   padding: 20px 20px;

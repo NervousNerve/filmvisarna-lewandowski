@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 // import Footer from '../components/Footer'
 // import { CartContext } from "../contexts/CartContext"
 import styles from "../css/ConfirmationPage.module.css";
 // import footerstyle from '../css/Footer.module.css'
 
 const ConfirmationPage = (props) => {
+  const history = useHistory();
   const [booking, setBooking] = useState();
   const { id } = props.match.params;
 
@@ -12,6 +14,11 @@ const ConfirmationPage = (props) => {
     let booking = await fetch(`/api/v1/bookings/${id}`);
     booking = await booking.json();
     setBooking(booking);
+  };
+
+  const handleClick = () => {
+    // history.push(`/posts/${postId}/edit`);
+    history.push(`/`);
   };
 
   useEffect(() => {
@@ -95,7 +102,9 @@ const ConfirmationPage = (props) => {
           {/* <button className={styles.print} onClick={() => window.print()}>
             Print
           </button> */}
-          <button className={styles.backhome}>Back to Home</button>
+          <button onClick={handleClick} className={styles.backhome}>
+            Back to Home
+          </button>
 
           {/* <img
             className={styles.printIcon}
