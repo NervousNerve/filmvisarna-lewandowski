@@ -13,7 +13,6 @@ const MoviePage = (props) => {
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    console.log(props.match);
     /* Get movie data from backend */
     (async (movieId) => {
       let movie = await fetch(`/api/v1/movies/${movieId}`);
