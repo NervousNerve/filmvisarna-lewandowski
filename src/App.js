@@ -9,9 +9,9 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Navbar />
-        <Entry />
+        {/* <Entry /> */}
         <BrowserRouter>
+          <Navbar />
           <Route exact path="/">
             <Home />
           </Route>
