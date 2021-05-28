@@ -15,10 +15,14 @@ const MovieCard = (props) => {
       }}
     >
       <div className={styles.imageWrapper}>
-        <img src={props.movie.imageUrl} alt="movie thumbnail" />
+        <img
+          className={styles.movieImage}
+          src={props.movie.imageUrl}
+          alt="movie thumbnail"
+        />
       </div>
       <div className={styles.titleWrapper}>
-        <h4>{props.movie.title}</h4>
+        <h4 className={styles.movieTitle}>{props.movie.title}</h4>
       </div>
     </div>
   );
