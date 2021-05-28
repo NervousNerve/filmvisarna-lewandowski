@@ -24,7 +24,7 @@ const MoviePage = (props) => {
   /* Scroll to booking function */
   const scroll = () => {
     if (bookTickets) {
-      let scrollStop = myRef.current.offsetTop - 70;
+      let scrollStop = myRef.current.offsetTop - 80;
       window.scrollTo({ behavior: "smooth", top: scrollStop });
     }
   };
