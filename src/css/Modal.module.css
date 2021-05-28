@@ -33,3 +33,7 @@
   color: #18191f;
   font-size: 2rem;
 }
+
+.displayNone {
+  display: none;
+}

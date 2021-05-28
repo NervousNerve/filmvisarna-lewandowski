@@ -35,7 +35,7 @@ const MoviePage = (props) => {
     }
   };
 
-  const trailer = movie && (
+  const viewTrailer = movie && (
     <iframe
       title={`${movie.title} Trailer`}
       src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
@@ -44,13 +44,13 @@ const MoviePage = (props) => {
   );
 
   return (
-    <div className={`${style.moviePage} ${watchTrailer && style.noScroll}`}>
+    <div className={`${style.moviePage} ${watchTrailer && "noScroll"}`}>
       {movie && (
         <div>
           {/* Trailer */}
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Modal component={trailer} />
+              <Modal component={viewTrailer} />
             </div>
           )}
           {/* Hero image */}

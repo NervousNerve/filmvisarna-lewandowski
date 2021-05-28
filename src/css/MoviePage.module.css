@@ -31,10 +31,6 @@
   max-height: 500px;
 }
 
-.moviePage.noScroll {
-  position: fixed;
-}
-
 /* All other content */
 .moviePage .content {
   max-width: 900px;
