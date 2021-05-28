@@ -34,8 +34,8 @@ const ConfirmationPage = (props) => {
           alt="confirm icon"
         />
         <div className={styles.thanks}>
-          <h1>Thank's for booking with FunkyFilm!</h1>
-          <p>Booking confirmation</p>
+          <h1>Thank you for booking with us!</h1>
+          <p>Your reservation is reserved.</p>
         </div>
         {/* <hr /> */}
         <div className={styles.details}>
