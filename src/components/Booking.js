@@ -7,6 +7,7 @@ const Booking = () => {
   const [child, setChild] = useState(0);
   const [oldie, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
+  const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState(null);
   // will be updated with dynamic prop value from Movie Page
@@ -42,20 +43,19 @@ const Booking = () => {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
-      }).then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            "Something went wrong. API returned some kind of error."
-          );
+      }).then((res) => {
+        if (!res.ok) {
+          throw new Error("API returned some kind of error.");
         }
-        return response.json();
+        return res.json();
       });
       await booking.json();
-
-      // the statuscode prints. How to reach the relevant error msg from backend?
-      // console.log(booking.statusText);
-    } catch (err) {
-      console.log(err);
+    } catch (e) {
+      console.log(e);
+      setErrorFeedback("Sorry, something went wrong. Please try again.");
+      setTimeout(() => {
+        setFeedback("");
+      }, 4000);
     }
   };
 
@@ -106,6 +106,8 @@ const Booking = () => {
       <div className={styles.seatBtn}>
         <button onClick={confirmBooking}>Confirm</button>
       </div>
+
+      <p className={styles.errorFeedback}>{errorFeedback}</p>
     </div>
   );
 };
