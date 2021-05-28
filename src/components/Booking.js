@@ -30,7 +30,7 @@ const Booking = () => {
       seats: adult + child + oldie,
     };
 
-    if (request.seats < 1 || request.screeningId === "resetScreeningValue") {
+    if (request.seats < 1 || request.screeningId === null) {
       setFeedback("Please select both ticket and date!");
       setTimeout(() => {
         setFeedback("");
@@ -43,15 +43,13 @@ const Booking = () => {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
-      }).then((res) => {
-        if (!res.ok) {
-          throw new Error("API returned some kind of error.");
-        }
-        return res.json();
       });
-      await booking.json();
+
+      if (!booking.ok) {
+        throw new Error("API returned some kind of error.");
+      }
     } catch (e) {
-      console.log(e);
+      // if the server is down
       setErrorFeedback("Sorry, something went wrong. Please try again.");
       setTimeout(() => {
         setErrorFeedback("");
@@ -81,7 +79,7 @@ const Booking = () => {
       <div className={styles.selectWrapper}>
         <div className="custom-select">
           <select onChange={handleChange}>
-            <option value={"resetScreeningValue"}>Date and time</option>
+            <option value={null}>Date and time</option>
             {screeningSchedule &&
               screeningSchedule.map((screening, i) => {
                 return (
