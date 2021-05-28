@@ -15,7 +15,12 @@ const Booking = () => {
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
 
-  useEffect(() => {}, [adult, child, oldie]);
+  useEffect(() => {
+    (async () => {
+      let rebates = await fetch(`/api/v1/`);
+      rebates = await rebates.json();
+    })();
+  }, [adult, child, oldie]);
 
   useEffect(() => {
     (async () => {
