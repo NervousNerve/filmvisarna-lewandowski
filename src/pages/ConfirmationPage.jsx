@@ -37,6 +37,7 @@ const ConfirmationPage = (props) => {
           <h1>Thank's for booking with FunkyFilm!</h1>
           <p>Booking confirmation</p>
         </div>
+        {/* <hr /> */}
         <div className={styles.details}>
           <div className={styles.orderDetails}>
             <div className={styles.detailsLeft}>
