@@ -1,15 +1,15 @@
 import style from "../css/Modal.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Modal = (props) => {
   return (
-    <div className={style.trailer}>
-      <div className={style.video}>
-        <div className={style.close}></div>
-        {props.propTitle === "trailer" ? (
-          <div>{props.trailer}</div>
-        ) : (
-          <div>hej</div>
-        )}
+    <div className={style.modal}>
+      <div className={style.modalContainer}>
+        <div className={style.close}>
+          <FontAwesomeIcon icon={faTimes} />
+        </div>
+        {props.component && <div>{props.component}</div>}
       </div>
     </div>
   );

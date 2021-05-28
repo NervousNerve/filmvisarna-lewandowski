@@ -43,8 +43,6 @@ const MoviePage = (props) => {
     ></iframe>
   );
 
-  const propTitle = "trailer";
-
   return (
     <div className={`${style.moviePage} ${watchTrailer && style.noScroll}`}>
       {movie && (
@@ -52,7 +50,7 @@ const MoviePage = (props) => {
           {/* Trailer */}
           {watchTrailer && (
             <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Modal trailer={trailer} propTitle={propTitle} />
+              <Modal component={trailer} />
             </div>
           )}
           {/* Hero image */}
