@@ -2,6 +2,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
+import MoviePage from "./pages/MoviePage";
 import Booking from "./components/Booking";
 import Entry from "./components/Entry";
 
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
+          <Route exact path="/movies/:movieId" component={MoviePage} />
         </BrowserRouter>
       </UserProvider>
     </div>
