@@ -6,19 +6,13 @@
 }
 
 .confirmation {
-  /* width: 330px; */
   width: 70%;
   display: block;
   margin: 0 auto;
   margin-top: 5rem;
 }
 
-.latest {
-  margin: 0 auto;
-}
-
 .thanks > h1 {
-  /* font-family: "Lato"; */
   font-weight: 700;
   font-size: 1.6rem;
   text-align: center;
@@ -27,7 +21,6 @@
 
 .thanks > p {
   text-align: center;
-  /* font-size: 0.9rem; */
 }
 
 .confirmation h4 {
@@ -39,7 +32,6 @@
   display: block;
   /* width: 70%; */
   font-weight: 300;
-  /* font-family: "Roboto Condensed"; */
   text-align: center;
   margin-top: 4rem;
   border: 2px solid #18191f;
@@ -52,52 +44,22 @@
   font-size: 1.2rem;
 }
 
-.orderDetails,
-.carDetails {
+.orderDetails {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  /* padding: 20px 0px; */
-  /* font-size: 0.8rem; */
   font-size: 0.9rem;
   /* line-height: 0.2rem; */
 }
 
 .detailsLeft {
-  /* padding-right: 10px; */
   text-align: left;
   width: 30%;
 }
 
 .detailsRight {
-  /* padding-left: 10px; */
   width: 60%;
   text-align: left;
-}
-
-.carDetailsC:not(:last-child) {
-  border-bottom: 1px solid #fe7f50;
-}
-
-.carDetails {
-  padding-bottom: 0.9rem;
-}
-
-.logo {
-  margin: 45px 85px -10px;
-}
-
-.information {
-  margin-top: 2rem;
-  margin-bottom: 3rem;
-}
-
-.information > p {
-  font-weight: 300;
-  /* font-family: "Roboto Condensed"; */
-  text-align: center;
-  font-size: 0.8rem;
-  line-height: 0.2rem;
 }
 
 .printButton {
@@ -105,44 +67,13 @@
   margin-bottom: 15rem;
 }
 
-.print {
-  border: none;
-  color: white;
-  font-size: 1rem;
-  position: absolute;
-  width: 160px;
-  height: 50px;
-  top: 8px;
-  right: 85px;
-  background: #fe7f50;
-  padding-left: 50px;
-}
-
-.printIcon {
-  width: 22px;
-  position: absolute;
-  top: 22px;
-  left: 120px;
-}
-
 .backhome {
   margin-top: 20px;
   float: right;
 }
 
-/* .backhome {
-  background-color: #ffd465;
-  border: 1px solid #18191f;
-  border-radius: 6px;
-  box-shadow: 0px 3px 0px 0px #18191f;
-  padding: 5px 5px;
-  margin-top: 20px;
-  float: right;
-} */
-
 .plot {
   text-align: left;
-  /* width: 50%; */
 }
 
 @media (max-width: 1023px) {
@@ -160,17 +91,7 @@
     padding: 5px 5px;
   }
 
-  /* .detailsLeft{
-    padding-left: 2px;
-  }
-
-  .detailsRight{
-    padding-right: 2px;
-  } */
-
   .details p {
     font-size: 0.7rem;
-    /* padding-left: 1px;
-    padding-right: 1px; */
   }
 }
