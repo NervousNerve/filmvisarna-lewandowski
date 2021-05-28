@@ -9,7 +9,7 @@ const Booking = () => {
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  const [chosenScreeningId, setchosenScreeningId] = useState(null);
+  const [chosenScreeningId, setchosenScreeningId] = useState();
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
 
@@ -30,7 +30,7 @@ const Booking = () => {
       seats: adult + child + oldie,
     };
 
-    if (request.seats < 1 || request.screeningId === null) {
+    if (!request.seats || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
       setTimeout(() => {
         setFeedback("");
@@ -79,7 +79,7 @@ const Booking = () => {
       <div className={styles.selectWrapper}>
         <div className="custom-select">
           <select onChange={handleChange}>
-            <option value={null}>Date and time</option>
+            <option value={""}>Date and time</option>
             {screeningSchedule &&
               screeningSchedule.map((screening, i) => {
                 return (
