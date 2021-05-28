@@ -23,9 +23,15 @@ const MoviePage = (props) => {
 
   /* Scroll to booking function */
   const scroll = () => {
-    let scrollStop = myRef.current.offsetTop - 70;
-    window.scrollTo({ behavior: "smooth", top: scrollStop });
+    if (bookTickets) {
+      let scrollStop = myRef.current.offsetTop - 70;
+      window.scrollTo({ behavior: "smooth", top: scrollStop });
+    }
   };
+
+  useEffect(() => {
+    scroll();
+  }, [bookTickets]);
 
   /* Close trailer modal */
   const closeTrailer = (e) => {
