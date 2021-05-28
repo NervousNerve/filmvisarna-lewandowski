@@ -8,7 +8,7 @@ import { useState, useEffect, useRef } from "react";
 const MoviePage = (props) => {
   const myRef = useRef();
   const { movieId } = props.match.params;
-  const [bookTickets, setBookTickets] = useState(true);
+  const [bookTickets, setBookTickets] = useState(false);
   const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
 
