@@ -96,11 +96,11 @@
   }
 
   .details p {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 368px) {
   .orderDetails {
     font-size: 0.7rem;
   }
