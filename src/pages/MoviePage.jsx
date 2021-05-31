@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import Trailer from "../components/Trailer";
 import Entry from "../components/Entry";
-import { useState, useEffect, useRef } from "react";
+import Booking from "../components/Booking";
+import { UserContext } from "../contexts/UserContext";
+import { useState, useEffect, useRef, useContext } from "react";
 
 const MoviePage = (props) => {
   const myRef = useRef();
@@ -11,6 +13,7 @@ const MoviePage = (props) => {
   const [bookTickets, setBookTickets] = useState(true);
   const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
+  const { currentUser } = useContext(UserContext);
 
   useEffect(() => {
     /* Get movie data from backend */
