@@ -33,9 +33,11 @@ const Booking = () => {
       let rebates = await fetch(`/api/v1/bookings/rebates`);
       rebates = await rebates.json();
       setTotalPrice(
-        rebates.adultMultiplier * adult * moviePrice +
-          rebates.childMultiplier * child * moviePrice +
-          rebates.seniorMultiplier * senior * moviePrice
+        Math.ceil(
+          rebates.adultMultiplier * adult * moviePrice +
+            rebates.childMultiplier * child * moviePrice +
+            rebates.seniorMultiplier * senior * moviePrice
+        )
       );
     })();
   }, [adult, child, senior, moviePrice]);
