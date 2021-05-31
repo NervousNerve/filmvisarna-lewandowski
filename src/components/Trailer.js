@@ -9,11 +9,20 @@ const Trailer = (props) => {
         <div className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        <iframe
+        {/*  <iframe
           title={`${props.movieTitle} Trailer`}
           src={`https://www.youtube.com/embed/${props.trailer}`}
           allowFullScreen
-        ></iframe>
+        ></iframe> */}
+        {props.trailer ? (
+          <iframe
+            title={`${props.movieTitle} Trailer`}
+            src={`https://www.youtube.com/embed/${props.trailer}`}
+            allowFullScreen
+          ></iframe>
+        ) : (
+          <div>hej</div>
+        )}
       </div>
     </div>
   );
