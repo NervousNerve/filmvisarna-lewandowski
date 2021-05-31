@@ -121,7 +121,7 @@ const MoviePage = (props) => {
               <div className={style.book} ref={myRef}>
                 <h3>Book tickets</h3>
                 <hr />
-                {currentUser ? <Booking /> : <Entry />}
+                {currentUser ? <Booking movieId={movieId} /> : <Entry />}
               </div>
             )}
           </div>
