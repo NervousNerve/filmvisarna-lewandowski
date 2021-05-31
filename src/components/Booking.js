@@ -11,19 +11,10 @@ const Booking = () => {
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
-  const [rebates, setRebates] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
 
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
-
-  useEffect(() => {
-    (async () => {
-      let rebates = await fetch(`/api/v1/bookings/rebates`);
-      rebates = await rebates.json();
-      setRebates(rebates);
-    })();
-  }, []);
 
   useEffect(() => {
     (async () => {
@@ -42,14 +33,15 @@ const Booking = () => {
   }, [movieId]);
 
   useEffect(() => {
-    // without this check, total price on render will display NaN
-    if (adult || child || oldie !== 0) {
+    (async () => {
+      let rebates = await fetch(`/api/v1/bookings/rebates`);
+      rebates = await rebates.json();
       setTotalPrice(
         rebates.adultMultiplier * adult * moviePrice +
           rebates.childMultiplier * child * moviePrice +
           rebates.seniorMultiplier * oldie * moviePrice
       );
-    }
+    })();
   }, [adult, child, oldie]);
 
   const confirmBooking = async () => {
