@@ -209,8 +209,13 @@ const getBookingsByUser = async (req, res) => {
 };
 
 const getAllRebates = async (req, res) => {
-  let rebates = await Rebate.find().exec();
-  res.json(rebates);
+  try {
+    let rebates = await Rebate.find().exec();
+    res.json(rebates);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
 };
 
 module.exports = {
