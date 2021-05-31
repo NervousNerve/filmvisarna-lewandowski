@@ -15,7 +15,7 @@ const Modal = ({ children, onClose }) => {
         <div className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        <div>{children}</div>
+        <div id="modalChild">{children}</div>
       </div>
     </div>
   );

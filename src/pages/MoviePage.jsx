@@ -40,7 +40,6 @@ const MoviePage = (props) => {
                 }}
               >
                 <iframe
-                  id="modalChild"
                   title={`${movie.title} Trailer`}
                   src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
                   allowFullScreen
