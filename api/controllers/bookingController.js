@@ -198,9 +198,6 @@ const getBookingsByUser = async (req, res) => {
       { $unwind: "$screeningId.theaterId" },
     ]).exec();
 
-    if (!bookings.length) {
-      return res.status(404).json({ error: "No bookings found" });
-    }
     return res.json(bookings);
   } catch (err) {
     console.log(err);
