@@ -1,38 +1,26 @@
 import { useEffect, useState } from "react";
-import { useLocation } from 'react-router-dom';
 import UserBookingItem from "../components/UserBookingItem";
 import styles from "../css/UserBookings.module.css";
+import { useQueryParam } from "use-query-params";
 
 const UserBookings = () => {
-  const location = useLocation();
-  const [pageUrl] = useState(location);
-  const [showUpcomingBookings, setShowUpcomingBookings] = useState(true);
-  const [bookings, setBookings] = useState(null);
 
-  useEffect(() => {
-    pageUrl.search.includes('?previous=true') ? setShowUpcomingBookings(false) : setShowUpcomingBookings(true)
-  }, []);
+  const [showPrevious, setShowPrevious] = useQueryParam("previous");
+  const [bookings, setBookings] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `/api/v1/bookings/${showUpcomingBookings ? "" : "?previous=true"}`
+        `/api/v1/bookings/${showPrevious ? "?previous=true" : ""}`
         );
         setBookings(await response.json())
     }
     fetchData();
-  }, [showUpcomingBookings]);
+  }, [showPrevious]);
 
   const toggleBookings = () =>{
-    const url = new URL(window.location);
-    if(url.search.includes('?previous=true')){
-      url.search = "";
-    }else{
-      url.searchParams.set('previous', 'true');
-    }
-    setShowUpcomingBookings(!showUpcomingBookings)
-    window.history.pushState({}, '', url);
-    setBookings([])
+    setShowPrevious(showPrevious ? undefined : true);
+    setBookings([]);
   }
 
   const renderTickets = () => {
@@ -47,7 +35,7 @@ const UserBookings = () => {
      }else {
       return (
         <div>
-          <p>No {showUpcomingBookings ? "upcoming" : "previous"} bookings to show</p>
+          <p>No {showPrevious ? "previous" : "upcoming"} bookings to show</p>
         </div>
       );
     }
@@ -63,7 +51,7 @@ const UserBookings = () => {
           }}
           className={styles.input}
           type="checkbox"
-          checked={showUpcomingBookings ? true : false}
+          checked={showPrevious ? false : true}
         />
         <span className={`${styles.slider} ${styles.round} slider`}></span>
         <div className={styles.textContainer}>
