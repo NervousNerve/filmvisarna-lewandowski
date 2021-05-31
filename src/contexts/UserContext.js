@@ -17,8 +17,7 @@ const UserProvider = (props) => {
   };
 
   const logout = async () => {
-    let user = await fetch("/api/v1/users/logout");
-    user = await user.json();
+    await fetch("/api/v1/users/logout");
     setCurrentUser(undefined);
   };
 
