@@ -1,8 +1,14 @@
-.top {
+.spacer {
+  height: 2rem;
+  padding: 0.5rem;
+}
+
+.topfield {
   box-shadow: 0px 3px 0px 0px #18191f;
   z-index: 9999;
   position: fixed;
-  width: 100vw;
+  top: 0;
+  width: 100%;
 }
 
 /* Style the navigation menu */
@@ -12,25 +18,17 @@
   position: relative;
   box-shadow: 0px 3px 0px 0px #18191f;
   width: 100%;
-}
+  padding: 0.5rem;
 
-/* Hide the links inside the navigation menu (except for logo/home) */
-.topnav {
-  display: none;
-  padding-top: 6px;
-  padding-bottom: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 /* Style navigation menu links */
 .topnav a {
   color: black;
-  padding-right: 16px;
-  padding-left: 16px;
-  padding-top: 3px;
-  padding-bottom: 3px;
   text-decoration: none;
-  font-size: 17px;
-  display: block;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -38,9 +36,6 @@
 .topnav a.icon {
   background: black;
   display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
 }
 
 .topnav a:hover {
@@ -51,48 +46,46 @@
   display: none;
 }
 
-.searchicon {
-  float: right;
-  padding-right: 10px;
-  padding-top: 15px;
-}
-
 .navs {
   background-color: #d83830;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
 }
 
-.navs.clickedMenu {
-  border-bottom: 1px solid #fdf7e3;
+.topfield:not(.clickedMenu) .topnav {
+  display: none;
 }
 
-.burger {
-  padding-left: 10px;
-  padding-bottom: 10px;
-}
-
-.topfield.clickedMenu {
-  display: block;
-}
-
-.topfield.clickedMenu .topnav {
-  display: block;
-}
-
-.imglogo {
-  height: 40px;
-  padding-left: 100px;
+.img {
+  height: 2rem;
 }
 
 .input {
   display: none;
 }
 
+.grid {
+  display: grid;
+}
+
+.justifyEnd {
+  justify-content: end;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
 @media (min-width: 768px) {
-  .topnav {
-    display: inline;
-    background-color: none;
+  .topnav,
+  .topfield:not(.clickedMenu) .topnav {
+    background: none;
     box-shadow: none;
-    padding-top: 10px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .burger {
@@ -108,10 +101,6 @@
     text-decoration: none;
     font-size: 17px;
     display: inline;
-  }
-
-  .navs {
-    padding-bottom: 10px;
   }
 
   .navs.clickedMenu {
@@ -132,27 +121,9 @@
     display: none;
   }
 
-  .top {
-    background-color: rgb(216, 56, 48);
-    box-shadow: 0px 3px 0px 0px #18191f;
-  }
-
-  .topfield.clickedMenu {
-    background-color: rgb(216, 56, 48);
-    display: inline-flex;
-    display: flex;
-  }
-
-  .topfield2 {
+  .topfield {
     background-color: rgb(216, 56, 48);
     display: flex;
-    justify-content: space-between;
-    padding: 0px 14px;
-    padding-top: 8px;
-  }
-
-  .field {
-    padding-top: 15px;
   }
 }
 
@@ -176,10 +147,6 @@
     padding-top: 15px;
     padding-right: 20px;
     padding-bottom: 5px;
-  }
-
-  .topnav {
-    padding-top: 10px;
   }
 
   .field {

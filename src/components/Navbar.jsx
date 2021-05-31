@@ -23,25 +23,26 @@ const Navbar = () => {
   };
 
   return (
-    <div className={styles.top}>
-      <div
-        className={`${styles.topfield} ${styles.topfield2} ${
-          menu && styles.clickedMenu
-        }`}
-      >
-        <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
-          <FontAwesomeIcon
-            className={styles.burger}
-            icon={faBars}
-            onClick={handleClick}
-          />
+    <div className={styles.wrapper}>
+      <div className={styles.spacer} />
 
-          <img
-            className={styles.imglogo}
-            src="/assets/icons/logo.png"
-            alt="Logo"
-          />
-          <FontAwesomeIcon className={styles.searchicon} icon={faSearch} />
+      <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
+        <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
+          <div className={`${styles.grid} ${styles.alignCenter}`}>
+            <FontAwesomeIcon
+              className={styles.burger}
+              icon={faBars}
+              onClick={handleClick}
+            />
+          </div>
+
+          <img className={styles.img} src="/assets/icons/logo.png" alt="Logo" />
+
+          <div
+            className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
+          >
+            {/* Search field goes here later */}
+          </div>
         </div>
         <div className={styles.topnav} id="myMenu">
           <NavLink onClick={handleClick} to="/">
