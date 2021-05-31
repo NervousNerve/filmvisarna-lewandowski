@@ -1,64 +1,53 @@
 import { useEffect, useState } from "react";
+import { useLocation } from 'react-router-dom';
 import UserBookingItem from "../components/UserBookingItem";
 import styles from "../css/UserBookings.module.css";
 
 const UserBookings = () => {
+  const location = useLocation();
+  const [pageUrl] = useState(location);
   const [showUpcomingBookings, setShowUpcomingBookings] = useState(true);
-  const [upcomingBookings, setUpcomingBookings] = useState(null);
-  const [previousBookings, setPreviousBookings] = useState(null);
+  const [bookings, setBookings] = useState(null);
 
   useEffect(() => {
-    if (localStorage.getItem("showUpcomingBookings")) {
-      setShowUpcomingBookings(
-        JSON.parse(localStorage.getItem("showUpcomingBookings"))
-      );
-    }
+    pageUrl.search.includes('?previous=true') ? setShowUpcomingBookings(false) : setShowUpcomingBookings(true)
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("showUpcomingBookings", showUpcomingBookings);
     async function fetchData() {
-      if (showUpcomingBookings) {
-        let getUpcomingBookings = await fetch(`/api/v1/bookings/`);
-        getUpcomingBookings = await getUpcomingBookings.json();
-        setUpcomingBookings(getUpcomingBookings);
-      } else {
-        let getPreviousBookings = await fetch(`/api/v1/bookings?previous=true`);
-        getPreviousBookings = await getPreviousBookings.json();
-
-        setPreviousBookings(getPreviousBookings);
-      }
+      const response = await fetch(
+        `/api/v1/bookings/${showUpcomingBookings ? "" : "?previous=true"}`
+        );
+        setBookings(await response.json())
     }
     fetchData();
   }, [showUpcomingBookings]);
 
-  const toggleBookings = () => {
-    setShowUpcomingBookings(!showUpcomingBookings);
-  };
+  const toggleBookings = () =>{
+    const url = new URL(window.location);
+    if(url.search.includes('?previous=true')){
+      url.search = "";
+    }else{
+      url.searchParams.set('previous', 'true');
+    }
+    setShowUpcomingBookings(!showUpcomingBookings)
+    window.history.pushState({}, '', url);
+    setBookings([])
+  }
 
   const renderTickets = () => {
-    if (showUpcomingBookings && upcomingBookings) {
+    if (bookings?.length) {
       return (
         <div>
-          {upcomingBookings.map((booking, i) => (
-            <UserBookingItem key={i} booking={booking} />
+          {bookings.map((booking) => (
+            <UserBookingItem key={booking._id} booking={booking} />
           ))}
         </div>
       );
-    } else if (!showUpcomingBookings && previousBookings) {
+     }else {
       return (
         <div>
-          <div>
-            {previousBookings.map((booking, i) => (
-              <UserBookingItem key={i} booking={booking} />
-            ))}
-          </div>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p>No upcoming bookings to show</p>
+          <p>No {showUpcomingBookings ? "upcoming" : "previous"} bookings to show</p>
         </div>
       );
     }
@@ -77,16 +66,18 @@ const UserBookings = () => {
           checked={showUpcomingBookings ? true : false}
         />
         <span className={`${styles.slider} ${styles.round} slider`}></span>
-        <span
-          className={`${styles.activeState} ${styles.activeStatePrevious} ${styles.bold}`}
-        >
-          Upcoming
-        </span>
-        <span
-          className={`${styles.activeState} ${styles.activeStateUpcoming} ${styles.bold}`}
-        >
-          Previous
-        </span>
+        <div className={styles.textContainer}>
+          <span
+            className={`${styles.activeState} ${styles.bold}`}
+            >
+              Previous
+          </span>
+          <span
+            className={`${styles.activeState} ${styles.bold}`}
+            >
+              Upcoming
+          </span>
+        </div>
       </label>
       {renderTickets()}
     </div>
