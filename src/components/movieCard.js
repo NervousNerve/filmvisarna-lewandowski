@@ -6,7 +6,6 @@ const MovieCard = (props) => {
 
   const handleMovieClick = (movidId) => {
     history.push(`/movies/${movidId}`);
-    console.log("this is clicked movieId: ", movidId);
   };
 
   return (
