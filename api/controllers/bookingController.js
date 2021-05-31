@@ -210,7 +210,7 @@ const getBookingsByUser = async (req, res) => {
 
 const getAllRebates = async (req, res) => {
   try {
-    let rebates = await Rebate.find().exec();
+    let rebates = await Rebate.findOne().exec();
     res.json(rebates);
   } catch (err) {
     console.log(err);
