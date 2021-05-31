@@ -38,15 +38,13 @@ const Booking = () => {
   }, []);
 
   useEffect(() => {
-    /* let totalPrice =
-      rebates.adultMultiplier * adult * moviePrice +
-      rebates.childMultiplier * child * moviePrice +
-      rebates.seniorMultiplier * oldie * moviePrice; */
-    setTotalPrice(
-      rebates.adultMultiplier * adult * moviePrice +
-        rebates.childMultiplier * child * moviePrice +
-        rebates.seniorMultiplier * oldie * moviePrice
-    );
+    if (adult || child || oldie !== 0) {
+      setTotalPrice(
+        rebates.adultMultiplier * adult * moviePrice +
+          rebates.childMultiplier * child * moviePrice +
+          rebates.seniorMultiplier * oldie * moviePrice
+      );
+    }
   }, [adult, child, oldie]);
 
   useEffect(() => {
