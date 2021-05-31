@@ -5,7 +5,7 @@ import styles from "../css/Booking.module.css";
 const Booking = () => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-  const [oldie, setOldie] = useState(0);
+  const [senior, setOldie] = useState(0);
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
@@ -39,15 +39,15 @@ const Booking = () => {
       setTotalPrice(
         rebates.adultMultiplier * adult * moviePrice +
           rebates.childMultiplier * child * moviePrice +
-          rebates.seniorMultiplier * oldie * moviePrice
+          rebates.seniorMultiplier * senior * moviePrice
       );
     })();
-  }, [adult, child, oldie]);
+  }, [adult, child, senior]);
 
   const confirmBooking = async () => {
     const request = {
       screeningId: chosenScreeningId,
-      seats: adult + child + oldie,
+      seats: adult + child + senior,
     };
 
     if (!request.seats || !request.screeningId) {
@@ -92,7 +92,7 @@ const Booking = () => {
         <NumberInput updateValue={setChild} />
       </div>
       <div className={styles.pricetypeWrapper}>
-        <p>Oldie</p>
+        <p>Senior</p>
         <NumberInput updateValue={setOldie} />
       </div>
 
