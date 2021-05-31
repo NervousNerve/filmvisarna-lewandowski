@@ -108,3 +108,7 @@ select,
 .custom-select:after {
   grid-area: select;
 }
+
+.noScroll {
+  position: fixed;
+}

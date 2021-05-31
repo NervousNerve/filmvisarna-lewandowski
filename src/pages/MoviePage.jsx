@@ -1,8 +1,8 @@
 import style from "../css/MoviePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay } from "@fortawesome/free-solid-svg-icons";
-import Trailer from "../components/Trailer";
 import Entry from "../components/Entry";
+import Modal from "../components/Modal";
 import Booking from "../components/Booking";
 import { UserContext } from "../contexts/UserContext";
 import { useState, useEffect, useRef, useContext } from "react";
@@ -30,24 +30,24 @@ const MoviePage = (props) => {
     window.scrollTo({ behavior: "smooth", top: scrollStop });
   };
 
-  /* Close trailer modal */
-  const closeTrailer = (e) => {
-    if (e.target !== "iframe") {
-      setWatchTrailer(false);
-    }
-  };
-
   return (
-    <div className={`${style.moviePage} ${watchTrailer && style.noScroll}`}>
+    <div className={`${style.moviePage} ${watchTrailer && "noScroll"}`}>
       {movie && (
         <div>
           {/* Trailer */}
           {watchTrailer && (
-            <div className={style.trailerContainer} onClick={closeTrailer}>
-              <Trailer
-                trailer={String(movie.trailerUrl)}
-                movieTitle={movie.title}
-              />
+            <div className={style.trailerContainer}>
+              <Modal
+                onClose={() => {
+                  setWatchTrailer(false);
+                }}
+              >
+                <iframe
+                  title={`${movie.title} Trailer`}
+                  src={`https://www.youtube.com/embed/${movie.trailerUrl}`}
+                  allowFullScreen
+                ></iframe>
+              </Modal>
             </div>
           )}
           {/* Hero image */}
