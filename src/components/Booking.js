@@ -21,11 +21,7 @@ const Booking = () => {
       let movie = await fetch(`/api/v1/movies/${movieId}`);
       movie = await movie.json();
       setMoviePrice(movie.price);
-    })();
-  }, []);
 
-  useEffect(() => {
-    (async () => {
       let screening = await fetch(`/api/v1/screenings/${movieId}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
@@ -42,7 +38,7 @@ const Booking = () => {
           rebates.seniorMultiplier * senior * moviePrice
       );
     })();
-  }, [adult, child, senior]);
+  }, [adult, child, senior, moviePrice]);
 
   const confirmBooking = async () => {
     const request = {
