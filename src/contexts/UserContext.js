@@ -16,6 +16,12 @@ const UserProvider = (props) => {
     setCurrentUser(user);
   };
 
+  const logout = async () => {
+    let user = await fetch("/api/v1/users/logout");
+    user = await user.json();
+    setCurrentUser(undefined);
+  };
+
   const login = async (userToLogin) => {
     let user = await fetch("/api/v1/users/login", {
       method: "POST",
@@ -61,6 +67,7 @@ const UserProvider = (props) => {
     feedbackMessage,
     login,
     register,
+    logout,
   };
 
   return (
