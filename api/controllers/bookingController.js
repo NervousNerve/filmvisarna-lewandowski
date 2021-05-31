@@ -208,7 +208,7 @@ const getBookingsByUser = async (req, res) => {
   }
 };
 
-const getAllRebates = async (req, res) => {
+const getRebates = async (req, res) => {
   try {
     let rebates = await Rebate.findOne().exec();
     res.json(rebates);
@@ -222,5 +222,5 @@ module.exports = {
   getBookingById,
   getBookingsByUser,
   createBooking,
-  getAllRebates,
+  getRebates,
 };
