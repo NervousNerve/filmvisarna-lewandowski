@@ -1,4 +1,5 @@
 import { BrowserRouter, Route } from "react-router-dom";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar.jsx";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
@@ -16,6 +17,7 @@ function App() {
           <Route exact path="/movies/:movieId" component={MoviePage} />
         </BrowserRouter>
       </UserProvider>
+      <Footer />
     </div>
   );
 }

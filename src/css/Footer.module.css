@@ -1,0 +1,32 @@
+.footer {
+  background-color: #d83830;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+}
+
+.aboutWrapper {
+  margin: 1rem;
+  text-align: left;
+}
+
+.logo {
+  width: 10rem;
+}
+
+.logoWrapper {
+  text-align: right;
+  margin: 1rem;
+}
+
+.headerAndLogoWrapper {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+}
+
+.copyrightWrapper {
+  text-align: center;
+}
