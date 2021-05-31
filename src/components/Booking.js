@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
-const Booking = () => {
+const Booking = ({ movieId }) => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [senior, setOldie] = useState(0);
@@ -12,9 +12,6 @@ const Booking = () => {
   const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
-
-  // will be updated with dynamic prop value from Movie Page
-  let movieId = "60a632b98421e91fe4243b9e ";
 
   useEffect(() => {
     (async () => {
