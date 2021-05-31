@@ -1,6 +1,7 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
+const Rebate = require("../models/Rebate");
 
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
@@ -207,8 +208,14 @@ const getBookingsByUser = async (req, res) => {
   }
 };
 
+const getAllRebates = async (req, res) => {
+  let rebates = await Rebate.find().exec();
+  res.json(rebates);
+};
+
 module.exports = {
   getBookingById,
   getBookingsByUser,
   createBooking,
+  getAllRebates,
 };
