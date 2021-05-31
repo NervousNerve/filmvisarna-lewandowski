@@ -48,7 +48,6 @@ const ConfirmationPage = (props) => {
             timeZone: "Europe/Stockholm",
           })}{" "}
         </p>
-        {/* <p>{booking.screeningId.date}</p> */}
         <h4>Seat/Row:</h4>
         <p> {booking.seats.join(", ")}</p>
         <h4>Film description: </h4>
