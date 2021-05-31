@@ -15,10 +15,33 @@ const Booking = () => {
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
 
+  /* const rebates = {
+    childMultiplier: 0.7,
+    adultMultiplier: 1,
+    seniorMultiplier: 0.8,
+  }; */
+
+  /* useEffect(() => {
+    setTotalPrice(
+      rebates.childMultiplier * child,
+      rebates.adultMultiplier * adult,
+      rebates.seniorMultiplier * oldie
+    );
+  }, []); */
+
+  useEffect(() => {
+    console.log(totalPrice);
+  }, [totalPrice]);
+
   useEffect(() => {
     (async () => {
-      let rebates = await fetch(`/api/v1/`);
+      let rebates = await fetch(`/api/v1/bookings/rebates`);
       rebates = await rebates.json();
+      setTotalPrice(
+        rebates.childMultiplier * child,
+        rebates.adultMultiplier * adult,
+        rebates.seniorMultiplier * oldie
+      );
     })();
   }, [adult, child, oldie]);
 
