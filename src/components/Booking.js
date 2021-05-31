@@ -11,23 +11,11 @@ const Booking = () => {
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [rebates, setRebates] = useState(0);
+  const [moviePrice, setMoviePrice] = useState(0);
 
   // will be updated with dynamic prop value from Movie Page
   let movieId = "60a632b98421e91fe4243b9e ";
-
-  /* const rebates = {
-    childMultiplier: 0.7,
-    adultMultiplier: 1,
-    seniorMultiplier: 0.8,
-  }; */
-
-  /* useEffect(() => {
-    setTotalPrice(
-      rebates.childMultiplier * child,
-      rebates.adultMultiplier * adult,
-      rebates.seniorMultiplier * oldie
-    );
-  }, []); */
 
   useEffect(() => {
     console.log(totalPrice);
@@ -37,12 +25,28 @@ const Booking = () => {
     (async () => {
       let rebates = await fetch(`/api/v1/bookings/rebates`);
       rebates = await rebates.json();
-      setTotalPrice(
-        rebates.childMultiplier * child,
-        rebates.adultMultiplier * adult,
-        rebates.seniorMultiplier * oldie
-      );
+      setRebates(rebates);
     })();
+  }, []);
+
+  useEffect(() => {
+    (async () => {
+      let movie = await fetch(`/api/v1/movies/${movieId}`);
+      movie = await movie.json();
+      setMoviePrice(movie.price);
+    })();
+  }, []);
+
+  useEffect(() => {
+    /* let totalPrice =
+      rebates.adultMultiplier * adult * moviePrice +
+      rebates.childMultiplier * child * moviePrice +
+      rebates.seniorMultiplier * oldie * moviePrice; */
+    setTotalPrice(
+      rebates.adultMultiplier * adult * moviePrice +
+        rebates.childMultiplier * child * moviePrice +
+        rebates.seniorMultiplier * oldie * moviePrice
+    );
   }, [adult, child, oldie]);
 
   useEffect(() => {
