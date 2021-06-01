@@ -1,4 +1,4 @@
-import style from "../css/Modal.module.css";
+import style from "../css/ModalLogin.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Entry from "./Entry";
@@ -16,8 +16,10 @@ const ModalLogin = ({ children, onClose }) => {
         <div className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        <div id="modalChild">{children}
         <Entry />
+        <div id="modalChild">
+          {children}
+          
         </div>
       </div>
     </div>
