@@ -1,32 +1,21 @@
-/* .pageWrapper {
-  background: #fefcf5;
-} */
-
 .textContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
   position: absolute;
-  top: 35%;
+  top: 50%;
   text-align: center;
   width: 100%;
 }
 
-.pageWrapper h2,
-h4 {
+.pageWrapper h1,
+h2 {
   margin: 0;
 }
 
-/* .pageWrapper h1 {
-  font-size: 1em;
-  margin: 0;
+.pageWrapper h3 {
+  margin: 1.5em 0em 0em 1.4em;
 }
-
-.pageWrapper p {
-     font-size: 1.2em;
- 
-  margin: 0;
-} */
 
 .pageWrapper img {
   max-width: 100%;
@@ -35,9 +24,11 @@ h4 {
 
 .imgContainer {
   position: relative;
-  width: auto;
-  height: 40vh;
+  /* width: auto; */
+  height: 60vh;
   background-size: cover;
+  background-position: 40%;
+  background-repeat: no-repeat;
   background-image: -webkit-linear-gradient(
       top,
       rgba(255, 255, 255, 0) 40%,
