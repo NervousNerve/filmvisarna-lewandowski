@@ -5,7 +5,7 @@ import styles from "../css/Booking.module.css";
 const Booking = ({ movieId }) => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-  const [senior, setOldie] = useState(0);
+  const [senior, setSenior] = useState(0);
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
@@ -96,7 +96,7 @@ const Booking = ({ movieId }) => {
       <div className={styles.pricetypeWrapper}>
         <p>Senior</p>
         <div className="grid-item">
-          <NumberInput updateValue={setOldie} />
+          <NumberInput updateValue={setSenior} />
         </div>
       </div>
 
