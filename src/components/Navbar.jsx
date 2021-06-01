@@ -61,7 +61,7 @@ const Navbar = () => {
             My profile
           </NavLink>
 
-          <div onClick={handleModal}>
+          <div className={styles.login} onClick={handleModal}>
             Login/Register
             {modal && (
               <ModalLogin
