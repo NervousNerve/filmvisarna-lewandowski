@@ -83,18 +83,21 @@ const Booking = ({ movieId }) => {
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
         <p>Adult</p>
+        <p>Price</p>
         <div className="grid-item">
           <NumberInput updateValue={setAdult} />
         </div>
       </div>
       <div className={styles.pricetypeWrapper}>
         <p>Child</p>
+        <p>Price</p>
         <div className="grid-item">
           <NumberInput updateValue={setChild} />
         </div>
       </div>
       <div className={styles.pricetypeWrapper}>
         <p>Senior</p>
+        <p>Price</p>
         <div className="grid-item">
           <NumberInput updateValue={setSenior} />
         </div>
