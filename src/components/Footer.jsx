@@ -1,11 +1,17 @@
 import styles from "../css/Footer.module.css";
-// import backgroundImage from "/assets/icons/rainingPopcorn.png";
-// public\assets\icons\rainingPopcorn.png
 
 const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.content}>
+        <div className={styles.logoContainer}>
+          <img
+            className={styles.logo}
+            src="/assets/icons/logo-02.png"
+            alt="Logo"
+          />
+        </div>
+
         <div className={styles.aboutAndContactWrapper}>
           <div className={styles.about}>
             <div className={styles.aboutText}>
@@ -25,20 +31,13 @@ const Footer = () => {
                 care to come up with anything good here. That's it guys.
               </p>
             </div>
-            <div className={styles.logoContainer}>
-              <img
-                className={styles.logo}
-                src="/assets/icons/logo-02.png"
-                alt="Logo"
-              />
-            </div>
           </div>
-          <div className={styles.contact}>
-            <div className={styles.address}>
-              <h3 className={styles.contactHeaders}>Stop by!</h3>
-              <p>Hipstergatan 420b</p>
-              <p>1312, Malmö</p>
-            </div>
+          <div
+            className={styles.contact}
+            style={{
+              backgroundImage: `url(/assets/icons/rainingPopcorn.png)`,
+            }}
+          >
             <div className={styles.social}>
               <h3 className={styles.contactHeaders}>Say hi!</h3>
               <div className={styles.iconAndDesc}>
@@ -52,7 +51,7 @@ const Footer = () => {
               <div className={styles.iconAndDesc}>
                 <img
                   className={styles.socialIcon}
-                  src="/assets/icons/facebookIcon.png"
+                  src="/assets/icons/facebook.png"
                   alt="Logo"
                 />
                 <p>Funky Films</p>
@@ -66,11 +65,22 @@ const Footer = () => {
                 <p>@funkyfilms</p>
               </div>
             </div>
+            <div className={styles.address}>
+              <h3 className={styles.contactHeaders}>Stop by!</h3>
+              <div className={styles.iconAndDesc}>
+                <img
+                  className={styles.socialIcon}
+                  src="/assets/icons/location.png"
+                  alt="Logo"
+                />
+                <p>Hipstergatan 420b, 1312, Malmö</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <div className={styles.copyrightWrapper}>
-        <p>&copy;2021</p>
+        <p>FunkyFilms&copy;2021</p>
       </div>
     </div>
   );

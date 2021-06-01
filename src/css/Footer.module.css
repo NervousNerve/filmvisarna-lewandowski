@@ -3,51 +3,33 @@
   flex-flow: row wrap;
 }
 
-.aboutText {
-  margin: 3rem 0 2rem 0;
-}
-
 .aboutAndContactWrapper {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   flex-flow: row wrap;
   margin: 1rem;
   text-align: left;
 }
 
+.aboutText {
+  margin: 1rem 0 2rem 0;
+}
+
 .address {
-  margin: 0.5rem;
+  margin: 2rem;
 }
 
 .contact {
-  /* background-position: left;
+  background-position: right;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-size: contain; */
-  margin: 3rem 0rem;
+  padding: 3rem 0rem;
   display: flex;
   flex-flow: row wrap;
 }
 
 .contactWrapper {
-  text-align: left;
-}
-
-.footer {
-  background-color: #d83830;
-  background-repeat: no-repeat;
-  background-position: right;
-  margin-top: 7rem;
-  display: flex;
-  flex-direction: column;
-  border-top: 2px solid #18191f;
-}
-
-.logo {
-  width: 7rem;
-  margin: 5px;
-}
-
-.logoContainer {
   text-align: left;
 }
 
@@ -58,6 +40,18 @@
   justify-content: center;
 }
 
+.footer {
+  background-color: #d83830;
+  margin-top: 7rem;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #18191f;
+}
+
+.iconAndDesc p {
+  margin: 6px;
+}
+
 .iconAndDesc {
   display: flex;
   margin-top: 0.5rem;
@@ -65,12 +59,17 @@
   align-items: center;
 }
 
-.iconAndDesc p {
-  margin: 6px;
+.logo {
+  width: 9rem;
+}
+
+.logoContainer {
+  margin: 2rem 2rem 0rem 0rem;
+  text-align: right;
 }
 
 .social {
-  margin: 0.5rem;
+  margin: 2rem;
 }
 
 .socialIcon {
@@ -81,10 +80,6 @@
 @media screen and (min-device-width: 1024px) {
   .about {
     width: 40%;
-  }
-
-  .aboutAndContactWrapper {
-    align-items: flex-end;
   }
 
   .contactWrapper {
