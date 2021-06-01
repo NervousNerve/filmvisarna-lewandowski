@@ -1,7 +1,7 @@
 import style from "../css/Modal.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import Entry from "./Entry";
+// import Entry from "./Entry";
 
 const Modal = ({ children, onClose }) => {
   const handleClick = (e) => {
@@ -16,8 +16,10 @@ const Modal = ({ children, onClose }) => {
         <div className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
         </div>
-        {/* <div id="modalChild">{children}</div> */}
-        <Entry />
+        <div id="modalChild">
+          {children}
+          {/* <Entry /> */}
+        </div>
       </div>
     </div>
   );
