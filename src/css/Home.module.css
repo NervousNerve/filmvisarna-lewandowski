@@ -3,7 +3,7 @@
   justify-content: center;
   flex-direction: column;
   position: absolute;
-  top: 50%;
+  top: 48%;
   text-align: center;
   width: 100%;
 }
@@ -14,7 +14,7 @@ h2 {
 }
 
 .pageWrapper h3 {
-  margin: 1.5em 0em 0em 1.4em;
+  text-align: center;
 }
 
 .pageWrapper img {
@@ -24,10 +24,9 @@ h2 {
 
 .imgContainer {
   position: relative;
-  /* width: auto; */
   height: 60vh;
   background-size: cover;
-  background-position: 40%;
+  background-position: top 15% left 40%;
   background-repeat: no-repeat;
   background-image: -webkit-linear-gradient(
       top,
@@ -36,4 +35,18 @@ h2 {
       rgba(255, 255, 255, 1) 100%
     ),
     url("https://m.media-amazon.com/images/M/MV5BNDExNDYxODc1MF5BMl5BanBnXkFtZTcwNDQ0OTk1Mw@@._V1_.jpg");
+}
+
+@media screen and (min-width: 575px) {
+  .pageWrapper h1 {
+    font-size: 3.5rem;
+  }
+
+  .pageWrapper h2 {
+    font-size: 2.5rem;
+  }
+
+  .textContainer {
+    top: 40%;
+  }
 }
