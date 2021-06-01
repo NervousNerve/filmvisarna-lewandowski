@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { NavLink, useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
 const Booking = ({ movieId }) => {
+  const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [senior, setSenior] = useState(0);
@@ -13,6 +15,7 @@ const Booking = ({ movieId }) => {
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [bookingId, setBookingId] = useState();
 
   useEffect(() => {
     (async () => {
@@ -62,6 +65,11 @@ const Booking = ({ movieId }) => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
       });
+
+      booking = await booking.json();
+      console.log(booking);
+
+      //history.push("/confirmation/bookingId");
 
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
