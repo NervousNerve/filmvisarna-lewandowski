@@ -11,6 +11,7 @@ const Booking = ({ movieId }) => {
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
+  const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -22,21 +23,25 @@ const Booking = ({ movieId }) => {
       let screening = await fetch(`/api/v1/screenings/${movieId}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
+
+      let rebates = await fetch(`/api/v1/bookings/rebates`);
+      rebates = await rebates.json();
+      setRebates(rebates);
     })();
   }, [movieId]);
 
   useEffect(() => {
-    (async () => {
-      let rebates = await fetch(`/api/v1/bookings/rebates`);
-      rebates = await rebates.json();
-      setTotalPrice(
-        Math.ceil(
-          rebates.adultMultiplier * adult * moviePrice +
-            rebates.childMultiplier * child * moviePrice +
-            rebates.seniorMultiplier * senior * moviePrice
-        )
-      );
-    })();
+    if (rebates) {
+      (async () => {
+        setTotalPrice(
+          Math.ceil(
+            rebates.adultMultiplier * adult * moviePrice +
+              rebates.childMultiplier * child * moviePrice +
+              rebates.seniorMultiplier * senior * moviePrice
+          )
+        );
+      })();
+    }
   }, [adult, child, senior, moviePrice]);
 
   const confirmBooking = async () => {
