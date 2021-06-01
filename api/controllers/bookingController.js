@@ -1,6 +1,7 @@
 const ObjectId = require("mongoose").Types.ObjectId;
 const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
+const Rebate = require("../models/Rebate");
 
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
@@ -197,10 +198,17 @@ const getBookingsByUser = async (req, res) => {
       { $unwind: "$screeningId.theaterId" },
     ]).exec();
 
-    if (!bookings.length) {
-      return res.status(404).json({ error: "No bookings found" });
-    }
     return res.json(bookings);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+const getRebates = async (req, res) => {
+  try {
+    let rebates = await Rebate.findOne().exec();
+    res.json(rebates);
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Something went wrong" });
@@ -211,4 +219,5 @@ module.exports = {
   getBookingById,
   getBookingsByUser,
   createBooking,
+  getRebates,
 };

@@ -74,10 +74,11 @@ input.search {
   margin: 0;
   height: 45px;
   font-size: inherit;
+  font-family: "Oxygen", sans-serif;
   cursor: inherit;
   line-height: inherit;
   outline: none;
-  max-width: 220px;
+  min-width: 220px;
 }
 
 .custom-select {
@@ -106,4 +107,8 @@ input.search {
 select,
 .custom-select:after {
   grid-area: select;
+}
+
+.noScroll {
+  position: fixed;
 }
