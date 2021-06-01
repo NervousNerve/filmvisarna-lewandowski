@@ -4,6 +4,7 @@ import ConfirmationPage from "./pages/ConfirmationPage";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
+import GuardedRoute from "./components/GuardedRoute";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           </Route>
           <Route exact path="/confirmation/:id" component={ConfirmationPage} />
           <Route exact path="/movies/:movieId" component={MoviePage} />
+          <GuardedRoute path="/profile" component={ProfilePage} />
         </BrowserRouter>
       </UserProvider>
     </div>
