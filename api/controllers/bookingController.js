@@ -118,9 +118,23 @@ const createBooking = async (req, res) => {
       }
     }
 
+    const tickets = { ...req.body.tickets };
+
+    const calcTicketPrice = async () => {
+      let rebates = await Rebate.findOne().exec();
+
+      let ticketPrice = screening.movieId.price;
+      let child = ticketPrice * tickets.child * rebates.childMultiplier;
+      let adult = ticketPrice * tickets.adult * rebates.adultMultiplier;
+      let senior = ticketPrice * tickets.senior * rebates.seniorMultiplier;
+
+      return child + adult + senior;
+    };
+
     const booking = await Booking.create({
       seats: selectedSeats,
-      price: screening.movieId.price * selectedSeats.length,
+      tickets: tickets,
+      price: await calcTicketPrice(),
       userId: req.session.user._id,
       screeningId: screening._id,
     });

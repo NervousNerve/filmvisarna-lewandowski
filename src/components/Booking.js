@@ -45,8 +45,11 @@ const Booking = ({ movieId }) => {
   const confirmBooking = async () => {
     const request = {
       screeningId: chosenScreeningId,
+      tickets: { adult, child, senior },
       seats: adult + child + senior,
     };
+
+    console.log("this is request: ", request);
 
     if (!request.seats || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
