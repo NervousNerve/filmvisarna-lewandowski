@@ -5,27 +5,47 @@ import styles from "../css/Booking.module.css";
 const Booking = ({ movieId }) => {
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
-  const [oldie, setOldie] = useState(0);
+  const [senior, setSenior] = useState(0);
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
   const [chosenScreeningId, setchosenScreeningId] = useState();
-
-  // will be updated with the calculation of total price
-  useEffect(() => {}, [adult, child, oldie]);
+  const [moviePrice, setMoviePrice] = useState(0);
+  const [rebates, setRebates] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     (async () => {
+      let movie = await fetch(`/api/v1/movies/${movieId}`);
+      movie = await movie.json();
+      setMoviePrice(movie.price);
+
       let screening = await fetch(`/api/v1/screenings/${movieId}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
+
+      let rebates = await fetch(`/api/v1/bookings/rebates`);
+      rebates = await rebates.json();
+      setRebates(rebates);
     })();
   }, [movieId]);
+
+  useEffect(() => {
+    if (rebates) {
+      setTotalPrice(
+        Math.ceil(
+          rebates.adultMultiplier * adult * moviePrice +
+            rebates.childMultiplier * child * moviePrice +
+            rebates.seniorMultiplier * senior * moviePrice
+        )
+      );
+    }
+  }, [adult, child, senior, moviePrice, rebates]);
 
   const confirmBooking = async () => {
     const request = {
       screeningId: chosenScreeningId,
-      seats: adult + child + oldie,
+      seats: adult + child + senior,
     };
 
     if (!request.seats || !request.screeningId) {
@@ -63,15 +83,21 @@ const Booking = ({ movieId }) => {
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
         <p>Adult</p>
-        <NumberInput updateValue={setAdult} />
+        <div className="grid-item">
+          <NumberInput updateValue={setAdult} />
+        </div>
       </div>
       <div className={styles.pricetypeWrapper}>
         <p>Child</p>
-        <NumberInput updateValue={setChild} />
+        <div className="grid-item">
+          <NumberInput updateValue={setChild} />
+        </div>
       </div>
       <div className={styles.pricetypeWrapper}>
-        <p>Oldie</p>
-        <NumberInput updateValue={setOldie} />
+        <p>Senior</p>
+        <div className="grid-item">
+          <NumberInput updateValue={setSenior} />
+        </div>
       </div>
 
       <div className={styles.selectWrapper}>
@@ -95,8 +121,7 @@ const Booking = ({ movieId }) => {
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
-        {/* A dynamic value will be added here */}
-        <p>Total: $$$</p>
+        <p>Total: {totalPrice} SEK</p>
       </div>
 
       <div className={styles.seatBtn}>
