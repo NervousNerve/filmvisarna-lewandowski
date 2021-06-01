@@ -1,5 +1,25 @@
-.pageWrapper {
+/* .pageWrapper {
   background: #fefcf5;
+} */
+
+.textContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: absolute;
+  top: 35%;
+  text-align: center;
+  width: 100%;
+}
+
+.pageWrapper h1 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.pageWrapper p {
+  font-size: 1.2em;
+  margin: 0;
 }
 
 .pageWrapper img {
@@ -8,13 +28,15 @@
 }
 
 .imgContainer {
+  position: relative;
   width: auto;
   height: 40vh;
   background-size: cover;
-  background-image: linear-gradient(
-      to top,
-      rgb(245, 246, 252),
-      rgba(255, 255, 255, 0)
+  background-image: -webkit-linear-gradient(
+      top,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.73) 84%,
+      rgba(255, 255, 255, 1) 100%
     ),
     url("https://m.media-amazon.com/images/M/MV5BNDExNDYxODc1MF5BMl5BanBnXkFtZTcwNDQ0OTk1Mw@@._V1_.jpg");
 }
