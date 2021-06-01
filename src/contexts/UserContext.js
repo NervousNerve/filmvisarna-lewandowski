@@ -14,7 +14,6 @@ const UserProvider = (props) => {
     let user = await fetch("/api/v1/users/whoami");
     user = await user.json();
     setCurrentUser(user);
-    console.log("IN WHO AMI", user);
   };
 
   const logout = async () => {
@@ -40,7 +39,6 @@ const UserProvider = (props) => {
     }
 
     setCurrentUser(user);
-    console.log("in usercontext", user);
     // push to profile page
   };
 
