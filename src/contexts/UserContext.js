@@ -10,10 +10,6 @@ const UserProvider = (props) => {
     whoami();
   }, []);
 
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
-
   const whoami = async () => {
     let user = await fetch("/api/v1/users/whoami");
     user = await user.json();
