@@ -50,7 +50,7 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/">
             Home
           </NavLink>
-          <NavLink onClick={handleClick} to="/my-profile">
+          <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
           <NavLink onClick={handleClick} to="/login-register">
