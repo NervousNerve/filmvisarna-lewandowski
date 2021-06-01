@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
@@ -15,7 +15,6 @@ const Booking = ({ movieId }) => {
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
-  const [bookingId, setBookingId] = useState();
 
   useEffect(() => {
     (async () => {
@@ -67,9 +66,7 @@ const Booking = ({ movieId }) => {
       });
 
       booking = await booking.json();
-      console.log(booking);
-
-      //history.push("/confirmation/bookingId");
+      history.push(`/confirmation/${booking._id}`);
 
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
