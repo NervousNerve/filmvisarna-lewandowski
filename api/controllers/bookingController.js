@@ -124,11 +124,11 @@ const createBooking = async (req, res) => {
       try {
         let rebates = await Rebate.findOne().exec();
 
-        return (
+        return Math.round(
           (tickets.child * rebates.childMultiplier +
             tickets.adult * rebates.adultMultiplier +
             tickets.senior * rebates.seniorMultiplier) *
-          screening.movieId.price
+            screening.movieId.price
         );
       } catch (err) {
         console.error(err);

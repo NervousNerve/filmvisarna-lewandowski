@@ -33,7 +33,7 @@ const Booking = ({ movieId }) => {
   useEffect(() => {
     if (rebates) {
       setTotalPrice(
-        Math.ceil(
+        Math.round(
           rebates.adultMultiplier * adult * moviePrice +
             rebates.childMultiplier * child * moviePrice +
             rebates.seniorMultiplier * senior * moviePrice
