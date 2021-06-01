@@ -17,6 +17,11 @@ const UserProvider = (props) => {
     console.log("IN WHO AMI", user);
   };
 
+  const logout = async () => {
+    await fetch("/api/v1/users/logout");
+    setCurrentUser(undefined);
+  };
+
   const login = async (userToLogin) => {
     let user = await fetch("/api/v1/users/login", {
       method: "POST",
@@ -63,6 +68,7 @@ const UserProvider = (props) => {
     feedbackMessage,
     login,
     register,
+    logout,
   };
 
   return (

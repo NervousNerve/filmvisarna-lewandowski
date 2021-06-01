@@ -1,5 +1,6 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
+import ConfirmationPage from "./pages/ConfirmationPage";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
@@ -10,13 +11,17 @@ function App() {
   return (
     <div className="App">
       <UserProvider>
-        <Entry />
         <BrowserRouter>
           <QueryParamProvider ReactRouterRoute={Route}>
             <Navbar />
             <Route exact path="/">
               <Home />
             </Route>
+            <Route
+              exact
+              path="/confirmation/:id"
+              component={ConfirmationPage}
+            />
             <Route exact path="/movies/:movieId" component={MoviePage} />
             <Route exact path="/profile" component={ProfilePage} />
           </QueryParamProvider>

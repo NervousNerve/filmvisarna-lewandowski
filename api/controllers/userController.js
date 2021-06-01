@@ -42,7 +42,7 @@ const login = async (req, res) => {
     // Don't include password in response
     user.password = undefined;
     req.session.user = user;
-    return res.json({ message: "Login successful", loggedInUser: user });
+    return res.json(user);
   } catch {
     return res.status(500).json({ error: "Something went wrong" });
   }
