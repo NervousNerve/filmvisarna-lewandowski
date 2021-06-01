@@ -40,7 +40,7 @@ const Booking = ({ movieId }) => {
         )
       );
     }
-  }, [adult, child, senior, moviePrice]);
+  }, [adult, child, senior, moviePrice, rebates]);
 
   const confirmBooking = async () => {
     const request = {
