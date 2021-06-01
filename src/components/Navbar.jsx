@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+// import Modal from "../components/Modal";
+import { useHistory } from "react-router-dom";
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
@@ -13,6 +14,7 @@ const Navbar = () => {
   //   "https://trello-attachments.s3.amazonaws.com/60a21d927cb7b38110c05826/60ab5f1eb07e002ab9bbcfb5/3429140ee35b63a2ad4a06612bacce6f/logo-1.png";
 
   const [menu, setMenu] = useState(false);
+  const history = useHistory();
 
   const handleClick = () => {
     if (menu === false) {
@@ -20,6 +22,10 @@ const Navbar = () => {
     } else {
       setMenu(false);
     }
+  };
+
+  const clickModal = () => {
+    history.push("../components/Modal");
   };
 
   return (
@@ -51,9 +57,11 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/my-profile">
             My profile
           </NavLink>
-          <NavLink onClick={handleClick} to="/login-register">
+          <div onClick={clickModal}>
             Login/Register
-          </NavLink>
+            {/* <Modal onClose={Entry}>
+            </Modal> */}
+          </div>
         </div>
       </div>
     </div>
