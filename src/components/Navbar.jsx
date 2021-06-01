@@ -4,7 +4,8 @@ import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
-import ModalLogin from "./ModalLogin";
+import Modal from "./Modal";
+import Entry from "./Entry";
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
@@ -33,6 +34,17 @@ const Navbar = () => {
 
   return (
     <div className={styles.wrapper}>
+      {modal && (
+        <Modal
+          onClose={() => {
+            setModal(false);
+          }}
+        >
+          <div className={styles.entry}>
+            <Entry />
+          </div>
+        </Modal>
+      )}
       <div className={styles.spacer} />
 
       <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
@@ -60,16 +72,8 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/my-profile">
             My profile
           </NavLink>
-
           <div className={styles.login} onClick={handleModal}>
             Login/Register
-            {modal && (
-              <ModalLogin
-                onClose={() => {
-                  setModal(false);
-                }}
-              ></ModalLogin>
-            )}
           </div>
         </div>
       </div>

@@ -83,8 +83,12 @@
   cursor: pointer;
 }
 
-.topnav.login:hover {
+.login:hover {
   color: #fdf7e3;
+}
+
+.entry {
+  color: #18191f;
 }
 
 @media (min-width: 768px) {
