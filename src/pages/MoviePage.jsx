@@ -10,7 +10,6 @@ import { useState, useEffect, useRef, useContext } from "react";
 const MoviePage = (props) => {
   const myRef = useRef();
   const { movieId } = props.match.params;
-  const [bookTickets, setBookTickets] = useState(true);
   const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
   const { currentUser } = useContext(UserContext);
@@ -66,7 +65,6 @@ const MoviePage = (props) => {
                 {/* Booking button */}
                 <button
                   onClick={() => {
-                    setBookTickets(true);
                     scroll();
                   }}
                 >
@@ -89,14 +87,10 @@ const MoviePage = (props) => {
                   {/* Separating actors with a comma */}
                   <p>
                     {movie.actors.map((actor) => {
-                      if (
-                        movie.actors.indexOf(actor) ===
+                      return movie.actors.indexOf(actor) ===
                         movie.actors.length - 1
-                      ) {
-                        return actor;
-                      } else {
-                        return actor + ", ";
-                      }
+                        ? actor
+                        : actor + ", ";
                     })}
                   </p>
                 </div>
@@ -117,13 +111,11 @@ const MoviePage = (props) => {
               </div>
             </div>
             {/* Booking component */}
-            {bookTickets && (
-              <div className={style.book} ref={myRef}>
-                <h3>Book tickets</h3>
-                <hr />
-                {currentUser ? <Booking movieId={movieId} /> : <Entry />}
-              </div>
-            )}
+            <div className={style.book} ref={myRef}>
+              <h3>Book tickets</h3>
+              <hr />
+              {currentUser ? <Booking movieId={movieId} /> : <Entry />}
+            </div>
           </div>
         </div>
       )}
