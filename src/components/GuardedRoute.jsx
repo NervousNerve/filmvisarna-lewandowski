@@ -1,18 +1,7 @@
 import { Route, Redirect } from "react-router-dom";
-// import { UserContext } from "../contexts/UserContext";
-import { useContext, useEffect } from "react";
 
 const GuardedRoute = ({ component: Component, auth, ...rest }) => {
-  //   const { currentUser } = useContext(UserContext);
-
-  useEffect(() => {
-    if (auth) {
-      console.log("auth is true");
-      console.log(auth);
-    } else {
-      console.log("NO");
-    }
-  }, [auth]);
+  if (auth === undefined) return null;
 
   return (
     <Route
@@ -21,7 +10,6 @@ const GuardedRoute = ({ component: Component, auth, ...rest }) => {
         auth ? <Component {...props} /> : <Redirect to="/" />
       }
     />
-    // <div></div>
   );
 };
 
