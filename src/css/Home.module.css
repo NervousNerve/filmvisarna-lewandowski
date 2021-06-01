@@ -12,15 +12,21 @@
   width: 100%;
 }
 
-.pageWrapper h1 {
+.pageWrapper h2,
+h4 {
+  margin: 0;
+}
+
+/* .pageWrapper h1 {
   font-size: 1em;
   margin: 0;
 }
 
 .pageWrapper p {
-  font-size: 1.2em;
+     font-size: 1.2em;
+ 
   margin: 0;
-}
+} */
 
 .pageWrapper img {
   max-width: 100%;
