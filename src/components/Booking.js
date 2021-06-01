@@ -32,15 +32,13 @@ const Booking = ({ movieId }) => {
 
   useEffect(() => {
     if (rebates) {
-      (async () => {
-        setTotalPrice(
-          Math.ceil(
-            rebates.adultMultiplier * adult * moviePrice +
-              rebates.childMultiplier * child * moviePrice +
-              rebates.seniorMultiplier * senior * moviePrice
-          )
-        );
-      })();
+      setTotalPrice(
+        Math.ceil(
+          rebates.adultMultiplier * adult * moviePrice +
+            rebates.childMultiplier * child * moviePrice +
+            rebates.seniorMultiplier * senior * moviePrice
+        )
+      );
     }
   }, [adult, child, senior, moviePrice]);
 
