@@ -48,7 +48,7 @@
 
 .navs {
   background-color: #d83830;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
 }
@@ -57,9 +57,23 @@
   display: none;
 }
 
-.img {
-  height: 2rem;
+.logos {
+  height: 3rem;
+  position: relative;
+}
+.logo {
+  height: 100%;
   cursor: pointer;
+}
+.hoverLogo {
+  visibility: hidden;
+}
+.gifLogo {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
 }
 
 .input {

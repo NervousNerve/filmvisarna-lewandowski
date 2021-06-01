@@ -10,6 +10,7 @@ const Navbar = () => {
   const history = useHistory();
 
   const [menu, setMenu] = useState(false);
+  const [hoverLogo, setHoverLogo] = useState(false);
 
   const handleClick = () => {
     if (menu === false) {
@@ -33,12 +34,26 @@ const Navbar = () => {
             />
           </div>
 
-          <img
-            className={styles.img}
-            src="/assets/icons/logo.png"
-            alt="Logo"
-            onClick={() => history.push("/")}
-          />
+          <div
+            className={styles.logos}
+            onMouseEnter={() => setHoverLogo(true)}
+            onMouseLeave={() => setHoverLogo(false)}
+          >
+            <img
+              className={`${styles.logo} ${hoverLogo && styles.hoverLogo}`}
+              src="/assets/icons/logo.png"
+              alt="Funky Films"
+              onClick={() => history.push("/")}
+            />
+            {hoverLogo && (
+              <img
+                className={styles.gifLogo}
+                src="/assets/icons/logo-red.gif"
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            )}
+          </div>
 
           <div
             className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
