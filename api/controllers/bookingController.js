@@ -121,14 +121,21 @@ const createBooking = async (req, res) => {
     const tickets = { ...req.body.tickets };
 
     const calcTicketPrice = async () => {
-      let rebates = await Rebate.findOne().exec();
+      try {
+        let rebates = await Rebate.findOne().exec();
 
-      let ticketPrice = screening.movieId.price;
-      let child = ticketPrice * tickets.child * rebates.childMultiplier;
-      let adult = ticketPrice * tickets.adult * rebates.adultMultiplier;
-      let senior = ticketPrice * tickets.senior * rebates.seniorMultiplier;
-
-      return child + adult + senior;
+        return (
+          (tickets.child * rebates.childMultiplier +
+            tickets.adult * rebates.adultMultiplier +
+            tickets.senior * rebates.seniorMultiplier) *
+          screening.movieId.price
+        );
+      } catch (err) {
+        console.error(err);
+        return res.status(400).json({
+          error: err.message,
+        });
+      }
     };
 
     const booking = await Booking.create({
@@ -138,6 +145,8 @@ const createBooking = async (req, res) => {
       userId: req.session.user._id,
       screeningId: screening._id,
     });
+
+    console.log("booking:", booking);
 
     // Set our seats as occupied for this screening
     screening.occupiedSeats.push(...selectedSeats);
