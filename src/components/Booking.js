@@ -35,7 +35,7 @@ const Booking = ({ movieId }) => {
   useEffect(() => {
     if (rebates) {
       setTotalPrice(
-        Math.ceil(
+        Math.round(
           rebates.adultMultiplier * adult * moviePrice +
             rebates.childMultiplier * child * moviePrice +
             rebates.seniorMultiplier * senior * moviePrice
@@ -47,6 +47,7 @@ const Booking = ({ movieId }) => {
   const confirmBooking = async () => {
     const request = {
       screeningId: chosenScreeningId,
+      tickets: { adult, child, senior },
       seats: adult + child + senior,
     };
 
