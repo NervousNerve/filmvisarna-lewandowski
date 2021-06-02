@@ -74,12 +74,7 @@
   }
 }
 @media screen and (min-width: 1024px) {
-  .movieCard:hover {
-    filter: saturate(142%) contrast(87%) brightness(115%);
-    transform: scale(1.12);
-    transition: 400ms ease;
-  }
-
+  .movieCard:hover,
   .movieCard:focus {
     filter: saturate(142%) contrast(87%) brightness(115%);
     transform: scale(1.12);
