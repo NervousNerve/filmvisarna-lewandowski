@@ -19,7 +19,6 @@
   box-shadow: 0px 3px 0px 0px #18191f;
   width: 100%;
   padding: 0.5rem;
-
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -27,7 +26,8 @@
 
 /* Style navigation menu links */
 .topnav a {
-  color: black;
+  color: #18191f;
+  font-size: 1rem;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   transition: .3s;
@@ -35,7 +35,7 @@
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  background: black;
+  background: #18191f;
   display: block;
 }
 
@@ -114,9 +114,7 @@
   }
 
   .topnav a {
-    color: black;
     text-decoration: none;
-    font-size: 17px;
     display: inline;
   }
 
