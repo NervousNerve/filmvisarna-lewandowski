@@ -88,10 +88,9 @@ const createBooking = async (req, res) => {
 
   let totalTickets =
     req.body.tickets.child + req.body.tickets.adult + req.body.tickets.senior;
-
   if (totalTickets !== (req.body.seats?.length || req.body.seats)) {
     return res.status(400).json({
-      error: "'tickets' parameter and 'seats' parameter doesn't match",
+      error: "Number of 'tickets' and 'seats' do not match",
     });
   }
 
@@ -146,11 +145,11 @@ const createBooking = async (req, res) => {
       }
     }
 
+    const rebates = await Rebate.findOne().exec();
+
     const tickets = { ...req.body.tickets };
 
-    let rebates = await Rebate.findOne().exec();
-
-    let price = Math.round(
+    const price = Math.round(
       (tickets.child * rebates.childMultiplier +
         tickets.adult * rebates.adultMultiplier +
         tickets.senior * rebates.seniorMultiplier) *
@@ -180,8 +179,8 @@ const createBooking = async (req, res) => {
 /* Finds bookings for the currently logged in user
  *
  * Parameters:
- * req.body.previous: If 'true' this function returns only past bookings,
- *                    otherwise only returns future bookings
+ * req.query.previous: If 'true' this function returns only past bookings,
+ *                     otherwise only returns future bookings
  */
 const getBookingsByUser = async (req, res) => {
   if (!req.session?.user) {
