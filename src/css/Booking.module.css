@@ -8,17 +8,17 @@
 .pricetypeWrapper {
   display: grid;
   grid-template-columns: 55% 45%;
-  max-width: 18em;
+  max-width: 16em;
   align-items: center;
   margin: auto;
 }
 
 .pricetypeWrapper h4 {
   margin: 0.6em 0em;
+  color: black;
 }
 
 .pricetypeWrapper p {
-  color: gray;
   font-size: smaller;
 }
 
