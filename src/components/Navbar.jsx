@@ -90,68 +90,17 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
-          {/* {currentUser ? (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/profile"} className="nav-link">
-                  {currentUser.username}
-                </Link>
-              </li>
-              <li className="nav-item">
-                <a href="/login" className="nav-link" onClick={logOut}>
-                  LogOut
-                </a>
-              </li>
-            </div>
-          ) : (
-            <div className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <Link to={"/login"} className="nav-link">
-                  Login
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link to={"/register"} className="nav-link">
-                  Sign Up
-                </Link>
-              </li>
-            </div>
-          )} */}
 
           {!currentUser ? (
             <div className={styles.login} onClick={handleModal}>
               Login/Register
             </div>
           ) : (
-            // <NavLink>
             <NavLink to="/login" onClick={logOut}>
               LogOut
             </NavLink>
-            // <div className={styles.login}>LogOut</div>
-            // <li className="nav-item">
-            //     <a href="/login" className="nav-link" >
-            //       LogOut
-            //     </a>
-            //   </li>
           )}
-          <div>
-            {/* {currentUser ? (
-        <div className={styles.profileContainer}>
-          <h1>
-            Hi,{" "}
-            {currentUser && (currentUser.name || currentUser.loggedInUser.name)}
-            !
-          </h1>
-          <UserBookings />{" "}
-        </div>
-      ) : (
-        <div>
-          <h1>You must log in to show your profile!</h1>
-          <Entry />
-        </div>
-      )} */}
-          </div>
+          <div></div>
         </div>
       </div>
     </div>
