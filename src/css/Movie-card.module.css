@@ -63,6 +63,9 @@
 
 .movieCard:focus {
   outline: none !important;
+  filter: saturate(142%) contrast(87%) brightness(115%);
+  transform: scale(1.07);
+  transition: 400ms ease;
 }
 
 @media screen and (max-width: 355px) {
