@@ -4,6 +4,9 @@
   -moz-appearance: textfield;
   appearance: textfield;
 }
+.numberInput {
+  float: right;
+}
 .numberInput input[type="number"]::-webkit-inner-spin-button,
 .numberInput input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
