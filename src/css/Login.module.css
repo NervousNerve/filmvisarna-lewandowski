@@ -8,12 +8,17 @@ form {
 .inputContainer input {
   width: 100%;
 }
+
 .inputContainer {
   position: relative;
   display: flex;
   align-items: center;
 }
 
+/* .inputContainer p {
+  margin: 1em 0em;
+}
+ */
 .userIcon,
 .lockIcon {
   position: absolute;
@@ -30,7 +35,7 @@ form {
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin: 0 !important;
+  margin: 0.2 !important;
 }
 
 .toggleMenuBtn p {
