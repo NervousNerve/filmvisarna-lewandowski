@@ -15,7 +15,7 @@
 
 .pricetypeWrapper h4 {
   margin: 0.6em 0em;
-  color: black;
+  color: #18191f;
 }
 
 .pricetypeWrapper p {
@@ -29,7 +29,9 @@
 }
 
 .seatBtn,
-.totalPrice {
+.totalPrice,
+.totalPrice h4 {
+  color: #18191f;
   display: flex;
   justify-content: center;
   margin-top: 1em;
