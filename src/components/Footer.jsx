@@ -15,28 +15,25 @@ const Footer = () => {
         <div className={styles.aboutAndContactWrapper}>
           <div className={styles.about}>
             <div className={styles.aboutText}>
-              <h1>Our story</h1>
+              <h2>Our story</h2>
               <p>
                 So much can be said about the movie industry, but we are not the
                 ones to tell you the lot. But we can tell you this; it's a god
                 damn dream to be part of it. We love movies, we eat, sleep,
-                drink and shit movies. We. Are. Movies. For 250 years, Funky
-                films have been entertaining every day folks like yourself, and
-                we been doin' it good. Rachel van Grauenbach founded Funky Films
-                in 1756, and she's been ever present since. It is her fire and
-                devotion that powers our 65/70 projectors every day, from 15:00
-                to 23:00, it is her tender smile that still calms us on a big
-                premiere, it is her strong perfume that keeps the operator awake
-                during long screenings. If it wasn't for her, ah shit I dont'
-                care to come up with anything good here. That's it guys.
+                drink and shit movies. Rachel van Grauenbach founded Funky Films
+                in 1756, and she's been present since. It is her fire and
+                devotion that powers our 65/70 projectors every day, it is her
+                strong perfume that keeps the operator awake during long
+                screenings. If it wasn't for her, ah shit I dont' care to come
+                up with anything good here. That's it guys.
               </p>
             </div>
           </div>
           <div
             className={styles.contact}
-            style={{
-              backgroundImage: `url(/assets/icons/rainingPopcorn.png)`,
-            }}
+            // style={{
+            //   backgroundImage: `url(/assets/icons/rainingPopcorn.png)`,
+            // }}
           >
             <div className={styles.social}>
               <h3 className={styles.contactHeaders}>Say hi!</h3>
@@ -69,11 +66,13 @@ const Footer = () => {
               <h3 className={styles.contactHeaders}>Stop by!</h3>
               <div className={styles.iconAndDesc}>
                 <img
-                  className={styles.socialIcon}
+                  className={styles.locationIcon}
                   src="/assets/icons/location.png"
                   alt="Logo"
                 />
-                <p>Hipstergatan 420b, 1312, Malmö</p>
+                <p>
+                  Hipstergatan 420b,<br></br> 1312, Malmö
+                </p>
               </div>
             </div>
           </div>
