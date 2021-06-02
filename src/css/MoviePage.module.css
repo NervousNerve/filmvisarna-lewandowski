@@ -32,6 +32,10 @@
 }
 
 /* All other content */
+.moviePage {
+  width: 100vw;
+}
+
 .moviePage .content {
   max-width: 900px;
   margin: 0 auto;
