@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
 const Booking = ({ movieId }) => {
+  const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [senior, setSenior] = useState(0);
@@ -62,6 +64,9 @@ const Booking = ({ movieId }) => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
       });
+
+      booking = await booking.json();
+      history.push(`/confirmation/${booking._id}`);
 
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
