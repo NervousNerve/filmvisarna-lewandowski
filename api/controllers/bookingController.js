@@ -58,12 +58,37 @@ const createBooking = async (req, res) => {
   }
 
   if (
+    !req.body?.tickets ||
+    !Number.isInteger(
+      req.body.tickets?.child +
+        req.body.tickets?.adult +
+        req.body.tickets?.senior
+    ) ||
+    req.body.tickets.child < 0 ||
+    req.body.tickets.adult < 0 ||
+    req.body.tickets.senior < 0
+  ) {
+    return res.status(400).json({
+      error: "Invalid 'tickets' parameter",
+    });
+  }
+
+  if (
     (!Number.isInteger(req.body.seats) || req.body.seats <= 0) &&
     (!Array.isArray(req.body.seats) || !req.body.seats.length)
   ) {
     return res.status(400).json({
       error:
         "Invalid 'seats' parameter. Expected positive Integer or non-empty Array",
+    });
+  }
+
+  let totalTickets =
+    req.body.tickets.child + req.body.tickets.adult + req.body.tickets.senior;
+
+  if (totalTickets !== (req.body.seats?.length || req.body.seats)) {
+    return res.status(400).json({
+      error: "'tickets' parameter and 'seats' parameter doesn't match",
     });
   }
 
@@ -120,33 +145,21 @@ const createBooking = async (req, res) => {
 
     const tickets = { ...req.body.tickets };
 
-    const calcTicketPrice = async () => {
-      try {
-        let rebates = await Rebate.findOne().exec();
+    let rebates = await Rebate.findOne().exec();
 
-        return Math.round(
-          (tickets.child * rebates.childMultiplier +
-            tickets.adult * rebates.adultMultiplier +
-            tickets.senior * rebates.seniorMultiplier) *
-            screening.movieId.price
-        );
-      } catch (err) {
-        console.error(err);
-        return res.status(400).json({
-          error: err.message,
-        });
-      }
-    };
+    let price = Math.round(
+      (tickets.child * rebates.childMultiplier +
+        tickets.adult * rebates.adultMultiplier +
+        tickets.senior * rebates.seniorMultiplier) *
+        screening.movieId.price
+    );
 
     const booking = await Booking.create({
       seats: selectedSeats,
-      tickets: tickets,
-      price: await calcTicketPrice(),
+      price: price,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
-
-    console.log("booking:", booking);
 
     // Set our seats as occupied for this screening
     screening.occupiedSeats.push(...selectedSeats);
