@@ -46,7 +46,7 @@ const Navbar = () => {
     if (currentUser) {
       setModal(false);
     }
-  }, [currentUser])
+  }, [currentUser]);
 
   return (
     <div className={styles.wrapper}>
@@ -83,7 +83,11 @@ const Navbar = () => {
             alt="Logo"
             onClick={() => history.push("/")}
           />
-
+          {currentUser && (
+            <div className={`${styles.feedbackMessageOk}`}>
+              You're logged in
+            </div>
+          )}
           <div
             className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
           >
@@ -105,7 +109,9 @@ const Navbar = () => {
           ) : (
             <div onClick={logOut} className={`${styles.one} ${styles.login}`}>
               <span>LogOut</span>
-              <span className={`${styles.feedbackMessageOk}`}></span>
+              <span className={`${styles.feedbackMessageOk2}`}>
+                You're logged in
+              </span>
             </div>
           )}
         </div>

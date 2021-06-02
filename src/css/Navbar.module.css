@@ -50,7 +50,8 @@
   background-color: #d83830;
   padding: 0.5rem;
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  /* grid-template-columns: 1fr auto 1fr; */
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .topfield:not(.clickedMenu) .topnav {
@@ -96,15 +97,49 @@
 
 .one {
   display: flex;
-  /* justify-content: space-around; */
 }
 
 .feedbackMessageOk {
-  width: 100%;
-  margin-left: 5rem;
+  -webkit-animation: seconds 1s forwards;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-delay: 5s;
+  animation: seconds 1s forwards;
+  animation-iteration-count: 1;
+  animation-delay: 5s;
+  position: relative;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 10px;
+  text-align: right;
+  margin-top: 5px;
+  color: #fdf7e3;
+}
+@-webkit-keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+    position: absolute;
+  }
+}
+@keyframes seconds {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    left: -9999px;
+    position: absolute;
+  }
+}
+
+.feedbackMessageOk2 {
+  display: none;
+}
+
+/* .feedbackMessageOk {
   font-size: 15px;
-  /* text-align: right;
-  float: right; */
 }
 
 .feedbackMessageOk::after {
@@ -118,7 +153,7 @@
 
 @keyframes changeContent {
   0% {
-    content: "Book a ticket by call us";
+    content: "Book ticket by phone";
     color: #fdf7e3;
   }
   25% {
@@ -132,10 +167,10 @@
     color: #18191f;
   }
   100% {
-    content: "50% disc. for student";
+    content: "Student 50% disc.";
     color: #fdf7e3;
-  }
-}
+  } */
+/* } */
 
 @media (min-width: 768px) {
   .topnav,
@@ -184,6 +219,66 @@
     background-color: rgb(216, 56, 48);
     display: flex;
   }
+
+  .feedbackMessageOk {
+    display: none;
+  }
+
+  .feedbackMessageOk2 {
+    -webkit-animation: seconds 1s forwards;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-delay: 5s;
+    animation: seconds 1s forwards;
+    animation-iteration-count: 1;
+    animation-delay: 5s;
+    position: relative;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    /* font-size: 10px; */
+    text-align: right;
+    /* float: right; */
+    margin-left: 3rem;
+    color: #fdf7e3;
+    display: inline-block;
+  }
+  @-webkit-keyframes seconds {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: -9999px;
+      position: absolute;
+    }
+  }
+  @keyframes seconds {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      left: -9999px;
+      position: absolute;
+    }
+  }
+
+  /* .feedbackMessageOk2 {
+    width: 200%;
+    margin-left: 4rem;
+    font-size: 10px;
+    text-align: center;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    float: right;
+    text-align: right;
+  }
+
+  .feedbackMessageOk2::after {
+    animation: changeContent 8s linear infinite alternate;
+    display: block;
+    content: "You are logged in";
+    color: #18191f;
+    font-size: 18px;
+    font-weight: 600;
+  } */
 }
 
 @media (min-width: 1025px) {
@@ -215,8 +310,15 @@
   }
 }
 
-@media (min-width: 767px) {
+/* @media (min-width: 767px) {
   .feedbackMessageOk {
     margin-left: 4rem;
+  }
+} */
+
+@media (max-width: 501px) {
+  .entry {
+    width: 20em;
+    height: 25em;
   }
 }
