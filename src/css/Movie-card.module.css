@@ -48,6 +48,12 @@
   margin: 0.7rem 0.5rem;
 }
 
+.feedback {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
 @media screen and (max-width: 355px) {
   .movieList {
     display: flex;
