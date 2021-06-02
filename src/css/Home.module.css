@@ -13,6 +13,10 @@ h2 {
   margin: 0;
 }
 
+.pageWrapper h2 {
+  color: #404143;
+}
+
 .pageWrapper h3 {
   text-align: center;
 }
