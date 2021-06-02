@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
@@ -25,11 +25,23 @@ const Navbar = () => {
       <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
         <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
+          
+          <div className={styles.icons}>
+            {menu ?  
             <FontAwesomeIcon
-              className={styles.burger}
+            className="fa-lg"
+              icon={faTimes}
+              onClick={handleClick}
+            />
+            : 
+            <FontAwesomeIcon
+            className="fa-lg"
               icon={faBars}
               onClick={handleClick}
             />
+            }
+          </div>
+
           </div>
 
           <div
