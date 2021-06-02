@@ -21,7 +21,7 @@ const Register = ({ toggleMenu }) => {
       );
       setTimeout(() => {
         setRegexMessage(null);
-      }, 4500);
+      }, 5000);
       return;
     }
 
