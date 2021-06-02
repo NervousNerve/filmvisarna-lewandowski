@@ -1,13 +1,13 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import Navbar from "./components/Navbar.jsx";
-import ConfirmationPage from "./pages/ConfirmationPage";
-import Home from "./pages/home";
-import MoviePage from "./pages/MoviePage";
-import GuardedRoute from "./components/GuardedRoute";
-import ProfilePage from "./pages/ProfilePage";
+import { QueryParamProvider } from "use-query-params";
 import { UserContext } from "./contexts/UserContext";
 import { useContext } from "react";
-import { QueryParamProvider } from "use-query-params";
+import GuardedRoute from "./components/GuardedRoute";
+import Navbar from "./components/Navbar.jsx";
+import Home from "./pages/home";
+import MoviePage from "./pages/MoviePage";
+import ProfilePage from "./pages/ProfilePage";
+import ConfirmationPage from "./pages/ConfirmationPage";
 
 function App() {
   const { currentUser } = useContext(UserContext);
