@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
 const Booking = ({ movieId }) => {
+  const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
   const [senior, setSenior] = useState(0);
@@ -53,7 +55,7 @@ const Booking = ({ movieId }) => {
       setFeedback("Please select both ticket and date!");
       setTimeout(() => {
         setFeedback("");
-      }, 2500);
+      }, 3000);
       return;
     }
 
@@ -63,6 +65,9 @@ const Booking = ({ movieId }) => {
         headers: { "content-type": "application/json" },
         body: JSON.stringify(request),
       });
+
+      booking = await booking.json();
+      history.push(`/confirmation/${booking._id}`);
 
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
@@ -83,20 +88,32 @@ const Booking = ({ movieId }) => {
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
-        <p>Adult</p>
-        <div className="grid-item">
+        <h4>
+          Adult
+          <p>Regular</p>
+        </h4>
+
+        <div className="number-input">
           <NumberInput updateValue={setAdult} />
         </div>
       </div>
       <div className={styles.pricetypeWrapper}>
-        <p>Child</p>
-        <div className="grid-item">
+        <h4>
+          Child
+          <p>30% discount</p>
+        </h4>
+
+        <div className="number-input">
           <NumberInput updateValue={setChild} />
         </div>
       </div>
       <div className={styles.pricetypeWrapper}>
-        <p>Senior</p>
-        <div className="grid-item">
+        <h4>
+          Senior
+          <p>20% discount</p>
+        </h4>
+
+        <div className="number-input">
           <NumberInput updateValue={setSenior} />
         </div>
       </div>
@@ -122,7 +139,7 @@ const Booking = ({ movieId }) => {
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
-        <p>Total: {totalPrice} SEK</p>
+        <h4>Total: {totalPrice} SEK</h4>
       </div>
 
       <div className={styles.seatBtn}>

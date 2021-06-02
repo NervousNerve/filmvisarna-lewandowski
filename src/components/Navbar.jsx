@@ -1,10 +1,7 @@
 import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
-
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
@@ -51,7 +48,7 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/">
             Home
           </NavLink>
-          <NavLink onClick={handleClick} to="/my-profile">
+          <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
           <NavLink onClick={handleClick} to="/login-register">
