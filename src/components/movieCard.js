@@ -4,8 +4,15 @@ import { useHistory } from "react-router-dom";
 const MovieCard = (props) => {
   const history = useHistory();
 
-  const handleMovieClick = (movidId) => {
+  const handleMovieClick = (movidId, e) => {
     history.push(`/movies/${movidId}`);
+  };
+
+  //checks if user pressed enter
+  const handleKeyPress = (e) => {
+    if (e.keyCode === 13) {
+      handleMovieClick(props.movie._id);
+    }
   };
 
   return (
@@ -14,6 +21,8 @@ const MovieCard = (props) => {
       onClick={() => {
         handleMovieClick(props.movie._id);
       }}
+      onKeyDown={handleKeyPress}
+      tabIndex="0"
     >
       <div className={styles.imageWrapper}>
         <img
