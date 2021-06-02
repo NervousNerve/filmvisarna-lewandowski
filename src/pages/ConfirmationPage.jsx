@@ -19,7 +19,7 @@ const ConfirmationPage = (props) => {
 
   useEffect(() => {
     // Check if recent booking exists in local storage
-    // that matches 'id' parameter
+    // that matches 'id' parameter, otherwise leave the page
     const item = localStorage.getItem("booking");
     localStorage.removeItem("booking");
     const savedBooking = JSON.parse(item);
