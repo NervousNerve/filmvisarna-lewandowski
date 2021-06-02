@@ -6,7 +6,6 @@ form {
 }
 
 .inputContainer input {
-  /* position: relative; */
   width: 100%;
 }
 .inputContainer {
@@ -19,19 +18,10 @@ form {
 .lockIcon {
   position: absolute;
   font-size: 19px;
-  /* left: 15em; */
   z-index: 1;
   color: #474a57;
   left: calc(100% - 40px);
 }
-
-/* .userIcon {
-  top: 8.6em;
-}
-
-.lockIcon {
-  top: 11.6em;
-} */
 
 .toggleMenuBtn button {
   border: none;
@@ -40,7 +30,11 @@ form {
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin-top: 0;
+  margin: 0 !important;
+}
+
+.toggleMenuBtn p {
+  margin: 0;
 }
 
 .highlighted {
