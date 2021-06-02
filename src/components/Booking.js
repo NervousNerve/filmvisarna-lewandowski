@@ -66,6 +66,7 @@ const Booking = ({ movieId }) => {
       });
 
       booking = await booking.json();
+      localStorage.setItem("booking", JSON.stringify(booking));
       history.push(`/confirmation/${booking._id}`);
 
       if (!booking.ok) {
