@@ -81,29 +81,36 @@ const Booking = ({ movieId }) => {
 
   return (
     <div className={styles.bookingWrapper}>
-      <div className={styles.pricetypeWrapper}>
-        <p>Adult</p>
+      <div className={styles.ticketWrapper}>
+        <div className={styles.pricetypeWrapper}>
+          <h4>
+            Adult
+            <p>Regular</p>
+          </h4>
 
-        <div className="grid-item">
-          <NumberInput updateValue={setAdult} />
+          <div className={styles.numberInput}>
+            <NumberInput updateValue={setAdult} />
+          </div>
         </div>
-      </div>
-      <div className={styles.pricetypeWrapper}>
-        <p>
-          Child <span>30% rabatt</span>
-        </p>
+        <div className={styles.pricetypeWrapper}>
+          <h4>
+            Child
+            <p>30% discount</p>
+          </h4>
 
-        <div className="grid-item">
-          <NumberInput updateValue={setChild} />
+          <div className={styles.numberInput}>
+            <NumberInput updateValue={setChild} />
+          </div>
         </div>
-      </div>
-      <div className={styles.pricetypeWrapper}>
-        <p>
-          Senior <span>20% rabatt</span>
-        </p>
+        <div className={styles.pricetypeWrapper}>
+          <h4>
+            Senior
+            <p>20% discount</p>
+          </h4>
 
-        <div className="grid-item">
-          <NumberInput updateValue={setSenior} />
+          <div className={styles.numberInput}>
+            <NumberInput updateValue={setSenior} />
+          </div>
         </div>
       </div>
 
@@ -128,7 +135,7 @@ const Booking = ({ movieId }) => {
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
-        <p>Total: {totalPrice} SEK</p>
+        <h4>Total: {totalPrice} SEK</h4>
       </div>
 
       <div className={styles.seatBtn}>
