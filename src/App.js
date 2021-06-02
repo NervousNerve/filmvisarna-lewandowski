@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
+import Logout from "./components/Logout";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/movies/:movieId" component={MoviePage} />
+          <Route exact path="/login" component={Logout} />
         </BrowserRouter>
       </UserProvider>
     </div>

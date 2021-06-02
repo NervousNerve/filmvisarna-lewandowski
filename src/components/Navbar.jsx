@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
+import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import Modal from "./Modal";
 import Entry from "./Entry";
+
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
@@ -15,6 +19,8 @@ const Navbar = () => {
 
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(false);
+  const { currentUser } = useContext(UserContext);
+  const history = useHistory();
 
   const handleClick = () => {
     if (menu === false) {
@@ -32,8 +38,18 @@ const Navbar = () => {
     }
   };
 
+  const logOut = () => {
+    history.push(`/login`);
+  };
+
+  // const logOut = () => {
+  //   dispatch(logout());
+  // };
+
   return (
     <div className={styles.wrapper}>
+      {/* {currentUser && (
+        <div> */}
       {modal && (
         <Modal
           onClose={() => {
@@ -45,6 +61,8 @@ const Navbar = () => {
           </div>
         </Modal>
       )}
+      {/* </div>
+      )} */}
       <div className={styles.spacer} />
 
       <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
@@ -69,7 +87,7 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/">
             Home
           </NavLink>
-          <NavLink onClick={handleClick} to="/my-profile">
+          <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
           {/* {currentUser ? (
@@ -100,10 +118,39 @@ const Navbar = () => {
               </li>
             </div>
           )} */}
-          <div className={styles.login} onClick={handleModal}>
-            Login/Register
-            {/* {isLoading && <BsArrowRepeat className="spinning" />}
-      {props.children} */}
+
+          {!currentUser ? (
+            <div className={styles.login} onClick={handleModal}>
+              Login/Register
+            </div>
+          ) : (
+            // <NavLink>
+            <NavLink to="/login" onClick={logOut}>
+              LogOut
+            </NavLink>
+            // <div className={styles.login}>LogOut</div>
+            // <li className="nav-item">
+            //     <a href="/login" className="nav-link" >
+            //       LogOut
+            //     </a>
+            //   </li>
+          )}
+          <div>
+            {/* {currentUser ? (
+        <div className={styles.profileContainer}>
+          <h1>
+            Hi,{" "}
+            {currentUser && (currentUser.name || currentUser.loggedInUser.name)}
+            !
+          </h1>
+          <UserBookings />{" "}
+        </div>
+      ) : (
+        <div>
+          <h1>You must log in to show your profile!</h1>
+          <Entry />
+        </div>
+      )} */}
           </div>
         </div>
       </div>
