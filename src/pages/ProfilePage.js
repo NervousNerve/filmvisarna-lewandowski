@@ -20,12 +20,8 @@ const ProfilePage = () => {
           </h1>
           <UserBookings />{" "}
         </div>
-      ) : (
-        <div>
-          <h2 className={styles.centered}>You must log in to show your profile!</h2>
-          <Entry />
-        </div>
-      )}
+      ) : null
+      }
     </div>
   );
 };
