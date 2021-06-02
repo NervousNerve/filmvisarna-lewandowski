@@ -20,6 +20,8 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(false);
   const { currentUser } = useContext(UserContext);
+  // const { feedbackMessageOk } = useContext(UserContext);
+
   const history = useHistory();
 
   const handleClick = () => {
@@ -96,11 +98,11 @@ const Navbar = () => {
               Login/Register
             </div>
           ) : (
-            <NavLink to="/login" onClick={logOut}>
-              LogOut
+            <NavLink to="/login" onClick={logOut} className={`${styles.one}`}>
+              <span>LogOut</span>
+              <span className={`${styles.feedbackMessageOk}`}></span>
             </NavLink>
           )}
-          <div></div>
         </div>
       </div>
     </div>

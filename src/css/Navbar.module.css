@@ -91,12 +91,54 @@
   color: #18191f;
 }
 
+.one {
+  display: flex;
+  /* justify-content: space-around; */
+}
+
+.feedbackMessageOk {
+  width: 100%;
+  margin-left: 5rem;
+  font-size: 15px;
+  /* text-align: right;
+  float: right; */
+}
+
+.feedbackMessageOk::after {
+  animation: changeContent 8s linear infinite alternate;
+  display: block;
+  content: "You are logged in";
+  color: #18191f;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+@keyframes changeContent {
+  0% {
+    content: "Book a ticket by call us";
+    color: #fdf7e3;
+  }
+  25% {
+    color: #18191f;
+  }
+  50% {
+    content: "You are logged in";
+    color: #fdf7e3;
+  }
+  75% {
+    color: #18191f;
+  }
+  100% {
+    content: "50% disc. for student";
+    color: #fdf7e3;
+  }
+}
+
 @media (min-width: 768px) {
   .topnav,
   .topfield:not(.clickedMenu) .topnav {
     background: none;
     box-shadow: none;
-
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -114,7 +156,7 @@
     color: black;
     text-decoration: none;
     font-size: 17px;
-    display: inline;
+    /* display: inline; */
   }
 
   .navs.clickedMenu {
@@ -167,5 +209,11 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 0px;
+  }
+}
+
+@media (min-width: 767px) {
+  .feedbackMessageOk {
+    margin-left: 4rem;
   }
 }
