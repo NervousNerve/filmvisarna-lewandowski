@@ -18,8 +18,15 @@ const ConfirmationPage = (props) => {
   };
 
   useEffect(() => {
+    const item = localStorage.getItem("booking");
+    localStorage.removeItem("booking");
+    const savedBooking = JSON.parse(item);
+    if (!item || savedBooking?._id !== id) {
+      history.push("/");
+      return;
+    }
     getBookingById(id);
-  }, [id]);
+  }, [id, history]);
 
   if (!booking) {
     return null;
