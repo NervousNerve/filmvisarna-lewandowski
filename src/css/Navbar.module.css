@@ -61,7 +61,7 @@
 .logos {
   height: 2.7em;
   position: relative;
-  margin: .2rem .8rem .2rem 1.5rem;
+  margin: .2rem;
 }
 .logo {
   height: 100%;
@@ -109,9 +109,9 @@
     display: none;
   }
 
-  .img {
-    padding-left: 0px;
-  }
+  .logos {
+  margin: .2rem .8rem .2rem 1.5rem;
+}
 
   .topnav a {
     text-decoration: none;
