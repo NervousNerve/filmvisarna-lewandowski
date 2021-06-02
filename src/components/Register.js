@@ -21,7 +21,7 @@ const Register = ({ toggleMenu }) => {
       );
       setTimeout(() => {
         setRegexMessage(null);
-      }, 3000);
+      }, 4500);
       return;
     }
 
@@ -56,13 +56,14 @@ const Register = ({ toggleMenu }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
+
+        <div className={styles.feedbackMessage}>
+          {feedbackMessage}
+          {regexMessage}
+        </div>
+
         <button>Create account</button>
       </form>
-
-      <div className={styles.feedbackMessage}>
-        {feedbackMessage}
-        {regexMessage}
-      </div>
 
       <div className={styles.toggleMenuBtn}>
         <button onClick={() => toggleMenu()}>
