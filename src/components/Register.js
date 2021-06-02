@@ -34,7 +34,7 @@ const Register = ({ toggleMenu }) => {
   };
 
   return (
-    <div>
+    <div className={styles.registerContainer}>
       <h3>Register</h3>
       <p>Register to book tickets.</p>
       <form onSubmit={handleRegister}>
