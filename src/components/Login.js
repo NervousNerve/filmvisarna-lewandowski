@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faUser } from "@fortawesome/free-solid-svg-icons";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { ToastContainer, toast } from "react-toastify";
 import styles from "../css/Login.module.css";
@@ -9,16 +9,21 @@ import "react-toastify/dist/ReactToastify.css";
 const Login = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, feedbackMessage } = useContext(UserContext);
+  const { login, feedbackMessage, currentUser } = useContext(UserContext);
+
+  useEffect(() => {
+    if (currentUser !== undefined) {
+      toast.success("You successfully logged in!", {
+        position: "top-center",
+        autoClose: 3000,
+        closeOnClick: true,
+        pauseOnHover: true,
+      });
+    }
+  }, [currentUser]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    toast.success("You successfully logged in!", {
-      position: "top-center",
-      autoClose: 3000,
-      closeOnClick: true,
-      pauseOnHover: true,
-    });
 
     const user = {
       email: email,
