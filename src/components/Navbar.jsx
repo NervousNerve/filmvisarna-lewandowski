@@ -98,9 +98,11 @@ const Navbar = () => {
           <NavLink onClick={handleClick} to="/">
             Home
           </NavLink>
+          {currentUser && (
           <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
+            )}
 
           {!currentUser ? (
             <div className={styles.login} onClick={handleModal}>
