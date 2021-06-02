@@ -44,10 +44,6 @@ const Navbar = () => {
     history.push(`/login`);
   };
 
-  // const logOut = () => {
-  //   dispatch(logout());
-  // };
-
   return (
     <div className={styles.wrapper}>
       {/* {currentUser && (
