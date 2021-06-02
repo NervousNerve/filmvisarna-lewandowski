@@ -7,14 +7,19 @@
 
 .pricetypeWrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  text-align: center;
-  max-width: 25em;
+  grid-template-columns: 55% 45%;
+  max-width: 16em;
+  align-items: center;
   margin: auto;
 }
 
+.pricetypeWrapper h4 {
+  margin: 0.6em 0em;
+  color: #18191f;
+}
+
 .pricetypeWrapper p {
-  margin: 0.6em;
+  font-size: smaller;
 }
 
 .selectWrapper {
@@ -22,9 +27,14 @@
   display: flex;
   justify-content: center;
 }
+.selectWrapper .custom-select, select{
+  width: 16em;
+}
 
 .seatBtn,
-.totalPrice {
+.totalPrice,
+.totalPrice h4 {
+  color: #18191f;
   display: flex;
   justify-content: center;
   margin-top: 1em;

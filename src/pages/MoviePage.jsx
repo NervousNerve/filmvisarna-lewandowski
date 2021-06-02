@@ -98,7 +98,7 @@ const MoviePage = (props) => {
             </div>
             <div className={style.text}>
               <h4>Plot</h4>
-              <p>{movie.plot}</p>
+              <p>{movie.fullPlot}</p>
               <div className={style.infoContainer}>
                 <div className={style.info}>
                   <h4>Director</h4>
