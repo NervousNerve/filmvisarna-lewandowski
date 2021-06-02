@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
@@ -17,10 +17,10 @@ const Navbar = () => {
 
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(false);
-  const { currentUser } = useContext(UserContext);
+  const { logout, currentUser } = useContext(UserContext);
   // const { feedbackMessageOk } = useContext(UserContext);
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const handleClick = () => {
     if (menu === false) {
@@ -39,8 +39,14 @@ const Navbar = () => {
   };
 
   const logOut = () => {
-    history.push(`/login`);
+    logout();
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      setModal(false);
+    }
+  }, [currentUser])
 
   return (
     <div className={styles.wrapper}>
@@ -97,10 +103,10 @@ const Navbar = () => {
               Login/Register
             </div>
           ) : (
-            <NavLink to="/login" onClick={logOut} className={`${styles.one}`}>
+            <div onClick={logOut} className={`${styles.one} ${styles.login}`}>
               <span>LogOut</span>
               <span className={`${styles.feedbackMessageOk}`}></span>
-            </NavLink>
+            </div>
           )}
         </div>
       </div>
