@@ -27,6 +27,9 @@
   display: flex;
   justify-content: center;
 }
+.selectWrapper .custom-select, select{
+  width: 16em;
+}
 
 .seatBtn,
 .totalPrice,
