@@ -2,7 +2,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.5em;
+  padding: 0.5em 0em;
 }
 
 .inputContainer input {
@@ -43,5 +43,6 @@ form {
 
 .feedbackMessage {
   text-align: center;
-  padding-top: 1em;
+  padding-top: 0.5em;
+  color: #d83830;
 }

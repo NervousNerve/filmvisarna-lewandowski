@@ -21,7 +21,7 @@ const Login = ({ toggleMenu }) => {
 
   return (
     <div className={styles.loginWrapper}>
-      <h1>Sign in</h1>
+      <h3>Sign in</h3>
       <p>You have to log in to book tickets.</p>
       <form className={styles.placeholder} onSubmit={handleLogin}>
         <div className={styles.inputContainer}>
@@ -43,9 +43,8 @@ const Login = ({ toggleMenu }) => {
           />
         </div>
 
-        <button type="submit">Sign in</button>
-
         <div className={styles.feedbackMessage}>{feedbackMessage}</div>
+        <button type="submit">Sign in</button>
       </form>
 
       <div className={styles.toggleMenuBtn}>
