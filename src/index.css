@@ -112,3 +112,11 @@ select,
 .noScroll {
   position: fixed;
 }
+
+/* focused elements */
+input:focus,
+select:focus,
+button:focus {
+  outline: 0 none;
+  border-color: #d83830;
+}
