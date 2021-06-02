@@ -52,7 +52,7 @@ const Booking = ({ movieId }) => {
       setFeedback("Please select both ticket and date!");
       setTimeout(() => {
         setFeedback("");
-      }, 2500);
+      }, 3000);
       return;
     }
 
@@ -81,36 +81,34 @@ const Booking = ({ movieId }) => {
 
   return (
     <div className={styles.bookingWrapper}>
-      <div className={styles.ticketWrapper}>
-        <div className={styles.pricetypeWrapper}>
-          <h4>
-            Adult
-            <p>Regular</p>
-          </h4>
+      <div className={styles.pricetypeWrapper}>
+        <h4>
+          Adult
+          <p>Regular</p>
+        </h4>
 
-          <div className={styles.numberInput}>
-            <NumberInput updateValue={setAdult} />
-          </div>
+        <div className="number-input">
+          <NumberInput updateValue={setAdult} />
         </div>
-        <div className={styles.pricetypeWrapper}>
-          <h4>
-            Child
-            <p>30% discount</p>
-          </h4>
+      </div>
+      <div className={styles.pricetypeWrapper}>
+        <h4>
+          Child
+          <p>30% discount</p>
+        </h4>
 
-          <div className={styles.numberInput}>
-            <NumberInput updateValue={setChild} />
-          </div>
+        <div className="number-input">
+          <NumberInput updateValue={setChild} />
         </div>
-        <div className={styles.pricetypeWrapper}>
-          <h4>
-            Senior
-            <p>20% discount</p>
-          </h4>
+      </div>
+      <div className={styles.pricetypeWrapper}>
+        <h4>
+          Senior
+          <p>20% discount</p>
+        </h4>
 
-          <div className={styles.numberInput}>
-            <NumberInput updateValue={setSenior} />
-          </div>
+        <div className="number-input">
+          <NumberInput updateValue={setSenior} />
         </div>
       </div>
 
