@@ -35,7 +35,7 @@ const Register = ({ toggleMenu }) => {
 
   return (
     <div>
-      <h1>Register</h1>
+      <h3>Register</h3>
       <p>Register to book tickets.</p>
       <form onSubmit={handleRegister}>
         <input
