@@ -58,8 +58,9 @@
 }
 
 .logos {
-  height: 3rem;
+  height: 2.7em;
   position: relative;
+  margin: .2rem .8rem .2rem 1.5rem;
 }
 .logo {
   height: 100%;

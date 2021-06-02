@@ -46,7 +46,7 @@ const Navbar = () => {
             {hoverLogo && (
               <img
                 className={styles.gifLogo}
-                src="/assets/icons/logo-red.gif"
+                src="/assets/icons/logo.gif"
                 alt="Funky Films"
                 onClick={() => history.push("/")}
               />
@@ -60,9 +60,6 @@ const Navbar = () => {
           </div>
         </div>
         <div className={styles.topnav} id="myMenu">
-          <NavLink onClick={handleClick} to="/">
-            Home
-          </NavLink>
           <NavLink onClick={handleClick} to="/profile">
             My profile
           </NavLink>
