@@ -22,7 +22,7 @@ const ProfilePage = () => {
         </div>
       ) : (
         <div>
-          <h1>You must log in to show your profile!</h1>
+          <h2 className={styles.centered}>You must log in to show your profile!</h2>
           <Entry />
         </div>
       )}
