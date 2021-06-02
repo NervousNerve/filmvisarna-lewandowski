@@ -37,10 +37,13 @@ const getBookingById = async (req, res) => {
   }
 };
 
-/* Parameters:
- * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Either a Number of total requested seats,
- *                        or Array of specific, requested seat numbers
+/* Parameters in req.body:
+ * screeningId:  ObjectId of the screening
+ * seats:        Either a Number of total requested seats,
+ *               or Array of specific, requested seat numbers
+ * tickets:      Object with three properties:
+ *               { adult, child, senior }
+ *               Specifying number of each type of ticket requested
  *
  * If successful, returns the newly created Booking object
  */
