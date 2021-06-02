@@ -35,8 +35,8 @@ const Register = ({ toggleMenu }) => {
 
   return (
     <div>
-      <h1>Sign up</h1>
-      <p>Sign up to book tickets.</p>
+      <h1>Register</h1>
+      <p>Register to book tickets.</p>
       <form onSubmit={handleRegister}>
         <input
           placeholder="Name"
