@@ -26,6 +26,7 @@ const Navbar = () => {
         <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
           
+          {/* Hamburger and cross icon */}
           <div className={styles.icons}>
             {menu ?  
             <FontAwesomeIcon
@@ -41,9 +42,9 @@ const Navbar = () => {
             />
             }
           </div>
-
           </div>
-
+          
+          {/* Logo and gif logo */}
           <div
             className={styles.logos}
             onMouseEnter={() => setHoverLogo(true)}
