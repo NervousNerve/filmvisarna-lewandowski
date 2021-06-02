@@ -240,6 +240,7 @@
     color: #fdf7e3;
     display: inline-block;
   }
+
   @-webkit-keyframes seconds {
     0% {
       opacity: 1;
