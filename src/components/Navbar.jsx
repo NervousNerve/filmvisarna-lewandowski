@@ -20,19 +20,11 @@ const Navbar = () => {
   const { logout, currentUser } = useContext(UserContext);
 
   const handleClick = () => {
-    if (showMenu === false) {
-      setShowMenu(true);
-    } else {
-      setShowMenu(false);
-    }
+    setShowMenu(!showMenu);
   };
 
   const handleModal = () => {
-    if (showLogin === false) {
-      setShowLogin(true);
-    } else {
-      setShowLogin(false);
-    }
+    setShowLogin(!showLogin);
   };
 
   const logOut = () => {
