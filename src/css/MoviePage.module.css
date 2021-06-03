@@ -12,14 +12,25 @@
   margin: -20% -10%;
   position: relative;
 }
-.moviePage .playIcon {
-  color: #fff;
-  font-size: 40px;
+
+.playButtonContainer {
   position: absolute;
   top: calc(50% - 20px);
   z-index: 1;
   left: calc(100vw - 50vw - 20px);
 }
+
+.playButtonContainer .playIcon {
+  color: #fff;
+  font-size: 40px;
+}
+
+.heroImg button {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
 /* Modal trailer */
 .moviePage iframe {
   border: 2px solid #18191f;

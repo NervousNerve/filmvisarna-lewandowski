@@ -4,7 +4,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Modal = ({ children, onClose }) => {
   const handleClick = (e) => {
-    let element = document.querySelector("#modalChild")
+    let element = document.querySelector("#modalChild");
     if (!element.contains(e.target)) {
       onClose();
     }
