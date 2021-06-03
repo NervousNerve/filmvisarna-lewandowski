@@ -66,7 +66,9 @@ const Register = ({ toggleMenu }) => {
           {regexMessage}
         </div>
 
-        <button>Create account</button>
+        <div className={styles.registerBtn}>
+          <button>Create account</button>
+        </div>
       </form>
 
       <div className={styles.toggleMenuBtn}>

@@ -2,20 +2,11 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.5em 0em;
-}
-
-.toastContainer {
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-
-.toastContainer button {
-  box-shadow: none;
+  padding-top: 0.5em;
 }
 
 .loginBtn button,
 .toggleMenuBtn {
-  margin-top: 0.2em;
   width: 100%;
   text-align: center;
 }
@@ -46,7 +37,7 @@ form {
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin: 0.2 !important;
+  margin-top: 1em;
 }
 
 .toggleMenuBtn p {
