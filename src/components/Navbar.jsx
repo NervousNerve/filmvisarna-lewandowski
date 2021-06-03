@@ -46,16 +46,14 @@ const Navbar = () => {
   }, [currentUser]);
 
   return (
-    <div className={styles.wrapper}>
+    <div>
       {modal && (
         <Modal
           onClose={() => {
             setModal(false);
           }}
         >
-          <div className={styles.entry}>
-            <Entry />
-          </div>
+          <Entry />
         </Modal>
       )}
 
