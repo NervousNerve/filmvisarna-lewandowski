@@ -18,9 +18,6 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [modal, setModal] = useState(false);
   const { logout, currentUser } = useContext(UserContext);
-  // const { feedbackMessageOk } = useContext(UserContext);
-
-  // const history = useHistory();
 
   const handleClick = () => {
     if (menu === false) {
@@ -50,8 +47,6 @@ const Navbar = () => {
 
   return (
     <div className={styles.wrapper}>
-      {/* {currentUser && (
-        <div> */}
       {modal && (
         <Modal
           onClose={() => {
@@ -63,8 +58,7 @@ const Navbar = () => {
           </div>
         </Modal>
       )}
-      {/* </div>
-      )} */}
+
       <div className={styles.spacer} />
 
       <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
