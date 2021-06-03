@@ -1,7 +1,3 @@
-.registerBtn button {
-  margin-top: 0.6em;
-}
-
 .registerBtn button,
 .toggleMenuBtn {
   text-align: center;
@@ -9,7 +5,9 @@
 }
 
 .feedbackMessage {
+  margin: 0.4em 0em;
   text-align: center;
+  color: #d83830;
 }
 
 .toggleMenuBtn button {

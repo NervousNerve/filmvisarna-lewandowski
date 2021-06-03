@@ -7,16 +7,24 @@ import styles from "../css/Login.module.css";
 const Login = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, feedbackMessage } = useContext(UserContext);
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const { login } = useContext(UserContext);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const user = {
       email: email,
       password: password,
     };
-    login(user);
+
+    let success = await login(user);
+    if (!success) {
+      setFeedbackMessage("Email or password is invalid");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
+    }
   };
 
   return (
