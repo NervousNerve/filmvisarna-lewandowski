@@ -84,15 +84,7 @@ const MoviePage = (props) => {
                 </div>
                 <div className={style.info}>
                   <h4>Actors</h4>
-                  {/* Separating actors with a comma */}
-                  <p>
-                    {movie.actors.map((actor) => {
-                      return movie.actors.indexOf(actor) ===
-                        movie.actors.length - 1
-                        ? actor
-                        : actor + ", ";
-                    })}
-                  </p>
+                  <p>{movie.actors.join(", ")}</p>
                 </div>
               </div>
             </div>
