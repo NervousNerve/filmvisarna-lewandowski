@@ -8,25 +8,6 @@ const whoami = (req, res) => {
   return res.json(req.session.user || null);
 };
 
-const createUser = async (req, res) => {
-  if (!req.body.email || !req.body.name || !req.body.password) {
-    return res.status(400).json({ error: "Something is missing in request" });
-  }
-
-  try {
-    let userExists = await User.exists({ email: req.body.email });
-    if (userExists) {
-      return res.status(403).json({ error: "User already exists" });
-    }
-
-    let user = await User.create(req.body);
-    user.password = undefined;
-    return res.json({ success: "Registration successful" });
-  } catch {
-    return res.status(500).json({ error: "Something went wrong" });
-  }
-};
-
 const login = async (req, res) => {
   try {
     let user = await User.findOne({ email: req.body.email }).exec();
@@ -42,7 +23,26 @@ const login = async (req, res) => {
     // Don't include password in response
     user.password = undefined;
     req.session.user = user;
-    return res.json({ message: "Login successful", loggedInUser: user });
+    return res.json(user);
+  } catch {
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+const createUser = async (req, res) => {
+  if (!req.body.email || !req.body.name || !req.body.password) {
+    return res.status(400).json({ error: "Something is missing in request" });
+  }
+
+  try {
+    let userExists = await User.exists({ email: req.body.email });
+    if (userExists) {
+      return res.status(403).json({ error: "User already exists" });
+    }
+
+    let user = await User.create(req.body);
+    user.password = undefined;
+    return res.json({ success: "Registration successful" });
   } catch {
     return res.status(500).json({ error: "Something went wrong" });
   }

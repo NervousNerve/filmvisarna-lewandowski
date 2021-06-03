@@ -10,7 +10,6 @@ import { useState, useEffect, useRef, useContext } from "react";
 const MoviePage = (props) => {
   const myRef = useRef();
   const { movieId } = props.match.params;
-  const [bookTickets, setBookTickets] = useState(true);
   const [watchTrailer, setWatchTrailer] = useState(false);
   const [movie, setMovie] = useState(null);
   const { currentUser } = useContext(UserContext);
@@ -66,7 +65,6 @@ const MoviePage = (props) => {
                 {/* Booking button */}
                 <button
                   onClick={() => {
-                    setBookTickets(true);
                     scroll();
                   }}
                 >
@@ -86,25 +84,13 @@ const MoviePage = (props) => {
                 </div>
                 <div className={style.info}>
                   <h4>Actors</h4>
-                  {/* Separating actors with a comma */}
-                  <p>
-                    {movie.actors.map((actor) => {
-                      if (
-                        movie.actors.indexOf(actor) ===
-                        movie.actors.length - 1
-                      ) {
-                        return actor;
-                      } else {
-                        return actor + ", ";
-                      }
-                    })}
-                  </p>
+                  <p>{movie.actors.join(", ")}</p>
                 </div>
               </div>
             </div>
             <div className={style.text}>
               <h4>Plot</h4>
-              <p>{movie.plot}</p>
+              <p>{movie.fullPlot}</p>
               <div className={style.infoContainer}>
                 <div className={style.info}>
                   <h4>Director</h4>
@@ -117,13 +103,11 @@ const MoviePage = (props) => {
               </div>
             </div>
             {/* Booking component */}
-            {bookTickets && (
-              <div className={style.book} ref={myRef}>
-                <h3>Book tickets</h3>
-                <hr />
-                {currentUser ? <Booking movieId={movieId} /> : <Entry />}
-              </div>
-            )}
+            <div className={style.book} ref={myRef}>
+              <h3>Book tickets</h3>
+              <hr />
+              {currentUser ? <Booking movieId={movieId} /> : <Entry />}
+            </div>
           </div>
         </div>
       )}

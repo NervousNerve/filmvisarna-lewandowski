@@ -27,6 +27,7 @@
   margin: 0.5rem;
   align-self: flex-end;
   cursor: pointer;
+  color: #18191f;
 }
 
 .modal .closeIcon {

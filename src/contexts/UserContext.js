@@ -4,7 +4,6 @@ export const UserContext = createContext();
 
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
-  const [feedbackMessage, setFeedbackMessage] = useState(null);
 
   useEffect(() => {
     whoami();
@@ -18,7 +17,7 @@ const UserProvider = (props) => {
 
   const logout = async () => {
     await fetch("/api/v1/users/logout");
-    setCurrentUser(undefined);
+    setCurrentUser(null);
   };
 
   const login = async (userToLogin) => {
@@ -30,16 +29,10 @@ const UserProvider = (props) => {
     user = await user.json();
 
     if (user.error) {
-      setFeedbackMessage("Email or password is invalid");
-      setTimeout(() => {
-        setFeedbackMessage(null);
-      }, 3000);
-      console.log(user.error);
-      return;
+      return false;
     }
-
     setCurrentUser(user);
-    // push to profile page
+    return true;
   };
 
   const register = async (userToRegister) => {
@@ -51,19 +44,14 @@ const UserProvider = (props) => {
 
     userToAdd = await userToAdd.json();
 
-    if (userToAdd.success) {
-      setFeedbackMessage("Registration completed, please log in!");
-    } else if (userToAdd.error) {
-      setFeedbackMessage("A user with this email already exists.");
+    if (userToAdd.error) {
+      return false;
     }
-    setTimeout(() => {
-      setFeedbackMessage(null);
-    }, 3000);
+    return true;
   };
 
   const values = {
     currentUser,
-    feedbackMessage,
     login,
     register,
     logout,

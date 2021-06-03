@@ -37,10 +37,13 @@ const getBookingById = async (req, res) => {
   }
 };
 
-/* Parameters:
- * req.body.screeningId:  ObjectId of the screening
- * req.body.seats:        Either a Number of total requested seats,
- *                        or Array of specific, requested seat numbers
+/* Parameters in req.body:
+ * screeningId:  ObjectId of the screening
+ * seats:        Either a Number of total requested seats,
+ *               or Array of specific, requested seat numbers
+ * tickets:      Object with three properties:
+ *               { adult, child, senior }
+ *               Specifying number of each type of ticket requested
  *
  * If successful, returns the newly created Booking object
  */
@@ -58,12 +61,36 @@ const createBooking = async (req, res) => {
   }
 
   if (
+    !req.body?.tickets ||
+    !Number.isInteger(
+      req.body.tickets?.child +
+        req.body.tickets?.adult +
+        req.body.tickets?.senior
+    ) ||
+    req.body.tickets.child < 0 ||
+    req.body.tickets.adult < 0 ||
+    req.body.tickets.senior < 0
+  ) {
+    return res.status(400).json({
+      error: "Invalid 'tickets' parameter",
+    });
+  }
+
+  if (
     (!Number.isInteger(req.body.seats) || req.body.seats <= 0) &&
     (!Array.isArray(req.body.seats) || !req.body.seats.length)
   ) {
     return res.status(400).json({
       error:
         "Invalid 'seats' parameter. Expected positive Integer or non-empty Array",
+    });
+  }
+
+  let totalTickets =
+    req.body.tickets.child + req.body.tickets.adult + req.body.tickets.senior;
+  if (totalTickets !== (req.body.seats?.length || req.body.seats)) {
+    return res.status(400).json({
+      error: "Number of 'tickets' and 'seats' do not match",
     });
   }
 
@@ -118,9 +145,20 @@ const createBooking = async (req, res) => {
       }
     }
 
+    const rebates = await Rebate.findOne().exec();
+
+    const tickets = { ...req.body.tickets };
+
+    const price = Math.round(
+      (tickets.child * rebates.childMultiplier +
+        tickets.adult * rebates.adultMultiplier +
+        tickets.senior * rebates.seniorMultiplier) *
+        screening.movieId.price
+    );
+
     const booking = await Booking.create({
       seats: selectedSeats,
-      price: screening.movieId.price * selectedSeats.length,
+      price: price,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
@@ -141,8 +179,8 @@ const createBooking = async (req, res) => {
 /* Finds bookings for the currently logged in user
  *
  * Parameters:
- * req.body.previous: If 'true' this function returns only past bookings,
- *                    otherwise only returns future bookings
+ * req.query.previous: If 'true' this function returns only past bookings,
+ *                     otherwise only returns future bookings
  */
 const getBookingsByUser = async (req, res) => {
   if (!req.session?.user) {
@@ -198,9 +236,6 @@ const getBookingsByUser = async (req, res) => {
       { $unwind: "$screeningId.theaterId" },
     ]).exec();
 
-    if (!bookings.length) {
-      return res.status(404).json({ error: "No bookings found" });
-    }
     return res.json(bookings);
   } catch (err) {
     console.log(err);

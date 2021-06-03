@@ -1,42 +1,96 @@
-import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+
+import { UserContext } from "../contexts/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+import Modal from "./Modal";
+import Entry from "./Entry";
 
 import styles from "../css/Navbar.module.css";
 
 const Navbar = () => {
-  // eslint-disable-next-line
-  // const filmLogo =
-  //   "https://trello-attachments.s3.amazonaws.com/60a21d927cb7b38110c05826/60ab5f1eb07e002ab9bbcfb5/3429140ee35b63a2ad4a06612bacce6f/logo-1.png";
+  const history = useHistory();
 
-  const [menu, setMenu] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [hoverLogo, setHoverLogo] = useState(false);
+  const { logout, currentUser } = useContext(UserContext);
 
   const handleClick = () => {
-    if (menu === false) {
-      setMenu(true);
-    } else {
-      setMenu(false);
-    }
+    setShowMenu(!showMenu);
   };
 
+  useEffect(() => {
+    if (currentUser) {
+      setShowLogin(false);
+    }
+  }, [currentUser]);
+
   return (
-    <div className={styles.wrapper}>
+    <div>
+      {showLogin && (
+        <Modal
+          onClose={() => {
+            setShowLogin(false);
+          }}
+        >
+          <div className={styles.modal}>
+            <Entry />
+          </div>
+        </Modal>
+      )}
+
       <div className={styles.spacer} />
 
-      <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
-        <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
+      <div
+        className={`${styles.topfield} ${showMenu ? styles.clickedMenu : ""}`}
+      >
+        <div className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
-            <FontAwesomeIcon
-              className={styles.burger}
-              icon={faBars}
-              onClick={handleClick}
-            />
+            {/* Hamburger and cross icon */}
+            <div className={styles.icons}>
+              {showMenu ? (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faTimes}
+                  onClick={handleClick}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faBars}
+                  onClick={handleClick}
+                />
+              )}
+            </div>
           </div>
 
-          <img className={styles.img} src="/assets/icons/logo.png" alt="Logo" />
+          {/* Logo and gif logo */}
+          <div
+            className={styles.logos}
+            onMouseEnter={() => setHoverLogo(true)}
+            onMouseLeave={() => setHoverLogo(false)}
+          >
+            {hoverLogo ? (
+              <img
+                className={styles.gifLogo}
+                src="/assets/icons/logo.gif?a="
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            ) : (
+              <img
+                className={styles.logo}
+                src="/assets/icons/logo.png"
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            )}
+          </div>
 
           <div
             className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
@@ -44,16 +98,23 @@ const Navbar = () => {
             {/* Search field goes here later */}
           </div>
         </div>
-        <div className={styles.topnav} id="myMenu">
-          <NavLink onClick={handleClick} to="/">
-            Home
-          </NavLink>
-          <NavLink onClick={handleClick} to="/my-profile">
-            My profile
-          </NavLink>
-          <NavLink onClick={handleClick} to="/login-register">
-            Login/Register
-          </NavLink>
+
+        <div className={styles.topnav}>
+          {currentUser && (
+            <Link onClick={handleClick} to="/profile">
+              My profile
+            </Link>
+          )}
+
+          {!currentUser ? (
+            <Link to="#" onClick={() => setShowLogin(!showLogin)}>
+              Login/Register
+            </Link>
+          ) : (
+            <Link to="#" onClick={() => logout()}>
+              Logout
+            </Link>
+          )}
         </div>
       </div>
     </div>

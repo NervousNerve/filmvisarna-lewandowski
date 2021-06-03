@@ -7,9 +7,10 @@ const Register = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
-  const { register, feedbackMessage } = useContext(UserContext);
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const { register, login } = useContext(UserContext);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const regex = new RegExp(
       "^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])"
@@ -21,7 +22,7 @@ const Register = ({ toggleMenu }) => {
       );
       setTimeout(() => {
         setRegexMessage(null);
-      }, 3000);
+      }, 5000);
       return;
     }
 
@@ -30,13 +31,23 @@ const Register = ({ toggleMenu }) => {
       email: email,
       password: password,
     };
-    register(user);
+
+    let result = await register(user);
+    if (!result) {
+      setFeedbackMessage("A user with this email already exists.");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
+      return;
+    }
+
+    login(user);
   };
 
   return (
-    <div>
-      <h1>Sign up</h1>
-      <p>Sign up to book tickets.</p>
+    <div className={styles.registerContainer}>
+      <h3>Register</h3>
+      <p>Register to book tickets.</p>
       <form onSubmit={handleRegister}>
         <input
           placeholder="Name"
@@ -56,13 +67,16 @@ const Register = ({ toggleMenu }) => {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button>Create account</button>
-      </form>
 
-      <div className={styles.feedbackMessage}>
-        {feedbackMessage}
-        {regexMessage}
-      </div>
+        <div className={styles.feedbackMessage}>
+          {feedbackMessage}
+          {regexMessage}
+        </div>
+
+        <div className={styles.registerBtn}>
+          <button>Create account</button>
+        </div>
+      </form>
 
       <div className={styles.toggleMenuBtn}>
         <button onClick={() => toggleMenu()}>

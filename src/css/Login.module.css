@@ -2,13 +2,19 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0.5em;
+  padding-top: 0.5em;
+}
+
+.loginBtn button,
+.toggleMenuBtn {
+  width: 100%;
+  text-align: center;
 }
 
 .inputContainer input {
-  /* position: relative; */
   width: 100%;
 }
+
 .inputContainer {
   position: relative;
   display: flex;
@@ -19,19 +25,10 @@ form {
 .lockIcon {
   position: absolute;
   font-size: 19px;
-  /* left: 15em; */
   z-index: 1;
   color: #474a57;
   left: calc(100% - 40px);
 }
-
-/* .userIcon {
-  top: 8.6em;
-}
-
-.lockIcon {
-  top: 11.6em;
-} */
 
 .toggleMenuBtn button {
   border: none;
@@ -40,7 +37,7 @@ form {
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin-top: 0;
+  margin-top: 1em;
 }
 
 .highlighted {
@@ -49,5 +46,6 @@ form {
 
 .feedbackMessage {
   text-align: center;
-  padding-top: 1em;
+  margin: 0.4em 0em;
+  color: #d83830;
 }
