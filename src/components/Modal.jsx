@@ -12,9 +12,9 @@ const Modal = ({ children, onClose }) => {
   return (
     <div className={style.modal} onClick={handleClick}>
       <div className={style.modalContainer}>
-        <div className={style.close}>
+        <button className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
-        </div>
+        </button>
         <div id="modalChild">{children}</div>
       </div>
     </div>

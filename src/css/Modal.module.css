@@ -27,6 +27,7 @@
   margin: 0.5rem;
   align-self: flex-end;
   cursor: pointer;
+  padding: 0rem;
 }
 
 .modal .closeIcon {
