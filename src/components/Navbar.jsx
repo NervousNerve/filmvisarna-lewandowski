@@ -106,10 +106,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div onClick={logOut} className={`${styles.one} ${styles.login}`}>
-              <span>LogOut</span>
-              <span className={`${styles.feedbackMessageOk2}`}>
-                You're logged in
-              </span>
+              LogOut
             </div>
           )}
         </div>
