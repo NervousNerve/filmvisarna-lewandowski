@@ -113,11 +113,10 @@ select,
   position: fixed;
 }
 
-/* focused elements */
-input:focus,
-select:focus,
 button:focus {
-  outline: 0 none;
-  border-color: #d83830;
-  border: 4px solid #d83830;
+  outline: none;
+}
+
+button:focus-visible {
+  outline: 3px solid blanchedalmond;
 }
