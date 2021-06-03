@@ -112,11 +112,3 @@ select,
 .noScroll {
   position: fixed;
 }
-
-button:focus {
-  outline: none;
-}
-
-button:focus-visible {
-  outline: 3px solid blanchedalmond;
-}
