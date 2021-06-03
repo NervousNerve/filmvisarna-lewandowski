@@ -83,13 +83,13 @@ const Booking = ({ movieId }) => {
         body: JSON.stringify(request),
       });
 
-      booking = await booking.json();
-      localStorage.setItem("booking", JSON.stringify(booking));
-      history.push(`/confirmation/${booking._id}`);
-
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
       }
+
+      booking = await booking.json();
+      localStorage.setItem("booking", JSON.stringify(booking));
+      history.push(`/confirmation/${booking._id}`);
     } catch (e) {
       // if the server is down
       setErrorFeedback("Sorry, something went wrong. Please try again.");
