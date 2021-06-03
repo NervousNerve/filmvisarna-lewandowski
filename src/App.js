@@ -3,6 +3,7 @@ import { QueryParamProvider } from "use-query-params";
 import { UserContext } from "./contexts/UserContext";
 import { useContext } from "react";
 import GuardedRoute from "./components/GuardedRoute";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar.jsx";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
@@ -28,6 +29,7 @@ function App() {
             component={ProfilePage}
             auth={currentUser}
           />
+      <Footer />
         </QueryParamProvider>
       </BrowserRouter>
     </div>
