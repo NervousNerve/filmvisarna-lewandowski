@@ -39,7 +39,6 @@ const UserProvider = (props) => {
     }
 
     setCurrentUser(user);
-    console.log(user);
   };
 
   const register = async (userToRegister) => {
