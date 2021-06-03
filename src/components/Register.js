@@ -38,6 +38,7 @@ const Register = ({ toggleMenu }) => {
       setTimeout(() => {
         setFeedbackMessage(null);
       }, 3000);
+      return;
     }
 
     login(user);
