@@ -84,10 +84,12 @@ const Navbar = () => {
             {/* Search field goes here later */}
           </div>
         </div>
-        <div className={styles.topnav} id="myMenu">
+
+        <div className={styles.topnav}>
           <Link onClick={handleClick} to="/">
             Home
           </Link>
+
           {currentUser && (
             <Link onClick={handleClick} to="/profile">
               My profile
