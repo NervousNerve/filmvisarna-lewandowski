@@ -7,7 +7,8 @@ const Register = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
-  const { register, feedbackMessage, login } = useContext(UserContext);
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const { register, login } = useContext(UserContext);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -30,11 +31,17 @@ const Register = ({ toggleMenu }) => {
       email: email,
       password: password,
     };
-    let result = await register(user);
 
-    if (result) {
-      login(user);
+    let result = await register(user);
+    if (!result) {
+      setFeedbackMessage("A user with this email already exists.");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
+      return;
     }
+
+    login(user);
   };
 
   return (
