@@ -80,6 +80,10 @@
   align-items: center;
 }
 
+.modal {
+  width: calc(100vw - 1rem);
+}
+
 @media (min-width: 768px) {
   .topnav,
   .topfield:not(.clickedMenu) .topnav {
@@ -109,7 +113,8 @@
     background-color: rgb(216, 56, 48);
     display: flex;
   }
-}
 
-@media (min-width: 1025px) {
+  .modal {
+    width: 600px;
+  }
 }
