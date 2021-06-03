@@ -25,41 +25,41 @@ const Navbar = () => {
       <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
         <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
-          
-          {/* Hamburger and cross icon */}
-          <div className={styles.icons}>
-            {menu ?  
-            <FontAwesomeIcon
-            className="fa-lg"
-              icon={faTimes}
-              onClick={handleClick}
-            />
-            : 
-            <FontAwesomeIcon
-            className="fa-lg"
-              icon={faBars}
-              onClick={handleClick}
-            />
-            }
+            {/* Hamburger and cross icon */}
+            <div className={styles.icons}>
+              {menu ? (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faTimes}
+                  onClick={handleClick}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faBars}
+                  onClick={handleClick}
+                />
+              )}
+            </div>
           </div>
-          </div>
-          
+
           {/* Logo and gif logo */}
           <div
             className={styles.logos}
             onMouseEnter={() => setHoverLogo(true)}
             onMouseLeave={() => setHoverLogo(false)}
           >
-            <img
-              className={`${styles.logo} ${hoverLogo && styles.hoverLogo}`}
-              src="/assets/icons/logo.png"
-              alt="Funky Films"
-              onClick={() => history.push("/")}
-            />
-            {hoverLogo && (
+            {hoverLogo ? (
               <img
                 className={styles.gifLogo}
-                src="/assets/icons/logo.gif"
+                src="/assets/icons/logo.gif?a="
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            ) : (
+              <img
+                className={styles.logo}
+                src="/assets/icons/logo.png"
                 alt="Funky Films"
                 onClick={() => history.push("/")}
               />

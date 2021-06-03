@@ -30,7 +30,7 @@
   font-size: 1rem;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 /* Style the hamburger menu */
@@ -45,7 +45,6 @@
 
 .navs {
   background-color: #d83830;
-  /* padding: 0.5rem; */
   display: grid;
   grid-template-columns: 1fr auto 1fr;
 }
@@ -60,22 +59,13 @@
 
 .logos {
   height: 2.4em;
-  position: relative;
-  margin: .2rem;
+  margin: 0.2rem;
   cursor: pointer;
 }
-.logo {
-  height: 100%;
-}
-.hoverLogo {
-  visibility: hidden;
-}
+
+.logo,
 .gifLogo {
-  position: absolute;
   height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 2;
 }
 
 .grid {
@@ -106,9 +96,9 @@
   }
 
   .logos {
-  margin: .2rem .8rem .2rem 1.5rem;
-  height: 2.7em;
-}
+    margin: 0.2rem 0.8rem 0.2rem 1.5rem;
+    height: 2.7em;
+  }
 
   .topnav a {
     text-decoration: none;
@@ -122,5 +112,4 @@
 }
 
 @media (min-width: 1025px) {
-
 }
