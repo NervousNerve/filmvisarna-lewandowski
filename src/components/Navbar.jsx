@@ -23,9 +23,6 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
 
-  const handleModal = () => {
-    setShowLogin(!showLogin);
-  };
 
   const logOut = () => {
     logout();
@@ -89,7 +86,7 @@ const Navbar = () => {
           )}
 
           {!currentUser ? (
-            <Link to="#" onClick={handleModal}>
+            <Link to="#" onClick={() => setShowLogin(!showLogin)}>
               Login/Register
             </Link>
           ) : (
