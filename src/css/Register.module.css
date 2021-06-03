@@ -1,3 +1,13 @@
+.registerBtn button {
+  margin-top: 0.6em;
+}
+
+.registerBtn button,
+.toggleMenuBtn {
+  text-align: center;
+  width: 100%;
+}
+
 .feedbackMessage {
   text-align: center;
 }
@@ -9,7 +19,8 @@
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin-top: 0;
+  text-align: center;
+  margin-top: 1em;
 }
 
 .highlighted {
