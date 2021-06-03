@@ -5,6 +5,7 @@ export const UserContext = createContext();
 const UserProvider = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const [feedbackMessageOk, setFeedbackMessageOk] = useState(null);
 
   useEffect(() => {
     whoami();
@@ -36,6 +37,8 @@ const UserProvider = (props) => {
       }, 3000);
       console.log(user.error);
       return;
+    } else {
+      setFeedbackMessageOk("You are successfully log in");
     }
 
     setCurrentUser(user);
@@ -64,6 +67,7 @@ const UserProvider = (props) => {
   const values = {
     currentUser,
     feedbackMessage,
+    feedbackMessageOk,
     login,
     register,
     logout,
