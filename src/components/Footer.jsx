@@ -1,6 +1,8 @@
 import styles from "../css/Footer.module.css";
 
 const Footer = () => {
+  let copyrightYear = new Date().getFullYear();
+
   return (
     <div className={styles.footer}>
       <div className={styles.content}>
@@ -29,12 +31,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div
-            className={styles.contact}
-            // style={{
-            //   backgroundImage: `url(/assets/icons/rainingPopcorn.png)`,
-            // }}
-          >
+          <div className={styles.contact}>
             <div className={styles.social}>
               <h3 className={styles.contactHeaders}>Say hi!</h3>
               <div className={styles.iconAndDesc}>
@@ -79,7 +76,7 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.copyrightWrapper}>
-        <p>FunkyFilms&copy;2021</p>
+        <p>FunkyFilms&copy;{copyrightYear}</p>
       </div>
     </div>
   );
