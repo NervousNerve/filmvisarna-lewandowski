@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { useHistory } from "react-router-dom";
 
@@ -85,13 +85,13 @@ const Navbar = () => {
           </div>
         </div>
         <div className={styles.topnav} id="myMenu">
-          <NavLink onClick={handleClick} to="/">
+          <Link onClick={handleClick} to="/">
             Home
-          </NavLink>
+          </Link>
           {currentUser && (
-            <NavLink onClick={handleClick} to="/profile">
+            <Link onClick={handleClick} to="/profile">
               My profile
-            </NavLink>
+            </Link>
           )}
 
           {!currentUser ? (
