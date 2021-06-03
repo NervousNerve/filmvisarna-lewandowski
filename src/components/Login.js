@@ -7,21 +7,29 @@ import styles from "../css/Login.module.css";
 const Login = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { login, feedbackMessage } = useContext(UserContext);
+  const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const { login } = useContext(UserContext);
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     const user = {
       email: email,
       password: password,
     };
-    login(user);
+
+    let success = await login(user);
+    if (!success) {
+      setFeedbackMessage("Email or password is invalid");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
+    }
   };
 
   return (
     <div className={styles.loginWrapper}>
-      <h1>Sign in</h1>
+      <h3>Sign in</h3>
       <p>You have to log in to book tickets.</p>
       <form className={styles.placeholder} onSubmit={handleLogin}>
         <div className={styles.inputContainer}>
@@ -43,9 +51,10 @@ const Login = ({ toggleMenu }) => {
           />
         </div>
 
-        <button type="submit">Sign in</button>
-
         <div className={styles.feedbackMessage}>{feedbackMessage}</div>
+        <div className={styles.loginBtn}>
+          <button type="submit">Sign in</button>
+        </div>
       </form>
 
       <div className={styles.toggleMenuBtn}>
