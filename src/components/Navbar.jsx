@@ -23,11 +23,6 @@ const Navbar = () => {
     setShowMenu(!showMenu);
   };
 
-
-  const logOut = () => {
-    logout();
-  };
-
   useEffect(() => {
     if (currentUser) {
       setShowLogin(false);
@@ -90,7 +85,7 @@ const Navbar = () => {
               Login/Register
             </Link>
           ) : (
-            <Link to="#" onClick={logOut}>
+            <Link to="#" onClick={() => logout()}>
               LogOut
             </Link>
           )}
