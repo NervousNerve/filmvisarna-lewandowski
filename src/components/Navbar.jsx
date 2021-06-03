@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { useHistory, Link } from "react-router-dom";
+
 import { UserContext } from "../contexts/UserContext";
-import { useHistory } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import Modal from "./Modal";
 import Entry from "./Entry";
 
