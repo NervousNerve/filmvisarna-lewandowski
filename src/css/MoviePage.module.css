@@ -25,6 +25,10 @@
   font-size: 40px;
 }
 
+.playButtonContainer button {
+  padding: 0;
+}
+
 .heroImg button {
   border: none;
   box-shadow: none;
