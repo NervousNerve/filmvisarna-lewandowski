@@ -1,32 +1,35 @@
 import { BrowserRouter, Route } from "react-router-dom";
+import { QueryParamProvider } from "use-query-params";
+import { UserContext } from "./contexts/UserContext";
+import { useContext } from "react";
+import GuardedRoute from "./components/GuardedRoute";
 import Navbar from "./components/Navbar.jsx";
-import ConfirmationPage from "./pages/ConfirmationPage";
-import UserProvider from "./contexts/UserContext";
 import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
 import ProfilePage from "./pages/ProfilePage";
-import { QueryParamProvider } from "use-query-params";
+import ConfirmationPage from "./pages/ConfirmationPage";
 
 function App() {
+  const { currentUser } = useContext(UserContext);
+
   return (
     <div className="App">
-      <UserProvider>
-        <BrowserRouter>
-          <QueryParamProvider ReactRouterRoute={Route}>
-            <Navbar />
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route
-              exact
-              path="/confirmation/:id"
-              component={ConfirmationPage}
-            />
-            <Route exact path="/movies/:movieId" component={MoviePage} />
-            <Route exact path="/profile" component={ProfilePage} />
-          </QueryParamProvider>
-        </BrowserRouter>
-      </UserProvider>
+      <BrowserRouter>
+        <QueryParamProvider ReactRouterRoute={Route}>
+          <Navbar />
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route exact path="/confirmation/:id" component={ConfirmationPage} />
+          <Route exact path="/movies/:movieId" component={MoviePage} />
+          <GuardedRoute
+            exact
+            path="/profile"
+            component={ProfilePage}
+            auth={currentUser}
+          />
+        </QueryParamProvider>
+      </BrowserRouter>
     </div>
   );
 }
