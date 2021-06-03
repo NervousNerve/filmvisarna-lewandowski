@@ -50,8 +50,7 @@
   background-color: #d83830;
   padding: 0.5rem;
   display: grid;
-  /* grid-template-columns: 1fr auto 1fr; */
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr auto 1fr;
 }
 
 .topfield:not(.clickedMenu) .topnav {
@@ -79,104 +78,12 @@
   align-items: center;
 }
 
-.login {
-  font-size: 17px;
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
-}
-
-.login:hover {
-  color: #fdf7e3;
-}
-
-.entry {
-  color: #18191f;
-  width: 30em;
-  height: 25em;
-}
-
-.one {
-  display: flex;
-}
-
-.feedbackMessageOk {
-  -webkit-animation: seconds 1s forwards;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-delay: 5s;
-  animation: seconds 1s forwards;
-  animation-iteration-count: 1;
-  animation-delay: 5s;
-  position: relative;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 10px;
-  text-align: right;
-  margin-top: 5px;
-  color: #fdf7e3;
-}
-@-webkit-keyframes seconds {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    left: -9999px;
-    position: absolute;
-  }
-}
-@keyframes seconds {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    left: -9999px;
-    position: absolute;
-  }
-}
-
-.feedbackMessageOk2 {
-  display: none;
-}
-
-/* .feedbackMessageOk {
-  font-size: 15px;
-}
-
-.feedbackMessageOk::after {
-  animation: changeContent 8s linear infinite alternate;
-  display: block;
-  content: "You are logged in";
-  color: #18191f;
-  font-size: 18px;
-  font-weight: 600;
-}
-
-@keyframes changeContent {
-  0% {
-    content: "Book ticket by phone";
-    color: #fdf7e3;
-  }
-  25% {
-    color: #18191f;
-  }
-  50% {
-    content: "You are logged in";
-    color: #fdf7e3;
-  }
-  75% {
-    color: #18191f;
-  }
-  100% {
-    content: "Student 50% disc.";
-    color: #fdf7e3;
-  } */
-/* } */
-
 @media (min-width: 768px) {
   .topnav,
   .topfield:not(.clickedMenu) .topnav {
     background: none;
     box-shadow: none;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -194,7 +101,7 @@
     color: black;
     text-decoration: none;
     font-size: 17px;
-    /* display: inline; */
+    display: inline;
   }
 
   .navs.clickedMenu {
@@ -219,67 +126,6 @@
     background-color: rgb(216, 56, 48);
     display: flex;
   }
-
-  .feedbackMessageOk {
-    display: none;
-  }
-
-  .feedbackMessageOk2 {
-    -webkit-animation: seconds 1s forwards;
-    -webkit-animation-iteration-count: 1;
-    -webkit-animation-delay: 5s;
-    animation: seconds 1s forwards;
-    animation-iteration-count: 1;
-    animation-delay: 5s;
-    position: relative;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    /* font-size: 10px; */
-    text-align: right;
-    /* float: right; */
-    margin-left: 3rem;
-    color: #fdf7e3;
-    display: inline-block;
-  }
-
-  @-webkit-keyframes seconds {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      left: -9999px;
-      position: absolute;
-    }
-  }
-  @keyframes seconds {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-      left: -9999px;
-      position: absolute;
-    }
-  }
-
-  /* .feedbackMessageOk2 {
-    width: 200%;
-    margin-left: 4rem;
-    font-size: 10px;
-    text-align: center;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    float: right;
-    text-align: right;
-  }
-
-  .feedbackMessageOk2::after {
-    animation: changeContent 8s linear infinite alternate;
-    display: block;
-    content: "You are logged in";
-    color: #18191f;
-    font-size: 18px;
-    font-weight: 600;
-  } */
 }
 
 @media (min-width: 1025px) {
@@ -308,18 +154,5 @@
     display: flex;
     justify-content: flex-end;
     padding-top: 0px;
-  }
-}
-
-/* @media (min-width: 767px) {
-  .feedbackMessageOk {
-    margin-left: 4rem;
-  }
-} */
-
-@media (max-width: 501px) {
-  .entry {
-    width: 20em;
-    height: 25em;
   }
 }
