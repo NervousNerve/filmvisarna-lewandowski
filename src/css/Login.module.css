@@ -40,16 +40,12 @@ form {
   margin-top: 1em;
 }
 
-.toggleMenuBtn p {
-  margin: 0;
-}
-
 .highlighted {
   color: #d83830;
 }
 
 .feedbackMessage {
   text-align: center;
-  padding-top: 0.5em;
+  margin: 0.4em 0em;
   color: #d83830;
 }
