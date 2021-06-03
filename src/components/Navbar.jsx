@@ -95,13 +95,13 @@ const Navbar = () => {
           )}
 
           {!currentUser ? (
-            <div className={styles.login} onClick={handleModal}>
+            <Link to="#" onClick={handleModal}>
               Login/Register
-            </div>
+            </Link>
           ) : (
-            <div onClick={logOut} className={`${styles.one} ${styles.login}`}>
+            <Link to="#" onClick={logOut}>
               LogOut
-            </div>
+            </Link>
           )}
         </div>
       </div>
