@@ -86,7 +86,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <Link to="#" onClick={() => logout()}>
-              LogOut
+              Logout
             </Link>
           )}
         </div>
