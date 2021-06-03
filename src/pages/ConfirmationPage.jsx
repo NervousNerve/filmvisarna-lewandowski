@@ -46,10 +46,11 @@ const ConfirmationPage = (props) => {
         <h2>Your reservation is confirmed.</h2>
       </div>
       <div className={styles.orderDetails}>
+        <h3>{booking.screeningId.movieId.title}</h3>
         <h4>Booking Number:</h4>
         <p className={styles.p1}> {booking._id}</p>
         <h4>Price:</h4>
-        <p> {booking.price} kr</p>
+        <p> {booking.price} SEK</p>
         <h4>Date/Time:</h4>
         <p>
           {" "}
@@ -59,8 +60,8 @@ const ConfirmationPage = (props) => {
         </p>
         <h4>Seat/Row:</h4>
         <p> {booking.seats.join(", ")}</p>
-        <h4>Film description: </h4>
-        <p className={styles.plot}> {booking.screeningId.movieId.plot}</p>
+        <h4>Runtime: </h4>
+        <p className={styles.plot}>{booking.screeningId.movieId.runtime} min</p>
       </div>
       <div className={styles.homeButton}>
         <button onClick={handleClick} className={styles.backhome}>
