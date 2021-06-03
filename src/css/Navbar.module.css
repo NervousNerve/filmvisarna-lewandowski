@@ -18,8 +18,7 @@
   position: relative;
   box-shadow: 0px 3px 0px 0px #18191f;
   width: 100%;
-  padding: 0.5rem;
-
+  padding: 0.5rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -27,14 +26,16 @@
 
 /* Style navigation menu links */
 .topnav a {
-  color: black;
+  color: #18191f;
+  font-size: 1rem;
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
+  transition: 0.3s;
 }
 
 /* Style the hamburger menu */
 .topnav a.icon {
-  background: black;
+  background: #18191f;
   display: block;
 }
 
@@ -44,18 +45,27 @@
 
 .navs {
   background-color: #d83830;
-  padding: 0.5rem;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
+}
+
+.icons {
+  margin-left: 1rem;
 }
 
 .topfield:not(.clickedMenu) .topnav {
   display: none;
 }
 
-.img {
-  height: 2rem;
+.logos {
+  height: 2.4em;
+  margin: 0.2rem;
   cursor: pointer;
+}
+
+.logo,
+.gifLogo {
+  height: 100%;
 }
 
 .grid {
@@ -79,24 +89,23 @@
   .topfield:not(.clickedMenu) .topnav {
     background: none;
     box-shadow: none;
-
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 0.5rem;
   }
 
-  .burger {
+  .icons {
     display: none;
   }
 
-  .img {
-    padding-left: 0px;
+  .logos {
+    margin: 0.2rem 0.8rem 0.2rem 1.5rem;
+    height: 2.7em;
   }
 
   .topnav a {
-    color: black;
     text-decoration: none;
-    font-size: 17px;
     display: inline;
   }
 

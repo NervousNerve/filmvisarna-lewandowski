@@ -42,7 +42,6 @@ const UserProvider = (props) => {
     }
 
     setCurrentUser(user);
-    // push to profile page
   };
 
   const register = async (userToRegister) => {
@@ -54,14 +53,15 @@ const UserProvider = (props) => {
 
     userToAdd = await userToAdd.json();
 
-    if (userToAdd.success) {
-      setFeedbackMessage("Registration completed, please log in!");
-    } else if (userToAdd.error) {
+    if (userToAdd.error) {
       setFeedbackMessage("A user with this email already exists.");
+      setTimeout(() => {
+        setFeedbackMessage(null);
+      }, 3000);
+      return false;
     }
-    setTimeout(() => {
-      setFeedbackMessage(null);
-    }, 3000);
+
+    return true;
   };
 
   const values = {

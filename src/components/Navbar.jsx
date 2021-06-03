@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "./Modal";
@@ -17,6 +17,7 @@ const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [hoverLogo, setHoverLogo] = useState(false);
   const { logout, currentUser } = useContext(UserContext);
 
   const handleClick = () => {
@@ -50,19 +51,46 @@ const Navbar = () => {
       >
         <div className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
-            <FontAwesomeIcon
-              className={styles.burger}
-              icon={faBars}
-              onClick={handleClick}
-            />
+            {/* Hamburger and cross icon */}
+            <div className={styles.icons}>
+              {showMenu ? (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faTimes}
+                  onClick={handleClick}
+                />
+              ) : (
+                <FontAwesomeIcon
+                  className="fa-lg"
+                  icon={faBars}
+                  onClick={handleClick}
+                />
+              )}
+            </div>
           </div>
 
-          <img
-            className={styles.img}
-            src="/assets/icons/logo.png"
-            alt="Logo"
-            onClick={() => history.push("/")}
-          />
+          {/* Logo and gif logo */}
+          <div
+            className={styles.logos}
+            onMouseEnter={() => setHoverLogo(true)}
+            onMouseLeave={() => setHoverLogo(false)}
+          >
+            {hoverLogo ? (
+              <img
+                className={styles.gifLogo}
+                src="/assets/icons/logo.gif?a="
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            ) : (
+              <img
+                className={styles.logo}
+                src="/assets/icons/logo.png"
+                alt="Funky Films"
+                onClick={() => history.push("/")}
+              />
+            )}
+          </div>
 
           <div
             className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
@@ -72,10 +100,6 @@ const Navbar = () => {
         </div>
 
         <div className={styles.topnav}>
-          <Link onClick={handleClick} to="/">
-            Home
-          </Link>
-
           {currentUser && (
             <Link onClick={handleClick} to="/profile">
               My profile

@@ -44,6 +44,26 @@ const Booking = ({ movieId }) => {
     }
   }, [adult, child, senior, moviePrice, rebates]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setFeedback("");
+    }, 3000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [feedback]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setErrorFeedback("");
+    }, 4000);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [errorFeedback]);
+
   const confirmBooking = async () => {
     const request = {
       screeningId: chosenScreeningId,
@@ -53,9 +73,6 @@ const Booking = ({ movieId }) => {
 
     if (!request.seats || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
-      setTimeout(() => {
-        setFeedback("");
-      }, 3000);
       return;
     }
 
@@ -66,18 +83,16 @@ const Booking = ({ movieId }) => {
         body: JSON.stringify(request),
       });
 
-      booking = await booking.json();
-      history.push(`/confirmation/${booking._id}`);
-
       if (!booking.ok) {
         throw new Error("API returned some kind of error.");
       }
+
+      booking = await booking.json();
+      localStorage.setItem("booking", JSON.stringify(booking));
+      history.push(`/confirmation/${booking._id}`);
     } catch (e) {
       // if the server is down
       setErrorFeedback("Sorry, something went wrong. Please try again.");
-      setTimeout(() => {
-        setErrorFeedback("");
-      }, 4000);
     }
   };
 
