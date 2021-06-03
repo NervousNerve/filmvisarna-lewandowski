@@ -37,7 +37,9 @@ const Navbar = () => {
             setShowLogin(false);
           }}
         >
-          <Entry />
+          <div className={styles.modal}>
+            <Entry />
+          </div>
         </Modal>
       )}
 

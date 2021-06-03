@@ -74,6 +74,10 @@
   align-items: center;
 }
 
+.modal {
+  width: calc(100vw - 1rem);
+}
+
 @media (min-width: 768px) {
   .topnav,
   .topfield:not(.clickedMenu) .topnav {
@@ -111,6 +115,10 @@
   .topfield {
     background-color: rgb(216, 56, 48);
     display: flex;
+  }
+
+  .modal {
+    width: 600px;
   }
 }
 
