@@ -83,11 +83,7 @@ const Navbar = () => {
             alt="Logo"
             onClick={() => history.push("/")}
           />
-          {currentUser && (
-            <div className={`${styles.feedbackMessageOk}`}>
-              You're logged in
-            </div>
-          )}
+
           <div
             className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
           >
@@ -99,10 +95,10 @@ const Navbar = () => {
             Home
           </NavLink>
           {currentUser && (
-          <NavLink onClick={handleClick} to="/profile">
-            My profile
-          </NavLink>
-            )}
+            <NavLink onClick={handleClick} to="/profile">
+              My profile
+            </NavLink>
+          )}
 
           {!currentUser ? (
             <div className={styles.login} onClick={handleModal}>
