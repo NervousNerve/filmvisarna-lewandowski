@@ -59,8 +59,8 @@ const Navbar = () => {
 
       <div className={styles.spacer} />
 
-      <div className={`${styles.topfield} ${menu && styles.clickedMenu}`}>
-        <div className={`${styles.navs} ${menu && styles.clickedMenu}`}>
+      <div className={`${styles.topfield} ${menu ? styles.clickedMenu : ""}`}>
+        <div className={`${styles.navs} ${menu ? styles.clickedMenu : ""}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
             <FontAwesomeIcon
               className={styles.burger}
