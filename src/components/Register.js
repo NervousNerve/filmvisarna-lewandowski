@@ -7,9 +7,9 @@ const Register = ({ toggleMenu }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
-  const { register, feedbackMessage } = useContext(UserContext);
+  const { register, feedbackMessage, login } = useContext(UserContext);
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const regex = new RegExp(
       "^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])"
@@ -30,7 +30,11 @@ const Register = ({ toggleMenu }) => {
       email: email,
       password: password,
     };
-    register(user);
+    let result = await register(user);
+
+    if (result) {
+      login(user);
+    }
   };
 
   return (
