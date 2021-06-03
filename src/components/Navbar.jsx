@@ -15,23 +15,23 @@ import styles from "../css/Navbar.module.css";
 const Navbar = () => {
   const history = useHistory();
 
-  const [menu, setMenu] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
   const { logout, currentUser } = useContext(UserContext);
 
   const handleClick = () => {
-    if (menu === false) {
-      setMenu(true);
+    if (showMenu === false) {
+      setShowMenu(true);
     } else {
-      setMenu(false);
+      setShowMenu(false);
     }
   };
 
   const handleModal = () => {
-    if (modal === false) {
-      setModal(true);
+    if (showLogin === false) {
+      setShowLogin(true);
     } else {
-      setModal(false);
+      setShowLogin(false);
     }
   };
 
@@ -41,16 +41,16 @@ const Navbar = () => {
 
   useEffect(() => {
     if (currentUser) {
-      setModal(false);
+      setShowLogin(false);
     }
   }, [currentUser]);
 
   return (
     <div>
-      {modal && (
+      {showLogin && (
         <Modal
           onClose={() => {
-            setModal(false);
+            setShowLogin(false);
           }}
         >
           <Entry />
@@ -59,8 +59,10 @@ const Navbar = () => {
 
       <div className={styles.spacer} />
 
-      <div className={`${styles.topfield} ${menu ? styles.clickedMenu : ""}`}>
-        <div className={`${styles.navs} ${menu ? styles.clickedMenu : ""}`}>
+      <div
+        className={`${styles.topfield} ${showMenu ? styles.clickedMenu : ""}`}
+      >
+        <div className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}>
           <div className={`${styles.grid} ${styles.alignCenter}`}>
             <FontAwesomeIcon
               className={styles.burger}
