@@ -9,7 +9,6 @@
   width: 70%;
   display: block;
   margin: 0 auto;
-  /* margin-top: 5rem; */
 }
 
 .thanks > h1 {
@@ -34,11 +33,6 @@
 .orderDetails {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  /* border: 2px solid #18191f;
-  border-radius: 14px;
-  padding: 20px 20px;
-  background-color: #ffe8e8;
-  box-shadow: 0px 3px 0px 0px #18191f; */
 }
 
 .orderDetails > p {
