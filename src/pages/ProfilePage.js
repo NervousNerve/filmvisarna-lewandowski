@@ -1,5 +1,5 @@
 import UserBookings from "../components/UserBookings";
-import Entry from "../components/Entry";
+// import Entry from "../components/Entry";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../css/ProfilePage.module.css";
@@ -20,12 +20,7 @@ const ProfilePage = () => {
           </h1>
           <UserBookings />{" "}
         </div>
-      ) : (
-        <div>
-          <h1>You must log in to show your profile!</h1>
-          <Entry />
-        </div>
-      )}
+      ) : null}
     </div>
   );
 };

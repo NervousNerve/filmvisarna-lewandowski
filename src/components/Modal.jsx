@@ -4,7 +4,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Modal = ({ children, onClose }) => {
   const handleClick = (e) => {
-    if (e.target.id !== "modalChild") {
+    let element = document.querySelector("#modalChild");
+    if (!element.contains(e.target)) {
       onClose();
     }
   };
@@ -12,9 +13,9 @@ const Modal = ({ children, onClose }) => {
   return (
     <div className={style.modal} onClick={handleClick}>
       <div className={style.modalContainer}>
-        <div className={style.close}>
+        <button className={style.close}>
           <FontAwesomeIcon icon={faTimes} />
-        </div>
+        </button>
         <div id="modalChild">{children}</div>
       </div>
     </div>

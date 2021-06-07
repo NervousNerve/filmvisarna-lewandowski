@@ -9,7 +9,6 @@
   width: 70%;
   display: block;
   margin: 0 auto;
-  margin-top: 5rem;
 }
 
 .thanks > h1 {
@@ -20,16 +19,20 @@
 
 .thanks > h2 {
   text-align: center;
+  margin-bottom: 1rem;
+}
+
+.orderDetails1 {
+  border: 2px solid #18191f;
+  border-radius: 14px;
+  padding: 20px 20px;
+  background-color: #ffe8e8;
+  box-shadow: 0px 3px 0px 0px #18191f;
 }
 
 .orderDetails {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  border: 2px solid #18191f;
-  border-radius: 6px;
-  padding: 20px 20px;
-  background-color: #ffe8e8;
-  box-shadow: 0px 3px 0px 0px #18191f;
 }
 
 .orderDetails > p {
@@ -42,7 +45,7 @@
 
 .homeButton {
   position: relative;
-  margin-bottom: 15rem;
+  margin-bottom: 10rem;
 }
 
 .backhome {
@@ -52,6 +55,12 @@
 
 .plot {
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .confirmation {
+    width: 90%;
+  }
 }
 
 @media (max-width: 708px) {
@@ -75,5 +84,11 @@
 
   .orderDetails > p {
     margin-top: 5px;
+  }
+}
+
+@media (max-width: 345px) {
+  .orderDetails1 {
+    padding: 10px 10px;
   }
 }

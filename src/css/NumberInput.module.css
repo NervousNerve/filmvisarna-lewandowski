@@ -21,7 +21,6 @@
   box-sizing: border-box;
 }
 .numberInput button {
-  outline: none;
   -webkit-appearance: none;
   background-color: #fff;
   border: none;

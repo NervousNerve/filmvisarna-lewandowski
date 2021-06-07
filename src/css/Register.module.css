@@ -1,5 +1,13 @@
-.feedbackMessage {
+.registerBtn button,
+.toggleMenuBtn {
   text-align: center;
+  width: 100%;
+}
+
+.feedbackMessage {
+  margin: 0.4em 0em;
+  text-align: center;
+  color: #d83830;
 }
 
 .toggleMenuBtn button {
@@ -9,7 +17,8 @@
   background-color: inherit;
   font-family: "Montserrat", sans-serif;
   cursor: pointer;
-  margin-top: 0;
+  text-align: center;
+  margin-top: 1em;
 }
 
 .highlighted {
