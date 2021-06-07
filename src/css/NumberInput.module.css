@@ -65,8 +65,9 @@
 }
 
 .numberInput button:focus {
-  border: 2px solid #eeab02;
+  border: 2px solid #fdb809;
 }
+
 .numberInput input[type="number"]:focus {
-  border: 2px solid #eeab02;
+  background-color: #fdb809;
 }
