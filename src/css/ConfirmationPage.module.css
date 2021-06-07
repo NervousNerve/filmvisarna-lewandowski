@@ -57,6 +57,12 @@
   text-align: left;
 }
 
+@media (max-width: 768px) {
+  .confirmation {
+    width: 90%;
+  }
+}
+
 @media (max-width: 708px) {
   .orderDetails .p1 {
     margin-top: 40px;
