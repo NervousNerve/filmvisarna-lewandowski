@@ -1,3 +1,6 @@
+.moviePage {
+  z-index: 10000;
+}
 /* Hero img and trailer */
 .moviePage .heroImg {
   width: 100%;
