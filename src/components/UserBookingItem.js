@@ -11,10 +11,6 @@ const UserBookingItem = (props) => {
         Theater: {booking.screeningId.theaterId.name}
       </h4>
       <p>
-        <span className={styles.bold}> Booking number: </span>
-        {booking._id}
-      </p>
-      <p>
         <span className={styles.bold}>Date: </span>
         {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
           timeZone: "Europe/Stockholm",
@@ -35,6 +31,10 @@ const UserBookingItem = (props) => {
       <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
         <span className={`${styles.bold}`}>Total price: </span>
         {booking.price} SEK
+      </p>
+      <p>
+        <span className={styles.bold}> Booking number: </span>
+        {booking._id}
       </p>
     </div>
   );
