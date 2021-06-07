@@ -4,7 +4,6 @@ import styles from "../css/UserBookings.module.css";
 import { useQueryParam } from "use-query-params";
 
 const UserBookings = () => {
-
   const [showPrevious, setShowPrevious] = useQueryParam("previous");
   const [bookings, setBookings] = useState(null);
 
@@ -12,16 +11,16 @@ const UserBookings = () => {
     async function fetchData() {
       const response = await fetch(
         `/api/v1/bookings/${showPrevious ? "?previous=true" : ""}`
-        );
-        setBookings(await response.json())
+      );
+      setBookings(await response.json());
     }
     fetchData();
   }, [showPrevious]);
 
-  const toggleBookings = () =>{
+  const toggleBookings = () => {
     setShowPrevious(showPrevious ? undefined : true);
     setBookings([]);
-  }
+  };
 
   const renderTickets = () => {
     if (bookings?.length) {
@@ -32,7 +31,7 @@ const UserBookings = () => {
           ))}
         </div>
       );
-     }else {
+    } else {
       return (
         <div>
           <p>No {showPrevious ? "previous" : "upcoming"} bookings to show</p>
@@ -55,15 +54,11 @@ const UserBookings = () => {
         />
         <span className={`${styles.slider} ${styles.round} slider`}></span>
         <div className={styles.textContainer}>
-          <span
-            className={`${styles.activeState} ${styles.bold}`}
-            >
-              Previous
+          <span className={`${styles.activeState} ${styles.bold}`}>
+            Previous
           </span>
-          <span
-            className={`${styles.activeState} ${styles.bold}`}
-            >
-              Upcoming
+          <span className={`${styles.activeState} ${styles.bold}`}>
+            Upcoming
           </span>
         </div>
       </label>
