@@ -63,3 +63,10 @@
   font-family: "Montserrat", sans-serif;
   border-radius: 0;
 }
+
+.numberInput button:focus {
+  border: 2px solid #eeab02;
+}
+.numberInput input[type="number"]:focus {
+  border: 2px solid #eeab02;
+}

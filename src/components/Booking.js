@@ -148,6 +148,7 @@ const Booking = ({ movieId }) => {
                 );
               })}
           </select>
+          <span className="focus"></span>
         </div>
       </div>
 

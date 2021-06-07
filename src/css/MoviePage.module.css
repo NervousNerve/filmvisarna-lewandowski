@@ -28,6 +28,11 @@
   font-size: 40px;
 }
 
+.playButtonContainer button:focus .playIcon {
+  outline: none;
+  color: #ffbd12;
+}
+
 .playButtonContainer button {
   padding: 0;
 }

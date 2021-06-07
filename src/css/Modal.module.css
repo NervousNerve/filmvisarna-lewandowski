@@ -36,3 +36,8 @@
   color: #18191f;
   font-size: 2rem;
 }
+
+.close:focus {
+  outline: none;
+  background-color: #ffbd12;
+}
