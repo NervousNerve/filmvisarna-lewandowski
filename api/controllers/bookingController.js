@@ -167,6 +167,7 @@ const createBooking = async (req, res) => {
     screening.occupiedSeats.push(...selectedSeats);
     await screening.save();
 
+    booking.screeningId = screening;
     return res.json(booking);
   } catch (err) {
     console.error(err);
