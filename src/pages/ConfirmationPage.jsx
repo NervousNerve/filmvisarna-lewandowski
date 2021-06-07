@@ -45,22 +45,27 @@ const ConfirmationPage = (props) => {
         <h1>Thank you for booking with us!</h1>
         <h2>Your reservation is confirmed.</h2>
       </div>
-      <div className={styles.orderDetails}>
-        <h4>Booking Number:</h4>
-        <p className={styles.p1}> {booking._id}</p>
-        <h4>Price:</h4>
-        <p> {booking.price} kr</p>
-        <h4>Date/Time:</h4>
-        <p>
-          {" "}
-          {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-            timeZone: "Europe/Stockholm",
-          })}{" "}
-        </p>
-        <h4>Seat/Row:</h4>
-        <p> {booking.seats.join(", ")}</p>
-        <h4>Film description: </h4>
-        <p className={styles.plot}> {booking.screeningId.movieId.plot}</p>
+      <div className={styles.orderDetails1}>
+        <h3>{booking.screeningId.movieId.title}</h3>
+        <div className={styles.orderDetails}>
+          <h4>Booking Number:</h4>
+          <p className={styles.p1}> {booking._id}</p>
+          <h4>Price:</h4>
+          <p> {booking.price} SEK</p>
+          <h4>Date/Time:</h4>
+          <p>
+            {" "}
+            {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
+              timeZone: "Europe/Stockholm",
+            })}{" "}
+          </p>
+          <h4>Seat/Row:</h4>
+          <p> {booking.seats.join(", ")}</p>
+          <h4>Runtime: </h4>
+          <p className={styles.plot}>
+            {booking.screeningId.movieId.runtime} min
+          </p>
+        </div>
       </div>
       <div className={styles.homeButton}>
         <button onClick={handleClick} className={styles.backhome}>
