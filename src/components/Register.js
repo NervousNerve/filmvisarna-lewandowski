@@ -50,18 +50,21 @@ const Register = ({ toggleMenu }) => {
       <p>Register to book tickets.</p>
       <form onSubmit={handleRegister}>
         <input
+          className={"input"}
           placeholder="Name"
           type="text"
           onChange={(e) => setName(e.target.value)}
           required
         />
         <input
+          className={"input"}
           placeholder="Email"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
+          className={"input"}
           placeholder="Password"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
@@ -74,7 +77,7 @@ const Register = ({ toggleMenu }) => {
         </div>
 
         <div className={styles.registerBtn}>
-          <button>Create account</button>
+          <button className={"button"}>Create account</button>
         </div>
       </form>
 

@@ -68,7 +68,7 @@ const ConfirmationPage = (props) => {
         </div>
       </div>
       <div className={styles.homeButton}>
-        <button onClick={handleClick} className={styles.backhome}>
+        <button className={`button ${styles.backhome}`} onClick={handleClick}>
           Back to Home
         </button>
       </div>
