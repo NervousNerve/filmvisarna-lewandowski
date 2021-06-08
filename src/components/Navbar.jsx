@@ -19,11 +19,30 @@ const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
+  const [mediaQuery] = useState(window.matchMedia("(min-width: 768px)"));
   const { logout, currentUser } = useContext(UserContext);
 
   const toggleMenu = () => setShowMenu(!showMenu);
   const toggleLogin = () => setShowLogin(!showLogin);
   const toggleSearch = () => setShowSearch(!showSearch);
+
+  useEffect(() => {
+    if (!mediaQuery) return;
+
+    const handleChange = (e) => {
+      if (e.matches) {
+        setShowMenu(false);
+      } else {
+        setShowSearch(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener(handleChange);
+    };
+  }, [mediaQuery]);
 
   useEffect(() => {
     if (currentUser) {
