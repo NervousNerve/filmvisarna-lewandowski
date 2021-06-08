@@ -120,19 +120,22 @@ select,
 }
 
 /* Focus styling */
-input:focus,
 button:focus {
   outline: none;
   background-color: #fdb809;
 }
-.focus {
+input:focus {
+  outline: none;
   border: 2px solid #fdb809;
-  border-radius: 16px;
+}
+.focus {
+  border: 3px solid #fdb809;
+  border-radius: 14px;
   position: absolute;
-  top: -4px;
-  left: -4px;
-  right: -4px;
-  bottom: -4px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   display: none;
 }
 
