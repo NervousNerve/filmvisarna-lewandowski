@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
 // import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "./Modal";
