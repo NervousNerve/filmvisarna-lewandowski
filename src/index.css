@@ -90,6 +90,7 @@ button {
   font-family: "Oxygen", sans-serif;
   cursor: inherit;
   line-height: inherit;
+  outline: none;
   min-width: 220px;
 }
 
@@ -123,4 +124,28 @@ button {
 
 .noScroll {
   position: fixed;
+}
+
+/* Focus styling */
+button:focus {
+  outline: none;
+  background-color: #fdb809;
+}
+input:focus {
+  outline: none;
+  border: 2px solid #fdb809;
+}
+.focus {
+  border: 3px solid #fdb809;
+  border-radius: 14px;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  display: none;
+}
+
+select:focus + .focus {
+  display: inline;
 }
