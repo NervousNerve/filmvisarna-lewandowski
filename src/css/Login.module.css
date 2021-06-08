@@ -40,6 +40,11 @@
   margin-top: 1em;
 }
 
+.toggleMenuBtn button:focus {
+  outline: none;
+  text-decoration: underline #18191f;
+}
+
 .highlighted {
   color: #d83830;
 }
