@@ -28,16 +28,6 @@
   font-size: 40px;
 }
 
-.playButtonContainer button {
-  padding: 0;
-}
-
-.heroImg button {
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-}
-
 /* Modal trailer */
 .moviePage iframe {
   border: 2px solid #18191f;
