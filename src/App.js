@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import MoviePage from "./pages/MoviePage";
 import ProfilePage from "./pages/ProfilePage";
 import ConfirmationPage from "./pages/ConfirmationPage";
+import Footer from "./components/Footer";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -20,7 +21,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/confirmation/:id" component={ConfirmationPage} />
+          <Route exact path="/confirmation" component={ConfirmationPage} />
           <Route exact path="/movies/:movieId" component={MoviePage} />
           <GuardedRoute
             exact
@@ -28,6 +29,7 @@ function App() {
             component={ProfilePage}
             auth={currentUser}
           />
+          <Footer />
         </QueryParamProvider>
       </BrowserRouter>
     </div>
