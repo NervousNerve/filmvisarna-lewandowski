@@ -39,7 +39,7 @@ const Navbar = () => {
     mediaQuery.addEventListener("change", handleChange);
 
     return () => {
-      mediaQuery.removeEventListener(handleChange);
+      mediaQuery.removeEventListener("change", handleChange);
     };
   }, [mediaQuery]);
 
