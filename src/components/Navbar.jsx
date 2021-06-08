@@ -5,7 +5,6 @@ import { UserContext } from "../contexts/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "./Modal";
 import Entry from "./Entry";
@@ -51,7 +50,7 @@ const Navbar = () => {
   }, [currentUser]);
 
   return (
-    <div>
+    <nav>
       {showLogin && (
         <Modal
           onClose={() => {
@@ -66,68 +65,57 @@ const Navbar = () => {
 
       <div className={styles.spacer} />
 
-      <div
-        className={`${styles.topfield} ${showMenu ? styles.clickedMenu : ""}`}
-      >
-        <div className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}>
-          <div className={`${styles.grid} ${styles.alignCenter}`}>
-            {/* Hamburger and cross icon */}
-            <div className={styles.icons}>
-              {showMenu ? (
-                <FontAwesomeIcon
-                  className="fa-lg"
-                  icon={faTimes}
-                  onClick={handleClick}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  className="fa-lg"
-                  icon={faBars}
-                  onClick={handleClick}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* Logo and gif logo */}
-          <div
-            className={styles.logos}
-            onMouseEnter={() => setHoverLogo(true)}
-            onMouseLeave={() => setHoverLogo(false)}
-          >
-            {hoverLogo ? (
-              <img
-                className={styles.gifLogo}
-                src="/assets/icons/logo.gif?a="
-                alt="Funky Films"
-                onClick={() => history.push("/")}
-              />
+      <div className={styles.navbar}>
+        <div className={styles.mobileSection}>
+          {/* Hamburger and cross icon */}
+          <button onClick={toggleMenu}>
+            {showMenu ? (
+              <FontAwesomeIcon icon={faTimes} className="fa-lg" />
             ) : (
-              <img
-                className={styles.logo}
-                src="/assets/icons/logo.png"
-                alt="Funky Films"
-                onClick={() => history.push("/")}
-              />
+              <FontAwesomeIcon icon={faBars} className="fa-lg" />
             )}
-          </div>
-
-          <div
-            className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
-          >
-            {/* Search field goes here later */}
-          </div>
+          </button>
         </div>
 
-        <div className={styles.topnav}>
+        {/* Logo and gif logo */}
+        <div
+          onMouseEnter={() => setHoverLogo(true)}
+          onMouseLeave={() => setHoverLogo(false)}
+        >
+          {hoverLogo ? (
+            <img
+              className={styles.logo}
+              src="/assets/icons/logo.gif"
+              alt="Funky Films"
+              onClick={() => history.push("/")}
+            />
+          ) : (
+            <img
+              className={styles.logo}
+              src="/assets/icons/logo.png"
+              alt="Funky Films"
+              onClick={() => history.push("/")}
+            />
+          )}
+        </div>
+
+        <div className={styles.searchSection}>
+          <button onClick={toggleSearch}>
+            <FontAwesomeIcon className="fa-lg" icon={faSearch} />
+          </button>
+        </div>
+
+        <div
+          className={`${styles.linksSection} ${showMenu ? styles.active : ""}`}
+        >
           {currentUser && (
-            <Link onClick={handleClick} to="/profile">
+            <Link onClick={toggleMenu} to="/profile">
               My profile
             </Link>
           )}
 
           {!currentUser ? (
-            <Link to="#" onClick={() => setShowLogin(!showLogin)}>
+            <Link to="#" onClick={toggleLogin}>
               Login/Register
             </Link>
           ) : (
@@ -135,9 +123,16 @@ const Navbar = () => {
               Logout
             </Link>
           )}
+
+          <input
+            className={`${styles.searchField} search ${
+              showSearch ? styles.active : ""
+            }`}
+            placeholder="Search..."
+          ></input>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
