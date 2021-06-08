@@ -17,12 +17,13 @@ const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
   const { logout, currentUser } = useContext(UserContext);
 
-  const handleClick = () => {
-    setShowMenu(!showMenu);
-  };
+  const toggleMenu = () => setShowMenu(!showMenu);
+  const toggleLogin = () => setShowLogin(!showLogin);
+  const toggleSearch = () => setShowSearch(!showSearch);
 
   useEffect(() => {
     if (currentUser) {
