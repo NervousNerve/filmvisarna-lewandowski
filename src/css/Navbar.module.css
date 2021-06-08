@@ -78,6 +78,10 @@
   max-width: 20em;
   box-sizing: border-box;
 }
+.searchField input {
+  width: 100%;
+  box-sizing: border-box;
+}
 
 @media (min-width: 768px) {
   .navbar {
