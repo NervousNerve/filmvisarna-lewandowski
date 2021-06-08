@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 
 import { UserContext } from "../contexts/UserContext";
@@ -19,11 +19,25 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
   const [mediaQuery] = useState(window.matchMedia("(min-width: 768px)"));
+  const search = useRef();
   const { logout, currentUser } = useContext(UserContext);
 
   const toggleMenu = () => setShowMenu(!showMenu);
   const toggleLogin = () => setShowLogin(!showLogin);
   const toggleSearch = () => setShowSearch(!showSearch);
+
+  const submitSearch = (e) => {
+    e.preventDefault();
+    if (!search.current.value) return;
+    history.push({
+      pathname: "/",
+      search: "?search=" + search.current.value,
+    });
+    search.current.value = "";
+    search.current.blur();
+    setShowSearch(false);
+    setShowMenu(false);
+  };
 
   useEffect(() => {
     if (!mediaQuery) return;
@@ -124,12 +138,14 @@ const Navbar = () => {
             </Link>
           )}
 
-          <input
-            className={`${styles.searchField} search ${
+          <form
+            className={`${styles.searchField} ${
               showSearch ? styles.active : ""
             }`}
-            placeholder="Search..."
-          ></input>
+            onSubmit={submitSearch}
+          >
+            <input ref={search} className="search" placeholder="Search..." />
+          </form>
         </div>
       </div>
     </nav>
