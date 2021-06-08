@@ -127,11 +127,11 @@ button {
 }
 
 /* Focus styling */
-button:focus {
+.button:focus {
   outline: none;
   background-color: #fdb809;
 }
-input:focus {
+.input:focus {
   outline: none;
   border: 2px solid #fdb809;
 }
@@ -146,6 +146,6 @@ input:focus {
   display: none;
 }
 
-select:focus + .focus {
+.custom-select select:focus + .focus {
   display: inline;
 }
