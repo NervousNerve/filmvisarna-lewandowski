@@ -69,6 +69,7 @@ const MoviePage = (props) => {
               <div className={style.title}>
                 {/* Booking button */}
                 <button
+                  className={"button"}
                   onClick={() => {
                     scroll();
                   }}

@@ -25,19 +25,12 @@
   font-size: 40px;
 }
 
-.playButtonContainer button:focus .playIcon {
+.playButtonContainer button:focus {
   outline: none;
+}
+
+.playButtonContainer button:focus .playIcon {
   color: #ffbd12;
-}
-
-.playButtonContainer button {
-  padding: 0;
-}
-
-.heroImg button {
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
 }
 
 /* Modal trailer */
