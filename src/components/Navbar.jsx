@@ -33,12 +33,13 @@ const Navbar = () => {
       pathname: "/",
       search: "?search=" + searchRef.current.value,
     });
+    e.target.value = "";
     setShowMenu(false);
+    setShowSearch(false);
   };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
-    const searchInput = searchRef.current;
 
     const mediaQueryChange = (e) => {
       if (e.matches) {
@@ -48,17 +49,10 @@ const Navbar = () => {
       }
     };
 
-    const searchLoseFocus = (e) => {
-      e.target.value = "";
-      setShowSearch(false);
-    };
-
     mediaQuery.addEventListener("change", mediaQueryChange);
-    searchInput.addEventListener("focusout", searchLoseFocus);
 
     return () => {
       mediaQuery.removeEventListener("change", mediaQueryChange);
-      searchInput.removeEventListener("focusout", searchLoseFocus);
     };
   }, []);
 
