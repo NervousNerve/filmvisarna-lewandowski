@@ -21,7 +21,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path="/confirmation/:id" component={ConfirmationPage} />
+          <Route exact path="/confirmation" component={ConfirmationPage} />
           <Route exact path="/movies/:movieId" component={MoviePage} />
           <GuardedRoute
             exact
