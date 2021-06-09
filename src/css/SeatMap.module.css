@@ -77,3 +77,6 @@
 .seatMap .seats input:disabled {
   cursor: not-allowed;
 }
+.seatMap .seats input:focus ~ .checkmark {
+  border: 2px solid #fdb809;
+}
