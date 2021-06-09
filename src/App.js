@@ -18,17 +18,19 @@ function App() {
       <BrowserRouter>
         <QueryParamProvider ReactRouterRoute={Route}>
           <Navbar />
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/confirmation" component={ConfirmationPage} />
-          <Route exact path="/movies/:movieId" component={MoviePage} />
-          <GuardedRoute
-            exact
-            path="/profile"
-            component={ProfilePage}
-            auth={currentUser}
-          />
+          <div className="pages">
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/confirmation" component={ConfirmationPage} />
+            <Route exact path="/movies/:movieId" component={MoviePage} />
+            <GuardedRoute
+              exact
+              path="/profile"
+              component={ProfilePage}
+              auth={currentUser}
+            />
+          </div>
           <Footer />
         </QueryParamProvider>
       </BrowserRouter>
