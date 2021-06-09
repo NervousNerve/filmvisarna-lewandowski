@@ -2,7 +2,7 @@
   background: rgba(43, 41, 41, 0.856);
   width: 100vw;
   height: 100vh;
-  z-index: 5;
+  z-index: 15;
   position: fixed;
   top: 0;
   display: flex;
