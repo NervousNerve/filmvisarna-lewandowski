@@ -19,30 +19,28 @@ const Navbar = () => {
   const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
 
-  const search = useRef();
   const { logout, currentUser } = useContext(UserContext);
+
+  const searchRef = useRef();
 
   const toggleMenu = () => setShowMenu(!showMenu);
   const toggleLogin = () => setShowLogin(!showLogin);
-  const toggleSearch = () => setShowSearch(!showSearch);
 
   const submitSearch = (e) => {
     e.preventDefault();
-    if (!search.current.value) return;
+    if (!searchRef.current.value) return;
     history.push({
       pathname: "/",
-      search: "?search=" + search.current.value,
+      search: "?search=" + searchRef.current.value,
     });
-    search.current.value = "";
-    search.current.blur();
-    setShowSearch(false);
     setShowMenu(false);
   };
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const searchInput = searchRef.current;
 
-    const handleChange = (e) => {
+    const mediaQueryChange = (e) => {
       if (e.matches) {
         setShowMenu(false);
       } else {
@@ -50,12 +48,24 @@ const Navbar = () => {
       }
     };
 
-    mediaQuery.addEventListener("change", handleChange);
+    const searchLoseFocus = (e) => {
+      e.target.value = "";
+      setShowSearch(false);
+    };
+
+    mediaQuery.addEventListener("change", mediaQueryChange);
+    searchInput.addEventListener("focusout", searchLoseFocus);
 
     return () => {
-      mediaQuery.removeEventListener("change", handleChange);
+      mediaQuery.removeEventListener("change", mediaQueryChange);
+      searchInput.removeEventListener("focusout", searchLoseFocus);
     };
   }, []);
+
+  useEffect(() => {
+    if (!showSearch) return;
+    searchRef.current.focus();
+  }, [showSearch]);
 
   useEffect(() => {
     if (currentUser) {
@@ -114,7 +124,16 @@ const Navbar = () => {
         </div>
 
         <div className={styles.searchSection}>
-          <button onClick={toggleSearch}>
+          <button
+            onClick={() => {
+              if (!showSearch) {
+                setShowSearch(true);
+                setShowMenu(true);
+              } else {
+                setShowSearch(false);
+              }
+            }}
+          >
             <FontAwesomeIcon className="fa-lg" icon={faSearch} />
           </button>
         </div>
@@ -144,7 +163,7 @@ const Navbar = () => {
             }`}
             onSubmit={submitSearch}
           >
-            <input ref={search} className="search" placeholder="Search..." />
+            <input ref={searchRef} className="search" placeholder="Search..." />
           </form>
         </div>
       </div>
