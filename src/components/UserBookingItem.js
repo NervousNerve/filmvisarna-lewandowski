@@ -32,6 +32,10 @@ const UserBookingItem = (props) => {
         <span className={`${styles.bold}`}>Total price: </span>
         {booking.price} SEK
       </p>
+      <p>
+        <span className={styles.bold}> Booking number: </span>
+        {booking._id}
+      </p>
     </div>
   );
 };
