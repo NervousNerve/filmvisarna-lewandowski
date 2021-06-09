@@ -18,7 +18,7 @@ const Navbar = () => {
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
-  const [mediaQuery] = useState(window.matchMedia("(min-width: 768px)"));
+
   const search = useRef();
   const { logout, currentUser } = useContext(UserContext);
 
@@ -40,7 +40,7 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (!mediaQuery) return;
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
 
     const handleChange = (e) => {
       if (e.matches) {
@@ -55,7 +55,7 @@ const Navbar = () => {
     return () => {
       mediaQuery.removeEventListener("change", handleChange);
     };
-  }, [mediaQuery]);
+  }, []);
 
   useEffect(() => {
     if (currentUser) {
