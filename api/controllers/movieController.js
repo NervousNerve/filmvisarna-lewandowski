@@ -18,12 +18,6 @@ const getAllMovies = async (req, res) => {
       },
       {
         $match: {
-          "screenings.date": { $lte: maxDate, $gte: minDate },
-        },
-      },
-
-      {
-        $match: {
           $or: [
             { title: { $regex: searchQuery, $options: "i" } },
             { plot: { $regex: searchQuery, $options: "i" } },
@@ -54,8 +48,17 @@ const getAllMovies = async (req, res) => {
             $gte: req.query.minPrice || 0,
             $lte: req.query.maxPrice || 1000,
           },
+          screenings: {
+            $elemMatch: { date: { $lte: maxDate, $gte: minDate }}
+            // $elemMatch: { movieId: "60a632b98421e91fe4243b94" }
+          }
         },
       },
+      // {
+      //   $match: {
+      //     "screenings.date": { $lte: maxDate, $gte: minDate },
+      //   },
+      // },
     ]).exec();
     res.json(movies);
   } catch (err) {
