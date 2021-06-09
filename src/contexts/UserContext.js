@@ -50,11 +50,27 @@ const UserProvider = (props) => {
     return true;
   };
 
+  const edit = async (userToEdit) => {
+    let editUser = await fetch("/api/v1/users", {
+      method: "PUT",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(userToEdit),
+    });
+
+    editUser = await editUser.json();
+
+    if (editUser.error) {
+      return false;
+    }
+    return true;
+  };
+
   const values = {
     currentUser,
     login,
     register,
     logout,
+    edit,
   };
 
   return (
