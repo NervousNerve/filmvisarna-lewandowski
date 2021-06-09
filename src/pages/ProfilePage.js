@@ -69,19 +69,24 @@ const ProfilePage = () => {
             Hi,{" "}
             {currentUser && (currentUser.name || currentUser.loggedInUser.name)}
             !
+            <FontAwesomeIcon
+              className={`${styles.navs} ${showMenu && styles.clickedMenu}`}
+              icon={faEdit}
+              onClick={handleClick}
+            />
           </h1>
           <div
             className={`${styles.topfield} ${styles.topfield2} ${
               showMenu && styles.clickedMenu
             }`}
           >
-            <div className={`${styles.navs} ${showMenu && styles.clickedMenu}`}>
+            {/* <div className={`${styles.navs} ${showMenu && styles.clickedMenu}`}>
               <FontAwesomeIcon
                 className="fa-lg"
                 icon={faEdit}
                 onClick={handleClick}
               />
-            </div>
+            </div> */}
 
             <div className={styles.topnav}>
               <div className={styles.topnav2}>
@@ -89,12 +94,11 @@ const ProfilePage = () => {
                   className={styles.fauser}
                   icon={faUserCircle}
                 />
-                {/* <h4>email:</h4> */}
-                <h5>
+                {/* <h5>
                   {" "}
                   {currentUser &&
                     (currentUser.email || currentUser.loggedInUser.email)}
-                </h5>
+                </h5> */}
               </div>
               <div>
                 <form onSubmit={handleEdit}>
@@ -127,7 +131,7 @@ const ProfilePage = () => {
               </div>
             </div>
           </div>
-          <UserBookings />{" "}
+          <UserBookings />
         </div>
       ) : null}
     </div>

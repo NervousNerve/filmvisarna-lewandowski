@@ -36,6 +36,17 @@
   display: none;
 }
 
+h1 {
+  margin-bottom: 1rem;
+}
+
+.navs {
+  margin-left: 1rem;
+  width: 15px;
+  height: 1.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .fauser {
   height: 100px;
   /* margin-right: 3rem; */
@@ -63,4 +74,5 @@ input {
 
 button {
   float: right;
+  margin-bottom: 3rem;
 }
