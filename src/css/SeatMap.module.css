@@ -71,3 +71,9 @@
 .seatMap .seats input:checked ~ .checkmark {
   background-color: #ffd465;
 }
+.seatMap .seats input:disabled ~ .checkmark {
+  background-color: #ffe8e8;
+}
+.seatMap .seats input:disabled {
+  cursor: not-allowed;
+}
