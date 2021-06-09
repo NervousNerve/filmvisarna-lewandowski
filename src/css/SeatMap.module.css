@@ -32,3 +32,42 @@
 .seatMap hr {
   margin: 1rem;
 }
+.seats {
+  display: flex;
+  justify-content: space-around;
+  margin: 1rem;
+}
+
+.seatMap .checkboxSeat {
+  display: block;
+  position: relative;
+  /* padding-left: 35px;
+  margin-bottom: 12px; */
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.seatMap .checkboxSeat input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  margin: 0;
+}
+.seatMap .checkmark {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #fdf7e3;
+  border: 2px solid #18191f;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+.seatMap .seats input:hover ~ .checkmark {
+  background-color: #ffd36580;
+}
+.seatMap .seats input:checked ~ .checkmark {
+  background-color: #ffd465;
+}

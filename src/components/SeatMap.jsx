@@ -42,6 +42,17 @@ const SeatMap = () => {
         </div>
       </div>
       <hr />
+      <div className={style.seats}>
+        <div className={style.checkboxSeat}>
+          <input
+            type="checkbox"
+            className={style.seat}
+            value={"seat"}
+            onClick={() => {}}
+          />
+          <div class={style.checkmark}></div>
+        </div>
+      </div>
     </div>
   );
 };
