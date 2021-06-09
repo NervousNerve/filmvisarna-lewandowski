@@ -18,17 +18,28 @@ const MovieList = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.movieList}>
+      
         {movieList ? (
-          movieList.map((movie, index) => {
-            return <MovieCard key={index} movie={movie} />;
-          })
+          <div className={styles.movieList}>
+            {movieList.map((movie, index) => {
+              return (
+                <MovieCard key={index} movie={movie} />
+              )}
+            )}
+          </div>
         ) : (
-          <div>
-            <h2>Loading movies...</h2>
+          <div className={styles.loadingContainer}>
+            <div className={styles.imgContainer}>
+              <img
+              className={`${styles.loadingImg}`}
+              src="/assets/icons/icon-popcorn.png"
+              alt="Logo"
+              />
+            </div>
+            <h2 className={styles.smallerH2Font}>Loading movies...</h2>
           </div>
         )}
-      </div>
+
     </div>
   );
 };

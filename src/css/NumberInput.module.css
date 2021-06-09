@@ -21,7 +21,6 @@
   box-sizing: border-box;
 }
 .numberInput button {
-  outline: none;
   -webkit-appearance: none;
   background-color: #fff;
   border: none;
@@ -63,4 +62,12 @@
   text-align: center;
   font-family: "Montserrat", sans-serif;
   border-radius: 0;
+}
+
+.numberInput button:focus {
+  border: 2px solid #fdb809;
+}
+
+.numberInput input[type="number"]:focus {
+  background-color: #fdb809;
 }
