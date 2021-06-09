@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 
-const Booking = ({ movieId }) => {
+const Booking = ({ movie }) => {
   const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
@@ -18,11 +18,9 @@ const Booking = ({ movieId }) => {
 
   useEffect(() => {
     (async () => {
-      let movie = await fetch(`/api/v1/movies/${movieId}`);
-      movie = await movie.json();
       setMoviePrice(movie.price);
 
-      let screening = await fetch(`/api/v1/screenings/${movieId}`);
+      let screening = await fetch(`/api/v1/screenings/${movie._id}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
 
@@ -30,7 +28,7 @@ const Booking = ({ movieId }) => {
       rebates = await rebates.json();
       setRebates(rebates);
     })();
-  }, [movieId]);
+  }, [movie]);
 
   useEffect(() => {
     if (rebates) {
