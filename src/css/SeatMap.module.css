@@ -1,1 +1,34 @@
-
+.seatMap {
+  background-color: #fff;
+  margin: 1rem;
+  border: 2px solid #18191f;
+  border-radius: 14px;
+}
+.seatMap .seatDescWrapper {
+  display: flex;
+  margin: 1rem;
+  justify-content: space-around;
+}
+.seatMap .seatDescContainer {
+  display: flex;
+  align-items: center;
+}
+.seatMap .seatDesc {
+  border-radius: 5px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid #18191f;
+  margin-right: 0.5rem;
+}
+.seatMap .seatDesc.booked {
+  background-color: #ffe8e8;
+}
+.seatMap .seatDesc.available {
+  background-color: #fdf7e3;
+}
+.seatMap .seatDesc.yours {
+  background-color: #ffd465;
+}
+.seatMap hr {
+  margin: 1rem;
+}
