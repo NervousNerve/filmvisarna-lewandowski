@@ -9,12 +9,58 @@
   text-align: center;
 }
 
-.topnav,
-.topfield:not(.clickedMenu) .topnav {
-  background: none;
-  box-shadow: none;
+/* 
+.topnav.clickedMenu {
+  display: none;
+} */
+
+/* .topfield.clickedMenu .topnav {
+  display: none;
+} */
+
+/* .topfield.clickedMenu {
+  display: block;
+} */
+
+.topnav {
+  display: none;
+}
+
+.topfield.clickedMenu .topnav {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row;
+  justify-items: center; */
+}
+
+.navs.clickedMenu {
+  display: none;
+}
+
+.fauser {
+  height: 100px;
+  /* margin-right: 3rem; */
+}
+
+h5 {
+  /* margin-right: 3rem; */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.topnav2 {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  align-content: center;
+  margin-right: 3rem;
+  /* margin-top: 3rem; */
+}
+
+input {
+  margin-top: 0.3rem;
+  margin-bottom: 0.7rem;
+}
+
+button {
+  float: right;
 }

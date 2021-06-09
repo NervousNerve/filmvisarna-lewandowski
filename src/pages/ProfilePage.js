@@ -4,7 +4,7 @@ import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../css/ProfilePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 //ability to edit user info to be implemented in next sprint
 
@@ -20,7 +20,11 @@ const ProfilePage = () => {
   const { edit, login } = useContext(UserContext);
 
   const handleClick = () => {
-    setShowMenu(!showMenu);
+    if (showMenu === false) {
+      setShowMenu(true);
+    } else {
+      setShowMenu(false);
+    }
   };
 
   const handleEdit = async (e) => {
@@ -67,51 +71,61 @@ const ProfilePage = () => {
             !
           </h1>
           <div
-            className={`${styles.topfield} ${
-              showMenu ? styles.clickedMenu : ""
+            className={`${styles.topfield} ${styles.topfield2} ${
+              showMenu && styles.clickedMenu
             }`}
           >
-            <div
-              className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}
-            >
-              <div className={styles.icon}>
+            <div className={`${styles.navs} ${showMenu && styles.clickedMenu}`}>
+              <FontAwesomeIcon
+                className="fa-lg"
+                icon={faEdit}
+                onClick={handleClick}
+              />
+            </div>
+
+            <div className={styles.topnav}>
+              <div className={styles.topnav2}>
                 <FontAwesomeIcon
-                  className="fa-lg"
-                  icon={faEdit}
-                  onClick={handleClick}
+                  className={styles.fauser}
+                  icon={faUserCircle}
                 />
+                {/* <h4>email:</h4> */}
+                <h5>
+                  {" "}
+                  {currentUser &&
+                    (currentUser.email || currentUser.loggedInUser.email)}
+                </h5>
+              </div>
+              <div>
+                <form onSubmit={handleEdit}>
+                  <label>Name:</label>
+                  <input
+                    placeholder="your full name"
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <label>Email:</label>
+                  <input
+                    placeholder="enter your email"
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  <label>Password:</label>
+                  <input
+                    placeholder="enter your password"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                  <div className={styles.feedbackMessage}>
+                    {feedbackMessage}
+                    {regexMessage}
+                  </div>
+                  <div className={styles.saveBtn}>
+                    <button>Save</button>
+                  </div>
+                </form>
               </div>
             </div>
-          
-          <div className={styles.topnav}>
-            <form onSubmit={handleEdit}>
-              <input
-                placeholder="Name"
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-               
-              />
-              <input
-                placeholder="Email"
-                type="email"
-                onChange={(e) => setEmail(e.target.value)}
-              
-              />
-              <input
-                placeholder="Password"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-               
-              />
-              <div className={styles.feedbackMessage}>
-                {feedbackMessage}
-                {regexMessage}
-              </div>
-              <div className={styles.saveBtn}>
-                <button>Save</button>
-              </div>
-            </form>
-          </div>
           </div>
           <UserBookings />{" "}
         </div>

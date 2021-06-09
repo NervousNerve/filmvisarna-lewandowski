@@ -112,3 +112,7 @@ select,
 .noScroll {
   position: fixed;
 }
+
+.svg-inline--fa.fa-w-16 {
+  width: 5em;
+}
