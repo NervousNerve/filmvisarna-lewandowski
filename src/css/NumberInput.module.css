@@ -66,6 +66,7 @@
 
 .numberInput button:focus {
   border: 2px solid #fdb809;
+  outline: none;
 }
 
 .numberInput input[type="number"]:focus {
