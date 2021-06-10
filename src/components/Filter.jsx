@@ -1,24 +1,54 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Filter = () => {
-  const [chosenScreeningId, setchosenScreeningId] = useState();
+  const [freeSearch, setSearch] = useState();
+  const [searchedActor, setActor] = useState();
+  const [searchedDirector, setDirector] = useState();
 
-  const handleChange = (e) => {
-    setchosenScreeningId(e.target.value);
+  // useEffect(() => {
+  //   console.log(searchedActor);
+  // }, [searchedActor]);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleActor = (e) => {
+    setActor(e.target.value);
+  };
+
+  const handleDirector = (e) => {
+    setDirector(e.target.value);
   };
 
   return (
     <div>
       <h3>Filter</h3>
       <form>
-        <input type="text" placeholder="search" onChange={handleChange} />
+        <label>Search</label>
+        <input
+          type="text"
+          placeholder="Free search"
+          onChange={handleSearch}
+          className="input"
+        />
         <label>Actor</label>
-        <input type="text" className="input" />
+        <input
+          type="text"
+          placeholder="Actor"
+          onChange={handleActor}
+          className="input"
+        />
         <label>Director</label>
-        <input type="text" className="input" />
+        <input
+          type="text"
+          placeholder="Director"
+          onChange={handleDirector}
+          className="input"
+        />
         <label>Genres</label>
         <select className="custom-select">
-          <option selected value="drama">
+          <option defaultValue value="drama">
             Drama
           </option>
           <option value="comedy">Comedy</option>
@@ -26,7 +56,7 @@ const Filter = () => {
         </select>
         <label>Age rating</label>
         <select className="custom-select">
-          <option selected value="pg13">
+          <option defaultValue value="pg13">
             PG-13
           </option>
           <option value="pg">PG</option>
@@ -34,7 +64,7 @@ const Filter = () => {
         </select>
         <label>Language</label>
         <select className="custom-select">
-          <option selected value="english">
+          <option defaultValue value="english">
             English
           </option>
           <option value="english">Swedish</option>
