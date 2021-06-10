@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
+import { useContext } from "react/cjs/react.development";
 
 const Booking = ({ movieId }) => {
   const history = useHistory();
@@ -100,13 +101,20 @@ const Booking = ({ movieId }) => {
 
   const handleChange = (e) => {
     setchosenScreeningId(e.target.value);
-    if (!e.target.value) {
-      setShowSeatMap(false);
-    } else {
+    if (!e.target.value) return setShowSeatMap(false);
+    else {
       setShowSeatMap(true);
+      setScreening(
+        screeningSchedule.filter(
+          (screening) => screening._id === e.target.value
+        )[0]
+      );
     }
-    console.log(e.target.value);
   };
+
+  useEffect(() => {
+    console.log(screening);
+  }, [screening]);
 
   return (
     <div className={styles.bookingWrapper}>
@@ -160,7 +168,7 @@ const Booking = ({ movieId }) => {
         </div>
       </div>
 
-      {showSeatMap && <SeatMap />}
+      {showSeatMap && <SeatMap screening={screening} />}
 
       <p className={styles.feedback}>{feedback}</p>
 
