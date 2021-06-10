@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
+import SeatMap from "./SeatMap";
 
 const Booking = ({ movieId }) => {
   const history = useHistory();
@@ -15,6 +16,8 @@ const Booking = ({ movieId }) => {
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showSeatMap, setShowSeatMap] = useState(false);
+  const [screening, setScreening] = useState();
 
   useEffect(() => {
     (async () => {
@@ -97,6 +100,12 @@ const Booking = ({ movieId }) => {
 
   const handleChange = (e) => {
     setchosenScreeningId(e.target.value);
+    if (!e.target.value) {
+      setShowSeatMap(false);
+    } else {
+      setShowSeatMap(true);
+    }
+    console.log(e.target.value);
   };
 
   return (
@@ -150,6 +159,8 @@ const Booking = ({ movieId }) => {
           <span className="focus"></span>
         </div>
       </div>
+
+      {showSeatMap && <SeatMap />}
 
       <p className={styles.feedback}>{feedback}</p>
 
