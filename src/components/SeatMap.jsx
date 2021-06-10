@@ -6,12 +6,12 @@ const SeatMap = () => {
 
   const screening = {
     _id: "60a655dead5bec403ce90cef",
-    occupiedseats: [
+    occupiedSeats: [
       1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     ],
     date: "2021-06-06T12:00:00.000+00:00",
     movieId: "60a632b98421e91fe4243b9e",
-    theaterId: "60a6435192b1562b546900d6",
+    theaterId: "60a6435192b1562b546900d5",
   };
 
   useEffect(() => {
@@ -25,6 +25,36 @@ const SeatMap = () => {
       setTheater(theater);
     })();
   }, []);
+
+  const generateSeats = () => {
+    let offset = 0;
+    let rows = [];
+    for (const row of theater.seatsPerRow) {
+      let seats = [];
+
+      for (let i = 0; i < row; i++) {
+        const seatNumber = offset + i + 1;
+        seats[i] = (
+          <div className={style.checkboxSeat} key={i}>
+            <input
+              type="checkbox"
+              className={style.seat}
+              value={seatNumber}
+              disabled={screening.occupiedSeats.includes(seatNumber)}
+            />
+            <div className={style.checkmark}></div>
+          </div>
+        );
+      }
+      offset += row;
+      rows.push(
+        <div key={row} className={style.row}>
+          {seats}
+        </div>
+      );
+    }
+    return rows;
+  };
 
   return (
     <div>
@@ -49,31 +79,7 @@ const SeatMap = () => {
             </div>
           </div>
           <hr />
-          <div className={style.seats}>
-            {theater.seatsPerRow.map((row, i) => {
-              let seats = [];
-              console.log("row:", i);
-              for (let i = 0; i < row; i++) {
-                console.log("seat:", i);
-                seats[i] = (
-                  <div className={style.checkboxSeat} key={i}>
-                    <input
-                      type="checkbox"
-                      className={style.seat}
-                      value={"seat"}
-                      onClick={() => {}}
-                    />
-                    <div className={style.checkmark}></div>
-                  </div>
-                );
-              }
-              return (
-                <div key={i} className={style.row}>
-                  {seats}
-                </div>
-              );
-            })}
-          </div>
+          <div className={style.seats}>{generateSeats().map((row) => row)}</div>
         </div>
       )}
     </div>
