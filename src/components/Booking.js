@@ -72,6 +72,12 @@ const Booking = ({ movie }) => {
       seats: selectedSeats,
     };
 
+    const selectedTickets = adult + child + senior;
+    if (selectedTickets !== selectedSeats.length) {
+      setFeedback("The selected number of tickets and seats must match.");
+      return;
+    }
+
     if (!request.seats || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
       return;
