@@ -254,7 +254,53 @@ const getRebates = async (req, res) => {
   }
 };
 
+const deleteBooking = async (req, res) => {
+  if (!req.session?.user) {
+    return res.status(401).json({
+      error: "Not logged in",
+    });
+  }
+
+  if (!ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ error: "Invalid 'id' parameter" });
+  }
+
+  const booking = await Booking.findOne({
+    _id: ObjectId(req.params.id),
+    userId: req.session.user._id,
+  });
+  if (!booking) {
+    return res.status(404).json({ error: "No such booking found" });
+  }
+
+  const screening = await Screening.findOne({
+    _id: ObjectId(booking.screeningId),
+  });
+  if (!screening) {
+    return res.status(404).json({ error: "No such screening found" });
+  }
+
+  try {
+    let modifiedSeats = [...screening.occupiedSeats];
+    modifiedSeats = modifiedSeats.filter(
+      (occupidSeat) => !booking.seats.includes(occupidSeat)
+    );
+
+    Screening.updateOne(
+      { _id: screening._id },
+      { occupiedSeats: modifiedSeats }
+    ).exec();
+
+    Booking.deleteOne({ _id: booking._id }).exec();
+    res.json({ success: "Booking successfully deleted." });
+  } catch {
+    console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
 module.exports = {
+  deleteBooking,
   getBookingById,
   getBookingsByUser,
   createBooking,

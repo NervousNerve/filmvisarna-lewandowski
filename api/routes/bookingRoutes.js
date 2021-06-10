@@ -6,5 +6,6 @@ router.get("/rebates", bookingController.getRebates);
 router.get("/:id", bookingController.getBookingById);
 router.get("/", bookingController.getBookingsByUser);
 router.post("/", bookingController.createBooking);
+router.delete("/:id", bookingController.deleteBooking);
 
 module.exports = router;

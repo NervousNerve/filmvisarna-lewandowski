@@ -158,7 +158,9 @@ const Booking = ({ movieId }) => {
       </div>
 
       <div className={styles.seatBtn}>
-        <button onClick={confirmBooking}>Confirm</button>
+        <button className={"button"} onClick={confirmBooking}>
+          Confirm
+        </button>
       </div>
 
       <p className={styles.errorFeedback}>{errorFeedback}</p>
