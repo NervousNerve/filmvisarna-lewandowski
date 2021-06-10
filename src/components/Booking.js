@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
-import { useContext } from "react/cjs/react.development";
 
 const Booking = ({ movieId }) => {
   const history = useHistory();
@@ -18,6 +17,7 @@ const Booking = ({ movieId }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [showSeatMap, setShowSeatMap] = useState(false);
   const [screening, setScreening] = useState();
+  const [selectedSeats, setSelectedSeats] = useState();
 
   useEffect(() => {
     (async () => {
@@ -115,6 +115,10 @@ const Booking = ({ movieId }) => {
     console.log("screening", screening);
   }, [screening]);
 
+  useEffect(() => {
+    console.log("WhATS IN SEATS", selectedSeats);
+  }, [selectedSeats]);
+
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.pricetypeWrapper}>
@@ -167,7 +171,9 @@ const Booking = ({ movieId }) => {
         </div>
       </div>
 
-      {showSeatMap && <SeatMap screening={screening} />}
+      {showSeatMap && (
+        <SeatMap screening={screening} setSelectedSeats={setSelectedSeats} />
+      )}
 
       <p className={styles.feedback}>{feedback}</p>
 
