@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { useHistory, Link } from "react-router-dom";
 
 import { UserContext } from "../contexts/UserContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
-// import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faTimes, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import Modal from "./Modal";
 import Entry from "./Entry";
@@ -17,12 +16,50 @@ const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
   const [hoverLogo, setHoverLogo] = useState(false);
+
   const { logout, currentUser } = useContext(UserContext);
 
-  const handleClick = () => {
-    setShowMenu(!showMenu);
+  const searchRef = useRef();
+
+  const toggleMenu = () => setShowMenu(!showMenu);
+  const toggleLogin = () => setShowLogin(!showLogin);
+
+  const submitSearch = (e) => {
+    e.preventDefault();
+    if (!searchRef.current.value) return;
+    history.push({
+      pathname: "/",
+      search: "?search=" + searchRef.current.value,
+    });
+    e.target.value = "";
+    setShowMenu(false);
+    setShowSearch(false);
   };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const mediaQueryChange = (e) => {
+      if (e.matches) {
+        setShowMenu(false);
+      } else {
+        setShowSearch(false);
+      }
+    };
+
+    mediaQuery.addEventListener("change", mediaQueryChange);
+
+    return () => {
+      mediaQuery.removeEventListener("change", mediaQueryChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!showSearch) return;
+    searchRef.current.focus();
+  }, [showSearch]);
 
   useEffect(() => {
     if (currentUser) {
@@ -31,7 +68,7 @@ const Navbar = () => {
   }, [currentUser]);
 
   return (
-    <div>
+    <nav>
       {showLogin && (
         <Modal
           onClose={() => {
@@ -46,68 +83,51 @@ const Navbar = () => {
 
       <div className={styles.spacer} />
 
-      <div
-        className={`${styles.topfield} ${showMenu ? styles.clickedMenu : ""}`}
-      >
-        <div className={`${styles.navs} ${showMenu ? styles.clickedMenu : ""}`}>
-          <div className={`${styles.grid} ${styles.alignCenter}`}>
-            {/* Hamburger and cross icon */}
-            <div className={styles.icons}>
-              {showMenu ? (
-                <FontAwesomeIcon
-                  className="fa-lg"
-                  icon={faTimes}
-                  onClick={handleClick}
-                />
-              ) : (
-                <FontAwesomeIcon
-                  className="fa-lg"
-                  icon={faBars}
-                  onClick={handleClick}
-                />
-              )}
-            </div>
-          </div>
-
-          {/* Logo and gif logo */}
-          <div
-            className={styles.logos}
-            onMouseEnter={() => setHoverLogo(true)}
-            onMouseLeave={() => setHoverLogo(false)}
-          >
-            {hoverLogo ? (
-              <img
-                className={styles.gifLogo}
-                src="/assets/icons/logo.gif?a="
-                alt="Funky Films"
-                onClick={() => history.push("/")}
-              />
+      <div className={styles.navbar}>
+        <div className={styles.mobileSection}>
+          {/* Hamburger and cross icon */}
+          <button onClick={toggleMenu}>
+            {showMenu ? (
+              <FontAwesomeIcon icon={faTimes} className="fa-lg" />
             ) : (
-              <img
-                className={styles.logo}
-                src="/assets/icons/logo.png"
-                alt="Funky Films"
-                onClick={() => history.push("/")}
-              />
+              <FontAwesomeIcon icon={faBars} className="fa-lg" />
             )}
-          </div>
-
-          <div
-            className={`${styles.grid} ${styles.justifyEnd} ${styles.alignCenter}`}
-          >
-            {/* Search field goes here later */}
-          </div>
+          </button>
         </div>
 
-        <div className={styles.topnav}>
+        {/* Logo and gif logo */}
+        <div
+          onMouseEnter={() => setHoverLogo(true)}
+          onMouseLeave={() => setHoverLogo(false)}
+        >
+          {hoverLogo ? (
+            <img
+              className={styles.logo}
+              src="/assets/icons/logo.gif"
+              alt="Funky Films"
+              onClick={() => history.push("/")}
+            />
+          ) : (
+            <img
+              className={styles.logo}
+              src="/assets/icons/logo.png"
+              alt="Funky Films"
+              onClick={() => history.push("/")}
+            />
+          )}
+        </div>
+
+        <div
+          className={`${styles.linksSection} ${showMenu ? styles.active : ""}`}
+        >
           {currentUser && (
-            <Link onClick={handleClick} to="/profile">
+            <Link onClick={toggleMenu} to="/profile">
               My profile
             </Link>
           )}
 
           {!currentUser ? (
-            <Link to="#" onClick={() => setShowLogin(!showLogin)}>
+            <Link to="#" onClick={toggleLogin}>
               Login/Register
             </Link>
           ) : (
@@ -115,9 +135,37 @@ const Navbar = () => {
               Logout
             </Link>
           )}
+
+          <form
+            className={`${styles.searchField} ${
+              showSearch ? styles.active : ""
+            }`}
+            onSubmit={submitSearch}
+          >
+            <input
+              ref={searchRef}
+              className="input search"
+              placeholder="Search..."
+            />
+          </form>
+        </div>
+
+        <div className={styles.searchSection}>
+          <button
+            onClick={() => {
+              if (!showSearch) {
+                setShowSearch(true);
+                setShowMenu(true);
+              } else {
+                setShowSearch(false);
+              }
+            }}
+          >
+            <FontAwesomeIcon className="fa-lg" icon={faSearch} />
+          </button>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 

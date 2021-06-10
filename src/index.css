@@ -12,6 +12,9 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.pages {
+  margin-bottom: 4rem;
+}
 
 h1,
 h2,
@@ -121,10 +124,10 @@ button {
 .custom-select:after {
   grid-area: select;
 }
-
+/* 
 .noScroll {
   position: fixed;
-}
+} */
 
 /* Focus styling */
 .button:focus {
