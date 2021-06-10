@@ -18,7 +18,6 @@ const Booking = ({ movie }) => {
   const [showSeatMap, setShowSeatMap] = useState(false);
   const [screening, setScreening] = useState();
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const [chosenScreeningId, setChosenScreeningId] = useState();
 
   useEffect(() => {
     (async () => {
@@ -68,21 +67,19 @@ const Booking = ({ movie }) => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: chosenScreeningId,
+      screeningId: screening ? screening._id : undefined,
       tickets: { adult, child, senior },
       seats: selectedSeats,
     };
+    const selectedTickets = adult + child + senior;
 
-    if (!request.seats || !request.screeningId) {
+    if (!selectedTickets || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
-      console.log("i nästa error");
       return;
     }
 
-    const selectedTickets = adult + child + senior;
     if (selectedTickets !== selectedSeats.length) {
       setFeedback("The selected number of tickets and seats must match.");
-      console.log("i jämför antal ");
       return;
     }
 
@@ -108,11 +105,10 @@ const Booking = ({ movie }) => {
   const handleChange = (e) => {
     if (!e.target.value) {
       setShowSeatMap(false);
-      setChosenScreeningId(null);
+      setScreening(undefined);
       return;
     } else {
       setShowSeatMap(true);
-      setChosenScreeningId(e.target.value);
       //filter through screeningSchedule and sets screening to the show that matches the e.target
       setScreening(
         screeningSchedule.filter(
