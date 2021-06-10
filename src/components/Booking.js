@@ -17,7 +17,7 @@ const Booking = ({ movieId }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [showSeatMap, setShowSeatMap] = useState(false);
   const [screening, setScreening] = useState();
-  const [selectedSeats, setSelectedSeats] = useState();
+  const [selectedSeats, setSelectedSeats] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -71,7 +71,7 @@ const Booking = ({ movieId }) => {
     const request = {
       screeningId: screening._id,
       tickets: { adult, child, senior },
-      seats: adult + child + senior,
+      seats: selectedSeats,
     };
 
     if (!request.seats || !request.screeningId) {
@@ -110,14 +110,6 @@ const Booking = ({ movieId }) => {
       );
     }
   };
-
-  useEffect(() => {
-    console.log("screening", screening);
-  }, [screening]);
-
-  useEffect(() => {
-    console.log("WhATS IN SEATS", selectedSeats);
-  }, [selectedSeats]);
 
   return (
     <div className={styles.bookingWrapper}>
