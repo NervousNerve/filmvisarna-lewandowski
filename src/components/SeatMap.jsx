@@ -27,46 +27,55 @@ const SeatMap = () => {
   }, []);
 
   return (
-    <div className={style.seatMap}>
-      <div className={style.seatDescWrapper}>
-        <div className={style.seatDescContainer}>
-          <div className={`${style.seatDesc} ${style.booked}`}></div>
-          <p>Booked</p>
-        </div>
-        <div className={style.seatDescContainer}>
-          <div className={`${style.seatDesc} ${style.available}`}></div>
-          <p>Available</p>
-        </div>
-        <div className={style.seatDescContainer}>
-          <div className={`${style.seatDesc} ${style.yours}`}></div>
-          <p>Your seats</p>
-        </div>
-      </div>
-      <hr />
-      <div className={style.seats}>
-        {theater &&
-          theater.seatsPerRow.map((row, i) => {
-            let seats = [];
-            for (let i = 0; i < row; i++) {
-              seats[i] = (
-                <div className={style.checkboxSeat} key={i}>
-                  <input
-                    type="checkbox"
-                    className={style.seat}
-                    value={"seat"}
-                    onClick={() => {}}
-                  />
-                  <div className={style.checkmark}></div>
+    <div>
+      {theater && (
+        <div
+          className={`${style.seatMap} ${
+            theater.name === "Royal" && style.largeTheater
+          }`}
+        >
+          <div className={style.seatDescWrapper}>
+            <div className={style.seatDescContainer}>
+              <div className={`${style.seatDesc} ${style.booked}`}></div>
+              <p>Booked</p>
+            </div>
+            <div className={style.seatDescContainer}>
+              <div className={`${style.seatDesc} ${style.available}`}></div>
+              <p>Available</p>
+            </div>
+            <div className={style.seatDescContainer}>
+              <div className={`${style.seatDesc} ${style.yours}`}></div>
+              <p>Your seats</p>
+            </div>
+          </div>
+          <hr />
+          <div className={style.seats}>
+            {theater.seatsPerRow.map((row, i) => {
+              let seats = [];
+              console.log("row:", i);
+              for (let i = 0; i < row; i++) {
+                console.log("seat:", i);
+                seats[i] = (
+                  <div className={style.checkboxSeat} key={i}>
+                    <input
+                      type="checkbox"
+                      className={style.seat}
+                      value={"seat"}
+                      onClick={() => {}}
+                    />
+                    <div className={style.checkmark}></div>
+                  </div>
+                );
+              }
+              return (
+                <div key={i} className={style.row}>
+                  {seats}
                 </div>
               );
-            }
-            return (
-              <div key={i} className={style.row}>
-                {seats}
-              </div>
-            );
-          })}
-      </div>
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
