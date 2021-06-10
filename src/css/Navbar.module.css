@@ -24,6 +24,10 @@
   box-shadow: none;
   padding: 0;
 }
+.navbar button:hover {
+  color: #fdf7e3;
+  transition: 0.3s;
+}
 
 .mobileSection {
   display: grid;
