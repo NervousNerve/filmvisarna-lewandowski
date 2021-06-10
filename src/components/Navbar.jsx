@@ -117,21 +117,6 @@ const Navbar = () => {
           )}
         </div>
 
-        <div className={styles.searchSection}>
-          <button
-            onClick={() => {
-              if (!showSearch) {
-                setShowSearch(true);
-                setShowMenu(true);
-              } else {
-                setShowSearch(false);
-              }
-            }}
-          >
-            <FontAwesomeIcon className="fa-lg" icon={faSearch} />
-          </button>
-        </div>
-
         <div
           className={`${styles.linksSection} ${showMenu ? styles.active : ""}`}
         >
@@ -159,6 +144,21 @@ const Navbar = () => {
           >
             <input ref={searchRef} className="search" placeholder="Search..." />
           </form>
+        </div>
+
+        <div className={styles.searchSection}>
+          <button
+            onClick={() => {
+              if (!showSearch) {
+                setShowSearch(true);
+                setShowMenu(true);
+              } else {
+                setShowSearch(false);
+              }
+            }}
+          >
+            <FontAwesomeIcon className="fa-lg" icon={faSearch} />
+          </button>
         </div>
       </div>
     </nav>
