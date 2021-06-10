@@ -2,9 +2,8 @@ const Movie = require("../models/Movie");
 
 const getAllMovies = async (req, res) => {
   let searchQuery = req.query.search || "";
-  let minDate = new Date(req.query.date || "1000-01-01");
-  let maxDate = new Date(req.query.date || "3000-01-01");
-  console.log("These are dates: ", minDate, maxDate);
+  let minDate = new Date(req.query.date ? (req.query.date + " 00:00:00") : "1000-01-01");
+  let maxDate = new Date(req.query.date ? (req.query.date + " 23:59:59") : "3000-01-01");
 
   try {
     let movies = await Movie.aggregate([
@@ -50,15 +49,10 @@ const getAllMovies = async (req, res) => {
           },
           screenings: {
             $elemMatch: { date: { $lte: maxDate, $gte: minDate }}
-            // $elemMatch: { movieId: "60a632b98421e91fe4243b94" }
           }
         },
       },
-      // {
-      //   $match: {
-      //     "screenings.date": { $lte: maxDate, $gte: minDate },
-      //   },
-      // },
+
     ]).exec();
     res.json(movies);
   } catch (err) {
