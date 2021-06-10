@@ -5,7 +5,7 @@
 
 .topfield {
   box-shadow: 0px 3px 0px 0px #18191f;
-  z-index: 9999;
+  z-index: 2;
   position: fixed;
   top: 0;
   width: 100%;
