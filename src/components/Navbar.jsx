@@ -142,7 +142,11 @@ const Navbar = () => {
             }`}
             onSubmit={submitSearch}
           >
-            <input ref={searchRef} className="search" placeholder="Search..." />
+            <input
+              ref={searchRef}
+              className="input search"
+              placeholder="Search..."
+            />
           </form>
         </div>
 
