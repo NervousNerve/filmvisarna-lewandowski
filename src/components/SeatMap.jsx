@@ -2,7 +2,7 @@ import style from "../css/SeatMap.module.css";
 import { useState, useEffect } from "react";
 
 const SeatMap = () => {
-  const [theater, setTheater] = useState();
+  const [theater, setTheater] = useState(null);
 
   const screening = {
     _id: "60a655dead5bec403ce90cef",
@@ -18,6 +18,7 @@ const SeatMap = () => {
     (async () => {
       let theaters = await fetch(`/api/v1/theaters`);
       theaters = await theaters.json();
+
       const theater = theaters.find(
         (theater) => theater._id === screening.theaterId
       );
@@ -43,15 +44,28 @@ const SeatMap = () => {
       </div>
       <hr />
       <div className={style.seats}>
-        <div className={style.checkboxSeat}>
-          <input
-            type="checkbox"
-            className={style.seat}
-            value={"seat"}
-            onClick={() => {}}
-          />
-          <div class={style.checkmark}></div>
-        </div>
+        {theater &&
+          theater.seatsPerRow.map((row, i) => {
+            let seats = [];
+            for (let i = 0; i < row; i++) {
+              seats[i] = (
+                <div className={style.checkboxSeat} key={i}>
+                  <input
+                    type="checkbox"
+                    className={style.seat}
+                    value={"seat"}
+                    onClick={() => {}}
+                  />
+                  <div className={style.checkmark}></div>
+                </div>
+              );
+            }
+            return (
+              <div key={i} className={style.row}>
+                {seats}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
