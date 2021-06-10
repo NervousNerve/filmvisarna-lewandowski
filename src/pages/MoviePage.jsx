@@ -50,10 +50,18 @@ const MoviePage = (props) => {
             </div>
           )}
           {/* Hero image */}
-          <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
+          <div
+            className={style.heroImg}
+            // style={{ backgroundImage: `url(${movie.imageUrl})` }}
+            onClick={() => setWatchTrailer(true)}
+          >
             <div className={style.playButtonContainer}>
-              <button>
-                <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
+              <button className={style.playButtonStyling}>
+                <FontAwesomeIcon
+                  icon={faPlay}
+                  aria-label="play button"
+                  className={style.playIcon}
+                />
               </button>
             </div>
 
