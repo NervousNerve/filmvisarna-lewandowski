@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 const SeatMap = () => {
   const [theater, setTheater] = useState(null);
 
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const tickets = 3;
   const screening = {
     _id: "60a655dead5bec403ce90cef",
     occupiedSeats: [
@@ -26,6 +28,20 @@ const SeatMap = () => {
     })();
   }, []);
 
+  const handleChange = (e) => {
+    if (selectedSeats.includes(parseInt(e.target.value))) {
+      setSelectedSeats(
+        selectedSeats.filter((seat) => seat !== parseInt(e.target.value))
+      );
+      return;
+    }
+    if (selectedSeats.length >= tickets) {
+      e.preventDefault();
+      return;
+    }
+    setSelectedSeats((prevState) => [...prevState, parseInt(e.target.value)]);
+  };
+
   const generateSeats = () => {
     let offset = 0;
     let rows = [];
@@ -40,6 +56,7 @@ const SeatMap = () => {
               type="checkbox"
               className={style.seat}
               value={seatNumber}
+              onChange={handleChange}
               disabled={screening.occupiedSeats.includes(seatNumber)}
             />
             <div className={style.checkmark}></div>
