@@ -1,8 +1,9 @@
 .seatMap {
   background-color: #fff;
-  margin: 1rem;
+  margin: 1rem auto;
   border: 2px solid #18191f;
   border-radius: 14px;
+  max-width: 500px;
 }
 .seatMap .seatDescWrapper {
   display: flex;
@@ -33,9 +34,13 @@
   margin: 1rem;
 }
 .seats {
-  display: flex;
-  justify-content: space-around;
   margin: 1rem;
+}
+.seatMap .row {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.5rem auto;
 }
 
 .seatMap .checkboxSeat {
