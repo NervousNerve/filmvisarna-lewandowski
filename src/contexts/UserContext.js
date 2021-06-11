@@ -58,10 +58,11 @@ const UserProvider = (props) => {
     });
 
     editUser = await editUser.json();
-
+    
     if (editUser.error) {
       return false;
     }
+    setCurrentUser(editUser);
     return true;
   };
 

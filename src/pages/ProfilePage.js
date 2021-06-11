@@ -1,6 +1,6 @@
 import UserBookings from "../components/UserBookings";
 // import Entry from "../components/Entry";
-import { useState, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../css/ProfilePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,6 +11,17 @@ import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 const ProfilePage = () => {
   const { currentUser } = useContext(UserContext);
   const [showMenu, setShowMenu] = useState(false);
+  // const [values, setValues] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
+
+  // const set = (name) => {
+  //   return ({ target: { value } }) => {
+  //     setValues((oldValues) => ({ ...oldValues, [name]: value }));
+  //   };
+  // };
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -18,6 +29,13 @@ const ProfilePage = () => {
   const [regexMessage, setRegexMessage] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState(null);
   const { edit, login } = useContext(UserContext);
+
+  useEffect(() => {
+    if (currentUser) {
+      setName(currentUser.name);
+      setEmail(currentUser.email);
+    }
+  }, [currentUser]);
 
   const handleClick = () => {
     if (showMenu === false) {
@@ -33,7 +51,7 @@ const ProfilePage = () => {
       "^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])"
     );
 
-    if (regex.test(password)) {
+    if (password && !regex.test(password)) {
       setRegexMessage(
         "Your password must be at least 6 characters long, contain both upper- and lowercase and one special character."
       );
@@ -44,9 +62,9 @@ const ProfilePage = () => {
     }
 
     const user = {
-      name: name,
-      email: email,
-      password: password,
+      name: name || undefined,
+      email: email || undefined,
+      password: password || undefined,
     };
 
     let result = await edit(user);
@@ -65,6 +83,7 @@ const ProfilePage = () => {
     <div>
       {currentUser ? (
         <div className={styles.profileContainer}>
+          <div className={styles.editProfile}>
           <h1>
             Hi,{" "}
             {currentUser && (currentUser.name || currentUser.loggedInUser.name)}
@@ -94,11 +113,11 @@ const ProfilePage = () => {
                   className={styles.fauser}
                   icon={faUserCircle}
                 />
-                {/* <h5>
+                <h5>
                   {" "}
                   {currentUser &&
                     (currentUser.email || currentUser.loggedInUser.email)}
-                </h5> */}
+                </h5>
               </div>
               <div>
                 <form onSubmit={handleEdit}>
@@ -106,29 +125,46 @@ const ProfilePage = () => {
                   <input
                     placeholder="your full name"
                     type="text"
+                    value={name}
+                    // onChange={set("name")}
                     onChange={(e) => setName(e.target.value)}
                   />
                   <label>Email:</label>
                   <input
                     placeholder="enter your email"
                     type="email"
+                    value={email}
+                    // onChange={set("email")}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                   <label>Password:</label>
                   <input
-                    placeholder="enter your password"
+                    placeholder="••••••••"
                     type="password"
+                    value={password}
+                    // onChange={set("password")}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <div className={styles.feedbackMessage}>
                     {feedbackMessage}
                     {regexMessage}
                   </div>
-                  <div className={styles.saveBtn}>
-                    <button>Save</button>
+                  <div
+                    className={`${styles.saveBtn} ${
+                      showMenu && styles.clickedMenu
+                    }`}
+                  >
+                    <button
+                      className={`${styles.saveBtn} ${
+                        showMenu && styles.clickedMenu
+                      }`}
+                    >
+                      Save
+                    </button>
                   </div>
                 </form>
               </div>
+            </div>
             </div>
           </div>
           <UserBookings />
