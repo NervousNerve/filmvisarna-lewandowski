@@ -102,8 +102,9 @@
   border: 2px solid #fdb809;
 }
 
-@media screen and (max-width: 400px) {
-  .seatMap .seatDesc {
+@media screen and (max-width: 370px) {
+  .seatMap .seatDesc,
+  .seatMap.largeTheater .checkmark {
     border-radius: 4px;
     width: 0.6rem;
     height: 0.6rem;
@@ -111,14 +112,5 @@
   .seatMap.largeTheater .row {
     gap: 0.2rem;
     margin: 0.2rem auto;
-  }
-  .seatMap.largeTheater input {
-    width: 1rem;
-    height: 1rem;
-  }
-  .seatMap.seatMap.largeTheater .checkmark {
-    border-radius: 4px;
-    width: 0.6rem;
-    height: 0.6rem;
   }
 }
