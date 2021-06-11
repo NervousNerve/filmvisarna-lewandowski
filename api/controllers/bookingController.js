@@ -3,7 +3,7 @@ const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 const Rebate = require("../models/Rebate");
 
-const seatToSeatRow = require("../../src/util/seatToSeatRow");
+const calcRow = require("../../src/util/calcRow");
 
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
@@ -141,8 +141,12 @@ const createBooking = async (req, res) => {
       }
     }
 
+    // Replace seat numbers with objects containing both seat and row
     selectedSeats = selectedSeats.map((seat) => {
-      return seatToSeatRow(seat, screening.theaterId.seatsPerRow);
+      return {
+        seat,
+        row: calcRow(seat, screening.theaterId.seatsPerRow),
+      };
     });
 
     const rebates = await Rebate.findOne().exec();
