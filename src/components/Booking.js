@@ -177,6 +177,7 @@ const Booking = ({ movie }) => {
       {showSeatMap && (
         <SeatMap
           screening={screening}
+          theater={screening.theaterId}
           setSelectedSeats={setSelectedSeats}
           selectedSeats={selectedSeats}
           selectedTickets={selectedTickets}

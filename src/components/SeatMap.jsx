@@ -1,14 +1,13 @@
 import style from "../css/SeatMap.module.css";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 const SeatMap = ({
   selectedTickets,
   selectedSeats,
   setSelectedSeats,
   screening,
+  theater,
 }) => {
-  const theater = screening.theaterId;
-
   /* set selected seats state */
   const handleSeatClick = (e) => {
     if (selectedSeats.includes(parseInt(e.target.value))) {
@@ -25,6 +24,14 @@ const SeatMap = ({
     setSelectedSeats([...selectedSeats, parseInt(e.target.value)]);
   };
 
+  useEffect(() => {
+    if (selectedTickets < selectedSeats.length) {
+      let temporarySeats = [...selectedSeats];
+      temporarySeats.sort().splice(temporarySeats.length - 1, 1);
+      setSelectedSeats(temporarySeats);
+    }
+  }, [selectedTickets]);
+
   /* generate seats with seat numbers */
   const generateSeats = () => {
     let offset = 0;
@@ -40,7 +47,8 @@ const SeatMap = ({
               type="checkbox"
               className={style.seat}
               value={seatNumber}
-              onClick={handleSeatClick}
+              onChange={handleSeatClick}
+              checked={selectedSeats.includes(seatNumber)}
               /* if seat is occupied, make it disabled */
               disabled={screening.occupiedSeats.includes(seatNumber)}
             />
