@@ -1,7 +1,5 @@
 .seatMap {
-  /* background-color: #fff; */
   margin: 2.5rem auto 1.5rem;
-  /* border: 2px solid #18191f; */
   border-radius: 14px;
   max-width: 20rem;
   padding: 0 0.5rem;
@@ -23,11 +21,8 @@
   border: 2px solid #18191f;
   margin-right: 0.3rem;
 }
-.seatMap .seatDesc p {
-  font-size: 14px;
-}
 .seatMap .seatDesc.booked {
-  background-color: #ffe8e8;
+  background-color: #f0cfcf;
 }
 .seatMap .seatDesc.available {
   background-color: #fff;
@@ -41,10 +36,7 @@
 .seats {
   margin: 1.5rem;
 }
-/* .seatMap.largeTheater .row {
-  gap: 0.2rem;
-  margin: 0.2rem auto;
-} */
+
 .seatMap .row {
   display: flex;
   justify-content: center;
@@ -61,10 +53,7 @@
   -ms-user-select: none;
   user-select: none;
 }
-/* .seatMap.largeTheater input {
-  width: 1rem;
-  height: 1rem;
-} */
+
 .seatMap .checkboxSeat input {
   position: absolute;
   opacity: 0;
@@ -73,11 +62,7 @@
   height: 1rem;
   margin: 0;
 }
-/* .seatMap.seatMap.largeTheater .checkmark {
-  border-radius: 4px;
-  width: 0.6rem;
-  height: 0.6rem;
-} */
+
 .seatMap .checkmark {
   background-color: #fff;
   border: 2px solid #18191f;
@@ -93,7 +78,7 @@
   background-color: #ffd465;
 }
 .seatMap .seats input:disabled ~ .checkmark {
-  background-color: #ffe8e8;
+  background-color: #f0cfcf;
 }
 .seatMap .seats input:disabled {
   cursor: not-allowed;
@@ -112,5 +97,8 @@
   .seatMap.largeTheater .row {
     gap: 0.2rem;
     margin: 0.2rem auto;
+  }
+  .seatMap p {
+    font-size: 0.8rem;
   }
 }
