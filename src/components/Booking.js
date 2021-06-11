@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
+import SeatMap from "./SeatMap";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -148,7 +149,7 @@ const Booking = ({ movie }) => {
           <span className="focus"></span>
         </div>
       </div>
-
+      <SeatMap />
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
