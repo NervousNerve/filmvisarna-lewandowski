@@ -18,6 +18,7 @@ const Booking = ({ movie }) => {
   const [showSeatMap, setShowSeatMap] = useState(false);
   const [screening, setScreening] = useState();
   const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -46,6 +47,10 @@ const Booking = ({ movie }) => {
   }, [adult, child, senior, moviePrice, rebates]);
 
   useEffect(() => {
+    setSelectedTickets(adult + senior + child);
+  }, [adult, senior, child]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setFeedback("");
     }, 3000);
@@ -71,7 +76,6 @@ const Booking = ({ movie }) => {
       tickets: { adult, child, senior },
       seats: selectedSeats,
     };
-    const selectedTickets = adult + child + senior;
 
     if (!selectedTickets || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
@@ -171,7 +175,12 @@ const Booking = ({ movie }) => {
       </div>
 
       {showSeatMap && (
-        <SeatMap screening={screening} setSelectedSeats={setSelectedSeats} />
+        <SeatMap
+          screening={screening}
+          setSelectedSeats={setSelectedSeats}
+          selectedSeats={selectedSeats}
+          selectedTickets={selectedTickets}
+        />
       )}
 
       <p className={styles.feedback}>{feedback}</p>
