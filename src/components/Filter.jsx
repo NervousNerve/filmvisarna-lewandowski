@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Filter.module.css";
 
-const Filter = ({ setMovieList }) => {
+const Filter = ({ setMovies }) => {
   const [freeSearch, setSearch] = useState("");
   const [searchedActor, setActor] = useState("");
   const [searchedDirector, setDirector] = useState("");
@@ -25,9 +25,9 @@ const Filter = ({ setMovieList }) => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `/api/v1/movies/?search=${freeSearch}&${searchedActor}`
+        `/api/v1/movies/?search=${freeSearch}&actors=${searchedActor}&genre=${searchedGenre}&language=${searchedLanguage}&director=${searchedDirector}&minRuntime=${searchedRuntime}&rated=${searchedRating}&minPrice=${searchedPrice}&date=${searchedDate}`
       );
-      setMovieList(await response.json());
+      setMovies(await response.json());
     }
     fetchData();
   }, [
@@ -43,10 +43,6 @@ const Filter = ({ setMovieList }) => {
   ]);
 
   const [expanded, setExpanded] = useState(false);
-
-  // useEffect(() => {
-  //   console.log(searchedDate);
-  // }, [searchedDate]);
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -77,11 +73,11 @@ const Filter = ({ setMovieList }) => {
   };
 
   const handlePrice = (e) => {
-    setPrice(e.target.value);
+    setPrice(parseInt(e.target.value));
   };
 
   const handleRuntime = (e) => {
-    setRuntime(e.target.value);
+    setRuntime(parseInt(e.target.value));
   };
 
   const resetForm = (e) => {
@@ -184,12 +180,20 @@ const Filter = ({ setMovieList }) => {
             value={searchedDate}
           />
           <label>Price</label>
-          <input type="range" onChange={handlePrice} value={searchedPrice} />
+          <input
+            type="range"
+            onChange={handlePrice}
+            value={searchedPrice}
+            min="0"
+            max="200"
+          />
           <label>Runtime</label>
           <input
             type="range"
             onChange={handleRuntime}
             value={searchedRuntime}
+            min="0"
+            max="200"
           />
           <button className="button" onClick={resetForm}>
             Reset filter
