@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
+import SeatMap from "./SeatMap";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -11,10 +12,13 @@ const Booking = ({ movie }) => {
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showSeatMap, setShowSeatMap] = useState(false);
+  const [screening, setScreening] = useState();
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -43,6 +47,10 @@ const Booking = ({ movie }) => {
   }, [adult, child, senior, moviePrice, rebates]);
 
   useEffect(() => {
+    setSelectedTickets(adult + senior + child);
+  }, [adult, senior, child]);
+
+  useEffect(() => {
     const timeout = setTimeout(() => {
       setFeedback("");
     }, 3000);
@@ -64,13 +72,18 @@ const Booking = ({ movie }) => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: chosenScreeningId,
+      screeningId: screening ? screening._id : undefined,
       tickets: { adult, child, senior },
-      seats: adult + child + senior,
+      seats: selectedSeats,
     };
 
-    if (!request.seats || !request.screeningId) {
+    if (!selectedTickets || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
+      return;
+    }
+
+    if (selectedTickets !== selectedSeats.length) {
+      setFeedback("The selected number of tickets and seats must match.");
       return;
     }
 
@@ -94,7 +107,19 @@ const Booking = ({ movie }) => {
   };
 
   const handleChange = (e) => {
-    setchosenScreeningId(e.target.value);
+    if (!e.target.value) {
+      setShowSeatMap(false);
+      setScreening(undefined);
+      return;
+    } else {
+      setShowSeatMap(true);
+      //filter through screeningSchedule and sets screening to the show that matches the e.target
+      setScreening(
+        screeningSchedule.filter(
+          (screening) => screening._id === e.target.value
+        )[0]
+      );
+    }
   };
 
   return (
@@ -148,6 +173,15 @@ const Booking = ({ movie }) => {
           <span className="focus"></span>
         </div>
       </div>
+
+      {showSeatMap && (
+        <SeatMap
+          screening={screening}
+          setSelectedSeats={setSelectedSeats}
+          selectedSeats={selectedSeats}
+          selectedTickets={selectedTickets}
+        />
+      )}
 
       <p className={styles.feedback}>{feedback}</p>
 
