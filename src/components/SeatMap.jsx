@@ -1,35 +1,13 @@
 import style from "../css/SeatMap.module.css";
 import { useState, useEffect } from "react";
 
-const SeatMap = (
-  {
-    /*  screening, selectedTickets, selectedSeats, setSelectedSeats  */
-  }
-) => {
-  const [theater, setTheater] = useState(null);
-
-  /* remove and get from booking props */
-  const [selectedSeats, setSelectedSeats] = useState([]);
-  const selectedTickets = 3;
-  const screening = {
-    occupiedSeats: [
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-    ],
-    theaterId: "60a6435192b1562b546900d6",
-  };
-
-  /* fetch theaters and find right theater */
-  useEffect(() => {
-    (async () => {
-      let theaters = await fetch(`/api/v1/theaters`);
-      theaters = await theaters.json();
-
-      const theater = theaters.find(
-        (theater) => theater._id === screening.theaterId
-      );
-      setTheater(theater);
-    })();
-  }, []);
+const SeatMap = ({
+  selectedTickets,
+  selectedSeats,
+  setSelectedSeats,
+  screening,
+}) => {
+  const theater = screening.theaterId;
 
   /* set selected seats state */
   const handleSeatClick = (e) => {
