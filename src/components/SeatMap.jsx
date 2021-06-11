@@ -24,6 +24,7 @@ const SeatMap = ({
     setSelectedSeats([...selectedSeats, parseInt(e.target.value)]);
   };
 
+  /* Remove selected seats if umber of tickets decrease */
   useEffect(() => {
     if (selectedTickets < selectedSeats.length) {
       let temporarySeats = [...selectedSeats];
@@ -31,6 +32,11 @@ const SeatMap = ({
       setSelectedSeats(temporarySeats);
     }
   }, [selectedTickets]);
+
+  /* Remove selected seats if new screening is chosen */
+  useEffect(() => {
+    setSelectedSeats([]);
+  }, [screening]);
 
   /* generate seats with seat numbers */
   const generateSeats = () => {
