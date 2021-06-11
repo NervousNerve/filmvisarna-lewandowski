@@ -124,10 +124,10 @@ button {
 .custom-select:after {
   grid-area: select;
 }
-
+/* 
 .noScroll {
   position: fixed;
-}
+} */
 
 /* Focus styling */
 .button:focus {
