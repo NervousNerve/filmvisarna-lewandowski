@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Filter.module.css";
 
-const Filter = () => {
+const Filter = ({ setMovieList }) => {
   const [freeSearch, setSearch] = useState("");
   const [searchedActor, setActor] = useState("");
   const [searchedDirector, setDirector] = useState("");
@@ -27,7 +27,7 @@ const Filter = () => {
       const response = await fetch(
         `/api/v1/movies/?search=${freeSearch}&${searchedActor}`
       );
-      setBookings(await response.json());
+      setMovieList(await response.json());
     }
     fetchData();
   }, [
