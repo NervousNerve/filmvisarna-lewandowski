@@ -35,6 +35,7 @@ const Login = ({ toggleMenu }) => {
         <div className={styles.inputContainer}>
           <FontAwesomeIcon icon={faUser} className={styles.userIcon} />
           <input
+            className={"input"}
             placeholder="Email"
             type="email"
             onChange={(e) => setEmail(e.target.value)}
@@ -44,6 +45,7 @@ const Login = ({ toggleMenu }) => {
         <div className={styles.inputContainer}>
           <FontAwesomeIcon icon={faLock} className={styles.lockIcon} />
           <input
+            className={"input"}
             placeholder="Password"
             type="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -53,7 +55,9 @@ const Login = ({ toggleMenu }) => {
 
         <div className={styles.feedbackMessage}>{feedbackMessage}</div>
         <div className={styles.loginBtn}>
-          <button type="submit">Sign in</button>
+          <button className={"button"} type="submit">
+            Sign in
+          </button>
         </div>
       </form>
 

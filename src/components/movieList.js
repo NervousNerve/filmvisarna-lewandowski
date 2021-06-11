@@ -1,28 +1,13 @@
 import MovieCard from "./movieCard";
 import styles from "../css/Movie-card.module.css";
-import { useEffect, useState } from "react";
 
-const MovieList = () => {
-  const [movieList, setMovieList] = useState(null);
-
-  const getAllMovies = async () => {
-    let movies = await fetch("/api/v1/movies/");
-    movies = await movies.json();
-    setMovieList(movies);
-
-    return;
-  };
-
-  useEffect(() => {
-    getAllMovies();
-  }, []);
-
+const MovieList = ({ movies }) => {
   return (
     <div className={styles.container}>
-      {movieList ? (
+      {movies ? (
         <div className={styles.movieList}>
-          {movieList.map((movie, index) => {
-            return <MovieCard key={index} movie={movie} />;
+          {movies.map((movie) => {
+            return <MovieCard key={movie._id} movie={movie} />;
           })}
         </div>
       ) : (

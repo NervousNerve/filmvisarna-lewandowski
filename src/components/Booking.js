@@ -2,8 +2,9 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
+import SeatMap from "./SeatMap";
 
-const Booking = ({ movieId }) => {
+const Booking = ({ movie }) => {
   const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
@@ -11,18 +12,19 @@ const Booking = ({ movieId }) => {
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showSeatMap, setShowSeatMap] = useState(false);
+  const [screening, setScreening] = useState();
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   useEffect(() => {
     (async () => {
-      let movie = await fetch(`/api/v1/movies/${movieId}`);
-      movie = await movie.json();
       setMoviePrice(movie.price);
 
-      let screening = await fetch(`/api/v1/screenings/${movieId}`);
+      let screening = await fetch(`/api/v1/screenings/${movie._id}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
 
@@ -30,7 +32,7 @@ const Booking = ({ movieId }) => {
       rebates = await rebates.json();
       setRebates(rebates);
     })();
-  }, [movieId]);
+  }, [movie]);
 
   useEffect(() => {
     if (rebates) {
@@ -43,6 +45,10 @@ const Booking = ({ movieId }) => {
       );
     }
   }, [adult, child, senior, moviePrice, rebates]);
+
+  useEffect(() => {
+    setSelectedTickets(adult + senior + child);
+  }, [adult, senior, child]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -66,13 +72,18 @@ const Booking = ({ movieId }) => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: chosenScreeningId,
+      screeningId: screening ? screening._id : undefined,
       tickets: { adult, child, senior },
-      seats: adult + child + senior,
+      seats: selectedSeats,
     };
 
-    if (!request.seats || !request.screeningId) {
+    if (!selectedTickets || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
+      return;
+    }
+
+    if (selectedTickets !== selectedSeats.length) {
+      setFeedback("The selected number of tickets and seats must match.");
       return;
     }
 
@@ -96,7 +107,19 @@ const Booking = ({ movieId }) => {
   };
 
   const handleChange = (e) => {
-    setchosenScreeningId(e.target.value);
+    if (!e.target.value) {
+      setShowSeatMap(false);
+      setScreening(undefined);
+      return;
+    } else {
+      setShowSeatMap(true);
+      //filter through screeningSchedule and sets screening to the show that matches the e.target
+      setScreening(
+        screeningSchedule.filter(
+          (screening) => screening._id === e.target.value
+        )[0]
+      );
+    }
   };
 
   return (
@@ -151,6 +174,15 @@ const Booking = ({ movieId }) => {
         </div>
       </div>
 
+      {showSeatMap && (
+        <SeatMap
+          screening={screening}
+          setSelectedSeats={setSelectedSeats}
+          selectedSeats={selectedSeats}
+          selectedTickets={selectedTickets}
+        />
+      )}
+
       <p className={styles.feedback}>{feedback}</p>
 
       <div className={styles.totalPrice}>
@@ -158,7 +190,9 @@ const Booking = ({ movieId }) => {
       </div>
 
       <div className={styles.seatBtn}>
-        <button onClick={confirmBooking}>Confirm</button>
+        <button className={"button"} onClick={confirmBooking}>
+          Confirm
+        </button>
       </div>
 
       <p className={styles.errorFeedback}>{errorFeedback}</p>
