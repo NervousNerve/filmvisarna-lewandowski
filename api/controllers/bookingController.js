@@ -3,6 +3,8 @@ const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 const Rebate = require("../models/Rebate");
 
+const seatToSeatRow = require("../../src/util/seatToSeatRow");
+
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
@@ -140,12 +142,7 @@ const createBooking = async (req, res) => {
     }
 
     selectedSeats = selectedSeats.map((seat) => {
-      let count = 0;
-      for (let i = 0; i < screening.theaterId.seatsPerRow.length; i++) {
-        count += screening.theaterId.seatsPerRow[i];
-        if (seat > count) continue;
-        return { seat: seat, row: i + 1 };
-      }
+      return seatToSeatRow(seat, screening.theaterId.seatsPerRow);
     });
 
     const rebates = await Rebate.findOne().exec();
