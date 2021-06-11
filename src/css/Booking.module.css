@@ -27,7 +27,8 @@
   display: flex;
   justify-content: center;
 }
-.selectWrapper .custom-select, select{
+.selectWrapper .custom-select,
+select {
   width: 16em;
 }
 
@@ -49,4 +50,12 @@
 
 .errorFeedback {
   color: red;
+}
+
+@media screen and (min-width: 900px) {
+  .bookingContainer {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
 }
