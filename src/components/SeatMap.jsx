@@ -88,7 +88,7 @@ const SeatMap = ({
               <p>Booked</p>
             </div>
             <div className={style.seatDescContainer}>
-              <div className={`${style.seatDesc} ${style.available}`}></div>
+              <div className={style.seatDesc}></div>
               <p>Available</p>
             </div>
             <div className={style.seatDescContainer}>

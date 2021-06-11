@@ -12,6 +12,7 @@
 .seatMap .seatDescContainer {
   display: flex;
   align-items: center;
+  gap: 0.3rem;
 }
 
 .seatMap .seatDesc {
@@ -19,13 +20,10 @@
   width: 0.8rem;
   height: 0.8rem;
   border: 2px solid #18191f;
-  margin-right: 0.3rem;
+  background-color: #fff;
 }
 .seatMap .seatDesc.booked {
   background-color: #f0cfcf;
-}
-.seatMap .seatDesc.available {
-  background-color: #fff;
 }
 .seatMap .seatDesc.yours {
   background-color: #ffd465;

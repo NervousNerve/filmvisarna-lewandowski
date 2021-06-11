@@ -190,6 +190,18 @@ const Booking = ({ movie }) => {
 
       <p className={styles.feedback}>{feedback}</p>
 
+      <div className={styles.selectedSeats}>
+        {selectedSeats.length > 0 &&
+          selectedSeats.sort().map((seat) => {
+            return (
+              <div className={styles.seatWrapper}>
+                <div className={styles.yourSeat}></div>
+                <p>seat {seat}</p>
+              </div>
+            );
+          })}
+      </div>
+
       <div className={styles.totalPrice}>
         <h4>Total: {totalPrice} SEK</h4>
       </div>
