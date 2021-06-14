@@ -10,12 +10,23 @@ const MultiRangeSlider = ({
   setMaxRun,
   setMinPrice,
   setMaxPrice,
+  reset,
+  setReset,
 }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(min);
   const maxValRef = useRef(max);
   const range = useRef(null);
+
+  useEffect(() => {
+    if (reset) {
+      setMaxVal(200);
+      setMinVal(0);
+
+      setReset(false);
+    }
+  }, [reset, setReset]);
 
   useEffect(() => {
     if (name === "runtime") {
@@ -77,6 +88,7 @@ const MultiRangeSlider = ({
         onChange={(event) => {
           const value = Math.max(Number(event.target.value), minVal + 1);
           setMaxVal(value);
+
           maxValRef.current = value;
         }}
         className={`${styles.thumb} ${styles.thumbRight}`}

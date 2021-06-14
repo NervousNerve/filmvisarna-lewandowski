@@ -18,6 +18,10 @@ const Filter = ({ setMovies }) => {
   const [maxRun, setMaxRun] = useState();
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const [reset, setReset] = useState(false);
+
+  const [minValue, setMinValue] = useState(0);
+  const [maxValue, setMaxValue] = useState(200);
 
   const [genresArray, setGenresArray] = useState(["Drama", "Comedy", "Sci-Fi"]);
   const [ratingArray, setRatingArray] = useState(["PG", "PG-13", "R"]);
@@ -80,17 +84,6 @@ const Filter = ({ setMovies }) => {
     setDate(e.target.value);
   };
 
-  // const handlePrice = (e) => {
-  //   setPrice(parseInt(e.target.value));
-  // };
-
-  // const handleRuntime = () => {
-  //   // setRuntime(parseInt(e.target.value));
-  //   console.log("inhandle run tie");
-  //   setMinRun(minValue);
-  //   setMaxRun(maxValue);
-  // };
-
   const resetForm = (e) => {
     e.preventDefault();
     setSearch("");
@@ -101,8 +94,9 @@ const Filter = ({ setMovies }) => {
     setLanguage("");
     setDate("");
     setPrice("");
-    // setRuntime("");
-    //set max and min price /runtime
+    setMinValue(0);
+    setMaxValue(200);
+    setReset(true);
   };
 
   const toggleExpand = (e) => {
@@ -209,18 +203,26 @@ const Filter = ({ setMovies }) => {
           /> */}
           <label>Runtime</label>
           <MultiRangeSlider
-            min={0}
-            max={200}
+            min={minValue} // 0
+            max={maxValue} //200
             name="runtime"
             setMinRun={setMinRun}
             setMaxRun={setMaxRun}
+            setMinValue={setMinValue}
+            setMaxValue={setMaxValue}
+            reset={reset}
+            setReset={setReset}
           />
           <label>Price</label>
           <MultiRangeSlider
-            min={0}
-            max={200}
+            setReset={setReset}
+            reset={reset}
+            min={minValue}
+            max={maxValue}
             setMinPrice={setMinPrice}
             setMaxPrice={setMaxPrice}
+            setMinValue={setMinValue}
+            setMaxValue={setMaxValue}
             name="price"
           />
           <button className="button" onClick={resetForm}>
