@@ -23,7 +23,7 @@ const UserBookings = () => {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     });
-    result = await result.json();
+    await result.json();
     fetchData();
   };
 
