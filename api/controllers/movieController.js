@@ -39,13 +39,13 @@ const getAllMovies = async (req, res) => {
           },
           director: { $regex: req.query.director || "", $options: "i" },
           runtime: {
-            $gte: req.query.minRuntime || 0,
-            $lte: req.query.maxRuntime || 1000,
+            $gte: parseInt(req.query.minRuntime) || 0,
+            $lte: parseInt(req.query.maxRuntime) || 1000,
           },
           rated: { $regex: req.query.rated || "", $options: "i" },
           price: {
-            $gte: req.query.minPrice || 0,
-            $lte: req.query.maxPrice || 1000,
+            $gte: parseInt(req.query.minPrice) || 0,
+            $lte: parseInt(req.query.maxPrice) || 1000,
           },
           screenings: {
             $elemMatch: { date: { $lte: maxDate, $gte: minDate }}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Filter from "../components/Filter";
 import MovieList from "../components/movieList";
 import styles from "../css/Home.module.css";
 
@@ -22,6 +23,7 @@ const Home = () => {
         <h2>In theatres now</h2>
         <h1>Inception</h1>
       </div>
+      <Filter setMovies={setMovies}/>
       {movies && <h3>Popular shows</h3>}
       <MovieList movies={movies} />
     </div>
