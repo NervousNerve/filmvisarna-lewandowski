@@ -1,0 +1,14 @@
+.carousel {
+  height: 60vh;
+}
+
+/* .carouselArrow {
+  width: 50%;
+  filter: opacity(100%);
+} */
+
+.carouselImageSlide {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}

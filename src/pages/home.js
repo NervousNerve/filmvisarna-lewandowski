@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import MovieList from "../components/movieList";
 import styles from "../css/Home.module.css";
+import Carousel from "../components/Carousel";
 
 const Home = () => {
   const [movies, setMovies] = useState();
@@ -18,6 +19,7 @@ const Home = () => {
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.imgContainer}></div>
+      <Carousel movies={movies} />
       <div className={styles.textContainer}>
         <h2>In theatres now</h2>
         <h1>Inception</h1>
