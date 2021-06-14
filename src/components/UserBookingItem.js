@@ -3,9 +3,14 @@ import styles from "../css/UserBookings.module.css";
 
 const UserBookingItem = (props) => {
   const [booking] = useState(props.booking);
+  const [showPrevious] = useState(props.showPrevious);
+
+  const cancelBooking = (e) => {
+    console.log("deleting", e.target.parentNode);
+  };
 
   return (
-    <div className={styles.ticketContainer}>
+    <div className={styles.ticketContainer} id="id">
       <h3 className={styles.title}>{booking.screeningId.movieId.title}</h3>
       <h4 className={styles.noBottomMargin}>
         Theater: {booking.screeningId.theaterId.name}
@@ -36,6 +41,17 @@ const UserBookingItem = (props) => {
         <span className={styles.bold}> Booking number: </span>
         {booking._id}
       </p>
+      {!showPrevious && (
+        <button
+          className={styles.button}
+          onClick={(e) => {
+            if (window.confirm("Are you sure you wish to cancel your booking?"))
+              cancelBooking(e);
+          }}
+        >
+          Cancel booking
+        </button>
+      )}
     </div>
   );
 };
