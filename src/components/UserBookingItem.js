@@ -11,13 +11,13 @@ const UserBookingItem = ({ booking, showPrevious, cancelBooking }) => {
             onClick={() => {
               if (
                 window.confirm(
-                  "Are you sure you wish to cancel your booking? This action can not be undone."
+                  "Are you sure you wish to cancel your reservation? This action can not be undone."
                 )
               )
                 cancelBooking(booking._id);
             }}
           >
-            Cancel booking
+            x
           </button>
         )}
       </div>
