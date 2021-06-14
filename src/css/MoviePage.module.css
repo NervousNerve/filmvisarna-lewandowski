@@ -6,6 +6,13 @@
   cursor: pointer;
   position: relative;
 }
+
+.heroImg:hover .playButtonContainer button .playIcon {
+  filter: drop-shadow(0 0 1.25rem #d83830);
+  color: #d83830;
+  transition: color 400ms, filter 135ms;
+}
+
 .moviePage .heroImg img {
   filter: blur(3px);
   width: 120%;
@@ -15,14 +22,16 @@
 
 .playButtonContainer {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 35px);
   z-index: 1;
   left: calc(100vw - 50vw - 20px);
 }
 
 .playButtonContainer .playIcon {
-  color: #fff;
-  font-size: 40px;
+  color: #ffd465;
+  font-size: 56px;
+  filter: drop-shadow(0 0 2rem #ffd465);
+  transition: color 400ms, filter 400ms;
 }
 
 .playButtonContainer button:focus {
@@ -31,6 +40,7 @@
 
 .playButtonContainer button:focus .playIcon {
   color: #ffbd12;
+  filter: drop-shadow(0 0 2rem #ffd465);
 }
 
 /* Modal trailer */
