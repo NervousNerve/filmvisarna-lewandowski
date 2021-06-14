@@ -235,6 +235,8 @@ const getBookingsByUser = async (req, res) => {
         },
       },
       { $unwind: "$screeningId.theaterId" },
+      // sort result by date
+      { $sort: { "screeningId.date": 1 } },
     ]).exec();
 
     return res.json(bookings);
