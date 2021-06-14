@@ -8,14 +8,16 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
     <div className={styles.ticketContainer}>
       <div className={styles.removeItemContainer}>
         <h3 className={styles.title}>{booking.screeningId.movieId.title}</h3>
-        <button
-          className={styles.button}
-          onClick={() => {
-            if (window.confirm(message)) cancelBooking(booking._id);
-          }}
-        >
-          x
-        </button>
+        {cancelBooking && (
+          <button
+            className={styles.button}
+            onClick={() => {
+              if (window.confirm(message)) cancelBooking(booking._id);
+            }}
+          >
+            x
+          </button>
+        )}
       </div>
       <h4 className={styles.noBottomMargin}>
         Theater: {booking.screeningId.theaterId.name}
