@@ -23,9 +23,9 @@ const MultiRangeSlider = ({
     if (reset) {
       setMaxVal(200);
       setMinVal(0);
-      setReset(false);
       minValRef.current = min;
       maxValRef.current = max;
+      setReset(false);
     }
   }, [reset, setReset]);
 

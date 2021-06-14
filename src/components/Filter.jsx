@@ -16,9 +16,10 @@ const Filter = ({ setMovies }) => {
   const [searchedPrice, setPrice] = useState("");
   const [minRun, setMinRun] = useState();
   const [maxRun, setMaxRun] = useState();
-  const [minPrice, setMinPrice] = useState("");
-  const [maxPrice, setMaxPrice] = useState("");
+  const [minPrice, setMinPrice] = useState();
+  const [maxPrice, setMaxPrice] = useState();
   const [reset, setReset] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(200);
@@ -54,36 +55,6 @@ const Filter = ({ setMovies }) => {
     maxPrice,
   ]);
 
-  const [expanded, setExpanded] = useState(false);
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const handleActor = (e) => {
-    setActor(e.target.value);
-  };
-
-  const handleDirector = (e) => {
-    setDirector(e.target.value);
-  };
-
-  const handleGenre = (e) => {
-    setGenre(e.target.value);
-  };
-
-  const handleRating = (e) => {
-    setRating(e.target.value);
-  };
-
-  const handleLanguage = (e) => {
-    setLanguage(e.target.value);
-  };
-
-  const handleDate = (e) => {
-    setDate(e.target.value);
-  };
-
   const resetForm = (e) => {
     e.preventDefault();
     setSearch("");
@@ -94,20 +65,19 @@ const Filter = ({ setMovies }) => {
     setLanguage("");
     setDate("");
     setPrice("");
-    setMinValue(0);
-    setMaxValue(200);
     setReset(true);
-  };
-
-  const toggleExpand = (e) => {
-    e.preventDefault();
-    setExpanded(!expanded);
   };
 
   return (
     <div>
       <div className={styles.expandBtn}>
-        <button onClick={toggleExpand}>Filter</button>
+        <button
+          onClick={() => {
+            setExpanded(!expanded);
+          }}
+        >
+          Filter
+        </button>
         <FontAwesomeIcon icon={faFilter} />
       </div>
       {expanded && (
@@ -116,7 +86,9 @@ const Filter = ({ setMovies }) => {
           <input
             type="text"
             placeholder="Free search"
-            onChange={handleSearch}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
             className="input"
             value={freeSearch}
           />
@@ -124,7 +96,9 @@ const Filter = ({ setMovies }) => {
           <input
             type="text"
             placeholder="Actor"
-            onChange={handleActor}
+            onChange={(e) => {
+              setActor(e.target.value);
+            }}
             className="input"
             value={searchedActor}
           />
@@ -132,14 +106,18 @@ const Filter = ({ setMovies }) => {
           <input
             type="text"
             placeholder="Director"
-            onChange={handleDirector}
+            onChange={(e) => {
+              setDirector(e.target.value);
+            }}
             className="input"
             value={searchedDirector}
           />
           <label>Genres</label>
           <select
             className="custom-select"
-            onChange={handleGenre}
+            onChange={(e) => {
+              setGenre(e.target.value);
+            }}
             value={searchedGenre}
           >
             {genresArray.map((genre, i) => {
@@ -153,7 +131,9 @@ const Filter = ({ setMovies }) => {
           <label>Age rating</label>
           <select
             className="custom-select"
-            onChange={handleRating}
+            onChange={(e) => {
+              setRating(e.target.value);
+            }}
             value={searchedRating}
           >
             {ratingArray.map((rating, i) => {
@@ -167,7 +147,9 @@ const Filter = ({ setMovies }) => {
           <label>Language</label>
           <select
             className="custom-select"
-            onChange={handleLanguage}
+            onChange={(e) => {
+              setLanguage(e.target.value);
+            }}
             value={searchedLanguage}
           >
             {languageArray.map((language, i) => {
@@ -182,25 +164,11 @@ const Filter = ({ setMovies }) => {
           <input
             type="date"
             className="input"
-            onChange={handleDate}
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
             value={searchedDate}
           />
-          {/* <label>Price</label>
-          <input
-            type="range"
-            onChange={handlePrice}
-            value={searchedPrice}
-            min="0"
-            max="200"
-          />
-          <label>Runtime</label>
-          <input
-            type="range"
-            onChange={handleRuntime}
-            value={searchedRuntime}
-            min="0"
-            max="200"
-          /> */}
           <label>Runtime</label>
           <MultiRangeSlider
             min={minValue} // 0
