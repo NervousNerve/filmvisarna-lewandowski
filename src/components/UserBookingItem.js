@@ -5,24 +5,31 @@ const UserBookingItem = (props) => {
   const [booking] = useState(props.booking);
   const [showPrevious] = useState(props.showPrevious);
 
-  const cancelBooking = (e) => {
-    console.log("Deleting", e.target.parentNode.parentNode.id);
+  const cancelBooking = async () => {
+    let bookingId = props.booking._id;
+
+    let result = await fetch(`/api/v1/bookings/${bookingId}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    });
+    result = await result.json();
+    console.log(result);
   };
 
   return (
-    <div className={styles.ticketContainer} id={booking._id}>
+    <div className={styles.ticketContainer}>
       <div className={styles.removeItemContainer}>
         <h3 className={styles.title}>{booking.screeningId.movieId.title}</h3>
         {!showPrevious && (
           <button
             className={styles.button}
-            onClick={(e) => {
+            onClick={() => {
               if (
                 window.confirm(
                   "Are you sure you wish to cancel your booking? This action can not be undone."
                 )
               )
-                cancelBooking(e);
+                cancelBooking();
             }}
           >
             Cancel booking
