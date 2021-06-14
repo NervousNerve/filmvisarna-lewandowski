@@ -1,3 +1,73 @@
 .expandBtn {
-  background-color: aquamarine;
+  text-align: end;
+  right: 0;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.filterContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.formContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.filterLabel {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.searchInput,
+.input {
+  box-sizing: border-box;
+  display: block;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+.searchInput {
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+}
+
+.icon {
+  padding: 0.2rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .inputContainer {
+    width: 48%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .searchInput {
+    width: 30%;
+    margin: 1rem auto;
+  }
+
+  .inputContainer {
+    width: 30%;
+  }
 }
