@@ -14,7 +14,10 @@ const Filter = ({ setMovies }) => {
   const [searchedLanguage, setLanguage] = useState("");
   const [searchedDate, setDate] = useState("");
   const [searchedPrice, setPrice] = useState("");
-  const [searchedRuntime, setRuntime] = useState("");
+  const [minRun, setMinRun] = useState();
+  const [maxRun, setMaxRun] = useState();
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
 
   const [genresArray, setGenresArray] = useState(["Drama", "Comedy", "Sci-Fi"]);
   const [ratingArray, setRatingArray] = useState(["PG", "PG-13", "R"]);
@@ -27,7 +30,7 @@ const Filter = ({ setMovies }) => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `/api/v1/movies/?search=${freeSearch}&actors=${searchedActor}&genre=${searchedGenre}&language=${searchedLanguage}&director=${searchedDirector}&minRuntime=${searchedRuntime}&rated=${searchedRating}&minPrice=${searchedPrice}&date=${searchedDate}`
+        `/api/v1/movies/?search=${freeSearch}&actors=${searchedActor}&genre=${searchedGenre}&language=${searchedLanguage}&director=${searchedDirector}&minRuntime=${minRun}&maxRuntime=${maxRun}&rated=${searchedRating}&minPrice=${minPrice}&maxPrice=${maxPrice}&date=${searchedDate}`
       );
       setMovies(await response.json());
     }
@@ -41,7 +44,10 @@ const Filter = ({ setMovies }) => {
     searchedLanguage,
     searchedDate,
     searchedPrice,
-    searchedRuntime,
+    minRun,
+    maxRun,
+    minPrice,
+    maxPrice,
   ]);
 
   const [expanded, setExpanded] = useState(false);
@@ -74,13 +80,16 @@ const Filter = ({ setMovies }) => {
     setDate(e.target.value);
   };
 
-  const handlePrice = (e) => {
-    setPrice(parseInt(e.target.value));
-  };
+  // const handlePrice = (e) => {
+  //   setPrice(parseInt(e.target.value));
+  // };
 
-  const handleRuntime = (e) => {
-    setRuntime(parseInt(e.target.value));
-  };
+  // const handleRuntime = () => {
+  //   // setRuntime(parseInt(e.target.value));
+  //   console.log("inhandle run tie");
+  //   setMinRun(minValue);
+  //   setMaxRun(maxValue);
+  // };
 
   const resetForm = (e) => {
     e.preventDefault();
@@ -92,7 +101,8 @@ const Filter = ({ setMovies }) => {
     setLanguage("");
     setDate("");
     setPrice("");
-    setRuntime("");
+    // setRuntime("");
+    //set max and min price /runtime
   };
 
   const toggleExpand = (e) => {
@@ -197,8 +207,22 @@ const Filter = ({ setMovies }) => {
             min="0"
             max="200"
           /> */}
+          <label>Runtime</label>
+          <MultiRangeSlider
+            min={0}
+            max={200}
+            name="runtime"
+            setMinRun={setMinRun}
+            setMaxRun={setMaxRun}
+          />
           <label>Price</label>
-          <MultiRangeSlider min={0} max={1000} />
+          <MultiRangeSlider
+            min={0}
+            max={200}
+            setMinPrice={setMinPrice}
+            setMaxPrice={setMaxPrice}
+            name="price"
+          />
           <button className="button" onClick={resetForm}>
             Reset filter
           </button>
