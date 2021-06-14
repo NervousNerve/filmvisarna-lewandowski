@@ -16,13 +16,20 @@ const Filter = ({ setMovies }) => {
   const [searchedPrice, setPrice] = useState("");
   const [searchedRuntime, setRuntime] = useState("");
 
-  const [genresArray, setGenresArray] = useState(["Drama", "Comedy", "Sci-Fi"]);
-  const [ratingArray, setRatingArray] = useState(["PG", "PG-13", "R"]);
-  const [languageArray, setLanguageArray] = useState([
-    "English",
-    "Swedish",
-    "Russian",
-  ]);
+  const [genresArray, setGenresArray] = useState([]);
+  const [ratingArray, setRatingArray] = useState([]);
+  const [languageArray, setLanguageArray] = useState([]);
+
+  useEffect(() => {
+    async function fetchValues() {
+      const response = await fetch("/api/v1/movies/values");
+      let arrays = await response.json();
+      setGenresArray(arrays.genre);
+      setRatingArray(arrays.rated);
+      setLanguageArray(arrays.language);
+    }
+    fetchValues();
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
