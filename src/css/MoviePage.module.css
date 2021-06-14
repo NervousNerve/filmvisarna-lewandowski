@@ -22,14 +22,14 @@
 
 .playButtonContainer {
   position: absolute;
-  top: calc(50% - 20px);
+  top: calc(50% - 35px);
   z-index: 1;
   left: calc(100vw - 50vw - 20px);
 }
 
 .playButtonContainer .playIcon {
   color: #ffd465;
-  font-size: 65px;
+  font-size: 56px;
   filter: drop-shadow(0 0 2rem #ffd465);
   transition: color 400ms, filter 400ms;
 }
