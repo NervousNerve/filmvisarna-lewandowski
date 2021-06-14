@@ -3,6 +3,15 @@
   padding-bottom: 0.8em;
 }
 
+.button {
+  background-color: tomato;
+}
+
+.removeItemContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .bold {
   font-weight: bold;
 }

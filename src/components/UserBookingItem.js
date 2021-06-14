@@ -6,12 +6,29 @@ const UserBookingItem = (props) => {
   const [showPrevious] = useState(props.showPrevious);
 
   const cancelBooking = (e) => {
-    console.log("deleting", e.target.parentNode);
+    console.log("Deleting", e.target.parentNode.parentNode.id);
   };
 
   return (
-    <div className={styles.ticketContainer} id="id">
-      <h3 className={styles.title}>{booking.screeningId.movieId.title}</h3>
+    <div className={styles.ticketContainer} id={booking._id}>
+      <div className={styles.removeItemContainer}>
+        <h3 className={styles.title}>{booking.screeningId.movieId.title}</h3>
+        {!showPrevious && (
+          <button
+            className={styles.button}
+            onClick={(e) => {
+              if (
+                window.confirm(
+                  "Are you sure you wish to cancel your booking? This action can not be undone."
+                )
+              )
+                cancelBooking(e);
+            }}
+          >
+            Cancel booking
+          </button>
+        )}
+      </div>
       <h4 className={styles.noBottomMargin}>
         Theater: {booking.screeningId.theaterId.name}
       </h4>
@@ -41,17 +58,6 @@ const UserBookingItem = (props) => {
         <span className={styles.bold}> Booking number: </span>
         {booking._id}
       </p>
-      {!showPrevious && (
-        <button
-          className={styles.button}
-          onClick={(e) => {
-            if (window.confirm("Are you sure you wish to cancel your booking?"))
-              cancelBooking(e);
-          }}
-        >
-          Cancel booking
-        </button>
-      )}
     </div>
   );
 };
