@@ -3,6 +3,8 @@ const Booking = require("../models/Booking");
 const Screening = require("../models/Screening");
 const Rebate = require("../models/Rebate");
 
+const calcRow = require("../../src/util/calcRow");
+
 const getBookingById = async (req, res) => {
   if (!ObjectId.isValid(req.params.id)) {
     return res.status(400).json({
@@ -39,56 +41,50 @@ const getBookingById = async (req, res) => {
 
 /* Parameters in req.body:
  * screeningId:  ObjectId of the screening
- * seats:        Either a Number of total requested seats,
- *               or Array of specific, requested seat numbers
  * tickets:      Object with three properties:
  *               { adult, child, senior }
  *               Specifying number of each type of ticket requested
+ * seats:        Array of specific, requested seat numbers,
+ *               or 'undefined' to select seats automatically
  *
  * If successful, returns the newly created Booking object
  */
 const createBooking = async (req, res) => {
+  const { screeningId, tickets, seats } = req.body;
+
   if (!req.session?.user) {
     return res.status(401).json({
       error: "Not logged in",
     });
   }
 
-  if (!ObjectId.isValid(req.body.screeningId)) {
+  if (!ObjectId.isValid(screeningId)) {
     return res.status(400).json({
       error: "Invalid 'screeningId' parameter",
     });
   }
 
   if (
-    !req.body?.tickets ||
-    !Number.isInteger(
-      req.body.tickets?.child +
-        req.body.tickets?.adult +
-        req.body.tickets?.senior
-    ) ||
-    req.body.tickets.child < 0 ||
-    req.body.tickets.adult < 0 ||
-    req.body.tickets.senior < 0
+    !tickets ||
+    !Number.isInteger(tickets?.child + tickets?.adult + tickets?.senior) ||
+    tickets.child < 0 ||
+    tickets.adult < 0 ||
+    tickets.senior < 0
   ) {
     return res.status(400).json({
       error: "Invalid 'tickets' parameter",
     });
   }
 
-  if (
-    (!Number.isInteger(req.body.seats) || req.body.seats <= 0) &&
-    (!Array.isArray(req.body.seats) || !req.body.seats.length)
-  ) {
+  if ((!Array.isArray(seats) || !seats.length) && seats !== undefined) {
     return res.status(400).json({
-      error:
-        "Invalid 'seats' parameter. Expected positive Integer or non-empty Array",
+      error: "Invalid 'seats' parameter",
     });
   }
 
-  let totalTickets =
-    req.body.tickets.child + req.body.tickets.adult + req.body.tickets.senior;
-  if (totalTickets !== (req.body.seats?.length || req.body.seats)) {
+  const totalTickets = tickets.child + tickets.adult + tickets.senior;
+
+  if (seats !== undefined && seats.length !== totalTickets) {
     return res.status(400).json({
       error: "Number of 'tickets' and 'seats' do not match",
     });
@@ -96,7 +92,7 @@ const createBooking = async (req, res) => {
 
   try {
     const screening = await Screening.findOne({
-      _id: req.body.screeningId,
+      _id: screeningId,
     })
       .populate("theaterId")
       .populate("movieId")
@@ -110,27 +106,17 @@ const createBooking = async (req, res) => {
 
     const freeSeats =
       screening.theaterId.seats - screening.occupiedSeats.length;
-    if (freeSeats < (req.body.seats.length ?? req.body.seats)) {
+
+    if (freeSeats < totalTickets) {
       return res.status(403).json({
         error: "Not enough free seats available",
       });
     }
 
-    let selectedSeats;
-    if (Number.isInteger(req.body.seats)) {
-      // Pick the first available seats
-      selectedSeats = [];
-      let seatsLeft = req.body.seats;
-      for (let i = 1; i <= screening.theaterId.seats && seatsLeft; i++) {
-        if (!screening.occupiedSeats.includes(i)) {
-          selectedSeats.push(i);
-          seatsLeft--;
-        }
-      }
-    } else {
-      // Make sure every requested seat is a valid seat number
-      // and not already occupied
-      selectedSeats = [...req.body.seats];
+    const selectedSeats = [];
+    if (seats?.length) {
+      // If specific seats are requested, make sure none of them are occupied
+      selectedSeats.push(...seats);
       for (const s of selectedSeats) {
         if (
           !Number.isInteger(s) ||
@@ -143,11 +129,26 @@ const createBooking = async (req, res) => {
           });
         }
       }
+    } else {
+      // No seats specified, pick the first available seats
+      let seatsLeft = totalTickets;
+      for (let i = 1; i <= screening.theaterId.seats && seatsLeft; i++) {
+        if (!screening.occupiedSeats.includes(i)) {
+          selectedSeats.push(i);
+          seatsLeft--;
+        }
+      }
     }
 
-    const rebates = await Rebate.findOne().exec();
+    // Calculate and store the row for each seat
+    const seatsAndRows = selectedSeats.map((seat) => {
+      return {
+        seat,
+        row: calcRow(seat, screening.theaterId.seatsPerRow),
+      };
+    });
 
-    const tickets = { ...req.body.tickets };
+    const rebates = await Rebate.findOne().exec();
 
     const price = Math.round(
       (tickets.child * rebates.childMultiplier +
@@ -157,7 +158,7 @@ const createBooking = async (req, res) => {
     );
 
     const booking = await Booking.create({
-      seats: selectedSeats,
+      seats: seatsAndRows,
       price: price,
       userId: req.session.user._id,
       screeningId: screening._id,
@@ -167,12 +168,13 @@ const createBooking = async (req, res) => {
     screening.occupiedSeats.push(...selectedSeats);
     await screening.save();
 
+    // "Populate" our booking with data from screening
     booking.screeningId = screening;
     return res.json(booking);
   } catch (err) {
     console.error(err);
-    return res.status(400).json({
-      error: err.message,
+    return res.status(500).json({
+      error: "Something went wrong",
     });
   }
 };
@@ -283,9 +285,9 @@ const deleteBooking = async (req, res) => {
   }
 
   try {
-    let modifiedSeats = [...screening.occupiedSeats];
-    modifiedSeats = modifiedSeats.filter(
-      (occupidSeat) => !booking.seats.includes(occupidSeat)
+    const bookedSeats = booking.seats.map((s) => s?.seat || s);
+    const modifiedSeats = screening.occupiedSeats.filter(
+      (occupidSeat) => !bookedSeats.includes(occupidSeat)
     );
 
     Screening.updateOne(
