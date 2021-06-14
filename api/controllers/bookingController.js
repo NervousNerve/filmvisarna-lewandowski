@@ -283,7 +283,7 @@ const deleteBooking = async (req, res) => {
   }
 
   try {
-    const bookedSeats = booking.seats.map((s) => s.seat);
+    const bookedSeats = booking.seats.map((s) => s?.seat || s);
     const modifiedSeats = screening.occupiedSeats.filter(
       (occupidSeat) => !bookedSeats.includes(occupidSeat)
     );
