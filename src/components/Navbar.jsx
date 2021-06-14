@@ -165,6 +165,9 @@ const Navbar = () => {
           </button>
         </div>
       </div>
+      <div className={styles.fade}>
+        <h4>You're logged in</h4>
+      </div>
     </nav>
   );
 };
