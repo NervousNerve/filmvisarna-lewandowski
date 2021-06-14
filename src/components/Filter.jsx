@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import styles from "../css/Filter.module.css";
 
+import MultiRangeSlider from "./MultiRangeSlider";
+
 const Filter = ({ setMovies }) => {
   const [freeSearch, setSearch] = useState("");
   const [searchedActor, setActor] = useState("");
@@ -179,7 +181,7 @@ const Filter = ({ setMovies }) => {
             onChange={handleDate}
             value={searchedDate}
           />
-          <label>Price</label>
+          {/* <label>Price</label>
           <input
             type="range"
             onChange={handlePrice}
@@ -194,7 +196,9 @@ const Filter = ({ setMovies }) => {
             value={searchedRuntime}
             min="0"
             max="200"
-          />
+          /> */}
+          <label>Price</label>
+          <MultiRangeSlider min={0} max={1000} />
           <button className="button" onClick={resetForm}>
             Reset filter
           </button>
