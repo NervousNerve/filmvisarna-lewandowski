@@ -41,10 +41,10 @@ const ConfirmationPage = (props) => {
               timeZone: "Europe/Stockholm",
             })}{" "}
           </p>
-          <h4>Seat/Row:</h4>
+          <h4>Row/seat:</h4>
           {booking.seats.map((seat, i) => (
             <p key={i}>
-              {seat.row ? seat.row + ":" + seat.seat : seat}
+              Row: {seat.row ? seat.row + " Seat: " + seat.seat : seat}
               {i === booking.seats.length - 1 ? "" : ","}
             </p>
           ))}
