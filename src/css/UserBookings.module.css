@@ -9,11 +9,17 @@
 
 .seatContainer {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .seat {
   margin-left: 0.5rem;
 }
+
+/* .seatContainer p {
+  min-width: 2em;
+} */
 
 /* STYLES FOR SLIDER */
 /* The switch - the box around the slider */
