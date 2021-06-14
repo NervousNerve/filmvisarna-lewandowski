@@ -283,9 +283,9 @@ const deleteBooking = async (req, res) => {
   }
 
   try {
-    let modifiedSeats = [...screening.occupiedSeats];
-    modifiedSeats = modifiedSeats.filter(
-      (occupidSeat) => !booking.seats.includes(occupidSeat)
+    const bookedSeats = booking.seats.map((s) => s.seat);
+    const modifiedSeats = screening.occupiedSeats.filter(
+      (occupidSeat) => !bookedSeats.includes(occupidSeat.seat)
     );
 
     Screening.updateOne(
