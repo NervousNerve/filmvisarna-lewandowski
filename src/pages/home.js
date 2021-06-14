@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import MovieList from "../components/movieList";
 import styles from "../css/Home.module.css";
+import { UserContext } from "../contexts/UserContext";
 
 const Home = () => {
   const [movies, setMovies] = useState();
+  const { currentUser } = useContext(UserContext);
 
   const getMovies = async () => {
     let movies = await fetch("/api/v1/movies");
@@ -19,6 +21,11 @@ const Home = () => {
     <div className={styles.pageWrapper}>
       <div className={styles.imgContainer}></div>
       <div className={styles.textContainer}>
+        {currentUser && (
+          <div className={styles.fade}>
+            <p>You're logged in</p>
+          </div>
+        )}
         <h2>In theatres now</h2>
         <h1>Inception</h1>
       </div>

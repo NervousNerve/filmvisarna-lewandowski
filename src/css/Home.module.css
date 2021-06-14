@@ -41,6 +41,35 @@ h2 {
     url("https://m.media-amazon.com/images/M/MV5BNDExNDYxODc1MF5BMl5BanBnXkFtZTcwNDQ0OTk1Mw@@._V1_.jpg");
 }
 
+.fade {
+  /* width:200px;
+  height: 200px;
+  background: red; */
+  text-align: center;
+  -webkit-animation: fadeinout 4s linear forwards;
+  animation: fadeinout 4s linear forwards;
+}
+
+@-webkit-keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeinout {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 @media screen and (min-width: 575px) {
   .pageWrapper h1 {
     font-size: 3.5rem;
