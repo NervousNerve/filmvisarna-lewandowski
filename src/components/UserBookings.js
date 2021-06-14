@@ -8,14 +8,24 @@ const UserBookings = () => {
   const [bookings, setBookings] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `/api/v1/bookings/${showPrevious ? "?previous=true" : ""}`
-      );
-      setBookings(await response.json());
-    }
     fetchData();
   }, [showPrevious]);
+
+  const fetchData = async () => {
+    const response = await fetch(
+      `/api/v1/bookings/${showPrevious ? "?previous=true" : ""}`
+    );
+    setBookings(await response.json());
+  };
+
+  const cancelBooking = async (id) => {
+    let result = await fetch(`/api/v1/bookings/${id}`, {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+    });
+    result = await result.json();
+    fetchData();
+  };
 
   const toggleBookings = () => {
     setShowPrevious(showPrevious ? undefined : true);
@@ -27,7 +37,12 @@ const UserBookings = () => {
       return (
         <div>
           {bookings.map((booking) => (
-            <UserBookingItem key={booking._id} booking={booking} />
+            <UserBookingItem
+              key={booking._id}
+              booking={booking}
+              showPrevious={showPrevious}
+              cancelBooking={cancelBooking}
+            />
           ))}
         </div>
       );
