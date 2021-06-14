@@ -19,11 +19,9 @@ const UserBookings = () => {
   };
 
   const cancelBooking = async (id) => {
-    let result = await fetch(`/api/v1/bookings/${id}`, {
+    await fetch(`/api/v1/bookings/${id}`, {
       method: "DELETE",
-      headers: { "content-type": "application/json" },
     });
-    await result.json();
     fetchData();
   };
 
@@ -41,7 +39,7 @@ const UserBookings = () => {
               key={booking._id}
               booking={booking}
               showPrevious={showPrevious}
-              cancelBooking={cancelBooking}
+              cancelBooking={!showPrevious && cancelBooking}
             />
           ))}
         </div>
