@@ -1,21 +1,6 @@
-import { useState } from "react";
 import styles from "../css/UserBookings.module.css";
 
-const UserBookingItem = (props) => {
-  const [booking] = useState(props.booking);
-  const [showPrevious] = useState(props.showPrevious);
-
-  const cancelBooking = async () => {
-    let bookingId = props.booking._id;
-
-    let result = await fetch(`/api/v1/bookings/${bookingId}`, {
-      method: "DELETE",
-      headers: { "content-type": "application/json" },
-    });
-    result = await result.json();
-    console.log(result);
-  };
-
+const UserBookingItem = ({ booking, showPrevious, cancelBooking }) => {
   return (
     <div className={styles.ticketContainer}>
       <div className={styles.removeItemContainer}>
@@ -29,7 +14,7 @@ const UserBookingItem = (props) => {
                   "Are you sure you wish to cancel your booking? This action can not be undone."
                 )
               )
-                cancelBooking();
+                cancelBooking(booking._id);
             }}
           >
             Cancel booking
