@@ -1,14 +1,17 @@
 .carousel {
   height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-/* .carouselArrow {
-  width: 50%;
-  filter: opacity(100%);
-} */
+.carouselArrow {
+  width: 20%;
+}
 
 .carouselImageSlide {
+  width: 80vw;
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
 }

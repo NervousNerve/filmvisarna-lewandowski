@@ -1,6 +1,6 @@
 import styles from "../css/Carousel.module.css";
 
-const CarouselImageSlide = () => {
+const CarouselImageSlide = ({ carouselImage }) => {
   return (
     <div
       className={styles.carouselImageSlide}

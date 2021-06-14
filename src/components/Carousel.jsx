@@ -1,37 +1,60 @@
-import CarouselArow from "./CarouselArrow";
+import CarouselArrow from "./CarouselArrow";
 import CarouselImageSlide from "./CarouselImageSlide";
 import styles from "../css/Carousel.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Carousel = ({ movies }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  let images;
+  let previousImage;
+  let nextImage;
 
-  //Create an array with movies.img
+  //   Create an array with movies.imageUrl
+  if (!movies) {
+    console.log("No images to show");
+  } else {
+    images = movies.map((movie) => movie.imageUrl);
+    console.log("images url after map: ", images);
 
-  const previousImage = () => {
-    const lastIndex = imgUrls.length - 1;
-    const { currentImageIndex } = this.state;
-    const shouldResetIndex = currentImageIndex === 0;
-    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
+    //onclick function to switch to previous image
+    previousImage = () => {
+      console.log("Previous image clicked");
+      const lastIndex = movies.length - 1;
+      const shouldResetIndex = currentImageIndex === 0;
+      const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
+      setCurrentImageIndex(index);
+    };
 
-    setCurrentImageIndex(index);
-  };
+    //onclick function to switch to next image
+    nextImage = () => {
+      console.log("next image clicked");
+      const lastIndex = movies.length - 1;
+      const shouldResetIndex = currentImageIndex === lastIndex;
+      const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+      setCurrentImageIndex(index);
+    };
+  }
 
-  const nextImage = () => {};
+  useEffect(() => {
+    setInterval(() => {
+      const lastIndex = movies.length - 1;
+      const shouldResetIndex = currentImageIndex === lastIndex;
+      const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+      setCurrentImageIndex(index);
+    }, 4000);
+  }, []);
 
   return (
-    <div className={styles.carousel}>
-      <CarouselArow
-        direction="left"
-        handleClick={previousImage}
-        icon={`${(<i className="fa fa-arrow-left" aria-hidden="true"></i>)}`}
-      />
-      <CarouselImageSlide car />
-      <CarouselArow
-        direction="right"
-        handleClick={nextImage}
-        icon={`${(<i className="fa fa-arrow-right" aria-hidden="true"></i>)}`}
-      />
+    <div className="parentFUCKINGelement">
+      {movies ? (
+        <div className={styles.carousel}>
+          <CarouselArrow direction="Left" handleClick={previousImage} />
+          <CarouselImageSlide carouselImage={images[currentImageIndex]} />
+          <CarouselArrow direction="Right" handleClick={nextImage} />
+        </div>
+      ) : (
+        <div className="toMakeVsCodeHappy"></div>
+      )}
     </div>
   );
 };
