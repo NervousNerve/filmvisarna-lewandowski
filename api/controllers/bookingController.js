@@ -113,10 +113,10 @@ const createBooking = async (req, res) => {
       });
     }
 
-    let selectedSeats;
+    const selectedSeats = [];
     if (seats?.length) {
       // If specific seats are requested, make sure none of them are occupied
-      selectedSeats = [...seats];
+      selectedSeats.push(...seats);
       for (const s of selectedSeats) {
         if (
           !Number.isInteger(s) ||
@@ -131,7 +131,6 @@ const createBooking = async (req, res) => {
       }
     } else {
       // No seats specified, pick the first available seats
-      selectedSeats = [];
       let seatsLeft = totalTickets;
       for (let i = 1; i <= screening.theaterId.seats && seatsLeft; i++) {
         if (!screening.occupiedSeats.includes(i)) {
@@ -141,8 +140,8 @@ const createBooking = async (req, res) => {
       }
     }
 
-    // Replace seat numbers with objects containing both seat and row
-    selectedSeats = selectedSeats.map((seat) => {
+    // Calculate and store the row for each seat
+    const seatsAndRows = selectedSeats.map((seat) => {
       return {
         seat,
         row: calcRow(seat, screening.theaterId.seatsPerRow),
@@ -159,14 +158,14 @@ const createBooking = async (req, res) => {
     );
 
     const booking = await Booking.create({
-      seats: selectedSeats,
+      seats: seatsAndRows,
       price: price,
       userId: req.session.user._id,
       screeningId: screening._id,
     });
 
     // Set our seats as occupied for this screening
-    screening.occupiedSeats.push(...selectedSeats.map((s) => s.seat));
+    screening.occupiedSeats.push(...selectedSeats);
     await screening.save();
 
     // "Populate" our booking with data from screening
