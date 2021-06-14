@@ -14,16 +14,6 @@ import styles from "../css/Navbar.module.css";
 const Navbar = () => {
   const history = useHistory();
 
-  // const [menu, setMenu] = useState(false);
-
-  // const handleClick = () => {
-  //   if (menu === false) {
-  //     setMenu(true);
-  //   } else {
-  //     setMenu(false);
-  //   }
-  // };
-
   const [showMenu, setShowMenu] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -175,11 +165,6 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {/* {currentUser && (
-      <div className={styles.fade}>
-        <h4>You're logged in</h4>
-      </div>
-       )} */}
     </nav>
   );
 };

@@ -19,13 +19,15 @@ const Home = () => {
 
   return (
     <div className={styles.pageWrapper}>
-      <div className={styles.imgContainer}></div>
-      <div className={styles.textContainer}>
+      <div className={styles.imgContainer}>
         {currentUser && (
           <div className={styles.fade}>
-            <p>You're logged in</p>
+            <h4>You're logged in</h4>
           </div>
         )}
+      </div>
+
+      <div className={styles.textContainer}>
         <h2>In theatres now</h2>
         <h1>Inception</h1>
       </div>

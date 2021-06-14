@@ -41,13 +41,19 @@ h2 {
     url("https://m.media-amazon.com/images/M/MV5BNDExNDYxODc1MF5BMl5BanBnXkFtZTcwNDQ0OTk1Mw@@._V1_.jpg");
 }
 
+.fade h4 {
+  font-weight: 500;
+  margin-top: 0px;
+  padding-top: 10px;
+}
+
 .fade {
-  /* width:200px;
-  height: 200px;
-  background: red; */
+  padding-bottom: 10px;
+  height: 25px;
+  background: #fdf7e3;
   text-align: center;
-  -webkit-animation: fadeinout 4s linear forwards;
-  animation: fadeinout 4s linear forwards;
+  -webkit-animation: fadeinout 16s linear forwards;
+  animation: fadeinout 16s linear forwards;
 }
 
 @-webkit-keyframes fadeinout {

@@ -92,35 +92,6 @@
   margin-bottom: 5px;
 }
 
-/* .fade {
-  width:200px;
-  height: 200px;
-  background: red;
-  text-align: center;
-  -webkit-animation: fadeinout 4s linear forwards;
-  animation: fadeinout 4s linear forwards;
-}
-
-@-webkit-keyframes fadeinout {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeinout {
-  0%,
-  100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-} */
-
 @media (min-width: 768px) {
   .navbar {
     grid-template: 1fr / auto 1fr auto;
