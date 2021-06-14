@@ -11,6 +11,7 @@
 }
 
 .entryContainer input {
+  /* width: 91%; */
   margin: 0.3em 0;
   position: relative;
 }

@@ -52,7 +52,7 @@ h2 {
   height: 25px;
   background: #fdf7e3;
   text-align: center;
-  -webkit-animation: fadeinout 16s linear forwards;
+  -webkit-animation: fadeinout 1s linear forwards;
   animation: fadeinout 16s linear forwards;
 }
 
