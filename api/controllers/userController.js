@@ -123,10 +123,41 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const editUser = async (req, res) => {
+  if (!req.session?.user) {
+    return res.status(401).json({
+      error: "Not logged in",
+    });
+  }
+
+  try {
+    if (req.body.email) {
+      let userExists = await User.exists({ email: req.body.email });
+      if (userExists) {
+        return res.status(403).json({ error: "User email already exists" });
+      }
+    }
+    if (req.body.password) {
+      req.body.password = Encrypt.encrypt(req.body.password);
+    }
+    await User.updateOne({ _id: req.session.user._id }, req.body).exec();
+
+    let user = await User.findOne({ _id: req.session.user._id });
+
+    user.password = undefined;
+    req.session.user = user;
+    return res.json(user);
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
 module.exports = {
   whoami,
   createUser,
   login,
   logout,
   deleteUser,
+  editUser,
 };

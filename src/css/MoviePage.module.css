@@ -28,14 +28,12 @@
   font-size: 40px;
 }
 
-.playButtonContainer button {
-  padding: 0;
+.playButtonContainer button:focus {
+  outline: none;
 }
 
-.heroImg button {
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
+.playButtonContainer button:focus .playIcon {
+  color: #ffbd12;
 }
 
 /* Modal trailer */

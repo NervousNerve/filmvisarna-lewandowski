@@ -11,14 +11,12 @@
 }
 
 .toggleMenuBtn button {
-  border: none;
-  padding: 0;
-  box-shadow: none;
-  background-color: inherit;
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
-  text-align: center;
   margin-top: 1em;
+}
+
+.toggleMenuBtn button:focus {
+  outline: none;
+  text-decoration: underline #18191f;
 }
 
 .highlighted {

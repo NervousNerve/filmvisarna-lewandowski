@@ -29,12 +29,15 @@
   box-shadow: 0px 3px 0px 0px #18191f;
   margin: 0.5rem;
   align-self: flex-end;
-  cursor: pointer;
-  padding: 0rem;
   color: #18191f;
 }
 
 .modal .closeIcon {
   color: #18191f;
   font-size: 2rem;
+}
+
+.close:focus {
+  outline: none;
+  background-color: #ffbd12;
 }

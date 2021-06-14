@@ -1,36 +1,18 @@
-import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+
 import styles from "../css/ConfirmationPage.module.css";
 
 const ConfirmationPage = (props) => {
   const history = useHistory();
-  const [booking, setBooking] = useState();
-  const { id } = props.match.params;
 
-  const getBookingById = async (id) => {
-    let booking = await fetch(`/api/v1/bookings/${id}`);
-    booking = await booking.json();
-    setBooking(booking);
-  };
+  const booking = props.history.location.state?.booking;
 
   const handleClick = () => {
     history.push(`/`);
   };
 
-  useEffect(() => {
-    // Check if recent booking exists in local storage
-    // that matches 'id' parameter, otherwise leave the page
-    const item = localStorage.getItem("booking");
-    localStorage.removeItem("booking");
-    const savedBooking = JSON.parse(item);
-    if (!item || savedBooking?._id !== id) {
-      history.push("/");
-      return;
-    }
-    getBookingById(id);
-  }, [id, history]);
-
   if (!booking) {
+    history.push("/");
     return null;
   }
 
@@ -68,7 +50,7 @@ const ConfirmationPage = (props) => {
         </div>
       </div>
       <div className={styles.homeButton}>
-        <button onClick={handleClick} className={styles.backhome}>
+        <button className={`button ${styles.backhome}`} onClick={handleClick}>
           Back to Home
         </button>
       </div>

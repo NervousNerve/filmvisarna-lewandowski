@@ -88,8 +88,7 @@ const Booking = ({ movieId }) => {
       }
 
       booking = await booking.json();
-      localStorage.setItem("booking", JSON.stringify(booking));
-      history.push(`/confirmation/${booking._id}`);
+      history.push("/confirmation", { booking });
     } catch (e) {
       // if the server is down
       setErrorFeedback("Sorry, something went wrong. Please try again.");
@@ -148,6 +147,7 @@ const Booking = ({ movieId }) => {
                 );
               })}
           </select>
+          <span className="focus"></span>
         </div>
       </div>
 
@@ -158,7 +158,9 @@ const Booking = ({ movieId }) => {
       </div>
 
       <div className={styles.seatBtn}>
-        <button onClick={confirmBooking}>Confirm</button>
+        <button className={"button"} onClick={confirmBooking}>
+          Confirm
+        </button>
       </div>
 
       <p className={styles.errorFeedback}>{errorFeedback}</p>
