@@ -53,7 +53,11 @@ const MoviePage = (props) => {
           <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
             <div className={style.playButtonContainer}>
               <button>
-                <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
+                <FontAwesomeIcon
+                  icon={faPlay}
+                  aria-label="play button"
+                  className={style.playIcon}
+                />
               </button>
             </div>
 
