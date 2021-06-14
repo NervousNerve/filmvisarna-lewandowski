@@ -25,7 +25,7 @@ const MultiRangeSlider = ({
       setMinPrice(minVal);
       setMaxPrice(maxVal);
     }
-  }, [minVal, maxVal]);
+  }, [minVal, maxVal, name, setMinRun, setMaxRun, setMinPrice, setMaxPrice]);
 
   // Convert to percentage
   const getPercent = useCallback(
