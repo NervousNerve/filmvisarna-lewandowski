@@ -24,7 +24,9 @@ const UserBookings = () => {
     await fetch(`/api/v1/bookings/${id}`, {
       method: "DELETE",
     });
-    fetchData();
+    fetchData().then((result) => {
+      setBookings(result);
+    });
   };
 
   const toggleBookings = () => {
