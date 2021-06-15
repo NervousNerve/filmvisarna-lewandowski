@@ -51,25 +51,13 @@ select {
 .errorFeedback {
   color: red;
 }
-.selectedSeats {
+.seats {
   display: flex;
-  gap: 0.7rem;
   justify-content: center;
-  margin-top: 2rem;
+  margin-top: 1rem;
   flex-flow: wrap;
 }
-.seatWrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-}
-.yourSeat {
-  border-radius: 5px;
-  width: 0.8rem;
-  height: 0.8rem;
-  border: 2px solid #18191f;
-  background-color: #ffd465;
-}
+
 @media screen and (min-width: 900px) {
   .bookingContainer {
     display: flex;

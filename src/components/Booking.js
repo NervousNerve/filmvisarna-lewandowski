@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
-import Seats from "./Seats";
+import Seat from "./Seat";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -191,7 +191,14 @@ const Booking = ({ movie }) => {
 
       <p className={styles.feedback}>{feedback}</p>
 
-      <Seats seats={selectedSeats} />
+      <div className={styles.seats}>
+        {selectedSeats.length > 0 &&
+          selectedSeats.sort().map((seat) => {
+            return (
+              <Seat seat={seat} seatsPerRow={screening.theaterId.seatsPerRow} />
+            );
+          })}
+      </div>
 
       <div className={styles.totalPrice}>
         <h4>Total: {totalPrice} SEK</h4>

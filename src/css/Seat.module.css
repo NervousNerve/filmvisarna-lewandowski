@@ -1,14 +1,8 @@
-.seats {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-  flex-flow: wrap;
-}
 .seatWrapper {
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  margin: 0.5rem;
 }
 .yourSeat {
   border-radius: 5px;
