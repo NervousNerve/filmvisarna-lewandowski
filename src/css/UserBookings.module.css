@@ -23,6 +23,14 @@
   align-items: baseline;
 }
 
+.label h4 {
+  margin: 0rem 0.6rem 0rem 0rem;
+}
+
+.label p {
+  margin: 0.5rem;
+}
+
 .removeItemContainer {
   display: grid;
   grid-template-columns: 80% 20%;
@@ -30,10 +38,6 @@
 
 .seatContainer {
   display: flex;
-}
-
-.seat {
-  margin-left: 0.5rem;
 }
 
 /* STYLES FOR SLIDER */
@@ -117,7 +121,6 @@
 .ticketContainer {
   background-color: #fdf7e3;
   padding: 1em;
-  /* width: 100%; */
   border: 2px solid #18191f;
   border-radius: 14px;
   margin-bottom: 1rem;
@@ -126,15 +129,7 @@
 .title {
   margin: 0rem;
 }
-/* 
-.noTopMargin {
-  margin-top: 0rem;
-}
 
-.noBottomMargin {
-  margin-bottom: 0rem;
-}
- */
 .bookingContainer {
   width: 90%;
 }

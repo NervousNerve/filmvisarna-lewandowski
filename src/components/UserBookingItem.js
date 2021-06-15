@@ -38,7 +38,7 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
       <div className={`${styles.seatContainer} ${styles.label}`}>
         <h4>{booking.seats.length === 1 ? "Seat:" : "Seats:"}</h4>
         {booking.seats.map((seat, i) => (
-          <p key={i} className={styles.seat}>
+          <p key={i}>
             {seat.row ? seat.row + ":" + seat.seat : seat}
             {i === booking.seats.length - 1 ? "" : ","}
           </p>
