@@ -42,7 +42,6 @@ const UserBookings = () => {
             <UserBookingItem
               key={booking._id}
               booking={booking}
-              showPrevious={showPrevious}
               cancelBooking={!showPrevious && cancelBooking}
             />
           ))}
