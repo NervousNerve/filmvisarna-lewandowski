@@ -55,7 +55,7 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         <p>{booking.price} SEK</p>
       </div>
 
-      <div className={styles.label}>
+      <div className={`${styles.bookingNr}`}>
         <h4>Booking number:</h4>
         <p>{booking._id}</p>
       </div>

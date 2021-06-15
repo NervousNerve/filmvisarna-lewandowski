@@ -40,6 +40,19 @@
   display: flex;
 }
 
+.bookingNr {
+  display: flex;
+  align-items: baseline;
+}
+
+.bookingNr h4 {
+  margin: 0rem 0.6rem 0rem 0rem;
+}
+
+.bookingNr p {
+  margin: 0.5rem;
+}
+
 /* STYLES FOR SLIDER */
 /* The switch - the box around the slider */
 .switch {
@@ -143,5 +156,20 @@
 @media (min-width: 1025px) {
   .bookingContainer {
     width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingNr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bookingNr h4 {
+    margin: 0.5rem 0rem 0rem 0rem;
+  }
+
+  .bookingNr p {
+    margin: 0.8rem 0rem;
   }
 }
