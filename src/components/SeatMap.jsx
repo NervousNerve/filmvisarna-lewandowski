@@ -10,9 +10,11 @@ const SeatMap = ({
 }) => {
   /* set selected seats state */
   const handleSeatClick = (e) => {
-    if (selectedSeats.includes(parseInt(e.target.value))) {
+    let clickedSeat = e.target.value;
+
+    if (selectedSeats.includes(parseInt(clickedSeat))) {
       setSelectedSeats(
-        selectedSeats.filter((seat) => seat !== parseInt(e.target.value))
+        selectedSeats.filter((seat) => seat !== parseInt(clickedSeat))
       );
       return;
     }
@@ -21,7 +23,7 @@ const SeatMap = ({
       e.preventDefault();
       return;
     }
-    setSelectedSeats([...selectedSeats, parseInt(e.target.value)]);
+    setSelectedSeats([...selectedSeats, parseInt(clickedSeat)]);
   };
 
   /* Remove selected seats if number of tickets decrease */
