@@ -1,12 +1,9 @@
 import UserBookings from "../components/UserBookings";
-// import Entry from "../components/Entry";
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import styles from "../css/ProfilePage.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faUserCircle } from "@fortawesome/free-solid-svg-icons";
-
-//ability to edit user info to be implemented in next sprint
 
 const ProfilePage = () => {
   const { currentUser } = useContext(UserContext);
@@ -64,8 +61,6 @@ const ProfilePage = () => {
       }, 3000);
       return;
     }
-
-    // login(user);
   };
 
   return (
