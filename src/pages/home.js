@@ -23,6 +23,7 @@ const Home = () => {
         {currentUser && (
           <div className={styles.fade}>
             <h4>You're logged in</h4>
+            {/* <h4 className={styles.glow}>You're logged in</h4> */}
           </div>
         )}
       </div>
