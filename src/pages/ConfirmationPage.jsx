@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-
+import UserBookingItem from "../components/UserBookingItem";
 import styles from "../css/ConfirmationPage.module.css";
 
 const ConfirmationPage = (props) => {
@@ -28,7 +28,8 @@ const ConfirmationPage = (props) => {
         <h2>Your reservation is confirmed.</h2>
       </div>
       <div className={styles.orderDetails1}>
-        <h3>{booking.screeningId.movieId.title}</h3>
+        <UserBookingItem booking={booking} />
+        {/*  <h3>{booking.screeningId.movieId.title}</h3>
         <div className={styles.orderDetails}>
           <h4>Booking Number:</h4>
           <p className={styles.p1}> {booking._id}</p>
@@ -52,7 +53,7 @@ const ConfirmationPage = (props) => {
           <p className={styles.plot}>
             {booking.screeningId.movieId.runtime} min
           </p>
-        </div>
+        </div> */}
       </div>
       <div className={styles.homeButton}>
         <button className={`button ${styles.backhome}`} onClick={handleClick}>

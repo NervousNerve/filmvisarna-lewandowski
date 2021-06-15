@@ -1,6 +1,6 @@
 import styles from "../css/UserBookings.module.css";
 
-const UserBookingItem = ({ booking, cancelBooking }) => {
+const UserBookingItem = ({ booking, cancelBooking, screeningId }) => {
   const message =
     "Are you sure you want to cancel your reservation? This action can not be undone.";
 
