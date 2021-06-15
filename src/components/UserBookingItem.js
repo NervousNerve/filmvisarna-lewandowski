@@ -5,11 +5,6 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
   const message =
     "Are you sure you want to cancel your reservation? This action can not be undone.";
 
-  /* useEffect(() => {
-    if (booking) {
-      console.log(booking.screeningId.movieId.runtime);
-    }
-  }, []); */
   return (
     <div className={styles.ticketContainer}>
       <div className={styles.removeItemContainer}>
@@ -25,19 +20,19 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </button>
         )}
       </div>
-      <h4 className={styles.noBottomMargin}>
-        Theater: {booking.screeningId.theaterId.name}
-      </h4>
+      <h4 className={styles.noBottomMargin}>Theater: </h4>
+      <p>{booking.screeningId.theaterId.name}</p>
+
       <p>
-        <span className={styles.bold}>Date: </span>
+        <h4 className={styles.bold}>Date: </h4>
         {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
           timeZone: "Europe/Stockholm",
         })}
       </p>
       <div className={styles.seatContainer}>
-        <p className={`${styles.bold} ${styles.noTopMargin}`}>
+        <h4 className={`${styles.bold} ${styles.noTopMargin}`}>
           {booking.seats.length === 1 ? "Seat:" : "Seats:"}
-        </p>
+        </h4>
         {booking.seats.map((seat, i) => (
           <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
             {seat.row ? seat.row + ":" + seat.seat : seat}
@@ -46,19 +41,18 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         ))}
       </div>
 
-      <p className={`${styles.noTopMargin}`}>
-        <span className={`${styles.bold}`}>Runtime: </span>
-        {booking.screeningId.movieId.runtime} min
-      </p>
+      <h4 className={`${styles.noTopMargin}`}>Runtime: </h4>
+      <p> {booking.screeningId.movieId.runtime} min</p>
 
-      <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
-        <span className={`${styles.bold}`}>Total price: </span>
-        {booking.price} SEK
-      </p>
-      <p>
-        <span className={styles.bold}> Booking number: </span>
-        {booking._id}
-      </p>
+      <h4 className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
+        Total price:{" "}
+      </h4>
+      <p>{booking.price} SEK</p>
+
+      <h4>
+        Booking number:
+        <p>{booking._id}</p>
+      </h4>
     </div>
   );
 };
