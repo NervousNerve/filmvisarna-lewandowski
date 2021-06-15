@@ -24,19 +24,19 @@ const SeatMap = ({
     setSelectedSeats([...selectedSeats, parseInt(e.target.value)]);
   };
 
-  /* Remove selected seats if umber of tickets decrease */
+  /* Remove selected seats if number of tickets decrease */
   useEffect(() => {
     if (selectedTickets < selectedSeats.length) {
       let temporarySeats = [...selectedSeats];
       temporarySeats.sort().splice(temporarySeats.length - 1, 1);
       setSelectedSeats(temporarySeats);
     }
-  }, [selectedTickets]);
+  }, [selectedTickets, selectedSeats, setSelectedSeats]);
 
   /* Remove selected seats if new screening is chosen */
   useEffect(() => {
     setSelectedSeats([]);
-  }, [screening]);
+  }, [screening, setSelectedSeats]);
 
   /* generate seats with seat numbers */
   const generateSeats = () => {

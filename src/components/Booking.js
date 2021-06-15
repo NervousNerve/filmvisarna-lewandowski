@@ -193,9 +193,13 @@ const Booking = ({ movie }) => {
 
       <div className={styles.seats}>
         {selectedSeats.length > 0 &&
-          selectedSeats.sort().map((seat) => {
+          selectedSeats.sort().map((seat, i) => {
             return (
-              <Seat seat={seat} seatsPerRow={screening.theaterId.seatsPerRow} />
+              <Seat
+                key={i}
+                seat={seat}
+                seatsPerRow={screening.theaterId.seatsPerRow}
+              />
             );
           })}
       </div>
