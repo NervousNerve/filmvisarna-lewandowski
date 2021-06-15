@@ -34,12 +34,18 @@
 }
 
 .seat {
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+  display: flex;
 }
 
-/* .seatContainer p {
-  min-width: 2em;
-} */
+.yourSeat {
+  margin-right: 0.5rem;
+  border-radius: 5px;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 2px solid #18191f;
+  background-color: #ffd465;
+}
 
 /* STYLES FOR SLIDER */
 /* The switch - the box around the slider */
@@ -122,7 +128,6 @@
 .ticketContainer {
   background-color: #fdf7e3;
   padding: 1em;
-  /* width: 100%; */
   border: 2px solid #18191f;
   border-radius: 14px;
   margin-bottom: 1rem;
@@ -153,5 +158,15 @@
 @media (min-width: 1025px) {
   .bookingContainer {
     width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .seatContainer {
+    flex-direction: column;
+  }
+
+  .seat {
+    margin-left: 0rem;
   }
 }
