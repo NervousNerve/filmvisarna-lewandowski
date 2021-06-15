@@ -8,6 +8,7 @@
   display: flex;
   margin: 0.5rem;
   justify-content: space-around;
+  min-width: 18rem;
 }
 .seatMap .seatDescContainer {
   display: flex;
@@ -98,6 +99,9 @@
   }
   .seatMap p {
     font-size: 0.8rem;
+  }
+  .seatMap .seatDescWrapper {
+    min-width: 0rem;
   }
 }
 
