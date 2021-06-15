@@ -22,7 +22,7 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
       </div>
 
       <div className={styles.theatreLabel}>
-        <h3>Theater: {booking.screeningId.theaterId.name}</h3>
+        <h3>Theatre: {booking.screeningId.theaterId.name}</h3>
       </div>
 
       <div className={styles.label}>
