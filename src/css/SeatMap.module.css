@@ -4,12 +4,14 @@
   max-width: 20rem;
   padding: 0 0.5rem;
 }
+
 .seatMap .seatDescWrapper {
   display: flex;
   margin: 0.5rem;
   justify-content: space-around;
   min-width: 18rem;
 }
+
 .seatMap .seatDescContainer {
   display: flex;
   align-items: center;
@@ -23,17 +25,21 @@
   border: 2px solid #18191f;
   background-color: #fff;
 }
+
 .seatMap .seatDesc.booked {
   background-color: #f0cfcf;
 }
+
 .seatMap .seatDesc.yours {
   background-color: #ffd465;
 }
+
 .seatMap hr {
   margin: 0.5rem;
 }
+
 .seats {
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 0.8rem 1.5rem;
 }
 
 .seatMap .row {
@@ -70,20 +76,29 @@
   height: 0.8rem;
   transition: 0.2s;
 }
+
 .seatMap .seats input:hover ~ .checkmark {
   background-color: #ffd36580;
 }
+
 .seatMap .seats input:checked ~ .checkmark {
   background-color: #ffd465;
 }
+
 .seatMap .seats input:disabled ~ .checkmark {
   background-color: #f0cfcf;
 }
+
 .seatMap .seats input:disabled {
   cursor: not-allowed;
 }
+
 .seatMap .seats input:focus ~ .checkmark {
   border: 2px solid #fdb809;
+}
+
+.theatre {
+  text-align: center;
 }
 
 @media screen and (max-width: 370px) {
@@ -93,13 +108,16 @@
     width: 0.6rem;
     height: 0.6rem;
   }
+
   .seatMap.largeTheater .row {
     gap: 0.2rem;
     margin: 0.2rem auto;
   }
+
   .seatMap p {
     font-size: 0.8rem;
   }
+
   .seatMap .seatDescWrapper {
     min-width: 0rem;
   }
@@ -108,5 +126,9 @@
 @media screen and (min-width: 900px) {
   .seatMap {
     margin: 0;
+  }
+
+  .theatre {
+    text-align: right;
   }
 }
