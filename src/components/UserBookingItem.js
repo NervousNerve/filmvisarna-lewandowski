@@ -1,5 +1,4 @@
 import styles from "../css/UserBookings.module.css";
-import { useEffect } from "react";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
   const message =
