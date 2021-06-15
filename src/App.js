@@ -9,6 +9,7 @@ import MoviePage from "./pages/MoviePage";
 import ProfilePage from "./pages/ProfilePage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -17,6 +18,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <QueryParamProvider ReactRouterRoute={Route}>
+          <ScrollToTop />
           <Navbar />
           <div className="pages">
             <Route exact path="/">
