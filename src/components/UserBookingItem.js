@@ -27,10 +27,9 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
           timeZone: "Europe/Stockholm",
         })}
-      </p>{" "}
+      </p>
       <div className={styles.seatContainer}>
         <p className={`${styles.bold} ${styles.noTopMargin}`}>
-          {" "}
           {booking.seats.length === 1 ? "Seat:" : "Seats:"}
         </p>
         {booking.seats.map((seat, i) => (

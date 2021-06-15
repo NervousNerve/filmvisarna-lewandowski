@@ -15,18 +15,12 @@ const UserBookings = () => {
   const [bookings, setBookings] = useState(null);
 
   useEffect(() => {
-    fetchData(showPrevious).then((result) => {
-      setBookings(result);
-    });
+    fetchData(showPrevious).then((result) => setBookings(result));
   }, [showPrevious]);
 
   const cancelBooking = async (id) => {
-    await fetch(`/api/v1/bookings/${id}`, {
-      method: "DELETE",
-    });
-    fetchData().then((result) => {
-      setBookings(result);
-    });
+    await fetch(`/api/v1/bookings/${id}`, { method: "DELETE" });
+    fetchData().then((result) => setBookings(result));
   };
 
   const toggleBookings = () => {
@@ -61,9 +55,7 @@ const UserBookings = () => {
       <h2 className={styles.textAlign}>Your bookings:</h2>
       <label className={`${styles.switch}`}>
         <input
-          onChange={() => {
-            toggleBookings();
-          }}
+          onChange={toggleBookings}
           className={styles.input}
           type="checkbox"
           checked={showPrevious ? false : true}
