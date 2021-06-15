@@ -1,9 +1,15 @@
 import styles from "../css/UserBookings.module.css";
+import { useEffect } from "react";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
   const message =
     "Are you sure you want to cancel your reservation? This action can not be undone.";
 
+  /* useEffect(() => {
+    if (booking) {
+      console.log(booking.screeningId.movieId.runtime);
+    }
+  }, []); */
   return (
     <div className={styles.ticketContainer}>
       <div className={styles.removeItemContainer}>
@@ -39,6 +45,12 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </p>
         ))}
       </div>
+
+      <p className={`${styles.noTopMargin}`}>
+        <span className={`${styles.bold}`}>Runtime: </span>
+        {booking.screeningId.movieId.runtime} min
+      </p>
+
       <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
         <span className={`${styles.bold}`}>Total price: </span>
         {booking.price} SEK
