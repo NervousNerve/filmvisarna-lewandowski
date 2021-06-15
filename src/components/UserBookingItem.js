@@ -20,39 +20,45 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </button>
         )}
       </div>
-      <h4 className={styles.noBottomMargin}>Theater: </h4>
-      <p>{booking.screeningId.theaterId.name}</p>
 
-      <p>
-        <h4 className={styles.bold}>Date: </h4>
-        {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-          timeZone: "Europe/Stockholm",
-        })}
-      </p>
-      <div className={styles.seatContainer}>
-        <h4 className={`${styles.bold} ${styles.noTopMargin}`}>
-          {booking.seats.length === 1 ? "Seat:" : "Seats:"}
-        </h4>
+      <div className={styles.label}>
+        <h4>Theater: </h4>
+        <p>{booking.screeningId.theaterId.name}</p>
+      </div>
+
+      <div className={styles.label}>
+        <h4>Date: </h4>
+        <p>
+          {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
+            timeZone: "Europe/Stockholm",
+          })}
+        </p>
+      </div>
+
+      <div className={`${styles.seatContainer} ${styles.label}`}>
+        <h4>{booking.seats.length === 1 ? "Seat:" : "Seats:"}</h4>
         {booking.seats.map((seat, i) => (
-          <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
+          <p key={i} className={styles.seat}>
             {seat.row ? seat.row + ":" + seat.seat : seat}
             {i === booking.seats.length - 1 ? "" : ","}
           </p>
         ))}
       </div>
 
-      <h4 className={`${styles.noTopMargin}`}>Runtime: </h4>
-      <p> {booking.screeningId.movieId.runtime} min</p>
+      <div className={styles.label}>
+        <h4>Runtime: </h4>
+        <p> {booking.screeningId.movieId.runtime} min</p>
+      </div>
 
-      <h4 className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
-        Total price:{" "}
-      </h4>
-      <p>{booking.price} SEK</p>
+      <div className={styles.label}>
+        <h4>Total price:</h4>
+        <p>{booking.price} SEK</p>
+      </div>
 
-      <h4>
-        Booking number:
+      <div className={styles.label}>
+        <h4>Booking number:</h4>
         <p>{booking._id}</p>
-      </h4>
+      </div>
     </div>
   );
 };

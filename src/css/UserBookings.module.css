@@ -18,13 +18,14 @@
   background-color: #d83830;
 }
 
+.label {
+  display: flex;
+  align-items: baseline;
+}
+
 .removeItemContainer {
   display: grid;
   grid-template-columns: 80% 20%;
-}
-
-.bold {
-  font-weight: bold;
 }
 
 .seatContainer {
@@ -125,7 +126,7 @@
 .title {
   margin: 0rem;
 }
-
+/* 
 .noTopMargin {
   margin-top: 0rem;
 }
@@ -133,7 +134,7 @@
 .noBottomMargin {
   margin-bottom: 0rem;
 }
-
+ */
 .bookingContainer {
   width: 90%;
 }
