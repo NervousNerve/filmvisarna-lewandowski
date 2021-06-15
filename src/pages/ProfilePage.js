@@ -12,7 +12,6 @@ const ProfilePage = () => {
   const { currentUser } = useContext(UserContext);
   const [showMenu, setShowMenu] = useState(false);
 
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -85,39 +84,27 @@ const ProfilePage = () => {
                 onClick={handleClick}
               />
             </h1>
-            <div
-              className={`${styles.topfield} ${styles.topfield2} ${
-                showMenu && styles.clickedMenu
-              }`}
-            >
-              {/* <div className={`${styles.navs} ${showMenu && styles.clickedMenu}`}>
-              <FontAwesomeIcon
-                className="fa-lg"
-                icon={faEdit}
-                onClick={handleClick}
-              />
-            </div> */}
+            {showMenu && (
+              <div className={styles.topfield}>
+                <div className={styles.topnav}>
+                  <div className={styles.topnav2}>
+                    <FontAwesomeIcon
+                      className={styles.fauser}
+                      icon={faUserCircle}
+                    />
+                    <h5>
+                      {" "}
+                      {currentUser &&
+                        (currentUser.email || currentUser.loggedInUser.email)}
+                    </h5>
+                  </div>
 
-              <div className={styles.topnav}>
-                <div className={styles.topnav2}>
-                  <FontAwesomeIcon
-                    className={styles.fauser}
-                    icon={faUserCircle}
-                  />
-                  <h5>
-                    {" "}
-                    {currentUser &&
-                      (currentUser.email || currentUser.loggedInUser.email)}
-                  </h5>
-                </div>
-                <div>
                   <form onSubmit={handleEdit}>
                     <label>Name:</label>
                     <input
                       placeholder="your full name"
                       type="text"
                       value={name}
-                      // onChange={set("name")}
                       onChange={(e) => setName(e.target.value)}
                     />
                     <label>Email:</label>
@@ -125,7 +112,6 @@ const ProfilePage = () => {
                       placeholder="enter your email"
                       type="email"
                       value={email}
-                      // onChange={set("email")}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                     <label>Password:</label>
@@ -133,30 +119,19 @@ const ProfilePage = () => {
                       placeholder="••••••••"
                       type="password"
                       value={password}
-                      // onChange={set("password")}
                       onChange={(e) => setPassword(e.target.value)}
                     />
                     <div className={styles.feedbackMessage}>
                       {feedbackMessage}
                       {regexMessage}
                     </div>
-                    <div
-                      className={`${styles.saveBtn} ${
-                        showMenu && styles.clickedMenu
-                      }`}
-                    >
-                      <button
-                        className={`${styles.saveBtn} ${
-                          showMenu && styles.clickedMenu
-                        }`}
-                      >
-                        Save
-                      </button>
+                    <div>
+                      <button>Save</button>
                     </div>
                   </form>
                 </div>
               </div>
-            </div>
+            )}
           </div>
           <UserBookings />
         </div>

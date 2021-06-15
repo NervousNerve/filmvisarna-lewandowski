@@ -14,56 +14,22 @@
   text-align: center;
 }
 
-/* 
-.topnav.clickedMenu {
-  display: none;
-} */
-
-/* .topfield.clickedMenu .topnav {
-  display: none;
-} */
-
-/* .topfield.clickedMenu {
-  display: block;
-} */
-
 .topnav {
-  display: none;
-  background-color: #fdf7e3;
-}
-
-.topfield.clickedMenu .topnav {
-  display: flex;
-  /* text-align: center; */
-  /* width: 80%; */
+  display: grid;
+  gap: 1em;
+  justify-content: center;
   border: 2px solid #18191f;
   border-radius: 14px;
   padding: 1em;
-  /* padding-left: 10em;
-  padding-right: 10em; */
   margin-bottom: 3rem;
   background-color: #fdf7e3;
   justify-content: space-around;
-  /* flex-direction: row; */
-  /* justify-items: center; */
 }
-
-/* .navs.clickedMenu {
-  display: none;
-} */
 
 h1 {
   margin-bottom: 1rem;
   text-align: center;
 }
-
-/* .saveBtn.clickedMenu .topnav {
-  display: none;
-}
-
-.saveBtn.clickedMenu .navs {
-  display: block;
-} */
 
 .navs {
   margin-left: 1rem;
@@ -74,11 +40,9 @@ h1 {
 
 .fauser {
   height: 100px;
-  /* margin-right: 3rem; */
 }
 
 h5 {
-  /* margin-right: 3rem; */
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -88,8 +52,6 @@ h5 {
   flex-direction: column;
   align-items: center;
   align-content: center;
-  /* margin-right: 3rem; */
-  /* margin-top: 3rem; */
 }
 
 input {
@@ -105,7 +67,6 @@ input {
 
 button {
   float: right;
-  /* margin-bottom: 3rem; */
 }
 
 .feedbackMessage {
@@ -136,8 +97,10 @@ button {
   input {
     padding-right: 1rem;
   }
+}
 
+@media (min-width: 768px) {
   .topnav {
-    flex-direction: column;
+    grid-template-columns: auto auto;
   }
 }
