@@ -24,7 +24,7 @@ const Home = () => {
         <h1>Inception</h1>
       </div>
       <Filter setMovies={setMovies}/>
-      {movies && <h3>Popular shows</h3>}
+      {movies && movies.length !== 0 && <h3>Popular shows</h3>}
       <MovieList movies={movies} />
     </div>
   );

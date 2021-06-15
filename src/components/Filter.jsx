@@ -37,10 +37,6 @@ const Filter = ({ setMovies }) => {
       console.log(arrays);
       setMinValue(Math.min(...arrays.minPrice));
       setMaxValue(Math.max(...arrays.maxPrice));
-      // setMinPrice(Math.min(...arrays.minPrice));
-      // setMaxPrice(Math.max(...arrays.maxPrice));
-      // setMinValue(Math.min(...arrays.minRuntime));
-      // setMaxValue(Math.max(...arrays.maxRuntime));
     }
     fetchValues();
   }, []);
@@ -66,6 +62,7 @@ const Filter = ({ setMovies }) => {
     maxRun,
     minPrice,
     maxPrice,
+    setMovies,
   ]);
 
   const resetForm = (e) => {
@@ -228,8 +225,8 @@ const Filter = ({ setMovies }) => {
               </label>
               <MultiRangeSlider
                 className={styles.rangeSlider}
-                min={minValue} // 0
-                max={maxValue} //200
+                min={minValue}
+                max={maxValue}
                 name="runtime"
                 setMinRun={setMinRun}
                 setMaxRun={setMaxRun}
