@@ -131,7 +131,7 @@ const editUser = async (req, res) => {
   }
 
   try {
-    if (req.body.email) {
+    if (req.body.email && req.body.email !== req.session.user.email) {
       let userExists = await User.exists({ email: req.body.email });
       if (userExists) {
         return res.status(403).json({ error: "User email already exists" });

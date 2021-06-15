@@ -108,6 +108,12 @@ button {
   /* margin-bottom: 3rem; */
 }
 
+.feedbackMessage {
+  text-align: center;
+  margin: 0.4em 0em;
+  color: #d83830;
+}
+
 @media (max-width: 1180px) {
   input {
     padding-right: 3rem;
