@@ -70,9 +70,11 @@ button {
 }
 
 .feedbackMessage {
-  text-align: center;
+  /* text-align: center; */
   margin: 0.4em 0em;
   color: #d83830;
+  font-size: 12px;
+  width: 70%;
 }
 
 @media (max-width: 1180px) {
@@ -101,6 +103,12 @@ button {
 
 @media (min-width: 768px) {
   .topnav {
-    grid-template-columns: auto auto;
+    display: flex;
+    justify-content: space-around;
+    /* grid-template-columns: auto auto; */
+  }
+
+  form {
+    width: 50%;
   }
 }
