@@ -21,8 +21,8 @@ const MultiRangeSlider = ({
 
   useEffect(() => {
     if (reset) {
-      setMaxVal(200);
-      setMinVal(0);
+      setMaxVal(max);
+      setMinVal(min);
       minValRef.current = min;
       maxValRef.current = max;
       setReset(false);

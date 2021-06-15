@@ -21,8 +21,8 @@ const Filter = ({ setMovies }) => {
   const [reset, setReset] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
-  const [minValue, setMinValue] = useState(0);
-  const [maxValue, setMaxValue] = useState(200);
+  const [minValue, setMinValue] = useState(null);
+  const [maxValue, setMaxValue] = useState(null);
   const [genresArray, setGenresArray] = useState([]);
   const [ratingArray, setRatingArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
@@ -34,6 +34,13 @@ const Filter = ({ setMovies }) => {
       setGenresArray(arrays.genre);
       setRatingArray(arrays.rated);
       setLanguageArray(arrays.language);
+      console.log(arrays);
+      setMinValue(Math.min(...arrays.minPrice));
+      setMaxValue(Math.max(...arrays.maxPrice));
+      // setMinPrice(Math.min(...arrays.minPrice));
+      // setMaxPrice(Math.max(...arrays.maxPrice));
+      // setMinValue(Math.min(...arrays.minRuntime));
+      // setMaxValue(Math.max(...arrays.maxRuntime));
     }
     fetchValues();
   }, []);
@@ -74,9 +81,15 @@ const Filter = ({ setMovies }) => {
     setReset(true);
   };
 
+  const toggleExpand = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <div className={styles.filterContainer}>
-      <div className={styles.expandBtn}>
+      <div
+        className={`${styles.expandBtn} ${expanded && styles.filterExpanded}`}
+      >
         <button onClick={toggleExpand}>
           Filter
           {expanded ? (
@@ -95,6 +108,7 @@ const Filter = ({ setMovies }) => {
             placeholder="Free search"
             onChange={(e) => {
               setSearch(e.target.value);
+            }}
             className={`${styles.searchInput} input`}
             value={freeSearch}
           />
@@ -104,7 +118,9 @@ const Filter = ({ setMovies }) => {
               <input
                 type="text"
                 placeholder="Actor"
-                onChange={handleActor}
+                onChange={(e) => {
+                  setActor(e.target.value);
+                }}
                 className={`${styles.input} input`}
                 value={searchedActor}
               />
@@ -114,172 +130,139 @@ const Filter = ({ setMovies }) => {
               <input
                 type="text"
                 placeholder="Director"
-                onChange={handleDirector}
+                onChange={(e) => {
+                  setDirector(e.target.value);
+                }}
                 className={`${styles.input} input`}
                 value={searchedDirector}
               />
             </div>
-            <div className={styles.inputContainer}>
+            <div className={`${styles.inputContainer}`}>
               <label className={styles.filterLabel}>Genres</label>
-              <select
-                className={`${styles.input} custom-select`}
-                onChange={handleGenre}
-                value={searchedGenre}
-              >
-                {genresArray.map((genre, i) => {
-                  return (
-                    <option key={i} value={genre.toLocaleLowerCase()}>
-                      {genre}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="custom-select">
+                <select
+                  className={`${styles.input}`}
+                  onChange={(e) => {
+                    setGenre(e.target.value);
+                  }}
+                  value={searchedGenre}
+                >
+                  <option value="">Not chosen</option>
+                  {genresArray.map((genre, i) => {
+                    return (
+                      <option key={i} value={genre.toLocaleLowerCase()}>
+                        {genre}
+                      </option>
+                    );
+                  })}
+                </select>
+                <span className="focus"></span>
+              </div>
             </div>
-            <div className={styles.inputContainer}>
+
+            <div className={`${styles.inputContainer}`}>
               <label className={styles.filterLabel}>Age rating</label>
-              <select
-                className={`${styles.input} custom-select`}
-                onChange={handleRating}
-                value={searchedRating}
-              >
-                {ratingArray.map((rating, i) => {
-                  return (
-                    <option key={i} value={rating.toLocaleLowerCase()}>
-                      {rating}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="custom-select">
+                <select
+                  className={`${styles.input}`}
+                  onChange={(e) => {
+                    setRating(e.target.value);
+                  }}
+                  value={searchedRating}
+                >
+                  <option value="">Not chosen</option>
+                  {ratingArray.map((rating, i) => {
+                    return (
+                      <option key={i} value={rating.toLocaleLowerCase()}>
+                        {rating}
+                      </option>
+                    );
+                  })}
+                </select>
+                <span className="focus"></span>
+              </div>
             </div>
-            <div className={styles.inputContainer}>
+
+            <div className={`${styles.inputContainer}`}>
               <label className={styles.filterLabel}>Language</label>
-              <select
-                className={`${styles.input} custom-select`}
-                onChange={handleLanguage}
-                value={searchedLanguage}
-              >
-                {languageArray.map((language, i) => {
-                  return (
-                    <option key={i} value={language.toLocaleLowerCase()}>
-                      {language}
-                    </option>
-                  );
-                })}
-              </select>
+              <div className="custom-select">
+                <select
+                  className={`${styles.input}`}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                  }}
+                  value={searchedLanguage}
+                >
+                  <option value="">Not chosen</option>
+                  {languageArray.map((language, i) => {
+                    return (
+                      <option key={i} value={language.toLocaleLowerCase()}>
+                        {language}
+                      </option>
+                    );
+                  })}
+                </select>
+                <span className="focus"></span>
+              </div>
             </div>
+
             <div className={styles.inputContainer}>
               <label className={styles.filterLabel}>Date</label>
               <input
                 type="date"
-                className={`${styles.input} input`}
-                onChange={handleDate}
+                className={`${styles.input} ${styles.date} input`}
+                onChange={(e) => {
+                  setDate(e.target.value);
+                }}
                 value={searchedDate}
               />
             </div>
-            {/* <label>Price</label>
-          <input
-            type="text"
-            placeholder="Actor"
-            onChange={(e) => {
-              setActor(e.target.value);
-            }}
-            className="input"
-            value={searchedActor}
-          />
-          <label>Director</label>
-          <input
-            type="text"
-            placeholder="Director"
-            onChange={(e) => {
-              setDirector(e.target.value);
-            }}
-            className="input"
-            value={searchedDirector}
-          />
-          <label>Genres</label>
-          <select
-            className="custom-select"
-            onChange={(e) => {
-              setGenre(e.target.value);
-            }}
-            value={searchedGenre}
-          >
-            {genresArray.map((genre, i) => {
-              return (
-                <option key={i} value={genre.toLocaleLowerCase()}>
-                  {genre}
-                </option>
-              );
-            })}
-          </select>
-          <label>Age rating</label>
-          <select
-            className="custom-select"
-            onChange={(e) => {
-              setRating(e.target.value);
-            }}
-            value={searchedRating}
-          >
-            {ratingArray.map((rating, i) => {
-              return (
-                <option key={i} value={rating.toLocaleLowerCase()}>
-                  {rating}
-                </option>
-              );
-            })}
-          </select>
-          <label>Language</label>
-          <select
-            className="custom-select"
-            onChange={(e) => {
-              setLanguage(e.target.value);
-            }}
-            value={searchedLanguage}
-          >
-            {languageArray.map((language, i) => {
-              return (
-                <option key={i} value={language.toLocaleLowerCase()}>
-                  {language}
-                </option>
-              );
-            })}
-          </select>
-          <label>Date</label>
-          <input
-            type="date"
-            className="input"
-            onChange={(e) => {
-              setDate(e.target.value);
-            }}
-            value={searchedDate}
-          />
-          <label>Runtime</label>
-          <MultiRangeSlider
-            min={minValue} // 0
-            max={maxValue} //200
-            name="runtime"
-            setMinRun={setMinRun}
-            setMaxRun={setMaxRun}
-            setMinValue={setMinValue}
-            setMaxValue={setMaxValue}
-            reset={reset}
-            setReset={setReset}
-          />
-          <label>Price</label>
-          <MultiRangeSlider
-            setReset={setReset}
-            reset={reset}
-            min={minValue}
-            max={maxValue}
-            setMinPrice={setMinPrice}
-            setMaxPrice={setMaxPrice}
-            setMinValue={setMinValue}
-            setMaxValue={setMaxValue}
-            name="price"
-          />
-          <button className="button" onClick={resetForm}>
-            Reset filter
-          </button>
+
+            <div
+              className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
+            >
+              <label
+                className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+              >
+                Runtime (min)
+              </label>
+              <MultiRangeSlider
+                className={styles.rangeSlider}
+                min={minValue} // 0
+                max={maxValue} //200
+                name="runtime"
+                setMinRun={setMinRun}
+                setMaxRun={setMaxRun}
+                setMinValue={setMinValue}
+                setMaxValue={setMaxValue}
+                reset={reset}
+                setReset={setReset}
+              />
+            </div>
+            <div
+              className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
+            >
+              <label
+                className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+              >
+                Price (SEK)
+              </label>
+              <MultiRangeSlider
+                setReset={setReset}
+                reset={reset}
+                min={minValue}
+                max={maxValue}
+                setMinPrice={setMinPrice}
+                setMaxPrice={setMaxPrice}
+                setMinValue={setMinValue}
+                setMaxValue={setMaxValue}
+                name="price"
+              />
+            </div>
+            <button className={`${styles.button} button`} onClick={resetForm}>
+              Clear filter
+            </button>
+          </div>
         </form>
       )}
     </div>

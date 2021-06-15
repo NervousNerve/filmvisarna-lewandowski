@@ -84,12 +84,21 @@ const getValues = async (req, res) => {
     values = await Movie.aggregate([
       { $unwind: "$genre" },
       { $unwind: "$language" },
+      { $unwind: "$price" },
+      { $unwind: "$price" },
+      { $unwind: "$runtime" },
+      { $unwind: "$runtime" },
+
       {
         $group: {
           _id: null,
           genre: { $addToSet: "$genre" },
           language: { $addToSet: "$language" },
           rated: { $addToSet: "$rated" },
+          minPrice: { $addToSet: "$price" },
+          maxPrice: { $addToSet: "$price" },
+          minRuntime: { $addToSet: "$runtime" },
+          maxRuntime: { $addToSet: "$runtime" },
         },
       },
     ]).exec();
