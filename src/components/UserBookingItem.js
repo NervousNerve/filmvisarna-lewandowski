@@ -1,3 +1,4 @@
+import Seat from "./Seat";
 import styles from "../css/UserBookings.module.css";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
@@ -34,8 +35,8 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         </p>
         {booking.seats.map((seat, i) => (
           <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
-            {seat.row ? seat.row + ":" + seat.seat : seat}
-            {i === booking.seats.length - 1 ? "" : ","}
+            <div className={styles.yourSeat}></div>
+            Row: {seat.row ? seat.row + " Seat: " + seat.seat : seat}
           </p>
         ))}
       </div>
