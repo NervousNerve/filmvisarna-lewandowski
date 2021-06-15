@@ -23,7 +23,7 @@ const UserBookingItem = (props) => {
         </p>
         {booking.seats.map((seat, i) => (
           <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
-            {seat}
+            {seat.row ? seat.row + ":" + seat.seat : seat}
             {i === booking.seats.length - 1 ? "" : ","}
           </p>
         ))}
