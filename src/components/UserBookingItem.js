@@ -34,7 +34,7 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         </p>
       </div>
 
-      <div className={`${styles.seatContainer} ${styles.noTopMargin}`}>
+      <div className={styles.seatContainer}>
         <h4>Seat/row:</h4>
         {booking.seats.map((seat, i) => {
           return <Seat key={i} seat={seat.seat} row={seat.row} />;

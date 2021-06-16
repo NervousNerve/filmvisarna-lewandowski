@@ -27,6 +27,11 @@
   margin: 0rem 0.4rem 0rem 0rem;
 }
 
+.label h3 {
+  font-size: 1.2rem;
+  margin: 0rem 0rem 1rem 0rem;
+}
+
 .label p {
   margin: 0.5rem;
 }
@@ -43,9 +48,12 @@
 
 .seatContainer {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  margin-bottom: 0.4rem;
+}
+
+.seatContainer h4 {
+  margin: 0.6rem 1rem 0.1rem 0rem;
 }
 
 .bookingNr {
@@ -59,11 +67,6 @@
 
 .bookingNr p {
   margin: 0.5rem;
-}
-
-.label h3 {
-  font-size: 1.2rem;
-  margin: 0rem 0rem 1rem 0rem;
 }
 
 /* STYLES FOR SLIDER */
@@ -179,10 +182,16 @@
   }
 
   .bookingNr h4 {
-    margin: 0.5rem 0rem 0rem 0rem;
+    margin-top: 0.5rem;
   }
 
   .bookingNr p {
     margin: 0.8rem 0rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .seatContainer {
+    flex-direction: column;
   }
 }

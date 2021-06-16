@@ -2,12 +2,18 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
-  margin: 0.5rem;
+  margin: 0.5rem 0.8rem 0rem 0rem;
 }
+
 .yourSeat {
   border-radius: 5px;
   width: 0.8rem;
   height: 0.8rem;
   border: 2px solid #18191f;
   background-color: #ffd465;
+}
+
+.seatWrapper p {
+  margin: 0;
+  padding: 0;
 }
