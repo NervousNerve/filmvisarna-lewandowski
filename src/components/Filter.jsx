@@ -119,7 +119,6 @@ const Filter = ({ setMovies }) => {
       setGenresArray(arrays.genre);
       setRatingArray(arrays.rated);
       setLanguageArray(arrays.language);
-      console.log(arrays);
       setMinValue(Math.min(...arrays.minPrice));
       setMaxValue(Math.max(...arrays.maxPrice));
     }
@@ -323,7 +322,7 @@ const Filter = ({ setMovies }) => {
                 value={query.date || ""}
               />
             </div>
-            {/* {minValue && maxValue && (
+            {minValue && maxValue && (
               <div
                 className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
               >
@@ -333,16 +332,19 @@ const Filter = ({ setMovies }) => {
                   Runtime (min)
                 </label>
                 <MultiRangeSlider
-                  className={styles.rangeSlider}
+                  // className={styles.rangeSlider}
                   min={minValue}
                   max={maxValue}
                   name="runtime"
-                  setMinRun={setMinRun}
-                  setMaxRun={setMaxRun}
-                  setMinValue={setMinValue}
-                  setMaxValue={setMaxValue}
+                  // setMinRun={setMinRun}
+                  // setMaxRun={setMaxRun}
+                  // setMinValue={setMinValue}
+                  // setMaxValue={setMaxValue}
                   reset={reset}
                   setReset={setReset}
+                  setQuery={setQuery}
+                  minValue={query.minRun}
+                  maxValue={query.maxRun}
                 />
               </div>
             )}{" "}
@@ -360,14 +362,17 @@ const Filter = ({ setMovies }) => {
                   reset={reset}
                   min={minValue}
                   max={maxValue}
-                  setMinPrice={setMinPrice}
-                  setMaxPrice={setMaxPrice}
-                  setMinValue={setMinValue}
-                  setMaxValue={setMaxValue}
+                  minValue={query.minPrice}
+                  maxValue={query.maxPrice}
+                  setQuery={setQuery}
+                  // setMinPrice={setMinPrice}
+                  // setMaxPrice={setMaxPrice}
+                  // setMinValue={setMinValue}
+                  // setMaxValue={setMaxValue}
                   name="price"
                 />
               </div>
-            )} */}
+            )}
             <button
               type="button"
               className={`${styles.button} button`}

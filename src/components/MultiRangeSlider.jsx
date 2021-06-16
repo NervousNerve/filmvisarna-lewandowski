@@ -6,17 +6,17 @@ const MultiRangeSlider = ({
   min,
   max,
   name,
-  setMinRun,
-  setMaxRun,
-  setMinPrice,
-  setMaxPrice,
   reset,
   setReset,
+  setQuery,
+  minValue,
+  maxValue,
 }) => {
-  const [minVal, setMinVal] = useState(min);
-  const [maxVal, setMaxVal] = useState(max);
-  const minValRef = useRef(min);
-  const maxValRef = useRef(max);
+  const [minVal, setMinVal] = useState(minValue ? minValue : min);
+  const [maxVal, setMaxVal] = useState(maxValue ? maxValue : max);
+  const minValRef = useRef(minValue ? minValue : min);
+  const maxValRef = useRef(maxValue ? maxValue : max);
+
   const range = useRef(null);
 
   useEffect(() => {
@@ -31,13 +31,11 @@ const MultiRangeSlider = ({
 
   useEffect(() => {
     if (name === "runtime") {
-      setMinRun(minVal);
-      setMaxRun(maxVal);
+      setQuery({ minRun: minVal, maxRun: maxVal });
     } else if (name === "price") {
-      setMinPrice(minVal);
-      setMaxPrice(maxVal);
+      setQuery({ minPrice: minVal, maxPrice: maxVal });
     }
-  }, [minVal, maxVal, name, setMinRun, setMaxRun, setMinPrice, setMaxPrice]);
+  }, [minVal, maxVal, name, setQuery]);
 
   // Convert to percentage
   const getPercent = useCallback(
