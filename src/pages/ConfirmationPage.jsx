@@ -1,5 +1,5 @@
 import { useHistory } from "react-router-dom";
-
+import ErrorPage from "./ErrorPage";
 import styles from "../css/ConfirmationPage.module.css";
 
 const ConfirmationPage = (props) => {
@@ -11,10 +11,7 @@ const ConfirmationPage = (props) => {
     history.push(`/`);
   };
 
-  if (!booking) {
-    history.push("/");
-    return null;
-  }
+  if (!booking) return <ErrorPage.NotFound />;
 
   return (
     <div className={styles.confirmation}>
