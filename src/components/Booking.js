@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useQueryParam } from "use-query-params";
+
 import NumberInput from "./NumberInput";
-import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
 import Seat from "./Seat";
 import calcRow from "../util/calcRow";
+
+import styles from "../css/Booking.module.css";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -17,10 +20,18 @@ const Booking = ({ movie }) => {
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
-  const [showSeatMap, setShowSeatMap] = useState(false);
   const [screening, setScreening] = useState();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const [selectedTickets, setSelectedTickets] = useState(0);
+
+  const [screeningId, setScreeningId] = useQueryParam("screening");
+
+  useEffect(() => {
+    if (!screeningSchedule) return;
+    setScreening(
+      screeningSchedule.find((screening) => screening._id === screeningId)
+    );
+  }, [screeningId, screeningSchedule]);
 
   useEffect(() => {
     (async () => {
@@ -108,22 +119,6 @@ const Booking = ({ movie }) => {
     }
   };
 
-  const handleChange = (e) => {
-    if (!e.target.value) {
-      setShowSeatMap(false);
-      setScreening(undefined);
-      return;
-    } else {
-      setShowSeatMap(true);
-      //filter through screeningSchedule and sets screening to the show that matches the e.target
-      setScreening(
-        screeningSchedule.filter(
-          (screening) => screening._id === e.target.value
-        )[0]
-      );
-    }
-  };
-
   return (
     <div className={styles.bookingWrapper}>
       <div className={styles.bookingContainer}>
@@ -161,7 +156,10 @@ const Booking = ({ movie }) => {
 
           <div className={styles.selectWrapper}>
             <div className="custom-select">
-              <select onChange={handleChange}>
+              <select
+                onChange={(e) => setScreeningId(e.target.value)}
+                value={screeningId}
+              >
                 <option value={""}>Date and time</option>
                 {screeningSchedule &&
                   screeningSchedule.map((screening, i) => {
@@ -179,7 +177,7 @@ const Booking = ({ movie }) => {
           </div>
         </div>
 
-        {showSeatMap && (
+        {screening && selectedTickets > 0 && (
           <SeatMap
             screening={screening}
             theater={screening.theaterId}
