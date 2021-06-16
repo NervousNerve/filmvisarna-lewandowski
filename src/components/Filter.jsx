@@ -70,6 +70,11 @@ const Filter = ({ setMovies }) => {
     fetchData();
   }, [query]);
 
+  // .toLocaleString("sv-SE", {
+  //   timeZone: "Europe/Stockholm",
+  //   dateStyle: "short",
+  // })
+
   const resetForm = (e) => {
     e.preventDefault();
 
@@ -88,6 +93,12 @@ const Filter = ({ setMovies }) => {
   const toggleExpand = () => {
     setQuery({ filter: !query.filter });
   };
+
+  useEffect(() => {
+    console.log(query.date);
+  }, [query.date]);
+
+  const [dateString, setDateString] = useState();
 
   return (
     <div className={styles.filterContainer}>
@@ -217,10 +228,12 @@ const Filter = ({ setMovies }) => {
                 type="date"
                 className={`${styles.input} ${styles.date} input`}
                 onChange={(e) => {
-                  // setQuery({ date: e.target.value || undefined });
                   setQuery({ date: new Date(e.target.value) || undefined });
                 }}
-                value={query.date || ""}
+                value={{query.date ? query.date.toLocaleString("sv-SE", {
+                  timeZone: "Europe/Stockholm",
+                  dateStyle: "short",
+                }) : "" }}
               />
             </div>
             {minValue && maxValue && (
