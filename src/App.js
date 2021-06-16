@@ -9,6 +9,7 @@ import MoviePage from "./pages/MoviePage";
 import ProfilePage from "./pages/ProfilePage";
 import ConfirmationPage from "./pages/ConfirmationPage";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   const { currentUser } = useContext(UserContext);
@@ -17,18 +18,21 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <QueryParamProvider ReactRouterRoute={Route}>
+          <ScrollToTop />
           <Navbar />
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/confirmation" component={ConfirmationPage} />
-          <Route exact path="/movies/:movieId" component={MoviePage} />
-          <GuardedRoute
-            exact
-            path="/profile"
-            component={ProfilePage}
-            auth={currentUser}
-          />
+          <div className="pages">
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/confirmation" component={ConfirmationPage} />
+            <Route exact path="/movies/:movieId" component={MoviePage} />
+            <GuardedRoute
+              exact
+              path="/profile"
+              component={ProfilePage}
+              auth={currentUser}
+            />
+          </div>
           <Footer />
         </QueryParamProvider>
       </BrowserRouter>

@@ -53,7 +53,11 @@ const MoviePage = (props) => {
           <div className={style.heroImg} onClick={() => setWatchTrailer(true)}>
             <div className={style.playButtonContainer}>
               <button>
-                <FontAwesomeIcon icon={faPlay} className={style.playIcon} />
+                <FontAwesomeIcon
+                  icon={faPlay}
+                  aria-label="play button"
+                  className={style.playIcon}
+                />
               </button>
             </div>
 
@@ -69,6 +73,7 @@ const MoviePage = (props) => {
               <div className={style.title}>
                 {/* Booking button */}
                 <button
+                  className={"button"}
                   onClick={() => {
                     scroll();
                   }}
@@ -111,7 +116,7 @@ const MoviePage = (props) => {
             <div className={style.book} ref={myRef}>
               <h3>Book tickets</h3>
               <hr />
-              {currentUser ? <Booking movieId={movieId} /> : <Entry />}
+              {currentUser ? <Booking movie={movie} /> : <Entry />}
             </div>
           </div>
         </div>

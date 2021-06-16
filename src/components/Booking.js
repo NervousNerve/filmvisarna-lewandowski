@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
+import SeatMap from "./SeatMap";
+import Seat from "./Seat";
 
-const Booking = ({ movieId }) => {
+const Booking = ({ movie }) => {
   const history = useHistory();
   const [adult, setAdult] = useState(0);
   const [child, setChild] = useState(0);
@@ -11,18 +13,19 @@ const Booking = ({ movieId }) => {
   const [feedback, setFeedback] = useState();
   const [errorFeedback, setErrorFeedback] = useState();
   const [screeningSchedule, setScreeningSchedule] = useState();
-  const [chosenScreeningId, setchosenScreeningId] = useState();
   const [moviePrice, setMoviePrice] = useState(0);
   const [rebates, setRebates] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [showSeatMap, setShowSeatMap] = useState(false);
+  const [screening, setScreening] = useState();
+  const [selectedSeats, setSelectedSeats] = useState([]);
+  const [selectedTickets, setSelectedTickets] = useState(0);
 
   useEffect(() => {
     (async () => {
-      let movie = await fetch(`/api/v1/movies/${movieId}`);
-      movie = await movie.json();
       setMoviePrice(movie.price);
 
-      let screening = await fetch(`/api/v1/screenings/${movieId}`);
+      let screening = await fetch(`/api/v1/screenings/${movie._id}`);
       screening = await screening.json();
       setScreeningSchedule(screening);
 
@@ -30,7 +33,7 @@ const Booking = ({ movieId }) => {
       rebates = await rebates.json();
       setRebates(rebates);
     })();
-  }, [movieId]);
+  }, [movie]);
 
   useEffect(() => {
     if (rebates) {
@@ -43,6 +46,10 @@ const Booking = ({ movieId }) => {
       );
     }
   }, [adult, child, senior, moviePrice, rebates]);
+
+  useEffect(() => {
+    setSelectedTickets(adult + senior + child);
+  }, [adult, senior, child]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -66,13 +73,18 @@ const Booking = ({ movieId }) => {
 
   const confirmBooking = async () => {
     const request = {
-      screeningId: chosenScreeningId,
+      screeningId: screening ? screening._id : undefined,
       tickets: { adult, child, senior },
-      seats: adult + child + senior,
+      seats: selectedSeats,
     };
 
-    if (!request.seats || !request.screeningId) {
+    if (!selectedTickets || !request.screeningId) {
       setFeedback("Please select both ticket and date!");
+      return;
+    }
+
+    if (selectedTickets !== selectedSeats.length) {
+      setFeedback("The selected number of tickets and seats must match.");
       return;
     }
 
@@ -96,69 +108,110 @@ const Booking = ({ movieId }) => {
   };
 
   const handleChange = (e) => {
-    setchosenScreeningId(e.target.value);
+    if (!e.target.value) {
+      setShowSeatMap(false);
+      setScreening(undefined);
+      return;
+    } else {
+      setShowSeatMap(true);
+      //filter through screeningSchedule and sets screening to the show that matches the e.target
+      setScreening(
+        screeningSchedule.filter(
+          (screening) => screening._id === e.target.value
+        )[0]
+      );
+    }
   };
 
   return (
     <div className={styles.bookingWrapper}>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Adult
-          <p>Regular</p>
-        </h4>
+      <div className={styles.bookingContainer}>
+        <div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Adult
+              <p>Regular</p>
+            </h4>
 
-        <div className="number-input">
-          <NumberInput updateValue={setAdult} />
-        </div>
-      </div>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Child
-          <p>30% discount</p>
-        </h4>
+            <div className="number-input">
+              <NumberInput updateValue={setAdult} />
+            </div>
+          </div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Child
+              <p>30% discount</p>
+            </h4>
 
-        <div className="number-input">
-          <NumberInput updateValue={setChild} />
-        </div>
-      </div>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Senior
-          <p>20% discount</p>
-        </h4>
+            <div className="number-input">
+              <NumberInput updateValue={setChild} />
+            </div>
+          </div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Senior
+              <p>20% discount</p>
+            </h4>
 
-        <div className="number-input">
-          <NumberInput updateValue={setSenior} />
-        </div>
-      </div>
+            <div className="number-input">
+              <NumberInput updateValue={setSenior} />
+            </div>
+          </div>
 
-      <div className={styles.selectWrapper}>
-        <div className="custom-select">
-          <select onChange={handleChange}>
-            <option value={""}>Date and time</option>
-            {screeningSchedule &&
-              screeningSchedule.map((screening, i) => {
-                return (
-                  <option value={screening._id} key={i}>
-                    {new Date(screening.date).toLocaleString("sv-SE", {
-                      timeZone: "Europe/Stockholm",
-                    })}
-                  </option>
-                );
-              })}
-          </select>
-          <span className="focus"></span>
+          <div className={styles.selectWrapper}>
+            <div className="custom-select">
+              <select onChange={handleChange}>
+                <option value={""}>Date and time</option>
+                {screeningSchedule &&
+                  screeningSchedule.map((screening, i) => {
+                    return (
+                      <option value={screening._id} key={i}>
+                        {new Date(screening.date).toLocaleString("sv-SE", {
+                          timeZone: "Europe/Stockholm",
+                        })}
+                      </option>
+                    );
+                  })}
+              </select>
+              <span className="focus"></span>
+            </div>
+          </div>
         </div>
+
+        {showSeatMap && (
+          <SeatMap
+            screening={screening}
+            theater={screening.theaterId}
+            setSelectedSeats={setSelectedSeats}
+            selectedSeats={selectedSeats}
+            selectedTickets={selectedTickets}
+          />
+        )}
       </div>
 
       <p className={styles.feedback}>{feedback}</p>
+
+      <div className={styles.seats}>
+        {selectedSeats.length > 0 &&
+          selectedSeats.sort().map((seat, i) => {
+            return (
+              <Seat
+                key={i}
+                seat={seat}
+                seatsPerRow={screening.theaterId.seatsPerRow}
+              />
+            );
+          })}
+      </div>
 
       <div className={styles.totalPrice}>
         <h4>Total: {totalPrice} SEK</h4>
       </div>
 
       <div className={styles.seatBtn}>
-        <button onClick={confirmBooking}>Confirm</button>
+        <button className={"button"} onClick={confirmBooking}>
+          Confirm
+        </button>
       </div>
 
       <p className={styles.errorFeedback}>{errorFeedback}</p>

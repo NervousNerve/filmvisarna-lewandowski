@@ -1,4 +1,4 @@
-form {
+.loginWrapper form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,12 +31,6 @@ form {
 }
 
 .toggleMenuBtn button {
-  border: none;
-  padding: 0;
-  box-shadow: none;
-  background-color: inherit;
-  font-family: "Montserrat", sans-serif;
-  cursor: pointer;
   margin-top: 1em;
 }
 

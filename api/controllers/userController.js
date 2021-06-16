@@ -97,8 +97,9 @@ const deleteUser = async (req, res) => {
       let modifiedSeats = [...screening.occupiedSeats];
       screening.bookings.forEach((booking) => {
         // Only keep seats that are not included in a booking
+        const bookedSeats = booking.seats.map((s) => s?.seat || s);
         modifiedSeats = modifiedSeats.filter(
-          (seat) => !booking.seats.includes(seat)
+          (seat) => !bookedSeats.includes(seat)
         );
       });
       // Remember how many seats we removed for logging purposes
