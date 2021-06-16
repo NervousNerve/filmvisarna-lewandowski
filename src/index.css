@@ -57,6 +57,7 @@ button {
   font-size: 1rem;
   cursor: pointer;
 }
+
 .button {
   border: 2px solid #18191f;
   border-radius: 14px;
@@ -124,20 +125,18 @@ button {
 .custom-select:after {
   grid-area: select;
 }
-/* 
-.noScroll {
-  position: fixed;
-} */
 
 /* Focus styling */
 .button:focus {
   outline: none;
   background-color: #fdb809;
 }
+
 .input:focus {
   outline: none;
   border: 2px solid #fdb809;
 }
+
 .focus {
   border: 3px solid #fdb809;
   border-radius: 14px;
