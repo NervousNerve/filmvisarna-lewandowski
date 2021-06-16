@@ -18,12 +18,7 @@ const Home = () => {
 
   return (
     <div className={styles.pageWrapper}>
-      <div className={styles.imgContainer}></div>
-      {movies && <Carousel movies={movies} />}
-      <div className={styles.textContainer}>
-        <h2>In theatres now</h2>
-        <h1>Inception</h1>
-      </div>
+      <Carousel />
       {movies && <h3>Popular shows</h3>}
       <MovieList movies={movies} />
     </div>

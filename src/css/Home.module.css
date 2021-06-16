@@ -26,21 +26,6 @@ h2 {
   max-height: 100%;
 }
 
-.imgContainer {
-  position: relative;
-  height: 60vh;
-  background-size: cover;
-  background-position: top 15% left 40%;
-  background-repeat: no-repeat;
-  background-image: -webkit-linear-gradient(
-      top,
-      rgba(255, 255, 255, 0) 40%,
-      rgba(255, 255, 255, 0.73) 80%,
-      rgba(254, 252, 245, 1) 100%
-    ),
-    url("https://m.media-amazon.com/images/M/MV5BNDExNDYxODc1MF5BMl5BanBnXkFtZTcwNDQ0OTk1Mw@@._V1_.jpg");
-}
-
 @media screen and (min-width: 575px) {
   .pageWrapper h1 {
     font-size: 3.5rem;

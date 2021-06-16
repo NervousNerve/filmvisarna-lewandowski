@@ -1,60 +1,77 @@
-import CarouselArrow from "./CarouselArrow";
-import CarouselImageSlide from "./CarouselImageSlide";
 import styles from "../css/Carousel.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const Carousel = ({ movies }) => {
+const Carousel = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  let images;
-  let previousImage;
-  let nextImage;
 
-  //   Create an array with movies.imageUrl
-  if (!movies) {
-    console.log("No images to show");
-  } else {
-    images = movies.map((movie) => movie.imageUrl);
-    console.log("images url after map: ", images);
+  const featuredMovies = [
+    {
+      movie: "Interstellar",
+      image: "assets/images/interstellar.jpg",
+    },
+    {
+      movie: "Sprited Away",
+      image: "assets/images/spirited-away.jpg",
+    },
+    {
+      movie: "The Shining",
+      image: "assets/images/the-shining.jpg",
+    },
+    {
+      movie: "The Dark Knight",
+      image: "assets/images/the-dark-knight.jpg",
+    },
+  ];
 
-    //onclick function to switch to previous image
-    previousImage = () => {
-      console.log("Previous image clicked");
-      const lastIndex = movies.length - 1;
-      const shouldResetIndex = currentImageIndex === 0;
-      const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
-      setCurrentImageIndex(index);
-    };
+  const previousImage = () => {
+    const lastIndex = featuredMovies.length - 1;
+    const shouldResetIndex = currentImageIndex === 0;
+    const index = shouldResetIndex ? lastIndex : currentImageIndex - 1;
+    setCurrentImageIndex(index);
+  };
 
-    //onclick function to switch to next image
-    nextImage = () => {
-      console.log("next image clicked");
-      const lastIndex = movies.length - 1;
-      const shouldResetIndex = currentImageIndex === lastIndex;
-      const index = shouldResetIndex ? 0 : currentImageIndex + 1;
-      setCurrentImageIndex(index);
-    };
-  }
+  const nextImage = () => {
+    const lastIndex = featuredMovies.length - 1;
+    const shouldResetIndex = currentImageIndex === lastIndex;
+    const index = shouldResetIndex ? 0 : currentImageIndex + 1;
+    setCurrentImageIndex(index);
+  };
 
-  useEffect(() => {
-    setInterval(() => {
-      const lastIndex = movies.length - 1;
-      const shouldResetIndex = currentImageIndex === lastIndex;
-      const index = shouldResetIndex ? 0 : currentImageIndex + 1;
-      setCurrentImageIndex(index);
-    }, 4000);
-  }, []);
+  const testFunction = (itemToTest) => {
+    if (itemToTest.movie === featuredMovies[currentImageIndex].movie) {
+      return styles.active;
+    } else {
+      return;
+    }
+  };
 
   return (
-    <div className="parentFUCKINGelement">
-      {movies ? (
-        <div className={styles.carousel}>
-          <CarouselArrow direction="Left" handleClick={previousImage} />
-          <CarouselImageSlide carouselImage={images[currentImageIndex]} />
-          <CarouselArrow direction="Right" handleClick={nextImage} />
+    <div
+      className={styles.carousel}
+      style={{
+        backgroundImage: `
+      url(${featuredMovies[currentImageIndex].image})`,
+      }}
+    >
+      <div className={styles.sliderArrowLeft} onClick={previousImage}></div>
+      <div className={styles.titleAndIconWrapper}>
+        <div className={styles.titleWrapper}>
+          <h2 className={styles.movieTitle}>
+            {featuredMovies[currentImageIndex].movie}
+          </h2>
         </div>
-      ) : (
-        <div className="toMakeVsCodeHappy"></div>
-      )}
+        <div className={styles.iconsWrapper}>
+          {featuredMovies.map((movie, i) => {
+            return (
+              <hr
+                key={i}
+                className={`${styles.icon} ${testFunction(movie)}`}
+              ></hr>
+            );
+          })}
+        </div>
+      </div>
+      <div className={styles.sliderArrowRight} onClick={nextImage}></div>
     </div>
   );
 };
