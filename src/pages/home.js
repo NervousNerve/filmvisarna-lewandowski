@@ -5,7 +5,7 @@ import styles from "../css/Home.module.css";
 
 const Home = () => {
   const [movies, setMovies] = useState();
-
+  
   const getMovies = async () => {
     let movies = await fetch("/api/v1/movies");
     movies = await movies.json();

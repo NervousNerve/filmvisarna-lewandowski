@@ -5,27 +5,112 @@ import styles from "../css/Filter.module.css";
 
 import MultiRangeSlider from "./MultiRangeSlider";
 
+import {
+  BooleanParam,
+  DateParam,
+  NumberParam,
+  StringParam,
+  useQueryParams,
+} from "use-query-params";
+
 const Filter = ({ setMovies }) => {
-  const [freeSearch, setSearch] = useState("");
-  const [searchedActor, setActor] = useState("");
-  const [searchedDirector, setDirector] = useState("");
-  const [searchedGenre, setGenre] = useState("");
-  const [searchedRating, setRating] = useState("");
-  const [searchedLanguage, setLanguage] = useState("");
-  const [searchedDate, setDate] = useState("");
-  const [searchedPrice, setPrice] = useState("");
-  const [minRun, setMinRun] = useState();
-  const [maxRun, setMaxRun] = useState();
-  const [minPrice, setMinPrice] = useState();
-  const [maxPrice, setMaxPrice] = useState();
+  const [query, setQuery] = useQueryParams({
+    search: StringParam,
+    actor: StringParam,
+    director: StringParam,
+    genre: StringParam,
+    rated: StringParam,
+    language: StringParam,
+    date: DateParam,
+    minRun: NumberParam,
+    maxRun: NumberParam,
+    minPrice: NumberParam,
+    maxPrice: NumberParam,
+    filter: BooleanParam,
+  });
+  // const [freeSearch, setSearch] = useState("");
+  // const [searchedActor, setActor] = useState("");
+  // const [searchedDirector, setDirector] = useState("");
+  // const [searchedGenre, setGenre] = useState("");
+  // const [searchedRating, setRating] = useState("");
+  // const [searchedLanguage, setLanguage] = useState("");
+  // const [searchedDate, setDate] = useState("");
+  // const [minRun, setMinRun] = useState();
+  // const [maxRun, setMaxRun] = useState();
+  // const [minPrice, setMinPrice] = useState();
+  // const [maxPrice, setMaxPrice] = useState();
   const [reset, setReset] = useState(false);
-  const [expanded, setExpanded] = useState(false);
+  // const [expanded, setExpanded] = useState(false);
 
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
   const [genresArray, setGenresArray] = useState([]);
   const [ratingArray, setRatingArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
+
+  // useEffect(() => {
+  //   setSearch(query.search || "");
+  //   setActor(query.actor || "");
+  //   setDirector(query.director || "");
+  //   setGenre(query.genre || "");
+  //   setRating(query.rated || "");
+  //   setLanguage(query.language || "");
+  //   if (query.date) {
+  //     setDate(
+  //       query.date.toLocaleString("sv-SE", {
+  //         timeZone: "Europe/Stockholm",
+  //         dateStyle: "short",
+  //       })
+  //     );
+  //   } else {
+  //     setDate("");
+  //   }
+  //   setMinRun(query.minRun || "");
+  //   setMaxRun(query.maxRun || "");
+  //   setMinPrice(query.minPrice || "");
+  //   setMaxPrice(query.maxPrice || "");
+  //   setExpanded(query.filter);
+  // }, []);
+
+  // useEffect(() => {
+  //   const q = {
+  //     search: freeSearch || undefined,
+  //     actor: searchedActor || undefined,
+  //     director: searchedDirector || undefined,
+  //     genre: searchedGenre || undefined,
+  //     rated: searchedRating || undefined,
+  //     language: searchedLanguage || undefined,
+  //     minRun: minRun || undefined,
+  //     maxRun: maxRun || undefined,
+  //     minPrice: minPrice || undefined,
+  //     maxPrice: maxPrice || undefined,
+  //     filter: expanded || undefined,
+  //   };
+  //   if (searchedDate) {
+  //     console.log(searchedDate);
+  //     q.date = new Date(searchedDate);
+  //   }
+  //   setQuery(q, "push");
+  // }, [
+  //   freeSearch,
+  //   searchedActor,
+  //   searchedDirector,
+  //   searchedGenre,
+  //   searchedRating,
+  //   searchedLanguage,
+  //   searchedDate,
+  //   minRun,
+  //   maxRun,
+  //   minPrice,
+  //   maxPrice,
+  // ]);
+
+  useEffect(() => {
+    console.log(query);
+    if (Object.keys(query).length !== 0) {
+      // setExpanded(true);
+    }
+  }, [query]);
 
   useEffect(() => {
     async function fetchValues() {
@@ -44,70 +129,97 @@ const Filter = ({ setMovies }) => {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `/api/v1/movies/?search=${freeSearch}&actors=${searchedActor}&genre=${searchedGenre}&language=${searchedLanguage}&director=${searchedDirector}&minRuntime=${minRun}&maxRuntime=${maxRun}&rated=${searchedRating}&minPrice=${minPrice}&maxPrice=${maxPrice}&date=${searchedDate}`
+        `/api/v1/movies/?search=${query.search || ""}&actors=${
+          query.actor || ""
+        }&genre=${query.genre || ""}&language=${
+          query.language || ""
+        }&director=${query.director || ""}&minRuntime=${
+          query.minRun || ""
+        }&maxRuntime=${query.maxRun || ""}&rated=${
+          query.rated || ""
+        }&minPrice=${query.minPrice || ""}&maxPrice=${
+          query.maxPrice || ""
+        }&date=${query.date || ""}`
       );
       setMovies(await response.json());
     }
     fetchData();
   }, [
-    freeSearch,
-    searchedActor,
-    searchedDirector,
-    searchedGenre,
-    searchedRating,
-    searchedLanguage,
-    searchedDate,
-    searchedPrice,
-    minRun,
-    maxRun,
-    minPrice,
-    maxPrice,
-    setMovies,
+    // freeSearch,
+    // searchedActor,
+    // searchedDirector,
+    // searchedGenre,
+    // searchedRating,
+    // searchedLanguage,
+    // searchedDate,
+    // minRun,
+    // maxRun,
+    // minPrice,
+    // maxPrice,
+    // setMovies,
+    query,
   ]);
 
   const resetForm = (e) => {
     e.preventDefault();
-    setSearch("");
-    setActor("");
-    setDirector("");
-    setGenre("");
-    setRating("");
-    setLanguage("");
-    setDate("");
-    setPrice("");
-    setReset(true);
+    // setSearch("");
+    // setActor("");
+    // setDirector("");
+    // setGenre("");
+    // setRating("");
+    // setLanguage("");
+    // setDate("");
+    // setReset(true);
+    setQuery({
+      search: undefined,
+      actor: undefined,
+      director: undefined,
+      genre: undefined,
+      rated: undefined,
+      language: undefined,
+      date: undefined,
+      minRun: undefined,
+      maxRun: undefined,
+      minPrice: undefined,
+      maxPrice: undefined,
+      filter: undefined,
+    });
   };
 
   const toggleExpand = () => {
-    setExpanded(!expanded);
+    setQuery({ filter: !query.filter });
   };
 
   return (
     <div className={styles.filterContainer}>
       <div
-        className={`${styles.expandBtn} ${expanded && styles.filterExpanded}`}
+        className={`${styles.expandBtn} ${
+          query.filter && styles.filterExpanded
+        }`}
       >
         <button onClick={toggleExpand}>
           Filter
-          {expanded ? (
+          {query.filter ? (
             <FontAwesomeIcon icon={faTimes} className={styles.icon} />
           ) : (
             <FontAwesomeIcon icon={faFilter} className={styles.icon} />
           )}
         </button>
       </div>
-      {expanded && <hr></hr>}
+      {query.filter && <hr></hr>}
 
-      {expanded && (
-        <form>
+      {query.filter && (
+        <form onSubmit={(e) => e.preventDefault()}>
           <input
             type="text"
             placeholder="Free search"
             onChange={(e) => {
-              setSearch(e.target.value);
+              setQuery({
+                search: e.target.value || undefined,
+              });
             }}
             className={`${styles.searchInput} input`}
-            value={freeSearch}
+            value={query.search || ""}
           />
           <div className={styles.formContainer}>
             <div className={styles.inputContainer}>
@@ -116,10 +228,10 @@ const Filter = ({ setMovies }) => {
                 type="text"
                 placeholder="Actor"
                 onChange={(e) => {
-                  setActor(e.target.value);
+                  setQuery({ actor: e.target.value || undefined });
                 }}
                 className={`${styles.input} input`}
-                value={searchedActor}
+                value={query.actor || ""}
               />
             </div>
             <div className={styles.inputContainer}>
@@ -128,10 +240,10 @@ const Filter = ({ setMovies }) => {
                 type="text"
                 placeholder="Director"
                 onChange={(e) => {
-                  setDirector(e.target.value);
+                  setQuery({ director: e.target.value || undefined });
                 }}
                 className={`${styles.input} input`}
-                value={searchedDirector}
+                value={query.director || ""}
               />
             </div>
             <div className={`${styles.inputContainer}`}>
@@ -140,9 +252,9 @@ const Filter = ({ setMovies }) => {
                 <select
                   className={`${styles.input}`}
                   onChange={(e) => {
-                    setGenre(e.target.value);
+                    setQuery({ genre: e.target.value || undefined });
                   }}
-                  value={searchedGenre}
+                  value={query.genre || ""}
                 >
                   <option value="">Not chosen</option>
                   {genresArray.map((genre, i) => {
@@ -156,16 +268,15 @@ const Filter = ({ setMovies }) => {
                 <span className="focus"></span>
               </div>
             </div>
-
             <div className={`${styles.inputContainer}`}>
               <label className={styles.filterLabel}>Age rating</label>
               <div className="custom-select">
                 <select
                   className={`${styles.input}`}
                   onChange={(e) => {
-                    setRating(e.target.value);
+                    setQuery({ rated: e.target.value || undefined });
                   }}
-                  value={searchedRating}
+                  value={query.rated || ""}
                 >
                   <option value="">Not chosen</option>
                   {ratingArray.map((rating, i) => {
@@ -179,16 +290,15 @@ const Filter = ({ setMovies }) => {
                 <span className="focus"></span>
               </div>
             </div>
-
             <div className={`${styles.inputContainer}`}>
               <label className={styles.filterLabel}>Language</label>
               <div className="custom-select">
                 <select
                   className={`${styles.input}`}
                   onChange={(e) => {
-                    setLanguage(e.target.value);
+                    setQuery({ language: e.target.value || undefined });
                   }}
-                  value={searchedLanguage}
+                  value={query.language || ""}
                 >
                   <option value="">Not chosen</option>
                   {languageArray.map((language, i) => {
@@ -202,61 +312,67 @@ const Filter = ({ setMovies }) => {
                 <span className="focus"></span>
               </div>
             </div>
-
             <div className={styles.inputContainer}>
               <label className={styles.filterLabel}>Date</label>
               <input
                 type="date"
                 className={`${styles.input} ${styles.date} input`}
                 onChange={(e) => {
-                  setDate(e.target.value);
+                  setQuery({ date: e.target.value || undefined });
                 }}
-                value={searchedDate}
+                value={query.date || ""}
               />
             </div>
-
-            <div
-              className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
-            >
-              <label
-                className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+            {/* {minValue && maxValue && (
+              <div
+                className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
               >
-                Runtime (min)
-              </label>
-              <MultiRangeSlider
-                className={styles.rangeSlider}
-                min={minValue}
-                max={maxValue}
-                name="runtime"
-                setMinRun={setMinRun}
-                setMaxRun={setMaxRun}
-                setMinValue={setMinValue}
-                setMaxValue={setMaxValue}
-                reset={reset}
-                setReset={setReset}
-              />
-            </div>
-            <div
-              className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
-            >
-              <label
-                className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+                <label
+                  className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+                >
+                  Runtime (min)
+                </label>
+                <MultiRangeSlider
+                  className={styles.rangeSlider}
+                  min={minValue}
+                  max={maxValue}
+                  name="runtime"
+                  setMinRun={setMinRun}
+                  setMaxRun={setMaxRun}
+                  setMinValue={setMinValue}
+                  setMaxValue={setMaxValue}
+                  reset={reset}
+                  setReset={setReset}
+                />
+              </div>
+            )}{" "}
+            {minValue && maxValue && (
+              <div
+                className={`${styles.inputContainer} ${styles.multiRangeSlider}`}
               >
-                Price (SEK)
-              </label>
-              <MultiRangeSlider
-                setReset={setReset}
-                reset={reset}
-                min={minValue}
-                max={maxValue}
-                setMinPrice={setMinPrice}
-                setMaxPrice={setMaxPrice}
-                setMinValue={setMinValue}
-                setMaxValue={setMaxValue}
-                name="price"
-              />
-            </div>
-            <button className={`${styles.button} button`} onClick={resetForm}>
+                <label
+                  className={`${styles.multiRangeSliderLabel} ${styles.filterLabel}`}
+                >
+                  Price (SEK)
+                </label>
+                <MultiRangeSlider
+                  setReset={setReset}
+                  reset={reset}
+                  min={minValue}
+                  max={maxValue}
+                  setMinPrice={setMinPrice}
+                  setMaxPrice={setMaxPrice}
+                  setMinValue={setMinValue}
+                  setMaxValue={setMaxValue}
+                  name="price"
+                />
+              </div>
+            )} */}
+            <button
+              type="button"
+              className={`${styles.button} button`}
+              onClick={resetForm}
+            >
               Clear filter
             </button>
           </div>
