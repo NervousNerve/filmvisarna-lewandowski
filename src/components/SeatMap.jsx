@@ -100,6 +100,7 @@ const SeatMap = ({
           </div>
           <hr />
           <div className={style.seats}>{generateSeats()}</div>
+          <p className={style.theatre}>Theatre: {theater.name}</p>
         </div>
       )}
     </div>
