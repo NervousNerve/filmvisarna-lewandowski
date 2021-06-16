@@ -1,0 +1,26 @@
+.errorPage {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 2rem;
+  padding: 0 1rem;
+}
+
+.columns {
+  display: grid;
+  gap: 1rem;
+}
+
+.errorPage h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+.errorPage img {
+  margin: 0 auto;
+}
+
+@media (min-width: 400px) {
+  .columns {
+    grid-template-columns: 1fr auto;
+  }
+}
