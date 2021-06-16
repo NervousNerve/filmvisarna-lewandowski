@@ -1,3 +1,4 @@
+import Seat from "./Seat";
 import styles from "../css/UserBookings.module.css";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
@@ -28,16 +29,11 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           timeZone: "Europe/Stockholm",
         })}
       </p>
-      <div className={styles.seatContainer}>
-        <p className={`${styles.bold} ${styles.noTopMargin}`}>
-          {booking.seats.length === 1 ? "Seat:" : "Seats:"}
-        </p>
-        {booking.seats.map((seat, i) => (
-          <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
-            {seat.row ? seat.row + ":" + seat.seat : seat}
-            {i === booking.seats.length - 1 ? "" : ","}
-          </p>
-        ))}
+      <div className={`${styles.seatContainer} ${styles.noTopMargin}`}>
+        <span className={styles.bold}>Seat/row:</span>
+        {booking.seats.map((seat, i) => {
+          return <Seat key={i} seat={seat.seat} row={seat.row} />;
+        })}
       </div>
       <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
         <span className={`${styles.bold}`}>Total price: </span>

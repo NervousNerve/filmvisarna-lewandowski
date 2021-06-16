@@ -4,6 +4,7 @@ import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
 import Seat from "./Seat";
+import calcRow from "../util/calcRow";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -193,12 +194,12 @@ const Booking = ({ movie }) => {
 
       <div className={styles.seats}>
         {selectedSeats.length > 0 &&
-          selectedSeats.sort().map((seat, i) => {
+          selectedSeats.sort().map((seat) => {
             return (
               <Seat
-                key={i}
+                key={seat}
                 seat={seat}
-                seatsPerRow={screening.theaterId.seatsPerRow}
+                row={calcRow(seat, screening.theaterId.seatsPerRow)}
               />
             );
           })}
