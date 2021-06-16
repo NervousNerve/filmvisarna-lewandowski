@@ -43,6 +43,9 @@
 
 .seatContainer {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .bookingNr {
@@ -56,6 +59,11 @@
 
 .bookingNr p {
   margin: 0.5rem;
+}
+
+.label h3 {
+  font-size: 1.2rem;
+  margin: 0rem 0rem 1rem 0rem;
 }
 
 /* STYLES FOR SLIDER */

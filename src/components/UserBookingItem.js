@@ -20,17 +20,22 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </button>
         )}
       </div>
-      <h4 className={styles.noBottomMargin}>
-        Theater: {booking.screeningId.theaterId.name}
-      </h4>
-      <p>
-        <span className={styles.bold}>Date: </span>
-        {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-          timeZone: "Europe/Stockholm",
-        })}
-      </p>
+
+      <div className={styles.label}>
+        <h3>Theater: {booking.screeningId.theaterId.name}</h3>
+      </div>
+
+      <div className={styles.label}>
+        <h4>Date:</h4>
+        <p>
+          {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
+            timeZone: "Europe/Stockholm",
+          })}
+        </p>
+      </div>
+
       <div className={`${styles.seatContainer} ${styles.noTopMargin}`}>
-        <span className={styles.bold}>Seat/row:</span>
+        <h4>Seat/row:</h4>
         {booking.seats.map((seat, i) => {
           return <Seat key={i} seat={seat.seat} row={seat.row} />;
         })}
