@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useHistory, Link } from "react-router-dom";
 
 import style from "../css/ErrorPage.module.css";
 
-function ErrorPage(props) {
-  const { code, status, msg } = props;
+function ErrorPage({ code, status, msg }) {
+  const history = useHistory();
+
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      history.push("/");
+    }, 5000);
+
+    return () => clearTimeout(timeout);
+  }, [history]);
 
   return (
     <div className={style.errorPage}>
@@ -18,7 +27,8 @@ function ErrorPage(props) {
           </p>
 
           <p>
-            Please try again later, or go <Link to="/">back to safety.</Link>
+            Please <Link to="/">click here</Link> to go back to safety. Or wait
+            5 seconds to be redirected automatically.
           </p>
         </div>
 
