@@ -30,7 +30,11 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
         })}
       </p>
       <div className={styles.seatContainer}>
-        <p className={`${styles.bold} ${styles.noTopMargin}`}>
+        {booking.seats.map((seat, i) => {
+          return <Seat key={i} seat={seat.seat} row={seat.row} />;
+        })}
+
+        {/* <p className={`${styles.bold} ${styles.noTopMargin}`}>
           {booking.seats.length === 1 ? "Seat:" : "Seats:"}
         </p>
         {booking.seats.map((seat, i) => (
@@ -38,7 +42,7 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
             <div className={styles.yourSeat}></div>
             Row: {seat.row ? seat.row + " Seat: " + seat.seat : seat}
           </p>
-        ))}
+        ))} */}
       </div>
       <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
         <span className={`${styles.bold}`}>Total price: </span>
