@@ -1,3 +1,4 @@
+import Seat from "./Seat";
 import styles from "../css/UserBookings.module.css";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
@@ -19,28 +20,20 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </button>
         )}
       </div>
-
-      <div className={styles.theatreLabel}>
-        <h3>Theatre: {booking.screeningId.theaterId.name}</h3>
-      </div>
-
-      <div className={styles.label}>
-        <h4>Date: </h4>
-        <p>
-          {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-            timeZone: "Europe/Stockholm",
-          })}
-        </p>
-      </div>
-
-      <div className={`${styles.seatContainer} ${styles.label}`}>
-        <h4>{booking.seats.length === 1 ? "Seat:" : "Seats:"}</h4>
-        {booking.seats.map((seat, i) => (
-          <p key={i}>
-            {seat.row ? seat.row + ":" + seat.seat : seat}
-            {i === booking.seats.length - 1 ? "" : ","}
-          </p>
-        ))}
+      <h4 className={styles.noBottomMargin}>
+        Theater: {booking.screeningId.theaterId.name}
+      </h4>
+      <p>
+        <span className={styles.bold}>Date: </span>
+        {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
+          timeZone: "Europe/Stockholm",
+        })}
+      </p>
+      <div className={`${styles.seatContainer} ${styles.noTopMargin}`}>
+        <span className={styles.bold}>Seat/row:</span>
+        {booking.seats.map((seat, i) => {
+          return <Seat key={i} seat={seat.seat} row={seat.row} />;
+        })}
       </div>
 
       <div className={styles.label}>
