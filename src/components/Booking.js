@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import NumberInput from "./NumberInput";
 import styles from "../css/Booking.module.css";
 import SeatMap from "./SeatMap";
+import Seat from "./Seat";
 
 const Booking = ({ movie }) => {
   const history = useHistory();
@@ -124,66 +125,84 @@ const Booking = ({ movie }) => {
 
   return (
     <div className={styles.bookingWrapper}>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Adult
-          <p>Regular</p>
-        </h4>
+      <div className={styles.bookingContainer}>
+        <div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Adult
+              <p>Regular</p>
+            </h4>
 
-        <div className="number-input">
-          <NumberInput updateValue={setAdult} />
+            <div className="number-input">
+              <NumberInput updateValue={setAdult} />
+            </div>
+          </div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Child
+              <p>30% discount</p>
+            </h4>
+
+            <div className="number-input">
+              <NumberInput updateValue={setChild} />
+            </div>
+          </div>
+          <div className={styles.pricetypeWrapper}>
+            <h4>
+              Senior
+              <p>20% discount</p>
+            </h4>
+
+            <div className="number-input">
+              <NumberInput updateValue={setSenior} />
+            </div>
+          </div>
+
+          <div className={styles.selectWrapper}>
+            <div className="custom-select">
+              <select onChange={handleChange}>
+                <option value={""}>Date and time</option>
+                {screeningSchedule &&
+                  screeningSchedule.map((screening, i) => {
+                    return (
+                      <option value={screening._id} key={i}>
+                        {new Date(screening.date).toLocaleString("sv-SE", {
+                          timeZone: "Europe/Stockholm",
+                        })}
+                      </option>
+                    );
+                  })}
+              </select>
+              <span className="focus"></span>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Child
-          <p>30% discount</p>
-        </h4>
 
-        <div className="number-input">
-          <NumberInput updateValue={setChild} />
-        </div>
+        {showSeatMap && (
+          <SeatMap
+            screening={screening}
+            theater={screening.theaterId}
+            setSelectedSeats={setSelectedSeats}
+            selectedSeats={selectedSeats}
+            selectedTickets={selectedTickets}
+          />
+        )}
       </div>
-      <div className={styles.pricetypeWrapper}>
-        <h4>
-          Senior
-          <p>20% discount</p>
-        </h4>
-
-        <div className="number-input">
-          <NumberInput updateValue={setSenior} />
-        </div>
-      </div>
-
-      <div className={styles.selectWrapper}>
-        <div className="custom-select">
-          <select onChange={handleChange}>
-            <option value={""}>Date and time</option>
-            {screeningSchedule &&
-              screeningSchedule.map((screening, i) => {
-                return (
-                  <option value={screening._id} key={i}>
-                    {new Date(screening.date).toLocaleString("sv-SE", {
-                      timeZone: "Europe/Stockholm",
-                    })}
-                  </option>
-                );
-              })}
-          </select>
-          <span className="focus"></span>
-        </div>
-      </div>
-
-      {showSeatMap && (
-        <SeatMap
-          screening={screening}
-          setSelectedSeats={setSelectedSeats}
-          selectedSeats={selectedSeats}
-          selectedTickets={selectedTickets}
-        />
-      )}
 
       <p className={styles.feedback}>{feedback}</p>
+
+      <div className={styles.seats}>
+        {selectedSeats.length > 0 &&
+          selectedSeats.sort().map((seat, i) => {
+            return (
+              <Seat
+                key={i}
+                seat={seat}
+                seatsPerRow={screening.theaterId.seatsPerRow}
+              />
+            );
+          })}
+      </div>
 
       <div className={styles.totalPrice}>
         <h4>Total: {totalPrice} SEK</h4>

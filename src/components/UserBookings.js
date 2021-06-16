@@ -1,21 +1,27 @@
 import { useEffect, useState } from "react";
+import { useQueryParam } from "use-query-params";
 import UserBookingItem from "../components/UserBookingItem";
 import styles from "../css/UserBookings.module.css";
-import { useQueryParam } from "use-query-params";
+
+const fetchData = async (prev) => {
+  const response = await fetch(
+    `/api/v1/bookings/${prev ? "?previous=true" : ""}`
+  );
+  return await response.json();
+};
 
 const UserBookings = () => {
   const [showPrevious, setShowPrevious] = useQueryParam("previous");
   const [bookings, setBookings] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `/api/v1/bookings/${showPrevious ? "?previous=true" : ""}`
-      );
-      setBookings(await response.json());
-    }
-    fetchData();
+    fetchData(showPrevious).then((result) => setBookings(result));
   }, [showPrevious]);
+
+  const cancelBooking = async (id) => {
+    await fetch(`/api/v1/bookings/${id}`, { method: "DELETE" });
+    fetchData().then((result) => setBookings(result));
+  };
 
   const toggleBookings = () => {
     setShowPrevious(showPrevious ? undefined : true);
@@ -27,7 +33,11 @@ const UserBookings = () => {
       return (
         <div>
           {bookings.map((booking) => (
-            <UserBookingItem key={booking._id} booking={booking} />
+            <UserBookingItem
+              key={booking._id}
+              booking={booking}
+              cancelBooking={!showPrevious && cancelBooking}
+            />
           ))}
         </div>
       );
@@ -45,9 +55,7 @@ const UserBookings = () => {
       <h2 className={styles.textAlign}>Your bookings:</h2>
       <label className={`${styles.switch}`}>
         <input
-          onChange={() => {
-            toggleBookings();
-          }}
+          onChange={toggleBookings}
           className={styles.input}
           type="checkbox"
           checked={showPrevious ? false : true}
