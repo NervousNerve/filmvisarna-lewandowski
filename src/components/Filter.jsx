@@ -28,89 +28,14 @@ const Filter = ({ setMovies }) => {
     maxPrice: NumberParam,
     filter: BooleanParam,
   });
-  // const [freeSearch, setSearch] = useState("");
-  // const [searchedActor, setActor] = useState("");
-  // const [searchedDirector, setDirector] = useState("");
-  // const [searchedGenre, setGenre] = useState("");
-  // const [searchedRating, setRating] = useState("");
-  // const [searchedLanguage, setLanguage] = useState("");
-  // const [searchedDate, setDate] = useState("");
-  // const [minRun, setMinRun] = useState();
-  // const [maxRun, setMaxRun] = useState();
-  // const [minPrice, setMinPrice] = useState();
-  // const [maxPrice, setMaxPrice] = useState();
+
   const [reset, setReset] = useState(false);
-  // const [expanded, setExpanded] = useState(false);
 
   const [minValue, setMinValue] = useState(null);
   const [maxValue, setMaxValue] = useState(null);
   const [genresArray, setGenresArray] = useState([]);
   const [ratingArray, setRatingArray] = useState([]);
   const [languageArray, setLanguageArray] = useState([]);
-
-  // useEffect(() => {
-  //   setSearch(query.search || "");
-  //   setActor(query.actor || "");
-  //   setDirector(query.director || "");
-  //   setGenre(query.genre || "");
-  //   setRating(query.rated || "");
-  //   setLanguage(query.language || "");
-  //   if (query.date) {
-  //     setDate(
-  //       query.date.toLocaleString("sv-SE", {
-  //         timeZone: "Europe/Stockholm",
-  //         dateStyle: "short",
-  //       })
-  //     );
-  //   } else {
-  //     setDate("");
-  //   }
-  //   setMinRun(query.minRun || "");
-  //   setMaxRun(query.maxRun || "");
-  //   setMinPrice(query.minPrice || "");
-  //   setMaxPrice(query.maxPrice || "");
-  //   setExpanded(query.filter);
-  // }, []);
-
-  // useEffect(() => {
-  //   const q = {
-  //     search: freeSearch || undefined,
-  //     actor: searchedActor || undefined,
-  //     director: searchedDirector || undefined,
-  //     genre: searchedGenre || undefined,
-  //     rated: searchedRating || undefined,
-  //     language: searchedLanguage || undefined,
-  //     minRun: minRun || undefined,
-  //     maxRun: maxRun || undefined,
-  //     minPrice: minPrice || undefined,
-  //     maxPrice: maxPrice || undefined,
-  //     filter: expanded || undefined,
-  //   };
-  //   if (searchedDate) {
-  //     console.log(searchedDate);
-  //     q.date = new Date(searchedDate);
-  //   }
-  //   setQuery(q, "push");
-  // }, [
-  //   freeSearch,
-  //   searchedActor,
-  //   searchedDirector,
-  //   searchedGenre,
-  //   searchedRating,
-  //   searchedLanguage,
-  //   searchedDate,
-  //   minRun,
-  //   maxRun,
-  //   minPrice,
-  //   maxPrice,
-  // ]);
-
-  useEffect(() => {
-    console.log(query);
-    if (Object.keys(query).length !== 0) {
-      // setExpanded(true);
-    }
-  }, [query]);
 
   useEffect(() => {
     async function fetchValues() {
@@ -143,31 +68,11 @@ const Filter = ({ setMovies }) => {
       setMovies(await response.json());
     }
     fetchData();
-  }, [
-    // freeSearch,
-    // searchedActor,
-    // searchedDirector,
-    // searchedGenre,
-    // searchedRating,
-    // searchedLanguage,
-    // searchedDate,
-    // minRun,
-    // maxRun,
-    // minPrice,
-    // maxPrice,
-    // setMovies,
-    query,
-  ]);
+  }, [query]);
 
   const resetForm = (e) => {
     e.preventDefault();
-    // setSearch("");
-    // setActor("");
-    // setDirector("");
-    // setGenre("");
-    // setRating("");
-    // setLanguage("");
-    // setDate("");
+
     setReset(true);
     setQuery({
       search: undefined,
@@ -177,11 +82,6 @@ const Filter = ({ setMovies }) => {
       rated: undefined,
       language: undefined,
       date: undefined,
-      // minRun: undefined,
-      // maxRun: undefined,
-      // minPrice: undefined,
-      // maxPrice: undefined,
-      // filter: undefined,
     });
   };
 
@@ -317,7 +217,8 @@ const Filter = ({ setMovies }) => {
                 type="date"
                 className={`${styles.input} ${styles.date} input`}
                 onChange={(e) => {
-                  setQuery({ date: e.target.value || undefined });
+                  // setQuery({ date: e.target.value || undefined });
+                  setQuery({ date: new Date(e.target.value) || undefined });
                 }}
                 value={query.date || ""}
               />
@@ -332,14 +233,9 @@ const Filter = ({ setMovies }) => {
                   Runtime (min)
                 </label>
                 <MultiRangeSlider
-                  // className={styles.rangeSlider}
                   min={minValue}
                   max={maxValue}
                   name="runtime"
-                  // setMinRun={setMinRun}
-                  // setMaxRun={setMaxRun}
-                  // setMinValue={setMinValue}
-                  // setMaxValue={setMaxValue}
                   reset={reset}
                   setReset={setReset}
                   setQuery={setQuery}
@@ -365,10 +261,6 @@ const Filter = ({ setMovies }) => {
                   minValue={query.minPrice}
                   maxValue={query.maxPrice}
                   setQuery={setQuery}
-                  // setMinPrice={setMinPrice}
-                  // setMaxPrice={setMaxPrice}
-                  // setMinValue={setMinValue}
-                  // setMaxValue={setMaxValue}
                   name="price"
                 />
               </div>
