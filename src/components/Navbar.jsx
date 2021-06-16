@@ -29,7 +29,7 @@ const Navbar = () => {
   const submitSearch = (e) => {
     e.preventDefault();
     if (!searchRef.current.value) return;
-    history.push({
+    history.replace({
       pathname: "/",
       search: "?search=" + searchRef.current.value + "&filter=true",
     });
