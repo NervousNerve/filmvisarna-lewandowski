@@ -168,7 +168,7 @@ const Filter = ({ setMovies }) => {
     // setRating("");
     // setLanguage("");
     // setDate("");
-    // setReset(true);
+    setReset(true);
     setQuery({
       search: undefined,
       actor: undefined,
@@ -177,11 +177,11 @@ const Filter = ({ setMovies }) => {
       rated: undefined,
       language: undefined,
       date: undefined,
-      minRun: undefined,
-      maxRun: undefined,
-      minPrice: undefined,
-      maxPrice: undefined,
-      filter: undefined,
+      // minRun: undefined,
+      // maxRun: undefined,
+      // minPrice: undefined,
+      // maxPrice: undefined,
+      // filter: undefined,
     });
   };
 
