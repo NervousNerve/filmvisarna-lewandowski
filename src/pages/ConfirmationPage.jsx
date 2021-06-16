@@ -41,8 +41,13 @@ const ConfirmationPage = (props) => {
               timeZone: "Europe/Stockholm",
             })}{" "}
           </p>
-          <h4>Seat/Row:</h4>
-          <p> {booking.seats.join(", ")}</p>
+          <h4>Row/seat:</h4>
+          {booking.seats.map((seat, i) => (
+            <p key={i}>
+              Row: {seat.row ? seat.row + " Seat: " + seat.seat : seat}
+              {i === booking.seats.length - 1 ? "" : ","}
+            </p>
+          ))}
           <h4>Runtime: </h4>
           <p className={styles.plot}>
             {booking.screeningId.movieId.runtime} min
