@@ -30,7 +30,7 @@ const MoviePage = (props) => {
   };
 
   return (
-    <div className={`${style.moviePage} ${watchTrailer}`}>
+    <div className={style.moviePage}>
       {movie && (
         <div>
           {/* Trailer */}
