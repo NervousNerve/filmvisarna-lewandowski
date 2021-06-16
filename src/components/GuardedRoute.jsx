@@ -1,4 +1,5 @@
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage";
 
 const GuardedRoute = ({ component: Component, auth, ...rest }) => {
   if (auth === undefined) return null;
@@ -7,7 +8,7 @@ const GuardedRoute = ({ component: Component, auth, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        auth ? <Component {...props} /> : <Redirect to="/" />
+        auth ? <Component {...props} /> : <ErrorPage.Unauthorized />
       }
     />
   );
