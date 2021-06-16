@@ -5,13 +5,7 @@ import styles from "../css/Filter.module.css";
 
 import MultiRangeSlider from "./MultiRangeSlider";
 
-import {
-  BooleanParam,
-  DateParam,
-  NumberParam,
-  StringParam,
-  useQueryParams,
-} from "use-query-params";
+import { NumberParam, StringParam, useQueryParams } from "use-query-params";
 
 const Filter = ({ setMovies }) => {
   const [query, setQuery] = useQueryParams({
@@ -21,12 +15,12 @@ const Filter = ({ setMovies }) => {
     genre: StringParam,
     rated: StringParam,
     language: StringParam,
-    date: DateParam,
+    date: StringParam,
     minRun: NumberParam,
     maxRun: NumberParam,
     minPrice: NumberParam,
     maxPrice: NumberParam,
-    filter: BooleanParam,
+    filter: StringParam,
   });
 
   const [reset, setReset] = useState(false);
@@ -68,12 +62,7 @@ const Filter = ({ setMovies }) => {
       setMovies(await response.json());
     }
     fetchData();
-  }, [query]);
-
-  // .toLocaleString("sv-SE", {
-  //   timeZone: "Europe/Stockholm",
-  //   dateStyle: "short",
-  // })
+  }, [query, setMovies]);
 
   const resetForm = (e) => {
     e.preventDefault();
@@ -91,14 +80,8 @@ const Filter = ({ setMovies }) => {
   };
 
   const toggleExpand = () => {
-    setQuery({ filter: !query.filter });
+    setQuery({ filter: query.filter ? undefined : true });
   };
-
-  useEffect(() => {
-    console.log(query.date);
-  }, [query.date]);
-
-  const [dateString, setDateString] = useState();
 
   return (
     <div className={styles.filterContainer}>
@@ -228,12 +211,9 @@ const Filter = ({ setMovies }) => {
                 type="date"
                 className={`${styles.input} ${styles.date} input`}
                 onChange={(e) => {
-                  setQuery({ date: new Date(e.target.value) || undefined });
+                  setQuery({ date: e.target.value || undefined });
                 }}
-                value={{query.date ? query.date.toLocaleString("sv-SE", {
-                  timeZone: "Europe/Stockholm",
-                  dateStyle: "short",
-                }) : "" }}
+                value={query.date || ""}
               />
             </div>
             {minValue && maxValue && (

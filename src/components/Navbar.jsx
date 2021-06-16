@@ -31,7 +31,7 @@ const Navbar = () => {
     if (!searchRef.current.value) return;
     history.push({
       pathname: "/",
-      search: "?search=" + searchRef.current.value,
+      search: "?search=" + searchRef.current.value + "&filter=true",
     });
     e.target.value = "";
     setShowMenu(false);

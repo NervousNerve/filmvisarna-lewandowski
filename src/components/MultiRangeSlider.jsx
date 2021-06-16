@@ -19,6 +19,7 @@ const MultiRangeSlider = ({
 
   const range = useRef(null);
 
+  // Resets sliders when reset button is clicked in filter component
   useEffect(() => {
     if (reset) {
       setMaxVal(max);
@@ -29,13 +30,20 @@ const MultiRangeSlider = ({
     }
   }, [reset, setReset, min, max]);
 
+  // Checks runtime or price and then sets the queryparam to the chosen value or to undefined
   useEffect(() => {
     if (name === "runtime") {
-      setQuery({ minRun: minVal, maxRun: maxVal });
+      setQuery({
+        minRun: minVal === min ? undefined : minVal,
+        maxRun: maxVal === max ? undefined : maxVal,
+      });
     } else if (name === "price") {
-      setQuery({ minPrice: minVal, maxPrice: maxVal });
+      setQuery({
+        minPrice: minVal === min ? undefined : minVal,
+        maxPrice: maxVal === max ? undefined : maxVal,
+      });
     }
-  }, [minVal, maxVal, name, setQuery]);
+  }, [minVal, maxVal, name, setQuery, min, max]);
 
   // Convert to percentage
   const getPercent = useCallback(
