@@ -10,8 +10,11 @@
   gap: 1rem;
 }
 
+.errorPage .code {
+  font-size: 5rem;
+  font-weight: bold;
+}
 .errorPage h1 {
-  font-size: 4rem;
   margin: 0;
 }
 
