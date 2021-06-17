@@ -1,4 +1,5 @@
 import { useHistory } from "react-router-dom";
+import UserBookingItem from "../components/UserBookingItem";
 import ErrorPage from "./ErrorPage";
 import styles from "../css/ConfirmationPage.module.css";
 
@@ -25,31 +26,7 @@ const ConfirmationPage = (props) => {
         <h2>Your reservation is confirmed.</h2>
       </div>
       <div className={styles.orderDetails1}>
-        <h3>{booking.screeningId.movieId.title}</h3>
-        <div className={styles.orderDetails}>
-          <h4>Booking Number:</h4>
-          <p className={styles.p1}> {booking._id}</p>
-          <h4>Price:</h4>
-          <p> {booking.price} SEK</p>
-          <h4>Date/Time:</h4>
-          <p>
-            {" "}
-            {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-              timeZone: "Europe/Stockholm",
-            })}{" "}
-          </p>
-          <h4>Row/seat:</h4>
-          {booking.seats.map((seat, i) => (
-            <p key={i}>
-              Row: {seat.row ? seat.row + " Seat: " + seat.seat : seat}
-              {i === booking.seats.length - 1 ? "" : ","}
-            </p>
-          ))}
-          <h4>Runtime: </h4>
-          <p className={styles.plot}>
-            {booking.screeningId.movieId.runtime} min
-          </p>
-        </div>
+        <UserBookingItem booking={booking} />
       </div>
       <div className={styles.homeButton}>
         <button className={`button ${styles.backhome}`} onClick={handleClick}>

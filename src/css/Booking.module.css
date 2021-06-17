@@ -51,6 +51,7 @@ select {
 .errorFeedback {
   color: red;
 }
+
 .seats {
   display: flex;
   justify-content: center;
