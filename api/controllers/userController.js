@@ -132,22 +132,35 @@ const editUser = async (req, res) => {
   }
 
   try {
+    const user = await User.findOne({ _id: req.session.user._id }).exec();
+    if (!user) {
+      return res.status(500).json({ error: "Something went wrong." });
+    }
+
+    req.body.oldPassword = Encrypt.encrypt(req.body.oldPassword);
+    if (user.password !== req.body.oldPassword) {
+      return res
+        .status(401)
+        .json({ error: "Incorrect password. Please try again." });
+    }
+
     if (req.body.email && req.body.email !== req.session.user.email) {
       let userExists = await User.exists({ email: req.body.email });
       if (userExists) {
-        return res.status(403).json({ error: "User email already exists" });
+        return res.status(403).json({ error: "User email already exists." });
       }
     }
-    if (req.body.password) {
-      req.body.password = Encrypt.encrypt(req.body.password);
+
+    if (req.body.newPassword) {
+      req.body.password = Encrypt.encrypt(req.body.newPassword);
     }
     await User.updateOne({ _id: req.session.user._id }, req.body).exec();
 
-    let user = await User.findOne({ _id: req.session.user._id });
+    const updatedUser = await User.findOne({ _id: req.session.user._id });
 
-    user.password = undefined;
-    req.session.user = user;
-    return res.json(user);
+    updatedUser.password = undefined;
+    req.session.user = updatedUser;
+    return res.json(updatedUser);
   } catch (err) {
     console.log(err);
     return res.status(500).json({ error: "Something went wrong" });
