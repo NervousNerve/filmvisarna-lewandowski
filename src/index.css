@@ -151,7 +151,3 @@ button {
 .custom-select select:focus + .focus {
   display: inline;
 }
-
-.svg-inline--fa.fa-w-16 {
-  width: 5em;
-}
