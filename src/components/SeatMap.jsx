@@ -98,7 +98,9 @@ const SeatMap = ({
               <p>Your seats</p>
             </div>
           </div>
-          <hr />
+          <div className={style.screen}>
+            <div className={style.glow}></div>
+          </div>
           <div className={style.seats}>{generateSeats()}</div>
           <p className={style.theatre}>Theatre: {theater.name}</p>
         </div>
