@@ -24,7 +24,7 @@
   justify-content: space-around;
 }
 
-h1 {
+.profileContainer h1 {
   margin-bottom: 1rem;
   text-align: center;
 }
@@ -33,14 +33,20 @@ h1 {
   margin-left: 1rem;
   width: 15px;
   height: 1.5rem;
-  padding-bottom: 0.5rem;
+}
+.navs:hover {
+  color: #ffd465;
+}
+.navs:focus {
+  color: #fdb809;
+  outline: none;
 }
 
 .fauser {
   height: 100px;
 }
 
-h5 {
+.profileContainer h5 {
   margin-top: 0;
   margin-bottom: 0;
 }
@@ -52,29 +58,46 @@ h5 {
   align-content: center;
 }
 
-input {
-  margin-top: 0.3rem;
-  margin-bottom: 0.7rem;
-  padding-top: 0.8rem;
-  padding-bottom: 0.8rem;
-  padding-left: 1rem;
-  padding-right: 10rem;
-  text-align: left;
-  float: left;
+.profileContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-button {
+.profileContainer label {
+  font-weight: bold;
+  color: #474a57;
+}
+
+.saveButton {
   float: right;
 }
 
-.feedbackMessage {
+.formSpacer {
+  width: 100%;
+  border: none;
+  height: 1rem;
+  margin: 0;
+}
+
+.feedbackMessage,
+.successMessage {
   margin: 0.4em 0em;
-  color: #d83830;
-  font-size: 12px;
+  font-size: 14px;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+.feedbackMessage {
+  color: white;
+  background: #d83830;
+}
+.successMessage {
+  color: white;
+  background: green;
 }
 
 @media (max-width: 1180px) {
-  input {
+  .profileContainer input {
     padding-right: 3rem;
   }
 }
@@ -92,7 +115,7 @@ button {
 }
 
 @media (max-width: 530px) {
-  input {
+  .profileContainer input {
     padding-right: 1rem;
   }
 }
@@ -100,10 +123,10 @@ button {
 @media (min-width: 768px) {
   .topnav {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
-  form {
+  .profileContainer form {
     width: 50%;
   }
 }

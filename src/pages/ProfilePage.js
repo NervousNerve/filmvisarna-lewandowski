@@ -11,9 +11,11 @@ const ProfilePage = () => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [oldPassword, setOldPassword] = useState("");
   const [regexMessage, setRegexMessage] = useState(null);
   const [feedbackMessage, setFeedbackMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
   const { edit } = useContext(UserContext);
 
   useEffect(() => {
@@ -22,6 +24,21 @@ const ProfilePage = () => {
       setEmail(currentUser.email);
     }
   }, [currentUser]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setRegexMessage(null), 5000);
+    return () => clearTimeout(timeout);
+  }, [regexMessage]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setFeedbackMessage(null), 5000);
+    return () => clearTimeout(timeout);
+  }, [feedbackMessage]);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setSuccessMessage(null), 5000);
+    return () => clearTimeout(timeout);
+  }, [successMessage]);
 
   const handleClick = () => {
     if (showMenu === false) {
@@ -37,30 +54,28 @@ const ProfilePage = () => {
       "^(?=.{6,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])"
     );
 
-    if (password && !regex.test(password)) {
+    if (newPassword && !regex.test(newPassword)) {
       setRegexMessage(
         "Your password must be at least 6 characters long, contain both upper- and lowercase and one special character."
       );
-      setTimeout(() => {
-        setRegexMessage(null);
-      }, 5000);
       return;
     }
 
     const user = {
       name: name || undefined,
       email: email || undefined,
-      password: password || undefined,
+      newPassword: newPassword || undefined,
+      oldPassword: oldPassword,
     };
 
     let result = await edit(user);
-    if (!result) {
-      setFeedbackMessage("A user with this email already exists.");
-      setTimeout(() => {
-        setFeedbackMessage(null);
-      }, 3000);
+    if (result.error) {
+      setFeedbackMessage(result.error);
       return;
     }
+    setNewPassword("");
+    setOldPassword("");
+    setSuccessMessage("Your information has been updated!");
   };
 
   return (
@@ -73,11 +88,9 @@ const ProfilePage = () => {
               {currentUser &&
                 (currentUser.name || currentUser.loggedInUser.name)}
               !
-              <FontAwesomeIcon
-                className={styles.navs}
-                icon={faEdit}
-                onClick={handleClick}
-              />
+              <button className={styles.navs}>
+                <FontAwesomeIcon icon={faEdit} onClick={handleClick} />
+              </button>
             </h1>
             {showMenu && (
               <div className={styles.topfield}>
@@ -101,27 +114,58 @@ const ProfilePage = () => {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
+                      className={"input"}
                     />
+
                     <label>Email:</label>
                     <input
                       placeholder="enter your email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className={"input"}
                     />
-                    <label>Password:</label>
+
+                    <label>New password:</label>
                     <input
-                      placeholder="••••••••"
+                      // placeholder="••••••••"
                       type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      className={"input"}
                     />
-                    <div className={styles.feedbackMessage}>
-                      {feedbackMessage}
-                      {regexMessage}
-                    </div>
+
+                    <hr className={styles.formSpacer} />
+
+                    <label>Current password:</label>
+                    <input
+                      type="password"
+                      required
+                      value={oldPassword}
+                      onChange={(e) => setOldPassword(e.target.value)}
+                      className={"input"}
+                    />
+
                     <div>
-                      <button>Save</button>
+                      {feedbackMessage && (
+                        <p className={styles.feedbackMessage}>
+                          {feedbackMessage}
+                        </p>
+                      )}
+                      {regexMessage && (
+                        <p className={styles.feedbackMessage}>{regexMessage}</p>
+                      )}
+                      {successMessage && (
+                        <p className={styles.successMessage}>
+                          {successMessage}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <button className={`button ${styles.saveButton}`}>
+                        Save
+                      </button>
                     </div>
                   </form>
                 </div>
