@@ -1,3 +1,4 @@
+import Seat from "./Seat";
 import styles from "../css/UserBookings.module.css";
 
 const UserBookingItem = ({ booking, cancelBooking }) => {
@@ -19,34 +20,41 @@ const UserBookingItem = ({ booking, cancelBooking }) => {
           </button>
         )}
       </div>
-      <h4 className={styles.noBottomMargin}>
-        Theater: {booking.screeningId.theaterId.name}
-      </h4>
-      <p>
-        <span className={styles.bold}>Date: </span>
-        {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
-          timeZone: "Europe/Stockholm",
-        })}
-      </p>
-      <div className={styles.seatContainer}>
-        <p className={`${styles.bold} ${styles.noTopMargin}`}>
-          {booking.seats.length === 1 ? "Seat:" : "Seats:"}
-        </p>
-        {booking.seats.map((seat, i) => (
-          <p key={i} className={`${styles.seat} ${styles.noTopMargin}`}>
-            {seat.row ? seat.row + ":" + seat.seat : seat}
-            {i === booking.seats.length - 1 ? "" : ","}
-          </p>
-        ))}
+
+      <div className={styles.label}>
+        <h3>Theater: {booking.screeningId.theaterId.name}</h3>
       </div>
-      <p className={`${styles.noTopMargin} ${styles.noBottomMargin}`}>
-        <span className={`${styles.bold}`}>Total price: </span>
-        {booking.price} SEK
-      </p>
-      <p>
-        <span className={styles.bold}> Booking number: </span>
-        {booking._id}
-      </p>
+
+      <div className={styles.label}>
+        <h4>Date:</h4>
+        <p>
+          {new Date(booking.screeningId.date).toLocaleString("sv-SE", {
+            timeZone: "Europe/Stockholm",
+          })}
+        </p>
+      </div>
+
+      <div className={styles.seatContainer}>
+        <h4>Seat/row:</h4>
+        {booking.seats.map((seat, i) => {
+          return <Seat key={i} seat={seat.seat} row={seat.row} />;
+        })}
+      </div>
+
+      <div className={styles.label}>
+        <h4>Runtime: </h4>
+        <p> {booking.screeningId.movieId.runtime} min</p>
+      </div>
+
+      <div className={styles.label}>
+        <h4>Total price:</h4>
+        <p>{booking.price} SEK</p>
+      </div>
+
+      <div className={`${styles.bookingNr}`}>
+        <h4>Booking number:</h4>
+        <p>{booking._id}</p>
+      </div>
     </div>
   );
 };

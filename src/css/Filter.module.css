@@ -1,0 +1,113 @@
+.expandBtn {
+  text-align: end;
+  right: 0;
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.filterContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.formContainer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.filterLabel {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.searchInput,
+.input {
+  box-sizing: border-box;
+  display: block;
+  font-size: 1rem;
+}
+
+.searchInput {
+  margin-top: 2rem;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.input {
+  width: 100%;
+  min-width: 220px;
+}
+
+.date {
+  padding: 0.7rem 1rem;
+}
+
+.inputContainer {
+  margin-bottom: 1rem;
+}
+
+.multiRangeSlider {
+  margin-top: 2rem;
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.icon {
+  padding: 0.2rem;
+  vertical-align: middle;
+  margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .formContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .inputContainer {
+    width: 48%;
+  }
+
+  .multiRangeSlider {
+    margin-top: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .filterContainer {
+    margin-bottom: 4.5rem;
+  }
+
+  .expandBtn {
+    width: 75%;
+  }
+
+  .filterExpanded {
+    width: 90%;
+  }
+
+  .searchInput {
+    width: 30%;
+    margin: 1rem auto;
+  }
+
+  .inputContainer {
+    width: 30%;
+  }
+
+  .multiRangeSlider {
+    margin: auto 1rem;
+  }
+
+  .button {
+    margin-top: 1rem;
+    margin-bottom: -2rem;
+    vertical-align: middle;
+  }
+}

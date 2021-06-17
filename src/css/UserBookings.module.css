@@ -18,21 +18,55 @@
   background-color: #d83830;
 }
 
+.label {
+  display: flex;
+  align-items: baseline;
+}
+
+.label h4 {
+  margin: 0rem 0.4rem 0rem 0rem;
+}
+
+.label h3 {
+  font-size: 1.2rem;
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.label p {
+  margin: 0.5rem;
+}
+
+.theatreLabel h3 {
+  font-size: 1.2rem;
+  margin: 0rem 0rem 1rem 0rem;
+}
+
 .removeItemContainer {
   display: grid;
   grid-template-columns: 80% 20%;
 }
 
-.bold {
-  font-weight: bold;
-}
-
 .seatContainer {
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0.4rem;
 }
 
-.seat {
-  margin-left: 0.5rem;
+.seatContainer h4 {
+  margin: 0.6rem 1rem 0.1rem 0rem;
+}
+
+.bookingNr {
+  display: flex;
+  align-items: baseline;
+}
+
+.bookingNr h4 {
+  margin: 0rem 0.4rem 0rem 0rem;
+}
+
+.bookingNr p {
+  margin: 0.5rem;
 }
 
 /* STYLES FOR SLIDER */
@@ -116,7 +150,6 @@
 .ticketContainer {
   background-color: #fdf7e3;
   padding: 1em;
-  /* width: 100%; */
   border: 2px solid #18191f;
   border-radius: 14px;
   margin-bottom: 1rem;
@@ -124,14 +157,6 @@
 
 .title {
   margin: 0rem;
-}
-
-.noTopMargin {
-  margin-top: 0rem;
-}
-
-.noBottomMargin {
-  margin-bottom: 0rem;
 }
 
 .bookingContainer {
@@ -147,5 +172,26 @@
 @media (min-width: 1025px) {
   .bookingContainer {
     width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bookingNr {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bookingNr h4 {
+    margin-top: 0.5rem;
+  }
+
+  .bookingNr p {
+    margin: 0.8rem 0rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .seatContainer {
+    flex-direction: column;
   }
 }
