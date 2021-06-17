@@ -6,7 +6,7 @@ import { NumberParam, StringParam, useQueryParams } from "use-query-params";
 
 const Home = () => {
   const [movies, setMovies] = useState();
-  const [query, setQuery] = useQueryParams({
+  const [query] = useQueryParams({
     search: StringParam,
     actor: StringParam,
     director: StringParam,
