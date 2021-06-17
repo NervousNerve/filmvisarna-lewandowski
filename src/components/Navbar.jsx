@@ -161,7 +161,10 @@ const Navbar = () => {
               }
             }}
           >
-            <FontAwesomeIcon className="fa-lg" icon={faSearch} />
+            <FontAwesomeIcon
+              className={`${"fa-lg"} ${styles.searchIcon}`}
+              icon={faSearch}
+            />
           </button>
         </div>
       </div>
