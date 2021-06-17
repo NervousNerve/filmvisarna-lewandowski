@@ -43,7 +43,8 @@
 }
 
 .fauser {
-  height: 100px;
+  font-size: 4.5em;
+  margin-top: 0.5em;
 }
 
 .profileContainer h5 {
@@ -129,11 +130,13 @@
 
 @media (min-width: 768px) {
   .topnav {
-    display: flex;
-    justify-content: space-evenly;
+    /* display: flex;
+    justify-content: space-evenly; */
+    display: grid;
+    grid-template-columns: 50% 50%;
   }
 
   .profileContainer form {
-    width: 50%;
+    width: 70%;
   }
 }
