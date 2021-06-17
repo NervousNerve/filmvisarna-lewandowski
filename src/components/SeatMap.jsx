@@ -98,7 +98,6 @@ const SeatMap = ({
               <p>Your seats</p>
             </div>
           </div>
-          {/* <hr /> */}
           <div className={style.screen}>
             <div className={style.glow}></div>
           </div>
