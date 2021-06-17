@@ -89,7 +89,11 @@ const ProfilePage = () => {
                 (currentUser.name || currentUser.loggedInUser.name)}
               !
               <button className={styles.navs}>
-                <FontAwesomeIcon icon={faEdit} onClick={handleClick} />
+                <FontAwesomeIcon
+                  icon={faEdit}
+                  className={styles.editIcon}
+                  onClick={handleClick}
+                />
               </button>
             </h1>
             {showMenu && (

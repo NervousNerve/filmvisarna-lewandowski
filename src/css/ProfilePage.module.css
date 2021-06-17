@@ -87,13 +87,20 @@
   padding: 1em;
   border-radius: 0.5em;
 }
+
 .feedbackMessage {
   color: white;
   background: #d83830;
 }
+
 .successMessage {
   color: white;
   background: green;
+}
+
+.editIcon {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
 }
 
 @media (max-width: 1180px) {
