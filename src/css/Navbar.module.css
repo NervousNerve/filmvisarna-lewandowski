@@ -87,6 +87,10 @@
   box-sizing: border-box;
 }
 
+.searchIcon {
+  color: white;
+}
+
 @media (min-width: 768px) {
   .navbar {
     grid-template: 1fr / auto 1fr auto;

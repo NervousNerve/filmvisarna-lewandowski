@@ -5,16 +5,138 @@
   align-items: center;
 }
 
+.editProfile {
+  width: 50%;
+}
+
 .centered {
   text-align: center;
 }
 
-.topnav,
-.topfield:not(.clickedMenu) .topnav {
-  background: none;
-  box-shadow: none;
+.topnav {
+  gap: 1em;
+  justify-content: center;
+  border: 2px solid #18191f;
+  border-radius: 14px;
+  padding: 1em;
+  margin-bottom: 3rem;
+  background-color: #fdf7e3;
+  justify-content: space-around;
+}
+
+.profileContainer h1 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.navs {
+  margin-left: 1rem;
+  width: 15px;
+  height: 1.5rem;
+}
+.navs:hover {
+  color: #ffd465;
+}
+.navs:focus {
+  color: #fdb809;
+  outline: none;
+}
+
+.fauser {
+  font-size: 4.5em;
+  margin-top: 0.5em;
+}
+
+.profileContainer h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.topnav2 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  padding: 0.5rem;
+  align-content: center;
+}
+
+.profileContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profileContainer label {
+  font-weight: bold;
+  color: #474a57;
+}
+
+.saveButton {
+  float: right;
+}
+
+.formSpacer {
+  width: 100%;
+  border: none;
+  height: 1rem;
+  margin: 0;
+}
+
+.feedbackMessage,
+.successMessage {
+  margin: 0.4em 0em;
+  font-size: 14px;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.feedbackMessage {
+  color: white;
+  background: #d83830;
+}
+
+.successMessage {
+  color: white;
+  background: green;
+}
+
+.editIcon {
+  font-size: 1.5em;
+  margin-bottom: 0.2em;
+}
+
+@media (max-width: 1180px) {
+  .profileContainer input {
+    padding-right: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .editProfile {
+    width: 65%;
+  }
+}
+
+@media (max-width: 767px) {
+  .editProfile {
+    width: 90%;
+  }
+}
+
+@media (max-width: 530px) {
+  .profileContainer input {
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .topnav {
+    /* display: flex;
+    justify-content: space-evenly; */
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+
+  .profileContainer form {
+    width: 70%;
+  }
 }

@@ -12,7 +12,7 @@ const ConfirmationPage = (props) => {
     history.push(`/`);
   };
 
-  if (!booking) return <ErrorPage.NotFound />;
+  if (!booking) return <ErrorPage.Forbidden />;
 
   return (
     <div className={styles.confirmation}>
