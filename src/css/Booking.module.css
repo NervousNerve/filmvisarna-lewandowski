@@ -1,0 +1,68 @@
+.bookingWrapper {
+  background-color: #fdf7e3;
+  border-radius: 14px;
+  border: 2px solid #18191f;
+  padding: 2em 0em;
+}
+
+.pricetypeWrapper {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  max-width: 16em;
+  align-items: center;
+  margin: auto;
+}
+
+.pricetypeWrapper h4 {
+  margin: 0.6em 0em;
+  color: #18191f;
+}
+
+.pricetypeWrapper p {
+  font-size: smaller;
+}
+
+.selectWrapper {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+}
+.selectWrapper .custom-select,
+select {
+  width: 16em;
+}
+
+.seatBtn,
+.totalPrice,
+.totalPrice h4 {
+  color: #18191f;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+}
+
+.feedback,
+.errorFeedback {
+  text-align: center;
+  padding: 0em 1em;
+  margin-top: 1em !important;
+}
+
+.errorFeedback {
+  color: red;
+}
+
+.seats {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-flow: wrap;
+}
+
+@media screen and (min-width: 900px) {
+  .bookingContainer {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+  }
+}

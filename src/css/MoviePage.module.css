@@ -1,0 +1,189 @@
+/* Hero img and trailer */
+.moviePage .heroImg {
+  width: 100%;
+  overflow: hidden;
+  height: 40vh;
+  cursor: pointer;
+  position: relative;
+}
+
+.heroImg:hover .playButtonContainer button .playIcon {
+  filter: drop-shadow(0 0 1.25rem #d83830);
+  color: #d83830;
+  transition: color 400ms, filter 135ms;
+}
+
+.moviePage .heroImg img {
+  filter: blur(3px);
+  width: 120%;
+  margin: -20% -10%;
+  position: relative;
+}
+
+.playButtonContainer {
+  position: absolute;
+  top: calc(50% - 35px);
+  z-index: 1;
+  left: calc(100vw - 50vw - 20px);
+}
+
+.playButtonContainer .playIcon {
+  color: #ffd465;
+  font-size: 56px;
+  filter: drop-shadow(0 0 2rem #ffd465);
+  transition: color 400ms, filter 400ms;
+}
+
+.playButtonContainer button:focus {
+  outline: none;
+}
+
+.playButtonContainer button:focus .playIcon {
+  color: #ffbd12;
+  filter: drop-shadow(0 0 2rem #ffd465);
+}
+
+/* Modal trailer */
+.moviePage iframe {
+  border: 2px solid #18191f;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  border-radius: 14px;
+  width: 90vw;
+  height: calc(90vw * 0.56);
+  max-width: 890px;
+  max-height: 500px;
+}
+
+/* All other content */
+.moviePage {
+  width: 100%;
+}
+
+.moviePage .content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.moviePage .heading {
+  display: grid;
+  max-width: 900px;
+  column-gap: 1.5rem;
+}
+
+/* Movie poster */
+.moviePage .imgWrapper {
+  margin-top: -30px;
+  max-width: 250px;
+  min-width: 130px;
+  z-index: 1;
+  grid-row: 1 / 1;
+  grid-column: 1 / 4;
+}
+.moviePage .imgWrapper img {
+  border-radius: 14px;
+  border: 2px solid #18191f;
+  box-shadow: 0px 3px 0px 0px #18191f;
+  width: 100%;
+}
+
+/* Title and booking button */
+.moviePage .title {
+  margin-top: -20px;
+  z-index: 1;
+  grid-column: 4 / 10;
+  grid-row: 1 / 1;
+}
+
+/* Button */
+.moviePage .title button {
+  width: 100%;
+  max-width: 200px;
+  padding: 0.8rem;
+}
+
+/* Title elements */
+.moviePage .title h2,
+.moviePage .title h4 {
+  margin: 0.8rem 0;
+}
+.moviePage .title h2 {
+  font-size: 1.2em;
+}
+
+/* Genre and Actors elements */
+.moviePage .infoGrid {
+  margin: 0 1rem;
+  grid-row: 3 / 3;
+  grid-column: 1 / 10;
+}
+
+/* Plot, director and rating */
+.moviePage .text {
+  margin: 1rem;
+}
+.moviePage .infoContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  grid-gap: 1.2rem;
+  max-width: 400px;
+}
+.moviePage .info ul {
+  padding: 0;
+  margin: 0;
+}
+.moviePage .info li {
+  list-style-type: none;
+}
+.moviePage h4 {
+  margin: 1.4rem 0 0.2rem;
+}
+.moviePage p {
+  margin: 0;
+}
+
+/* Booking component */
+.moviePage .book hr {
+  border: none;
+  border-bottom: 2px solid #18191f;
+  margin-bottom: 1rem;
+}
+.moviePage .book {
+  margin-top: 3rem;
+}
+.moviePage .book h3 {
+  margin: 0.7rem 0;
+}
+
+/* Media queries */
+@media screen and (min-width: 500px) {
+  .moviePage .content {
+    padding: 0 2rem;
+  }
+  .moviePage .title h2 {
+    font-size: 26px;
+    margin-top: 1.5rem;
+  }
+  .moviePage .title h2,
+  .moviePage .title h4 {
+    margin-left: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .moviePage .infoGrid {
+    margin: 0 0.5rem;
+  }
+  .moviePage .imgWrapper {
+    grid-row: 1 / span 2;
+    grid-column: 1 / 5;
+  }
+  .moviePage .title {
+    grid-row: 1 / 1;
+    grid-column: 5 / 10;
+  }
+  .moviePage .infoGrid {
+    grid-column: 5 / 10;
+    grid-row: 2/2;
+  }
+}

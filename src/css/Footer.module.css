@@ -1,0 +1,108 @@
+.about {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.aboutAndContactWrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: row wrap;
+  margin: 1rem;
+  text-align: left;
+}
+
+.aboutText {
+  margin: 1rem 1rem 0rem 1rem;
+}
+
+.address {
+  margin: 1rem;
+}
+
+.contact {
+  background-position: right;
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding: 0.5rem 0rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.contactWrapper {
+  text-align: left;
+}
+
+.copyrightWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  background-color: #d83830;
+  margin-top: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid #18191f;
+}
+
+.footer p {
+  color: #18191f;
+}
+
+.footer h3 {
+  margin: 1rem 0rem;
+}
+
+.iconAndDesc p {
+  margin: 6px;
+}
+
+.iconAndDesc {
+  display: flex;
+  margin-top: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+}
+
+.locationIcon {
+  margin-right: 0.3rem;
+  width: 1.7rem;
+}
+
+.logo {
+  width: 6rem;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 1.7rem;
+  right: 1.7rem;
+}
+
+.social {
+  margin: 1rem;
+}
+
+.socialIcon {
+  margin-right: 0.7rem;
+  width: 1.5rem;
+}
+
+@media screen and (min-device-width: 810px) {
+  .about {
+    width: 40%;
+  }
+
+  .contactWrapper {
+    width: 40%;
+  }
+
+  .logoContainer {
+    top: 2.5rem;
+    right: 2.5rem;
+  }
+}

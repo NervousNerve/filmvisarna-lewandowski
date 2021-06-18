@@ -1,0 +1,50 @@
+.loginWrapper form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0.5em;
+}
+
+.loginBtn button,
+.toggleMenuBtn {
+  width: 100%;
+  text-align: center;
+}
+
+.inputContainer input {
+  width: 100%;
+}
+
+.inputContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.userIcon,
+.lockIcon {
+  position: absolute;
+  font-size: 19px;
+  z-index: 1;
+  color: #474a57;
+  left: calc(100% - 40px);
+}
+
+.toggleMenuBtn button {
+  margin-top: 1em;
+}
+
+.toggleMenuBtn button:focus {
+  outline: none;
+  text-decoration: underline #18191f;
+}
+
+.highlighted {
+  color: #d83830;
+}
+
+.feedbackMessage {
+  text-align: center;
+  margin: 0.4em 0em;
+  color: #d83830;
+}

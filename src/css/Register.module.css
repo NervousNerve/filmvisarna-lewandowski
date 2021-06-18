@@ -1,0 +1,31 @@
+.registerContainer form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 0.5em;
+}
+
+.registerBtn button,
+.toggleMenuBtn {
+  text-align: center;
+  width: 100%;
+}
+
+.feedbackMessage {
+  margin: 0.4em 0em;
+  text-align: center;
+  color: #d83830;
+}
+
+.toggleMenuBtn button {
+  margin-top: 1em;
+}
+
+.toggleMenuBtn button:focus {
+  outline: none;
+  text-decoration: underline #18191f;
+}
+
+.highlighted {
+  color: #d83830;
+}
